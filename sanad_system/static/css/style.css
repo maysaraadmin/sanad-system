@@ -1,0 +1,23 @@
+/* You can add custom styles here if needed */
+.timeline {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-item-marker {
+    position: absolute;
+    left: -1rem;
+    top: 0;
+}
+
+.timeline-item-marker-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+}
