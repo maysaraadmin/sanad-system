@@ -16,17 +16,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a>
+                      <a class="nav-link {% if active_page == 'hadith_list' %}active{% endif %}" 
+                      href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'hadith_app:narrator_list' %}">الرواة</a>
+                        <a class="nav-link {% if active_page == 'narrator_list' %}active{% endif %}" 
+                        href="{% url 'hadith_app:narrator_list' %}">الرواة</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'admin:index' %}">الإدارة</a>
                     </li>
                 </ul>
                 <form class="d-flex" action="{% url 'hadith_app:search' %}" method="get">
-                    <input class="form-control me-2" type="search" name="q" placeholder="بحث...">
+                    <input class="form-control me-2" type="search" name="q" placeholder="بحث..." required>
                     <button class="btn btn-outline-light" type="submit">بحث</button>
                 </form>
             </div>
@@ -34,6 +36,17 @@
     </nav>
 
     <div class="container mt-4">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
         {% block content %}{% endblock %}
     </div>
 

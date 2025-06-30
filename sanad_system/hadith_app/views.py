@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
+from django.contrib import messages
 from .models import Hadith, Narrator, Sanad, HadithCategory
 
 class HadithListView(ListView):
@@ -71,3 +72,6 @@ def search_view(request):
         'hadith_results': hadith_results,
         'narrator_results': narrator_results,
     })
+    
+def custom_404_view(request, exception):
+    return render(request, 'hadith_app/404.html', status=404)

@@ -1,0 +1,11 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}الصفحة غير موجودة{% endblock %}
+
+{% block content %}
+<div class="alert alert-danger text-center">
+    <h1>404 - الصفحة غير موجودة</h1>
+    <p>عذراً، الصفحة التي تبحث عنها غير موجودة.</p>
+    <a href="{% url 'hadith_app:hadith_list' %}" class="btn btn-primary">العودة للصفحة الرئيسية</a>
+</div>
+{% endblock %}
