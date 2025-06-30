@@ -1,0 +1,79 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}قائمة الرواة{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-6">
+        <h1>الرواة</h1>
+    </div>
+    <div class="col-md-6 text-start">
+        <a href="{% url 'admin:hadith_app_narrator_add' %}" class="btn btn-primary">إضافة راوي جديد</a>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row">
+            <div class="col-md-4 mb-3">
+                <label for="reliability" class="form-label">درجة التوثيق:</label>
+                <select name="reliability" id="reliability" class="form-select">
+                    <option value="">الكل</option>
+                    {% for value, label in reliability_options %}
+                        <option value="{{ value }}" {% if request.GET.reliability == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4 mb-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">تصفية</button>
+                <a href="{% url 'hadith_app:narrator_list' %}" class="btn btn-outline-secondary me-2">إعادة تعيين</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="list-group">
+    {% for narrator in narrators %}
+    <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ narrator.name }}</h5>
+            <span class="badge bg-{% if narrator.reliability == 'thiqa' %}success{% elif narrator.reliability == 'saduq' %}info{% elif narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
+                {{ narrator.get_reliability_display }}
+            </span>
+        </div>
+        <p class="mb-1">{{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }}</p>
+        {% if narrator.biography %}
+        <p class="mb-1 text-muted">{{ narrator.biography|truncatechars:100 }}</p>
+        {% endif %}
+    </a>
+    {% empty %}
+    <div class="alert alert-info">لا توجد رواة متاحين</div>
+    {% endfor %}
+</div>
+
+{% if is_paginated %}
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.reliability %}&reliability={{ request.GET.reliability }}{% endif %}">السابق</a>
+        </li>
+        {% endif %}
+        
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <li class="page-item"><a class="page-link" href="?page={{ num }}{% if request.GET.reliability %}&reliability={{ request.GET.reliability }}{% endif %}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+        
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.reliability %}&reliability={{ request.GET.reliability }}{% endif %}">التالي</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}

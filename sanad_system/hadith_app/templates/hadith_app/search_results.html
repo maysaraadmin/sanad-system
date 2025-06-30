@@ -1,0 +1,45 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}نتائج البحث{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h2>نتائج البحث عن: "{{ query }}"</h2>
+        
+        {% if hadith_results or narrator_results %}
+            {% if hadith_results %}
+                <h3 class="mt-4">الأحاديث</h3>
+                <div class="list-group">
+                    {% for hadith in hadith_results %}
+                    <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ hadith.text|truncatechars:100 }}</h5>
+                            <small class="text-muted">{{ hadith.get_grade_display }}</small>
+                        </div>
+                        <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            {% if narrator_results %}
+                <h3 class="mt-4">الرواة</h3>
+                <div class="list-group">
+                    {% for narrator in narrator_results %}
+                    <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ narrator.name }}</h5>
+                            <small class="text-muted">{{ narrator.get_reliability_display }}</small>
+                        </div>
+                        <p class="mb-1"><small>{{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }}</small></p>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="alert alert-info mt-4">لا توجد نتائج مطابقة للبحث</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

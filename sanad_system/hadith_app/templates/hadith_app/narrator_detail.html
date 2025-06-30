@@ -1,0 +1,55 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}تفاصيل الراوي{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>{{ narrator.name }}</h2>
+                <p class="text-muted">
+                    {{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }}
+                    <span class="badge bg-{% if narrator.reliability == 'thiqa' %}success{% elif narrator.reliability == 'saduq' %}info{% elif narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %} ms-2">
+                        {{ narrator.get_reliability_display }}
+                    </span>
+                </p>
+                
+                {% if narrator.biography %}
+                <div class="mt-4">
+                    <h4>السيرة الذاتية:</h4>
+                    <p>{{ narrator.biography|linebreaks }}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-4 text-start">
+                <a href="{% url 'admin:hadith_app_narrator_change' narrator.id %}" class="btn btn-outline-primary me-2">تعديل</a>
+                <a href="{% url 'admin:hadith_app_narrator_delete' narrator.id %}" class="btn btn-outline-danger">حذف</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>الأحاديث التي رواها</h3>
+    </div>
+    <div class="card-body">
+        {% if hadiths %}
+        <div class="list-group">
+            {% for hadith in hadiths %}
+            <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ hadith.text|truncatechars:100 }}</h5>
+                    <small class="text-muted">{{ hadith.get_grade_display }}</small>
+                </div>
+                <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">لا توجد أحاديث مسجلة لهذا الراوي</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

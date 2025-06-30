@@ -1,0 +1,86 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}تفاصيل الحديث{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">نص الحديث</h2>
+        <p class="card-text">{{ hadith.text }}</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h5>معلومات الحديث</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>المصدر:</strong> {{ hadith.source }}
+                        {% if hadith.source_page %}(صفحة {{ hadith.source_page }}){% endif %}
+                        {% if hadith.source_hadith_number %}(رقم {{ hadith.source_hadith_number }}){% endif %}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>درجة الحديث:</strong> 
+                        <span class="badge bg-{% if hadith.grade == 'sahih' %}success{% elif hadith.grade == 'hasan' %}info{% elif hadith.grade == 'daif' %}warning{% else %}danger{% endif %}">
+                            {{ hadith.get_grade_display }}
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>التصنيفات:</strong> 
+                        {% for category in hadith.categories.all %}
+                        <span class="badge bg-secondary">{{ category.name }}</span>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'admin:hadith_app_hadith_change' hadith.id %}" class="btn btn-sm btn-outline-primary me-2">تعديل</a>
+                    <a href="{% url 'admin:hadith_app_hadith_delete' hadith.id %}" class="btn btn-sm btn-outline-danger">حذف</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for sanad in hadith.asanid.all %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h3 class="card-title">سند الحديث {% if sanad.is_mutawatir %}<span class="badge bg-success">متواتر</span>{% endif %}</h3>
+    </div>
+    <div class="card-body">
+        <div class="timeline">
+            {% for narrator in sanad.sanadnarrator_set.all|dictsort:"order" %}
+            <div class="timeline-item">
+                <div class="timeline-item-marker">
+                    <div class="timeline-item-marker-indicator bg-primary"></div>
+                </div>
+                <div class="timeline-item-content">
+                    <h4 class="mb-1">
+                        <a href="{% url 'hadith_app:narrator_detail' narrator.narrator.id %}">{{ narrator.narrator.name }}</a>
+                        <span class="badge bg-{% if narrator.narrator.reliability == 'thiqa' %}success{% elif narrator.narrator.reliability == 'saduq' %}info{% elif narrator.narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
+                            {{ narrator.narrator.get_reliability_display }}
+                        </span>
+                    </h4>
+                    <p class="text-muted mb-1">
+                        {{ narrator.narration_method|default:"روى" }} 
+                        ({{ narrator.narrator.birth_year|default:"؟" }} - {{ narrator.narrator.death_year|default:"؟" }})
+                    </p>
+                    {% if narrator.narrator.biography %}
+                    <p class="mb-0">{{ narrator.narrator.biography|truncatechars:150 }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if sanad.notes %}
+        <div class="mt-3">
+            <h5>ملاحظات على السند:</h5>
+            <p>{{ sanad.notes }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+
+<a href="{% url 'admin:hadith_app_sanad_add' %}?hadith={{ hadith.id }}" class="btn btn-primary">إضافة سند جديد</a>
+{% endblock %}
