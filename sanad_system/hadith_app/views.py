@@ -1,7 +1,17 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 from .models import Hadith, Narrator, Sanad, HadithCategory
+
+
+@require_POST
+def set_theme(request):
+    theme = request.POST.get('theme', 'auto')
+    request.session['theme'] = theme
+    return JsonResponse({'status': 'ok'})
+
 
 class HadithListView(ListView):
     model = Hadith
@@ -27,10 +37,12 @@ class HadithListView(ListView):
         context['grades'] = Hadith._meta.get_field('grade').choices
         return context
 
+
 class HadithDetailView(DetailView):
     model = Hadith
     template_name = 'hadith_app/hadith_detail.html'
     context_object_name = 'hadith'
+
 
 class NarratorListView(ListView):
     model = Narrator
@@ -52,6 +64,7 @@ class NarratorListView(ListView):
         context['reliability_options'] = Narrator._meta.get_field('reliability').choices
         return context
 
+
 class NarratorDetailView(DetailView):
     model = Narrator
     template_name = 'hadith_app/narrator_detail.html'
@@ -61,6 +74,7 @@ class NarratorDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['hadiths'] = Hadith.objects.filter(asanid__narrators=self.object).distinct()
         return context
+
 
 def search_view(request):
     query = request.GET.get('q', '')
@@ -72,6 +86,7 @@ def search_view(request):
         'hadith_results': hadith_results,
         'narrator_results': narrator_results,
     })
-    
+
+
 def custom_404_view(request, exception):
     return render(request, 'hadith_app/404.html', status=404)
