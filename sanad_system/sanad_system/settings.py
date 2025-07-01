@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-your-secret-key-here'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -133,9 +133,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Add at the bottom of settings.py
-DEBUG = False  # Only set to False in production
-ALLOWED_HOSTS = ['*']  # For development only, specify domains in production
+# Production settings - uncomment for production
+# DEBUG = False  # Only set to False in production
+# ALLOWED_HOSTS = ['your-domain.com']  # Specify actual domains in production
 
 # Custom error handlers
 handler404 = 'hadith_app.views.custom_404_view'
