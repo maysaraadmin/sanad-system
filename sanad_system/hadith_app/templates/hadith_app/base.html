@@ -35,15 +35,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if active_page == 'hadith_list' %}active{% endif %}" 
-                           href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link {% if active_page == 'narrator_list' %}active{% endif %}" 
                            href="{% url 'hadith_app:narrator_list' %}">الرواة</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admin:index' %}">الإدارة</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
