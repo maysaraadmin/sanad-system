@@ -1,0 +1,433 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}إنشاء حساب جديد - نظام السند{% endblock %}
+
+{% block extra_css %}
+<style>
+    .register-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+
+    .register-card {
+        max-width: 500px;
+        width: 100%;
+        background: white;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+    }
+
+    .register-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        padding: 2.5rem 2rem 2rem;
+        text-align: center;
+        color: white;
+    }
+
+    .register-header h2 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.8rem;
+    }
+
+    .register-header p {
+        margin: 0.5rem 0 0;
+        opacity: 0.9;
+        font-size: 0.95rem;
+    }
+
+    .register-body {
+        padding: 2.5rem 2rem;
+    }
+
+    .form-floating {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-floating .form-control {
+        border: 2px solid #e2e8f0;
+        border-radius: 0.75rem;
+        padding: 1rem 0.75rem;
+        height: auto;
+        font-size: 1rem;
+    }
+
+    .form-floating .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(44, 85, 48, 0.15);
+    }
+
+    .form-floating label {
+        padding: 1rem 0.75rem;
+        color: #6b7280;
+    }
+
+    .btn-register {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-register:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-link {
+        text-align: center;
+        padding: 1.5rem 0 0;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .login-link a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .login-link a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+    }
+
+    .register-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+    }
+
+    .error-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0;
+    }
+
+    .error-list li {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin: 0.25rem 0;
+    }
+
+    .error-list li::before {
+        content: '⚠ ';
+        margin-left: 0.25rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .password-strength {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .strength-indicator {
+        height: 4px;
+        background: #e2e8f0;
+        border-radius: 2px;
+        margin: 0.5rem 0;
+        overflow: hidden;
+    }
+
+    .strength-bar {
+        height: 100%;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .strength-weak { background: #ef4444; width: 25%; }
+    .strength-fair { background: #f59e0b; width: 50%; }
+    .strength-good { background: #10b981; width: 75%; }
+    .strength-strong { background: var(--primary-color); width: 100%; }
+
+    .terms-checkbox {
+        display: flex;
+        align-items: flex-start;
+        margin: 1.5rem 0;
+        gap: 0.75rem;
+    }
+
+    .terms-checkbox input[type="checkbox"] {
+        margin-top: 0.25rem;
+        transform: scale(1.2);
+    }
+
+    .terms-checkbox label {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--text-light);
+    }
+
+    .terms-checkbox a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+    .terms-checkbox a:hover {
+        text-decoration: underline;
+    }
+
+    /* Dark theme adjustments */
+    [data-theme="dark"] .register-card {
+        background: #2d3748;
+    }
+
+    [data-theme="dark"] .login-link {
+        border-top-color: #4a5568;
+    }
+
+    @media (max-width: 576px) {
+        .register-container {
+            padding: 1rem;
+        }
+        
+        .register-header {
+            padding: 2rem 1.5rem 1.5rem;
+        }
+        
+        .register-body {
+            padding: 2rem 1.5rem;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <div class="register-icon">
+                <i class="bi bi-person-plus"></i>
+            </div>
+            <h2>إنشاء حساب جديد</h2>
+            <p>انضم إلينا واستفد من جميع الميزات</p>
+        </div>
+        
+        <div class="register-body">
+            <form method="post" novalidate id="registerForm">
+                {% csrf_token %}
+                
+                <div class="form-floating">
+                    {{ form.username }}
+                    <label for="{{ form.username.id_for_label }}">اسم المستخدم</label>
+                    {% if form.username.errors %}
+                        <ul class="error-list">
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-floating">
+                        {{ form.first_name }}
+                        <label for="{{ form.first_name.id_for_label }}">الاسم الأول</label>
+                        {% if form.first_name.errors %}
+                            <ul class="error-list">
+                                {% for error in form.first_name.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-floating">
+                        {{ form.last_name }}
+                        <label for="{{ form.last_name.id_for_label }}">اسم العائلة</label>
+                        {% if form.last_name.errors %}
+                            <ul class="error-list">
+                                {% for error in form.last_name.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-floating">
+                    {{ form.email }}
+                    <label for="{{ form.email.id_for_label }}">البريد الإلكتروني</label>
+                    {% if form.email.errors %}
+                        <ul class="error-list">
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-floating">
+                    {{ form.password1 }}
+                    <label for="{{ form.password1.id_for_label }}">كلمة المرور</label>
+                    <div class="password-strength">
+                        <div class="strength-indicator">
+                            <div class="strength-bar" id="strengthBar"></div>
+                        </div>
+                        <div id="strengthText">قوة كلمة المرور</div>
+                    </div>
+                    {% if form.password1.errors %}
+                        <ul class="error-list">
+                            {% for error in form.password1.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-floating">
+                    {{ form.password2 }}
+                    <label for="{{ form.password2.id_for_label }}">تأكيد كلمة المرور</label>
+                    {% if form.password2.errors %}
+                        <ul class="error-list">
+                            {% for error in form.password2.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        أوافق على <a href="#" onclick="alert('شروط الاستخدام ستكون متاحة قريباً')">شروط الاستخدام</a> 
+                        و <a href="#" onclick="alert('سياسة الخصوصية ستكون متاحة قريباً')">سياسة الخصوصية</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-register">
+                    <i class="bi bi-person-plus me-2"></i>
+                    إنشاء الحساب
+                </button>
+            </form>
+        </div>
+        
+        <div class="login-link">
+            <p class="mb-0">
+                لديك حساب بالفعل؟ 
+                <a href="{% url 'login' %}">تسجيل الدخول</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Password strength checker
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.querySelector('#id_password1');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        
+        if (passwordInput) {
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strength = checkPasswordStrength(password);
+                updateStrengthIndicator(strength);
+            });
+        }
+        
+        function checkPasswordStrength(password) {
+            let score = 0;
+            
+            if (password.length >= 8) score++;
+            if (/[a-z]/.test(password)) score++;
+            if (/[A-Z]/.test(password)) score++;
+            if (/[0-9]/.test(password)) score++;
+            if (/[^A-Za-z0-9]/.test(password)) score++;
+            
+            return score;
+        }
+        
+        function updateStrengthIndicator(strength) {
+            strengthBar.className = 'strength-bar';
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    strengthBar.classList.add('strength-weak');
+                    strengthText.textContent = 'ضعيفة';
+                    break;
+                case 2:
+                    strengthBar.classList.add('strength-fair');
+                    strengthText.textContent = 'متوسطة';
+                    break;
+                case 3:
+                case 4:
+                    strengthBar.classList.add('strength-good');
+                    strengthText.textContent = 'جيدة';
+                    break;
+                case 5:
+                    strengthBar.classList.add('strength-strong');
+                    strengthText.textContent = 'قوية';
+                    break;
+            }
+        }
+        
+        // Form validation
+        const form = document.getElementById('registerForm');
+        form.addEventListener('submit', function(e) {
+            const termsCheckbox = document.getElementById('terms');
+            
+            if (!termsCheckbox.checked) {
+                e.preventDefault();
+                alert('يجب الموافقة على شروط الاستخدام');
+                termsCheckbox.focus();
+                return;
+            }
+        });
+        
+        // Add floating label animation
+        const inputs = document.querySelectorAll('.form-floating .form-control');
+        
+        inputs.forEach(input => {
+            if (input.value) {
+                input.classList.add('has-value');
+            }
+            
+            input.addEventListener('input', function() {
+                if (this.value) {
+                    this.classList.add('has-value');
+                } else {
+                    this.classList.remove('has-value');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+

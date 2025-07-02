@@ -1,0 +1,507 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}تعديل الملف الشخصي - نظام السند{% endblock %}
+
+{% block extra_css %}
+<style>
+    .edit-profile-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .edit-profile-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        color: white;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .edit-profile-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .edit-profile-header p {
+        margin: 0.5rem 0 0;
+        opacity: 0.9;
+    }
+
+    .form-section {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(44, 85, 48, 0.25);
+    }
+
+    .form-control-file {
+        padding: 0.5rem;
+    }
+
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-check-input {
+        transform: scale(1.2);
+    }
+
+    .form-check-label {
+        font-weight: 500;
+        color: var(--text-dark);
+    }
+
+    .current-image {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 0.75rem;
+        border: 2px solid var(--border-color);
+        margin-bottom: 1rem;
+    }
+
+    .image-preview {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn-save {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+    }
+
+    .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn-cancel {
+        background: transparent;
+        color: var(--text-light);
+        border: 2px solid var(--border-color);
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+        border-color: var(--text-light);
+        color: var(--text-dark);
+        text-decoration: none;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .error-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0;
+    }
+
+    .error-list li {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin: 0.25rem 0;
+    }
+
+    .error-list li::before {
+        content: '⚠ ';
+        margin-left: 0.25rem;
+    }
+
+    .help-text {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        margin-top: 0.25rem;
+    }
+
+    /* Dark theme adjustments */
+    [data-theme="dark"] .form-section {
+        background: #2d3748;
+    }
+
+    [data-theme="dark"] .form-control {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .form-control:focus {
+        border-color: var(--primary-color);
+        background: #2d3748;
+    }
+
+    @media (max-width: 768px) {
+        .edit-profile-container {
+            padding: 0 1rem;
+        }
+
+        .edit-profile-header {
+            padding: 1.5rem;
+        }
+
+        .form-section {
+            padding: 1.5rem;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn-save,
+        .btn-cancel {
+            width: 100%;
+            margin: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="edit-profile-container">
+    <!-- Header -->
+    <div class="edit-profile-header">
+        <h1><i class="bi bi-person-gear me-2"></i>تعديل الملف الشخصي</h1>
+        <p>قم بتحديث معلوماتك الشخصية</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Account Information -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-person"></i>
+                معلومات الحساب
+            </h3>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="{{ user_form.username.id_for_label }}">اسم المستخدم</label>
+                    {{ user_form.username }}
+                    {% if user_form.username.errors %}
+                        <ul class="error-list">
+                            {% for error in user_form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="{{ user_form.email.id_for_label }}">البريد الإلكتروني</label>
+                    {{ user_form.email }}
+                    {% if user_form.email.errors %}
+                        <ul class="error-list">
+                            {% for error in user_form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="{{ user_form.first_name.id_for_label }}">الاسم الأول</label>
+                    {{ user_form.first_name }}
+                    {% if user_form.first_name.errors %}
+                        <ul class="error-list">
+                            {% for error in user_form.first_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="{{ user_form.last_name.id_for_label }}">اسم العائلة</label>
+                    {{ user_form.last_name }}
+                    {% if user_form.last_name.errors %}
+                        <ul class="error-list">
+                            {% for error in user_form.last_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Information -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-info-circle"></i>
+                المعلومات الشخصية
+            </h3>
+            
+            <div class="form-group">
+                <label class="form-label" for="{{ profile_form.bio.id_for_label }}">نبذة شخصية</label>
+                {{ profile_form.bio }}
+                {% if profile_form.bio.errors %}
+                    <ul class="error-list">
+                        {% for error in profile_form.bio.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="{{ profile_form.location.id_for_label }}">الموقع</label>
+                    {{ profile_form.location }}
+                    {% if profile_form.location.errors %}
+                        <ul class="error-list">
+                            {% for error in profile_form.location.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="{{ profile_form.phone_number.id_for_label }}">رقم الهاتف</label>
+                    {{ profile_form.phone_number }}
+                    {% if profile_form.phone_number.errors %}
+                        <ul class="error-list">
+                            {% for error in profile_form.phone_number.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="{{ profile_form.birth_date.id_for_label }}">تاريخ الميلاد</label>
+                    {{ profile_form.birth_date }}
+                    {% if profile_form.birth_date.errors %}
+                        <ul class="error-list">
+                            {% for error in profile_form.birth_date.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="{{ profile_form.specialization.id_for_label }}">التخصص</label>
+                    {{ profile_form.specialization }}
+                    {% if profile_form.specialization.errors %}
+                        <ul class="error-list">
+                            {% for error in profile_form.specialization.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Picture -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-image"></i>
+                صورة الملف الشخصي
+            </h3>
+            
+            {% if user.userprofile.profile_picture %}
+                <div class="image-preview">
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Current Profile Picture" class="current-image">
+                    <div>
+                        <p class="mb-1"><strong>الصورة الحالية</strong></p>
+                        <p class="text-muted mb-0">اختر صورة جديدة لتحديث الصورة الحالية</p>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <div class="form-group">
+                <label class="form-label" for="{{ profile_form.profile_picture.id_for_label }}">اختيار صورة جديدة</label>
+                {{ profile_form.profile_picture }}
+                <div class="help-text">الحد الأقصى لحجم الملف: 5MB. الصيغ المدعومة: JPG, PNG, GIF</div>
+                {% if profile_form.profile_picture.errors %}
+                    <ul class="error-list">
+                        {% for error in profile_form.profile_picture.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Academic Information -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="bi bi-mortarboard"></i>
+                المعلومات الأكاديمية
+            </h3>
+            
+            <div class="form-check">
+                {{ profile_form.is_scholar }}
+                <label class="form-check-label" for="{{ profile_form.is_scholar.id_for_label }}">
+                    أنا عالم أو باحث في العلوم الشرعية
+                </label>
+            </div>
+            
+            {% if profile_form.is_scholar.errors %}
+                <ul class="error-list">
+                    {% for error in profile_form.is_scholar.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+            <button type="submit" class="btn-save">
+                <i class="bi bi-check-lg me-2"></i>
+                حفظ التغييرات
+            </button>
+            <a href="{% url 'profile' %}" class="btn-cancel">
+                <i class="bi bi-x-lg me-2"></i>
+                إلغاء
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Image preview functionality
+        const imageInput = document.querySelector('#id_profile_picture');
+        const currentImage = document.querySelector('.current-image');
+        
+        if (imageInput) {
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        if (currentImage) {
+                            currentImage.src = e.target.result;
+                        } else {
+                            // Create new image preview if none exists
+                            const imagePreview = document.createElement('div');
+                            imagePreview.className = 'image-preview';
+                            imagePreview.innerHTML = `
+                                <img src="${e.target.result}" alt="Profile Preview" class="current-image">
+                                <div>
+                                    <p class="mb-1"><strong>معاينة الصورة الجديدة</strong></p>
+                                </div>
+                            `;
+                            imageInput.parentNode.insertBefore(imagePreview, imageInput);
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.focus();
+                    return;
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('يرجى ملء جميع الحقول المطلوبة');
+            }
+        });
+
+        // Auto-resize textarea
+        const textarea = document.querySelector('#id_bio');
+        if (textarea) {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        }
+    });
+</script>
+{% endblock %}
+
