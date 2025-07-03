@@ -1,0 +1,223 @@
+/* Custom Admin Theme */
+
+/* Dashboard Improvements */
+.dashboard .module {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.dashboard .module:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.dashboard .module h2 {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px 12px 0 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.dashboard .module ul {
+    margin: 15px 0;
+    padding: 0 20px;
+}
+
+.dashboard .module li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dashboard .module li:last-child {
+    border-bottom: none;
+}
+
+/* Table Improvements */
+.changelist table {
+    background: #fff;
+    border-collapse: separate;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.changelist table th {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    font-weight: 600;
+    padding: 12px 15px;
+    border: none;
+    text-align: right;
+}
+
+.changelist table td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    text-align: right;
+}
+
+.changelist table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Form Improvements */
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-row input, .form-row select, .form-row textarea {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+    outline: none;
+}
+
+/* Buttons */
+.button {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #357abd, #2a68a4);
+    transform: translateY(-1px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* Search Box */
+#changelist-search input {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 300px;
+    transition: all 0.3s ease;
+}
+
+#changelist-search input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Filter Sidebar */
+.filters {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.filters h2 {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    padding: 12px;
+    border-radius: 12px 12px 0 0;
+    font-size: 1.1em;
+}
+
+.filters .filter {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.filters .filter:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+    .dashboard .module {
+        margin-bottom: 15px;
+    }
+    
+    .changelist table th, .changelist table td {
+        padding: 10px;
+    }
+    
+    .form-row {
+        margin-bottom: 15px;
+    }
+    
+    .button {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    #changelist-search input {
+        width: 100%;
+    }
+}
+
+/* RTL Support */
+body {
+    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Custom Icons */
+.dashboard .module li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard .module li a::before {
+    content: "\f013";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #4a90e2;
+    width: 20px;
+    text-align: center;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4a90e2;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

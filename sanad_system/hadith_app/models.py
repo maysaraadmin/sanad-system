@@ -1,5 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify
+import os
+
+def user_avatar_path(instance, filename):
+    # File will be uploaded to MEDIA_ROOT/avatars/user_<id>/<filename>
+    ext = filename.split('.')[-1]
+    filename = f'avatar.{ext}'
+    return os.path.join('avatars', f'user_{instance.user.id}', filename)
 
 class Narrator(models.Model):
     name = models.CharField(max_length=100, verbose_name="اسم الراوي")
@@ -123,3 +134,132 @@ class HadithBook(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserProfile(models.Model):
+    """Extended user profile model"""
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='profile',
+        verbose_name=_('المستخدم')
+    )
+    
+    # Personal Information
+    bio = models.TextField(
+        null=True,
+        blank=True,
+        verbose_name=_('نبذة شخصية')
+    )
+    
+    birth_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name=_('تاريخ الميلاد')
+    )
+    
+    phone_number = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+        verbose_name=_('رقم الهاتف')
+    )
+    
+    location = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        verbose_name=_('الموقع')
+    )
+    
+    avatar = models.ImageField(
+        upload_to=user_avatar_path,
+        null=True,
+        blank=True,
+        verbose_name=_('الصورة الشخصية'),
+        help_text=_('صورة الملف الشخصي')
+    )
+    
+    # Preferences
+    theme = models.CharField(
+        max_length=10,
+        choices=[
+            ('light', _('فاتح')),
+            ('dark', _('داكن')),
+            ('system', _('تلقائي (حسب النظام)'))
+        ],
+        default='system',
+        verbose_name=_('السمة')
+    )
+    
+    # Social Links
+    website = models.URLField(
+        max_length=200,
+        null=True,
+        blank=True,
+        verbose_name=_('الموقع الإلكتروني')
+    )
+    
+    twitter = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        verbose_name=_('حساب تويتر')
+    )
+    
+    facebook = models.URLField(
+        null=True,
+        blank=True,
+        verbose_name=_('حساب فيسبوك')
+    )
+    
+    # Activity tracking
+    last_activity = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_('آخر نشاط')
+    )
+    
+    email_verified = models.BooleanField(
+        default=False,
+        verbose_name=_('تم التحقق من البريد الإلكتروني')
+    )
+    
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('تاريخ الإنشاء'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('تاريخ التحديث'))
+    
+    class Meta:
+        verbose_name = _('ملف شخصي')
+        verbose_name_plural = _('الملفات الشخصية')
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f'{self.user.get_full_name() or self.user.username}\'s Profile'
+    
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('profile')
+    
+    def get_initials(self):
+        """Get user initials for avatar"""
+        if self.user.first_name and self.user.last_name:
+            return f"{self.user.first_name[0]}{self.user.last_name[0]}".upper()
+        elif self.user.first_name:
+            return self.user.first_name[0].upper()
+        elif self.user.username:
+            return self.user.username[0].upper()
+        return 'U'
+    
+    def get_avatar_url(self):
+        """Return the avatar URL or a default"""
+        if self.avatar and hasattr(self.avatar, 'url'):
+            return self.avatar.url
+        return '/static/images/default-avatar.png'
+
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """Create or update user profile when User is saved"""
+    if created:
+        UserProfile.objects.create(user=instance)
+    instance.profile.save()

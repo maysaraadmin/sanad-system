@@ -1,12 +1,251 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ar" dir="rtl" data-bs-theme="{{ request.session.theme|default:'auto' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام إدارة الأسانيد - {% block title %}{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <title>{% block title %}نظام السند{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --info-color: #4895ef;
+            --warning-color: #f72585;
+            --danger-color: #7209b7;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --body-bg: #f5f7fb;
+            --card-bg: #ffffff;
+            --text-color: #2b2d42;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 0.5rem;
+            --transition: all 0.2s ease-in-out;
+        }
+
+        /* Dark theme variables */
+        [data-bs-theme="dark"] {
+            --body-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-color: #f8f9fa;
+            --text-muted: #adb5bd;
+            --border-color: #2d3748;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--body-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --success-color: #27ae60;
+            --info-color: #3498db;
+            --search-suggestion-bg: #fff;
+            --search-suggestion-hover: #f8f9fa;
+            --search-border-color: #ced4da;
+            --search-text-color: #212529;
+            --search-muted-color: #6c757d;
+        }
+        
+        /* Dark mode variables */
+        [data-bs-theme="dark"] {
+            --search-suggestion-bg: #2c3034;
+            --search-suggestion-hover: #343a40;
+            --search-border-color: #495057;
+            --search-text-color: #f8f9fa;
+            --search-muted-color: #adb5bd;
+        }
+        
+        /* Search form styles */
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-grow: 1;
+            padding: 0 15px;
+        }
+        
+        #searchForm {
+            position: relative;
+            margin: 0;
+        }
+        
+        #searchInput {
+            padding-right: 40px;
+            padding-left: 15px;
+            border-radius: 20px !important;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        #searchInput:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        #searchInput::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        #searchButton {
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        #searchButton:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Search suggestions dropdown */
+        #searchSuggestions {
+            position: absolute;
+            top: 100%;
+            right: 15px;
+            left: 15px;
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 5px;
+            border: 1px solid var(--search-border-color);
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            background-color: var(--search-suggestion-bg);
+            display: none;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        #searchSuggestions .list-group-item {
+            border: none;
+            border-radius: 0;
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            color: var(--search-text-color);
+            text-align: right;
+        }
+        
+        #searchSuggestions .list-group-item:last-child {
+            border-bottom: none;
+        }
+        
+        #searchSuggestions .list-group-item:hover,
+        #searchSuggestions .list-group-item:focus {
+            background-color: var(--search-suggestion-hover);
+            color: var(--primary-color);
+            outline: none;
+        }
+        
+        #searchSuggestions .list-group-item:active {
+            background-color: var(--search-suggestion-hover);
+        }
+        
+        #searchSuggestions .list-group-item.disabled {
+            background-color: var(--search-suggestion-bg);
+            color: var(--search-muted-color);
+            cursor: default;
+            opacity: 1;
+            font-weight: 600;
+        }
+        
+        #searchSuggestions .list-group-item .text-truncate {
+            white-space: normal;
+            line-height: 1.4;
+        }
+        
+        /* Highlight matching text in search results */
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.1em 0.2em;
+            border-radius: 3px;
+            color: #856404;
+        }
+        
+        [data-bs-theme="dark"] .highlight {
+            background-color: #856404;
+            color: #fff3cd;
+        }
+        
+        /* Search help text */
+        #searchHelp {
+            position: absolute;
+            right: 10px;
+            bottom: -20px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: opacity 0.2s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        #searchInput:focus + #searchHelp {
+            opacity: 1;
+        }
+        
+        /* Loading indicator */
+        .search-loading {
+            position: relative;
+        }
+        
+        .search-loading:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+        
         .theme-switcher {
             display: flex;
             gap: 5px;
@@ -26,34 +265,151 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); box-shadow: var(--shadow);">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'hadith_app:hadith_list' %}">نظام الأسانيد</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="{% url 'hadith_app:home' %}">
+                <i class="fas fa-book-quran me-2"></i>
+                <span>نظام الأسانيد</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if active_page == 'narrator_list' %}active{% endif %}" 
-                           href="{% url 'hadith_app:narrator_list' %}">الرواة</a>
+                        <a class="nav-link d-flex align-items-center {% if active_page == 'home' %}active fw-bold{% endif %}" 
+                           href="{% url 'hadith_app:home' %}">
+                            <i class="fas fa-home me-2"></i>
+                            <span>الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center {% if active_page == 'hadith_list' %}active fw-bold{% endif %}" 
+                           href="{% url 'hadith_app:hadith_list' %}">
+                            <i class="fas fa-list me-2"></i>
+                            <span>الاحاديث</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center {% if active_page == 'narrator_list' %}active fw-bold{% endif %}" 
+                           href="{% url 'hadith_app:narrator_list' %}">
+                            <i class="fas fa-users me-2"></i>
+                            <span>الرواة</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center {% if active_page == 'add' %}active fw-bold{% endif %}" 
+                           href="{% url 'hadith_app:hadith_create' %}">
+                            <i class="fas fa-plus me-2"></i>
+                            <span>إضافة حديث</span>
+                        </a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <form class="d-flex me-3" action="{% url 'hadith_app:search' %}" method="get">
-                        <input class="form-control me-2" type="search" name="q" placeholder="بحث..." required>
-                        <button class="btn btn-outline-light" type="submit">بحث</button>
+                    <form class="d-flex me-3 position-relative" action="{% url 'hadith_app:search' %}" method="get" style="min-width: 250px;">
+                        <input class="form-control rounded-pill ps-4 pe-5 border-0 shadow-sm" 
+                               type="search" 
+                               name="q" 
+                               placeholder="ابحث عن حديث أو راوٍ..."
+                               aria-label="بحث"
+                               id="searchInput">
+                        <button class="btn btn-outline-light rounded-pill ms-2" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="searchSuggestions" class="position-absolute top-100 start-0 end-0 mt-2 bg-white rounded shadow-sm p-2 d-none">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-book me-2 text-primary"></i>
+                                        <span>الأحاديث</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-users me-2 text-primary"></i>
+                                        <span>الرواة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
-                    <div class="theme-switcher">
-                        <button class="theme-btn {% if request.session.theme == 'light' %}active{% endif %}" data-theme="light" title="Light theme">
-                            <i class="bi bi-sun-fill"></i>
-                        </button>
-                        <button class="theme-btn {% if not request.session.theme or request.session.theme == 'auto' %}active{% endif %}" data-theme="auto" title="Auto theme">
-                            <i class="bi bi-circle-half"></i>
-                        </button>
-                        <button class="theme-btn {% if request.session.theme == 'dark' %}active{% endif %}" data-theme="dark" title="Dark theme">
-                            <i class="bi bi-moon-fill"></i>
-                        </button>
+                    <div class="d-flex align-items-center gap-2">
+                        <!-- Theme Switcher -->
+                        <div class="btn-group rounded-pill shadow-sm" role="group" aria-label="Theme Switcher">
+                            <button class="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center {% if request.session.theme == 'light' %}active bg-white text-primary{% endif %}" 
+                                    data-theme="light" 
+                                    title="الوضع النهاري"
+                                    style="width: 36px; height: 36px; border-radius: 50% 0 0 50% !important;">
+                                <i class="fas fa-sun"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center {% if not request.session.theme or request.session.theme == 'auto' %}active bg-white text-primary{% endif %}" 
+                                    data-theme="auto" 
+                                    title="تلقائي"
+                                    style="width: 36px; height: 36px; border-radius: 0; border-left: none; border-right: none;">
+                                <i class="fas fa-adjust"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center {% if request.session.theme == 'dark' %}active bg-dark text-white{% endif %}" 
+                                    data-theme="dark" 
+                                    title="الوضع الليلي"
+                                    style="width: 36px; height: 36px; border-radius: 0 50% 50% 0 !important;">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- User Dropdown -->
+                        {% if user.is_authenticated %}
+                            <div class="dropdown">
+                                <button class="btn btn-light rounded-pill d-flex align-items-center gap-2 px-3" 
+                                        type="button" 
+                                        id="userDropdown" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false"
+                                        style="height: 38px;">
+                                    <span class="d-none d-md-inline">{{ user.username }}</span>
+                                    <i class="fas fa-user-circle fs-5"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" 
+                                    aria-labelledby="userDropdown"
+                                    style="min-width: 220px; border-radius: 12px; border: 1px solid var(--border-color);">
+                                    <li class="dropdown-header text-muted small px-3 py-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="fas fa-user"></i>
+                                            <span>مرحباً، {{ user.username }}</span>
+                                        </div>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-1"></li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2 px-3" 
+                                           href="{% url 'hadith_app:profile' %}">
+                                            <i class="fas fa-user-circle text-primary"></i>
+                                            <span>الملف الشخصي</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2 px-3" 
+                                           href="{% url 'password_change' %}">
+                                            <i class="fas fa-key text-warning"></i>
+                                            <span>تغيير كلمة المرور</span>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-1"></li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2 px-3 text-danger" 
+                                           href="{% url 'logout' %}">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            <span>تسجيل الخروج</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'login' %}" 
+                               class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3"
+                               style="height: 38px;">
+                                <span class="d-none d-md-inline">تسجيل الدخول</span>
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -64,41 +420,85 @@
         {% block content %}{% endblock %}
     </div>
 
-    <footer class="bg-dark text-white text-center p-3 mt-5">
+    <footer class="mt-auto py-4" style="background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
         <div class="container">
-            <p>نظام توثيق وإدارة أسانيد الحديث النبوي &copy; {% now "Y" %}</p>
+            <div class="row g-4">
+                <div class="col-md-4 text-center text-md-start">
+                    <h5 class="mb-3 fw-bold">نظام الأسانيد</h5>
+                    <p class="text-muted mb-0">منصة متكاملة لدراسة وتوثيق أسانيد الحديث النبوي الشريف</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3 fw-bold">روابط سريعة</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="{% url 'hadith_app:hadith_list' %}" class="text-decoration-none text-muted">الأحاديث</a></li>
+                        <li class="mb-2"><a href="{% url 'hadith_app:narrator_list' %}" class="text-decoration-none text-muted">الرواة</a></li>
+                        <li><a href="{% url 'hadith_app:search' %}" class="text-decoration-none text-muted">بحث متقدم</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <h5 class="mb-3 fw-bold">تواصل معنا</h5>
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                        <a href="#" class="text-muted text-decoration-none"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-muted text-decoration-none"><i class="fab fa-facebook fs-5"></i></a>
+                        <a href="#" class="text-muted text-decoration-none"><i class="fab fa-telegram fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: var(--border-color);">
+            <div class="text-center text-muted">
+                <p class="mb-0">© {% now "Y" %} نظام الأسانيد. جميع الحقوق محفوظة</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="backToTop" class="btn btn-primary rounded-circle shadow" style="position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- CSRF Token for AJAX requests -->
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    <!-- Messages data from Django -->
+    <script id="messages-data" type="application/json">
+    {
+        "messages": [
+            {% if messages %}
+                {% for message in messages %}
+                    {
+                        "type": "{{ message.tags|default:'info' }}",
+                        "text": "{{ message|escapejs }}"
+                    }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            {% endif %}
+        ]
+    }
+    </script>
+    
+    <!-- Initialize messages -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const themeBtns = document.querySelectorAll('.theme-btn');
-        
-        themeBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const theme = this.getAttribute('data-theme');
-                
-                // Update active state
-                document.querySelectorAll('.theme-btn').forEach(b => {
-                    b.classList.remove('active');
+        try {
+            const messagesData = JSON.parse(document.getElementById('messages-data').textContent);
+            if (messagesData.messages && messagesData.messages.length > 0) {
+                messagesData.messages.forEach(function(msg) {
+                    if (typeof showToast === 'function') {
+                        showToast(msg.type, msg.text);
+                    } else {
+                        console.log('[' + msg.type + '] ' + msg.text);
+                    }
                 });
-                this.classList.add('active');
-                
-                // Set theme
-                document.documentElement.setAttribute('data-bs-theme', theme);
-                
-                // Save preference
-                fetch("{% url 'hadith_app:set_theme' %}", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    body: JSON.stringify({theme: theme})
-                });
-            });
-        });
+            }
+        } catch (e) {
+            console.error('Error processing messages:', e);
+        }
     });
     </script>
 </body>

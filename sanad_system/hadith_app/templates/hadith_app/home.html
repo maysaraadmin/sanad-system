@@ -146,86 +146,148 @@
     .hadith-grade {
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
-        font-weight: 500;
-        font-size: 0.8rem;
-    }
-
-    .grade-sahih { background: #d4edda; color: #155724; }
-    .grade-hasan { background: #d1ecf1; color: #0c5460; }
-    .grade-daif { background: #f8d7da; color: #721c24; }
-    .grade-mawdu { background: #f5c6cb; color: #721c24; }
-
-    .cta-section {
-        background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
-        border-radius: 1rem;
-        padding: 3rem 2rem;
-        text-align: center;
-        color: white;
-        margin-top: 3rem;
-    }
-
-    .cta-title {
-        font-size: 2rem;
+        color: var(--primary-color);
         font-weight: 700;
+    }
+    .stat-card p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
         margin-bottom: 1rem;
     }
 
-    .cta-text {
-        font-size: 1.1rem;
-        opacity: 0.9;
-        margin-bottom: 2rem;
+    /* Latest Hadiths Section */
+    .latest-section {
+        margin-top: 4rem;
+        padding: 2rem 0;
     }
-
-    .btn-cta {
-        background: white;
-        color: var(--primary-color);
-        padding: 1rem 2rem;
-        border-radius: 0.75rem;
-        text-decoration: none;
-        font-weight: 600;
+    .hadith-card {
+        border: 1px solid var(--border-color);
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
         transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.03) 100%);
+        position: relative;
+        overflow: hidden;
     }
-
-    .btn-cta:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
+    .hadith-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" fill-opacity="1" d="M0,160L48,160C96,160,192,160,288,154.7C384,149,480,139,576,154.7C672,171,768,213,864,213.3C960,213,1056,171,1152,144C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat center center;
+        opacity: 0.1;
+        filter: blur(10px);
+    }
+    .hadith-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .hadith-card h4 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
         color: var(--primary-color);
+        font-weight: 600;
+    }
+    .hadith-card p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .hadith-card .source {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    .hadith-card .btn-link {
+        color: var(--primary-color);
+        font-weight: 600;
         text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .hadith-card .btn-link:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
     }
 
-    /* Dark theme adjustments */
+    /* Popular Narrators Section */
+    .popular-section {
+        margin-top: 4rem;
+        padding: 2rem 0;
+    }
+    .narrator-card {
+        border: 1px solid var(--border-color);
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.03) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    .narrator-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" fill-opacity="1" d="M0,160L48,160C96,160,192,160,288,154.7C384,149,480,139,576,154.7C672,171,768,213,864,213.3C960,213,1056,171,1152,144C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat center center;
+        opacity: 0.1;
+        filter: blur(10px);
+    }
+    .narrator-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .narrator-card h4 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    .narrator-card p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .narrator-card .reliability {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    .narrator-card .btn-link {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .narrator-card .btn-link:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+    }
+
+    /* Dark Mode Adjustments */
+    [data-theme="dark"] .hero-section {
+        background: linear-gradient(135deg, var(--primary-color-dark) 0%, var(--secondary-color-dark) 100%);
+    }
     [data-theme="dark"] .stat-card,
-    [data-theme="dark"] .recent-section {
-        background: #2d3748;
-    }
-
-    [data-theme="dark"] .hadith-item {
+    [data-theme="dark"] .hadith-card,
+    [data-theme="dark"] .narrator-card {
         border-color: #4a5568;
+        background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.05) 100%);
     }
-
-    [data-theme="dark"] .hadith-item:hover {
-        border-color: var(--primary-color);
+    [data-theme="dark"] .stat-card::before,
+    [data-theme="dark"] .hadith-card::before,
+    [data-theme="dark"] .narrator-card::before {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.03)" fill-opacity="1" d="M0,160L48,160C96,160,192,160,288,154.7C384,149,480,139,576,154.7C672,171,768,213,864,213.3C960,213,1056,171,1152,144C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat center center;
     }
-
-    @media (max-width: 768px) {
-        .hero-title {
-            font-size: 2rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-        }
-
-        .stats-section {
-            grid-template-columns: 1fr;
-        }
-
-        .cta-title {
-            font-size: 1.5rem;
-        }
+    [data-theme="dark"] .stat-card:hover,
+    [data-theme="dark"] .hadith-card:hover,
+    [data-theme="dark"] .narrator-card:hover {
+        border-color: #4a5568;
     }
 </style>
 {% endblock %}
@@ -233,83 +295,58 @@
 {% block content %}
 <!-- Hero Section -->
 <div class="hero-section">
-    <div class="hero-content">
-        <h1 class="hero-title">نظام السند</h1>
-        <p class="hero-subtitle">نظام شامل لإدارة الأحاديث النبوية والأسانيد</p>
-        {% if not user.is_authenticated %}
-            <a href="{% url 'register' %}" class="btn btn-light btn-lg">
-                <i class="bi bi-person-plus me-2"></i>
-                ابدأ الآن
-            </a>
-        {% endif %}
+    <div class="container">
+        <h1>نظام السند</h1>
+        <p>نظام شامل لإدارة وتنظيم الأحاديث النبوية والرواة</p>
+        <a href="{% url 'hadith_app:hadith_create' %}" class="btn btn-primary">إضافة حديث جديد</a>
     </div>
 </div>
 
-<!-- Statistics Section -->
-<div class="stats-section">
-    <div class="stat-card">
-        <div class="stat-icon">
-            <i class="bi bi-book"></i>
-        </div>
-        <div class="stat-number">{{ total_hadiths }}</div>
-        <div class="stat-label">حديث</div>
-    </div>
-    
-    <div class="stat-card">
-        <div class="stat-icon">
-            <i class="bi bi-people"></i>
-        </div>
-        <div class="stat-number">{{ total_narrators }}</div>
-        <div class="stat-label">راوي</div>
-    </div>
-    
-    <div class="stat-card">
-        <div class="stat-icon">
-            <i class="bi bi-search"></i>
-        </div>
-        <div class="stat-number">∞</div>
-        <div class="stat-label">إمكانيات البحث</div>
-    </div>
-</div>
-
-<!-- Recent Hadiths Section -->
-<div class="recent-section">
-    <h2 class="section-title">
-        <i class="bi bi-clock-history"></i>
-        أحدث الأحاديث
-    </h2>
-    
-    {% if recent_hadiths %}
-        {% for hadith in recent_hadiths %}
-        <div class="hadith-item">
-            <div class="hadith-text">
-                {{ hadith.text|truncatewords:20 }}
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <h2 class="text-center mb-5">إحصائيات النظام</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-6">
+                <div class="stat-card">
+                    <h3>{{ hadith_count }}</h3>
+                    <p>عدد الأحاديث</p>
+                </div>
             </div>
-            <div class="hadith-meta">
-                <span class="hadith-source">{{ hadith.source }}</span>
-                {% if hadith.grade %}
-                    <span class="hadith-grade grade-{{ hadith.grade }}">
-                        {{ hadith.get_grade_display }}
-                    </span>
-                {% endif %}
+            <div class="col-md-4 col-sm-6">
+                <div class="stat-card">
+                    <h3>{{ narrator_count }}</h3>
+                    <p>عدد الرواة</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="stat-card">
+                    <h3>{{ user_count }}</h3>
+                    <p>عدد المستخدمين</p>
+                </div>
             </div>
         </div>
-        {% endfor %}
-        
-        <div class="text-center mt-3">
-            <a href="{% url 'hadith_list' %}" class="btn btn-primary">
-                <i class="bi bi-arrow-left me-2"></i>
-                عرض جميع الأحاديث
-            </a>
-        </div>
-    {% else %}
-        <div class="text-center py-5">
-            <i class="bi bi-book" style="font-size: 3rem; color: var(--text-light);"></i>
-            <p class="mt-3 text-muted">لا توجد أحاديث متاحة حالياً</p>
-        </div>
-    {% endif %}
-</div>
+    </div>
+</section>
 
+<!-- Latest Hadiths Section -->
+<section class="latest-section">
+    <div class="container">
+        <h2 class="text-center mb-5">أحدث الأحاديث</h2>
+        <div class="row justify-content-center">
+            {% for hadith in latest_hadiths %}
+            <div class="col-md-4 col-sm-6">
+                <div class="hadith-card">
+                    <h4>{{ hadith.text|truncatechars:100 }}</h4>
+                    <p>{{ hadith.grade }}</p>
+                    <p class="source">المصدر: {{ hadith.source }}</p>
+                    <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="btn btn-link">عرض التفاصيل</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 <!-- Call to Action Section -->
 {% if not user.is_authenticated %}
 <div class="cta-section">

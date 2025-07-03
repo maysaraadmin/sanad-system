@@ -1,0 +1,306 @@
+{% extends 'hadith_app/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'إضافة حديث جديد' %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hadith-form-container {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        border-radius: 1.5rem;
+        overflow: hidden;
+    }
+    
+    .hadith-form-header {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+    
+    .hadith-form-header h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+    
+    .hadith-form-body {
+        background: var(--card-bg);
+        padding: 2rem;
+    }
+    
+    .form-label {
+        font-weight: 500;
+        color: var(--text-color);
+    }
+    
+    .form-control {
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+    }
+    
+    .btn-primary {
+        background: var(--primary-color);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+    
+    .btn-outline-secondary {
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-outline-secondary:hover {
+        background: var(--border-color);
+        color: var(--text-color);
+        transform: translateY(-2px);
+    }
+    
+    .form-text {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+    }
+    
+    .invalid-feedback {
+        color: var(--danger-color);
+        font-size: 0.875rem;
+    }
+    
+    .alert {
+        border-radius: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .alert-danger {
+        background: rgba(114, 9, 183, 0.1);
+        border: 1px solid var(--danger-color);
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group:last-child {
+        margin-bottom: 0;
+    }
+    
+    .form-row {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-row .col-md-6 {
+        padding-right: 1rem;
+        padding-left: 0;
+    }
+    
+    @media (max-width: 768px) {
+        .form-row {
+            margin-bottom: 1rem;
+        }
+        
+        .form-row .col-md-6 {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="hadith-form-container">
+                <div class="hadith-form-header">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-plus-circle me-3" style="font-size: 2rem;"></i>
+                        <h2>{% trans 'إضافة حديث جديد' %}</h2>
+                    </div>
+                </div>
+                
+                <div class="hadith-form-body">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for error in form.non_field_errors %}
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-exclamation-circle me-2"></i>
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        
+                        <div class="form-group">
+                            <label for="{{ form.source.id_for_label }}" class="form-label">
+                                {{ form.source.label|default:'مصدر الحديث' }}
+                                {% if form.source.field.required %}
+                                    <span class="text-danger">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.source }}
+                            {% if form.source.help_text %}
+                                <div class="form-text">{{ form.source.help_text }}</div>
+                            {% endif %}
+                            {% for error in form.source.errors %}
+                                <div class="invalid-feedback d-block">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.chapter.id_for_label }}" class="form-label">
+                                {{ form.chapter.label|default:'الباب' }}
+                                {% if form.chapter.field.required %}
+                                    <span class="text-danger">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.chapter }}
+                            {% if form.chapter.help_text %}
+                                <div class="form-text">{{ form.chapter.help_text }}</div>
+                            {% endif %}
+                            {% for error in form.chapter.errors %}
+                                <div class="invalid-feedback d-block">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.text.id_for_label }}" class="form-label">
+                                {{ form.text.label }}
+                                {% if form.text.field.required %}
+                                    <span class="text-danger">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.text }}
+                            {% if form.text.help_text %}
+                                <div class="form-text">{{ form.text.help_text }}</div>
+                            {% endif %}
+                            {% for error in form.text.errors %}
+                                <div class="invalid-feedback d-block">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.narrator_chain.id_for_label }}" class="form-label">
+                                {{ form.narrator_chain.label }}
+                                {% if form.narrator_chain.field.required %}
+                                    <span class="text-danger">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.narrator_chain }}
+                            {% if form.narrator_chain.help_text %}
+                                <div class="form-text">{{ form.narrator_chain.help_text }}</div>
+                            {% endif %}
+                            {% for error in form.narrator_chain.errors %}
+                                <div class="invalid-feedback d-block">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.grade.id_for_label }}" class="form-label">
+                                {{ form.grade.label|default:'درجة الحديث' }}
+                                {% if form.grade.field.required %}
+                                    <span class="text-danger">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.grade }}
+                            {% if form.grade.help_text %}
+                                <div class="form-text">{{ form.grade.help_text }}</div>
+                            {% endif %}
+                            {% for error in form.grade.errors %}
+                                <div class="invalid-feedback d-block">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.explanation.id_for_label }}" class="form-label">
+                                {{ form.explanation.label }}
+                                {% if form.explanation.field.required %}
+                                    <span class="text-danger">*</span>
+                                {% endif %}
+                            </label>
+                            {{ form.explanation }}
+                            {% if form.explanation.help_text %}
+                                <div class="form-text">{{ form.explanation.help_text }}</div>
+                            {% endif %}
+                            {% for error in form.explanation.errors %}
+                                <div class="invalid-feedback d-block">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-end gap-3 mt-4">
+                            <a href="{% url 'hadith_app:profile' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-right me-2"></i>
+                                {% trans 'رجوع' %}
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>
+                                {% trans 'حفظ الحديث' %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Enable Bootstrap form validation
+    (function () {
+        'use strict'
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+{% endblock %}

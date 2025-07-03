@@ -43,12 +43,14 @@
 
 <div class="list-group">
     {% for hadith in hadiths %}
-    <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ hadith.text|truncatechars:150 }}</h5>
-            <small class="text-muted">{{ hadith.get_grade_display }}</small>
+    <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="text-decoration-none">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ hadith.text }}</h5>
+                <p class="card-text">{{ hadith.grade }}</p>
+                <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
+            </div>
         </div>
-        <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
     </a>
     {% empty %}
     <div class="alert alert-info">لا توجد أحاديث متاحة</div>
