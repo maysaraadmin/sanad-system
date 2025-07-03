@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans 'تعديل الملف الشخصي' %} - {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-edit-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .profile-edit-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--border-color);
+        margin: 0 auto 1.5rem;
+        display: block;
+    }
+
+    .avatar-upload-btn {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        text-align: center;
+        line-height: 40px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .avatar-upload-btn:hover {
+        background: var(--primary-dark);
+        transform: scale(1.1);
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+    }
+
+    .form-control, .form-select {
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border-color);
+        background-color: var(--input-bg);
+        color: var(--text-color);
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.1);
+    }
+
+    .btn-save {
+        background: var(--primary);
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-save:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    .btn-cancel {
+        background: var(--light);
+        color: var(--text-color);
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+        background: var(--light-dark);
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .avatar-wrapper {
+        position: relative;
+        width: fit-content;
+        margin: 0 auto 2rem;
+    }
+
+    /* Dark mode styles */
+    [data-bs-theme="dark"] .profile-edit-container {
+        background: var(--dark-bg);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-bs-theme="dark"] .form-control,
+    [data-bs-theme="dark"] .form-select {
+        background-color: var(--dark-bg-light);
+        border-color: var(--dark-border);
+        color: var(--dark-text);
+    }
+
+    [data-bs-theme="dark"] .section-title {
+        color: var(--dark-heading);
+        border-bottom-color: var(--dark-border);
+    }
+
+    /* RTL styles */
+    [dir="rtl"] .form-text {
+        text-align: right;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .profile-edit-container {
+            padding: 1.5rem;
+            margin: 1rem;
+        }
+        
+        .btn-save, .btn-cancel {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="profile-edit-container">
+        <h2 class="text-center mb-4">{% trans 'تعديل الملف الشخصي' %}</h2>
+        
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            
+            <!-- Avatar Section -->
+            <div class="text-center mb-4">
+                <div class="avatar-wrapper">
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" alt="{% trans 'صورة الملف الشخصي' %}" class="profile-edit-avatar" id="avatar-preview">
+                    {% else %}
+                        <div class="profile-edit-avatar d-flex align-items-center justify-content-center bg-light text-dark" id="avatar-preview">
+                            <span class="h4 m-0">{{ user.profile.get_initials }}</span>
+                        </div>
+                    {% endif %}
+                    <button type="button" class="avatar-upload-btn" id="avatar-upload-trigger" title="{% trans 'تغيير الصورة' %}">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <input type="file" name="avatar" id="avatar-upload" accept="image/*" class="d-none">
+                </div>
+            </div>
+            
+            <!-- Personal Information Section -->
+            <h3 class="section-title">{% trans 'المعلومات الشخصية' %}</h3>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label for="id_first_name" class="form-label">{% trans 'الاسم الأول' %}</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.first_name.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_last_name" class="form-label">{% trans 'اسم العائلة' %}</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.last_name.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_email" class="form-label">{% trans 'البريد الإلكتروني' %}</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.email.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_phone_number" class="form-label">{% trans 'رقم الهاتف' %}</label>
+                    {{ form.phone_number }}
+                    {% if form.phone_number.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.phone_number.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_birth_date" class="form-label">{% trans 'تاريخ الميلاد' %}</label>
+                    {{ form.birth_date }}
+                    {% if form.birth_date.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.birth_date.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_location" class="form-label">{% trans 'الموقع' %}</label>
+                    {{ form.location }}
+                    {% if form.location.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.location.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-12">
+                    <label for="id_bio" class="form-label">{% trans 'نبذة شخصية' %}</label>
+                    {{ form.bio }}
+                    {% if form.bio.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.bio.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <h3 class="section-title">{% trans 'وسائل التواصل الاجتماعي' %}</h3>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label for="id_website" class="form-label">{% trans 'الموقع الإلكتروني' %}</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                        {{ form.website }}
+                    </div>
+                    {% if form.website.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.website.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_twitter" class="form-label">تويتر</label>
+                    <div class="input-group">
+                        <span class="input-group-text">@</span>
+                        {{ form.twitter }}
+                    </div>
+                    {% if form.twitter.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.twitter.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-12">
+                    <label for="id_facebook" class="form-label">فيسبوك</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fab fa-facebook"></i></span>
+                        {{ form.facebook }}
+                    </div>
+                    {% if form.facebook.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.facebook.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex justify-content-between align-items-center mt-5">
+                <a href="{% url 'profile' %}" class="btn btn-cancel">
+                    <i class="fas fa-arrow-right ms-2"></i>{% trans 'إلغاء' %}
+                </a>
+                <button type="submit" class="btn btn-save">
+                    <i class="fas fa-save ms-2"></i>{% trans 'حفظ التغييرات' %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle avatar preview
+        const avatarInput = document.getElementById('avatar-upload');
+        const avatarPreview = document.getElementById('avatar-preview');
+        const avatarTrigger = document.getElementById('avatar-upload-trigger');
+        
+        // Trigger file input when the button is clicked
+        if (avatarTrigger && avatarInput) {
+            avatarTrigger.addEventListener('click', function() {
+                avatarInput.click();
+            });
+            
+            // Preview the selected image
+            avatarInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        // If it's an image element, update src
+                        if (avatarPreview.tagName === 'IMG') {
+                            avatarPreview.src = event.target.result;
+                        } 
+                        // If it's a div (for initials), replace with image
+                        else if (avatarPreview.tagName === 'DIV') {
+                            const img = document.createElement('img');
+                            img.src = event.target.result;
+                            img.className = 'profile-edit-avatar';
+                            img.alt = '{% trans "صورة الملف الشخصي" %}';
+                            avatarPreview.parentNode.replaceChild(img, avatarPreview);
+                        }
+                    };
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        }
+        
+        // Add validation classes on form submission
+        const form = document.querySelector('.needs-validation');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        }
+    });
+</script>
+{% endblock %}

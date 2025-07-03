@@ -1,0 +1,124 @@
+/* Custom admin styles */
+
+/* Branding and header */
+#site-name {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Dashboard improvements */
+.dashboard .module {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.dashboard .module h2 {
+    background: #f5f5f5;
+    border-radius: 8px 8px 0 0;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Table improvements */
+.changelist table {
+    background: #fff;
+    border-collapse: separate;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.changelist table th {
+    background: #f5f5f5;
+    color: #333;
+    font-weight: 600;
+    padding: 12px 15px;
+    border: none;
+}
+
+.changelist table td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Form improvements */
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-row input, .form-row select, .form-row textarea {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 8px;
+    transition: border-color 0.2s;
+}
+
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Buttons */
+.button {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+/* Search box */
+#changelist-search input {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Filter sidebar */
+.filters {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filters h2 {
+    background: #f5f5f5;
+    border-radius: 8px 8px 0 0;
+    padding: 12px;
+    font-size: 1.1em;
+}
+
+.filters .filter {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .dashboard .module {
+        margin-bottom: 15px;
+    }
+    
+    .changelist table th, .changelist table td {
+        padding: 10px;
+    }
+    
+    .form-row {
+        margin-bottom: 12px;
+    }
+}

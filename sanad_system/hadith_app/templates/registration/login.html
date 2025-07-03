@@ -1,243 +1,238 @@
-{% extends "admin/base_site.html" %}
+{% extends "hadith_app/base.html" %}
 {% load i18n static %}
 
-{% block extrastyle %}
-{{ block.super }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+{% block title %}{% trans 'تسجيل الدخول' %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h3 class="mb-0">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        {% trans 'تسجيل الدخول' %}
+                    </h3>
+                </div>
+                <div class="card-body p-5">
+                    {% if form.errors and not form.non_field_errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        {% if form.errors.items|length == 1 %}
+                            {% trans 'الرجاء تصحيح الخطأ أدناه.' %}
+                        {% else %}
+                            {% trans 'الرجاء تصحيح الأخطاء أدناه.' %}
+                        {% endif %}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            {{ error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form action="{{ app_path }}" method="post" id="login-form" class="mt-4">
+                        {% csrf_token %}
+                        
+                        <div class="form-floating mb-4">
+                            <input type="text" name="username" id="id_username" class="form-control form-control-lg" 
+                                   placeholder="{% trans 'اسم المستخدم أو البريد الإلكتروني' %}" autofocus 
+                                   value="{% if form.username.value %}{{ form.username.value }}{% endif %}" required>
+                            <label for="id_username">
+                                <i class="fas fa-user me-2"></i>
+                                {% trans 'اسم المستخدم أو البريد الإلكتروني' %}
+                            </label>
+                            {% if form.username.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.username.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <div class="input-group">
+                                <input type="password" name="password" id="id_password" 
+                                       class="form-control form-control-lg" 
+                                       placeholder="{% trans 'كلمة المرور' %}" required>
+                                <button class="btn btn-outline-secondary toggle-password" type="button" 
+                                        data-bs-toggle="tooltip" data-bs-placement="left" 
+                                        title="{% trans 'إظهار/إخفاء كلمة المرور' %}">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <label for="id_password">
+                                    <i class="fas fa-lock me-2"></i>
+                                    {% trans 'كلمة المرور' %}
+                                </label>
+                            </div>
+                            {% if form.password.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.password.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember-me" name="remember_me">
+                                <label class="form-check-label" for="remember-me">
+                                    {% trans 'تذكرني' %}
+                                </label>
+                            </div>
+                            <a href="{% url 'password_reset' %}" class="text-decoration-none">
+                                <i class="fas fa-key me-1"></i>
+                                {% trans 'نسيت كلمة المرور؟' %}
+                            </a>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>
+                                {% trans 'دخول' %}
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="mb-0">
+                            {% trans 'ليس لديك حساب؟' %}
+                            <a href="{% url 'admin:index' %}" class="text-decoration-none fw-bold">
+                                {% trans 'تواصل مع المدير' %}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
-    :root {
-        --primary: #4f46e5;
-        --body-bg: #f8fafc;
-        --body-fg: #1e293b;
-        --card-bg: white;
-        --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-
     body {
-        background-color: var(--body-bg);
-        color: var(--body-fg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
+        background-color: #f8f9fa;
     }
-
-    #header {
-        display: none;
-    }
-
-    #content {
-        width: 100%;
-        max-width: 420px;
-        padding: 2rem;
-    }
-
-    .theme-container {
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
-
-    .theme-title {
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
-        color: #64748b;
-    }
-
-    .theme-switcher {
-        display: inline-flex;
-        background: #e2e8f0;
-        border-radius: 12px;
-        padding: 4px;
-    }
-
-    .theme-btn {
-        background: none;
+    
+    .card {
         border: none;
-        color: #64748b;
-        cursor: pointer;
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.2s;
+        border-radius: 1rem;
+        overflow: hidden;
     }
-
-    .theme-btn.active {
-        background-color: white;
-        color: var(--primary);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    
+    .card-header {
+        border-bottom: none;
     }
-
-    #content-main {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        box-shadow: var(--card-shadow);
-        padding: 2rem;
+    
+    .form-floating > label {
+        padding: 1rem 0.75rem;
     }
-
-    .login-form {
-        margin-top: 1.5rem;
+    
+    .form-control, .form-control:focus {
+        height: calc(3.5rem + 2px);
+        padding: 1rem 0.75rem;
     }
-
-    .form-row {
-        margin-bottom: 1.5rem;
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+        border-color: #4f46e5;
     }
-
-    .form-row label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-    }
-
-    .form-row input {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        font-size: 1rem;
-    }
-
-    .submit-row {
-        margin-top: 2rem;
-    }
-
-    .submit-row input {
-        width: 100%;
-        padding: 0.75rem;
-        background-color: var(--primary);
-        color: white;
+    
+    .toggle-password {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        height: 100%;
+        background: transparent;
         border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s;
+        padding: 0 1rem;
+        color: #6c757d;
     }
-
-    .submit-row input:hover {
-        background-color: #4338ca;
+    
+    .toggle-password:hover {
+        color: #4f46e5;
     }
-
+    
     /* Dark mode styles */
     [data-bs-theme="dark"] {
         --body-bg: #0f172a;
-        --body-fg: #e2e8f0;
         --card-bg: #1e293b;
         --primary: #6366f1;
     }
-
-    [data-bs-theme="dark"] .theme-switcher {
-        background: #334155;
+    
+    [data-bs-theme="dark"] .card {
+        background-color: var(--card-bg);
+        border-color: #2d3748;
     }
-
-    [data-bs-theme="dark"] .theme-btn {
+    
+    [data-bs-theme="dark"] .form-control,
+    [data-bs-theme="dark"] .form-control:focus {
+        background-color: #1e293b;
+        border-color: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    [data-bs-theme="dark"] .form-control:focus {
+        box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+        border-color: #6366f1;
+    }
+    
+    [data-bs-theme="dark"] .form-floating > label {
         color: #94a3b8;
     }
-
-    [data-bs-theme="dark"] .theme-btn.active {
-        background-color: #334155;
-        color: white;
-    }
-
-    [data-bs-theme="dark"] .form-row input {
+    
+    [data-bs-theme="dark"] .form-check-input {
         background-color: #334155;
         border-color: #475569;
-        color: #f8fafc;
+    }
+    
+    [data-bs-theme="dark"] .form-check-input:checked {
+        background-color: #6366f1;
+        border-color: #6366f1;
+    }
+    
+    [data-bs-theme="dark"] .form-check-label {
+        color: #e2e8f0;
+    }
+    
+    [data-bs-theme="dark"] .text-muted {
+        color: #94a3b8 !important;
     }
 </style>
 {% endblock %}
 
-{% block content %}
-<div class="theme-container">
-    <div class="theme-title">Toggle theme:</div>
-    <div class="theme-switcher">
-        <button class="theme-btn {% if request.session.theme == 'light' %}active{% endif %}" data-theme="light">
-            <i class="bi bi-sun-fill"></i> Light
-        </button>
-        <button class="theme-btn {% if not request.session.theme or request.session.theme == 'auto' %}active{% endif %}" data-theme="auto">
-            <i class="bi bi-circle-half"></i> Auto
-        </button>
-        <button class="theme-btn {% if request.session.theme == 'dark' %}active{% endif %}" data-theme="dark">
-            <i class="bi bi-moon-fill"></i> Dark
-        </button>
-    </div>
-</div>
-
-<div id="content-main" class="login-form">
-    {% if form.errors and not form.non_field_errors %}
-    <p class="errornote">
-        {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-    </p>
-    {% endif %}
-
-    {% if form.non_field_errors %}
-    {% for error in form.non_field_errors %}
-    <p class="errornote">
-        {{ error }}
-    </p>
-    {% endfor %}
-    {% endif %}
-
-    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-        <div class="form-row">
-            {{ form.username.errors }}
-            {{ form.username.label_tag }} {{ form.username }}
-        </div>
-        <div class="form-row">
-            {{ form.password.errors }}
-            {{ form.password.label_tag }} {{ form.password }}
-            <input type="hidden" name="next" value="{{ next }}">
-        </div>
-        {% url 'admin_password_reset' as password_reset_url %}
-        {% if password_reset_url %}
-        <div class="password-reset-link">
-            <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
-        </div>
-        {% endif %}
-        <div class="submit-row">
-            <input type="submit" value="{% trans 'Log in' %}">
-        </div>
-    </form>
-</div>
-
+{% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const themeBtns = document.querySelectorAll('.theme-btn');
-    const html = document.documentElement;
+    // Toggle password visibility
+    const togglePassword = document.querySelector('.toggle-password');
+    const passwordInput = document.getElementById('id_password');
     
-    // Initialize theme from session or preference
-    const savedTheme = "{{ request.session.theme|default:'auto' }}";
-    html.setAttribute('data-bs-theme', savedTheme);
-    
-    themeBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const theme = this.getAttribute('data-theme');
-            
-            // Update active state
-            themeBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Set theme
-            html.setAttribute('data-bs-theme', theme);
-            
-            // Save preference
-            fetch("{% url 'hadith_app:set_theme' %}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify({theme: theme})
-            });
+    if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
         });
+    }
+    
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+    
+    // Set focus on username field
+    const usernameField = document.getElementById('id_username');
+    if (usernameField) {
+        usernameField.focus();
+    }
 });
 </script>
 {% endblock %}

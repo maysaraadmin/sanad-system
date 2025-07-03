@@ -34,17 +34,14 @@
 
 <div class="list-group">
     {% for narrator in narrators %}
-    <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ narrator.name }}</h5>
-            <span class="badge bg-{% if narrator.reliability == 'thiqa' %}success{% elif narrator.reliability == 'saduq' %}info{% elif narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
-                {{ narrator.get_reliability_display }}
-            </span>
+    <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="text-decoration-none">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ narrator.name }}</h5>
+                <p class="card-text">{{ narrator.reliability }}</p>
+                <p class="mb-1"><small>{{ narrator.biography }}</small></p>
+            </div>
         </div>
-        <p class="mb-1">{{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }}</p>
-        {% if narrator.biography %}
-        <p class="mb-1 text-muted">{{ narrator.biography|truncatechars:100 }}</p>
-        {% endif %}
     </a>
     {% empty %}
     <div class="alert alert-info">لا توجد رواة متاحين</div>

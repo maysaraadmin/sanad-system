@@ -18,8 +18,26 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from django.utils.translation import gettext_lazy as _
+
+# Configure admin site
+admin.site.site_header = _('Hadith System Administration')
+admin.site.site_title = _('Hadith System Admin')
+admin.site.index_title = _('Welcome to Hadith System Admin')
 
 urlpatterns = [
+    # Admin URLs
     path('admin/', admin.site.urls),
+    
+    # Authentication URLs
+    path('accounts/', include('django.contrib.auth.urls')),
+    
+    # App URLs
     path('', include('hadith_app.urls')),
+    
+    # Static and media files
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
