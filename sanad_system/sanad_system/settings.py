@@ -39,17 +39,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'django_jalali',
     'hadith_app',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # For language detection
+    'hadith_app.middleware.ForceDefaultLanguageMiddleware',  # Force Arabic language
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'sanad_system.urls'
@@ -107,15 +112,43 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+# Arabic language settings
 LANGUAGE_CODE = 'ar'
+LANGUAGES = [
+    ('ar', ('العربية')),
+]
 
+# RTL languages
+LANGUAGES_BIDI = ["ar"]
+
+# Time and date settings
 TIME_ZONE = 'Asia/Riyadh'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+
+# Locale paths
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+# Format localization
+FORMAT_MODULE_PATH = [
+    'sanad_system.formats',
+]
+
+# First day of week (0=Sunday, 1=Monday, 6=Saturday)
+FIRST_DAY_OF_WEEK = 6  # Saturday
+
+# Date formats
+DATE_FORMAT = 'Y/m/d'
+DATETIME_FORMAT = 'Y/m/d H:i'
+TIME_FORMAT = 'H:i'
+
+# Number formats
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = ','
+NUMBER_GROUPING = 3
 
 
 # Static files (CSS, JavaScript, Images)

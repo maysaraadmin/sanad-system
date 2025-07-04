@@ -27,11 +27,17 @@ from .models import Narrator, UserProfile
 
 def get_user_stats(user):
     """Get statistics for a user."""
+    # Get count of hadiths created by the user
+    hadiths_count = Hadith.objects.filter(created_by=user).count()
+    
+    # Initialize bookmarks count (to be implemented)
+    bookmarks_count = 0
+    
     stats = {
-        'hadiths_count': user.hadiths.count() if hasattr(user, 'hadiths') else 0,
-        'bookmarks_count': user.bookmarks.count() if hasattr(user, 'bookmarks') else 0,
-        'activity_count': user.hadiths.count() + user.bookmarks.count(),
-        'last_activity': user.hadiths.order_by('-created_at').first().created_at if user.hadiths.exists() else None,
+        'hadiths_count': hadiths_count,
+        'bookmarks_count': bookmarks_count,
+        'activity_count': hadiths_count + bookmarks_count,
+        'last_activity': Hadith.objects.filter(created_by=user).order_by('-created_at').first().created_at if hadiths_count > 0 else None,
         'profile_completion': 0,
     }
     

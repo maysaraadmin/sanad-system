@@ -1,10 +1,29 @@
 {% extends 'hadith_app/base.html' %}
-{% load i18n %}
+{% load i18n static %}
 
-{% block title %}{% trans 'إضافة حديث جديد' %}{% endblock %}
+{% block title %}{% if title %}{{ title }}{% else %}{% trans 'إضافة حديث جديد' %}{% endif %}{% endblock %}
 
 {% block extra_css %}
 <style>
+    /* Form Elements */
+    .form-label {
+        font-weight: 600;
+    }
+    .form-control, .form-select, .select2-selection {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid #ced4da;
+    }
+    .form-control:focus, .form-select:focus, .select2-selection:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    .required-field::after {
+        content: ' *';
+        color: #dc3545;
+    }
+    
+    /* Form Layout */
     .hadith-form-container {
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         border-radius: 1.5rem;
@@ -129,21 +148,17 @@
                 <div class="hadith-form-header">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-plus-circle me-3" style="font-size: 2rem;"></i>
-                        <h2>{% trans 'إضافة حديث جديد' %}</h2>
+                        <h2>{% if title %}{{ title }}{% else %}{% trans 'إضافة حديث جديد' %}{% endif %}</h2>
                     </div>
                 </div>
                 
                 <div class="hadith-form-body">
-                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    <form method="post" class="needs-validation" novalidate>
                         {% csrf_token %}
-                        
                         {% if form.non_field_errors %}
                             <div class="alert alert-danger" role="alert">
                                 {% for error in form.non_field_errors %}
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-exclamation-circle me-2"></i>
-                                        {{ error }}
-                                    </div>
+                                    {{ error }}
                                 {% endfor %}
                             </div>
                         {% endif %}
@@ -262,15 +277,25 @@
                             {% endfor %}
                         </div>
                         
-                        <div class="d-flex justify-content-end gap-3 mt-4">
-                            <a href="{% url 'hadith_app:profile' %}" class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-right me-2"></i>
-                                {% trans 'رجوع' %}
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save me-2"></i>
-                                {% trans 'حفظ الحديث' %}
-                            </button>
+                        <div class="d-flex justify-content-between mt-4">
+                            <div>
+                                <a href="{% url 'hadith_app:hadith_list' %}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-right me-2"></i>
+                                    {% trans 'رجوع' %}
+                                </a>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>
+                                    {{ submit_text|default:_('حفظ') }}
+                                </button>
+                                {% if form.instance.pk %}
+                                    <a href="{% url 'hadith_app:hadith_detail' form.instance.pk %}" class="btn btn-outline-secondary me-2">
+                                        <i class="fas fa-times me-2"></i>
+                                        {% trans 'إلغاء' %}
+                                    </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </form>
                 </div>

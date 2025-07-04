@@ -47,7 +47,17 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">{{ hadith.text }}</h5>
-                <p class="card-text">{{ hadith.grade }}</p>
+                {% if hadith.grade %}
+                    <span class="badge 
+                        {% if hadith.grade == 'sahih' %}bg-success
+                        {% elif hadith.grade == 'hasan' %}bg-primary
+                        {% elif hadith.grade == 'daif' %}bg-warning text-dark
+                        {% elif hadith.grade == 'mawdu' %}bg-danger
+                        {% else %}bg-secondary{% endif %}
+                        mb-2">
+                        {{ hadith.get_grade_display }}
+                    </span>
+                {% endif %}
                 <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
             </div>
         </div>

@@ -84,7 +84,7 @@
                                     {% trans 'تذكرني' %}
                                 </label>
                             </div>
-                            <a href="{% url 'password_reset' %}" class="text-decoration-none">
+                            <a href="{% url 'hadith_app:password_reset' %}" class="text-decoration-none">
                                 <i class="fas fa-key me-1"></i>
                                 {% trans 'نسيت كلمة المرور؟' %}
                             </a>
@@ -101,8 +101,8 @@
                     <div class="text-center mt-4">
                         <p class="mb-0">
                             {% trans 'ليس لديك حساب؟' %}
-                            <a href="{% url 'admin:index' %}" class="text-decoration-none fw-bold">
-                                {% trans 'تواصل مع المدير' %}
+                            <a href="{% url 'hadith_app:register' %}" class="text-decoration-none fw-bold">
+                                {% trans 'سجل الآن' %}
                             </a>
                         </p>
                     </div>

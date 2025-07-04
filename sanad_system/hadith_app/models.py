@@ -57,9 +57,12 @@ class Hadith(models.Model):
         verbose_name="درجة الحديث"
     )
     categories = models.ManyToManyField('HadithCategory', blank=True, verbose_name="التصنيفات")
+    context = models.TextField(null=True, blank=True, verbose_name="سياق الحديث")
+    reference_page = models.CharField(max_length=50, null=True, blank=True, verbose_name="صفحة المرجع")
+    reference_edition = models.CharField(max_length=100, null=True, blank=True, verbose_name="طبعة المرجع")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="أضيف بواسطة")
 
     class Meta:
         verbose_name = "حديث"

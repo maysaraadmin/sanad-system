@@ -4,12 +4,12 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from ..models import UserProfile
+from ..models import UserProfile, Hadith
 from ..forms import ProfileUpdateForm
-from ..utils import get_user_stats
+from ..utils.user_utils import get_user_stats
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'hadith_app/profile.html'
+    template_name = 'registration/profile.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,9 +21,11 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         # Get user stats
         stats = get_user_stats(user)
         
-        # Get recent activity
-        recent_activity = user.hadiths.order_by('-created_at')[:5]
-        recent_bookmarks = user.bookmarks.select_related('hadith').order_by('-created_at')[:5]
+        # Get recent activity - using the reverse relation from Hadith model
+        recent_activity = Hadith.objects.filter(created_by=user).order_by('-created_at')[:5]
+        
+        # Initialize empty queryset for bookmarks (assuming we'll implement this later)
+        recent_bookmarks = []  # This will be updated when bookmarks are implemented
         
         context.update({
             'profile': profile,
