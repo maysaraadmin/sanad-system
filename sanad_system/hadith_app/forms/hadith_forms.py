@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from hadith_app.models import Hadith, Sanad, SanadNarrator
+from hadith_app.models import Hadith, Sanad, SanadNarrator, HadithCategory
 
 class HadithForm(forms.ModelForm):
     sanad_text = forms.CharField(
@@ -22,6 +22,10 @@ class HadithForm(forms.ModelForm):
             'source_page',
             'source_hadith_number',
             'grade',
+            'categories',
+            'context',
+            'reference_page',
+            'reference_edition',
         ]
         widgets = {
             'text': forms.Textarea(attrs={
@@ -44,25 +48,43 @@ class HadithForm(forms.ModelForm):
             'grade': forms.Select(attrs={
                 'class': 'form-select',
             }),
-            'notes': forms.Textarea(attrs={
-                'rows': 3,
+            'categories': forms.SelectMultiple(attrs={
+                'class': 'form-select',
+            }),
+            'context': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': _('Add any additional notes...'),
+                'placeholder': _('Enter the context...'),
+            }),
+            'reference_page': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': _('Enter reference page...'),
+            }),
+            'reference_edition': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': _('Enter reference edition...'),
             }),
         }
         labels = {
-            'text': _('Hadith Text'),
-            'source': _('Source Book'),
-            'source_page': _('Page Number'),
-            'source_hadith_number': _('Hadith Number'),
-            'grade': _('Grade'),
+            'text': _('نص الحديث'),
+            'source': _('المصدر'),
+            'source_page': _('رقم الصفحة'),
+            'source_hadith_number': _('رقم الحديث'),
+            'grade': _('الدرجة'),
+            'categories': _('التصنيفات'),
+            'context': _('السياق'),
+            'reference_page': _('صفحة المرجع'),
+            'reference_edition': _('طبعة المرجع'),
         }
         help_texts = {
-            'text': _('Enter the complete hadith text.'),
-            'source': _('Enter the name of the source book.'),
-            'source_page': _('Enter the page number where this hadith appears.'),
-            'source_hadith_number': _('Enter the hadith number in the source book.'),
-            'grade': _('Select the authenticity grade of this hadith.'),
+            'text': _('أدخل نص الحديث كاملاً.'),
+            'source': _('أدخل اسم المصدر.'),
+            'source_page': _('أدخل رقم الصفحة التي يظهر فيها الحديث.'),
+            'source_hadith_number': _('أدخل رقم الحديث في المصدر.'),
+            'grade': _('اختر درجة صحة الحديث.'),
+            'categories': _('اختر التصنيفات المناسبة للحديث.'),
+            'context': _('أدخل سياق الحديث إن وجد.'),
+            'reference_page': _('أدخل رقم صفحة المرجع.'),
+            'reference_edition': _('أدلت طبعة المرجع.'),
         }
 
 class SanadNarratorForm(forms.ModelForm):

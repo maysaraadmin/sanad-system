@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 from .views import (
     HadithListView, HadithDetailView, HadithCreateView, HadithUpdateView, HadithDeleteView,
     NarratorListView, NarratorDetailView,
-    LoginView, LogoutView,
+    LoginView, LogoutView, RegisterView,
     ProfileView, ProfileUpdateView,
     SearchView,
 )
@@ -17,8 +17,17 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='hadith_app/home.html'), name='home'),
     
     # Authentication
+    path('accounts/register/', RegisterView.as_view(), name='register'),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(), name='logout'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(
+        template_name='hadith_app/password_reset_form.html',
+        email_template_name='hadith_app/password_reset_email.html',
+        subject_template_name='hadith_app/password_reset_subject.txt'
+    ), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='hadith_app/password_reset_done.html'
+    ), name='password_reset_done'),
     
     # Hadith URLs
     path('hadith/', HadithListView.as_view(), name='hadith_list'),

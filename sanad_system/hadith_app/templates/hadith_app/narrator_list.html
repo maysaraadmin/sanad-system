@@ -37,8 +37,19 @@
     <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="text-decoration-none">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title">{{ narrator.name }}</h5>
-                <p class="card-text">{{ narrator.reliability }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">{{ narrator.name }}</h5>
+                    {% if narrator.reliability %}
+                        <span class="badge 
+                            {% if narrator.reliability == 'thiqa' %}bg-success
+                            {% elif narrator.reliability == 'saduq' %}bg-primary
+                            {% elif narrator.reliability == 'weak' %}bg-warning text-dark
+                            {% elif narrator.reliability == 'unknown' %}bg-secondary
+                            {% else %}bg-light text-dark{% endif %}">
+                            {{ narrator.get_reliability_display }}
+                        </span>
+                    {% endif %}
+                </div>
                 <p class="mb-1"><small>{{ narrator.biography }}</small></p>
             </div>
         </div>
