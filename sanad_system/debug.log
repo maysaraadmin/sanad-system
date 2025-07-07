@@ -1196,3 +1196,43 @@ INFO 2025-07-07 21:53:06,134 basehttp "GET /library/document/3/download/ HTTP/1.
 INFO 2025-07-07 21:53:23,780 autoreload D:\sanad system\sanad_system\library\forms.py changed, reloading.
 INFO 2025-07-07 21:53:24,605 autoreload D:\sanad system\sanad_system\library\forms.py changed, reloading.
 INFO 2025-07-07 23:33:07,940 autoreload Watching for file changes with StatReloader
+WARNING 2025-07-07 23:33:26,984 base Session data corrupted
+INFO 2025-07-07 23:33:27,098 basehttp "GET /admin/library/document/3/change/ HTTP/1.1" 302 0
+INFO 2025-07-07 23:33:27,542 basehttp "GET /admin/login/?next=/admin/library/document/3/change/ HTTP/1.1" 200 21601
+INFO 2025-07-07 23:33:28,317 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-07-07 23:33:28,318 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2025-07-07 23:33:28,346 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:28,422 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:28,452 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-07-07 23:33:28,453 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 200 4918
+INFO 2025-07-07 23:33:28,527 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2025-07-07 23:33:28,736 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 200 1864
+INFO 2025-07-07 23:33:28,853 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+WARNING 2025-07-07 23:33:29,726 log Not Found: /favicon.ico
+WARNING 2025-07-07 23:33:29,747 basehttp "GET /favicon.ico HTTP/1.1" 404 7729
+INFO 2025-07-07 23:33:40,216 basehttp "POST /admin/login/?next=/admin/library/document/3/change/ HTTP/1.1" 302 0
+INFO 2025-07-07 23:33:40,709 basehttp "GET /admin/library/document/3/change/ HTTP/1.1" 200 27595
+INFO 2025-07-07 23:33:40,892 basehttp "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-07-07 23:33:40,894 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+INFO 2025-07-07 23:33:40,896 basehttp "GET /static/admin/js/collapse.js HTTP/1.1" 200 1803
+INFO 2025-07-07 23:33:40,899 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 200 2737
+INFO 2025-07-07 23:33:40,900 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-07-07 23:33:40,942 basehttp "GET /static/library/js/admin_preview.js HTTP/1.1" 200 4030
+INFO 2025-07-07 23:33:40,943 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-07-07 23:33:40,964 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-07-07 23:33:40,967 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-07-07 23:33:40,973 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:40,974 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:40,991 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:40,993 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+INFO 2025-07-07 23:33:41,029 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 23:33:41,119 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:41,119 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:41,120 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:41,121 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-07-07 23:33:41,251 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-07 23:33:41,266 basehttp "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
+INFO 2025-07-07 23:33:45,012 basehttp "GET / HTTP/1.1" 200 30219
+INFO 2025-07-07 23:33:47,510 basehttp "GET /library/ HTTP/1.1" 200 15085
+INFO 2025-07-07 23:33:47,769 basehttp "GET /static/library/css/library.css HTTP/1.1" 200 21303
+INFO 2025-07-07 23:33:50,641 basehttp "GET /library/document/1/ HTTP/1.1" 200 38562
