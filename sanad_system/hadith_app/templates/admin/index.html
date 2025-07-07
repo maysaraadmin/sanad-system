@@ -1,0 +1,125 @@
+{% extends "admin/index.html" %}
+{% load i18n static %}
+
+{% block sidebar %}
+    {{ block.super }}
+    
+    <div class="module" id="system-stats">
+        <table>
+            <caption>{% trans 'System Statistics' %}</caption>
+            <tr>
+                <th scope="row">{% trans 'Total Hadiths' %}</th>
+                <td>{{ stats.hadith_count }}</td>
+            </tr>
+            <tr>
+                <th scope="row">{% trans 'Total Narrators' %}</th>
+                <td>{{ stats.narrator_count }}</td>
+            </tr>
+            <tr>
+                <th scope="row">{% trans 'Total Users' %}</th>
+                <td>{{ stats.user_count }}</td>
+            </tr>
+            <tr>
+                <th scope="row">{% trans 'Active Users (Last 30 days)' %}</th>
+                <td>{{ stats.active_users }}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="module system-status">
+        <h2>{% trans 'System Status' %}</h2>
+        <ul class="actionlist">
+            <li class="{% if stats.system_status == 'healthy' %}success{% else %}warning{% endif %}">
+                {% if stats.system_status == 'healthy' %}
+                    <span class="icon">✓</span>
+                {% else %}
+                    <span class="icon">⚠</span>
+                {% endif %}
+                <span class="text">{% trans 'System Health' %}: {{ stats.system_status|capfirst }}</span>
+            </li>
+            <li class="{% if stats.database_status == 'online' %}success{% else %}error{% endif %}">
+                <span class="icon">✓</span>
+                <span class="text">{% trans 'Database' %}: {{ stats.database_status|upper }}</span>
+            </li>
+            <li class="{% if stats.storage_status == 'ok' %}success{% else %}warning{% endif %}">
+                <span class="icon">✓</span>
+                <span class="text">{% trans 'Storage' %}: {{ stats.storage_used }} / {{ stats.storage_total }} ({{ stats.storage_percent }}% used)</span>
+            </li>
+        </ul>
+    </div>
+    
+    <style>
+        #system-stats {
+            margin: 20px 0;
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
+        }
+        
+        #system-stats table {
+            width: 100%;
+        }
+        
+        #system-stats th, #system-stats td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #system-stats th {
+            font-weight: 600;
+            width: 60%;
+        }
+        
+        .system-status {
+            margin: 20px 0;
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.04);
+            padding: 15px;
+        }
+        
+        .system-status h2 {
+            margin: 0 0 15px 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #666;
+        }
+        
+        .actionlist {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .actionlist li {
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .actionlist .icon {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .actionlist .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .actionlist .warning {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .actionlist .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+    </style>
+{% endblock %}
