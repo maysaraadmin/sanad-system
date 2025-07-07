@@ -3,298 +3,207 @@
 
 {% block title %}{{ title }} | {{ site_title|default:_('نظام السند - إدارة') }}{% endblock %}
 
-{% block extrahead %}
+{% block extrastyle %}
 {{ block.super }}
-{% load static %}
-<link rel="stylesheet" href="{% static 'admin/css/themes/custom_theme.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'admin/css/admin-rtl.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-    /* RTL adjustments */
-    body {
-        direction: rtl;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* CSS Variables */
+    :root {
+        --primary: #4a90e2;
+        --primary-dark: #357abd;
+        --secondary: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
     }
     
-    .dashboard .module {
-        margin-right: 0;
-        margin-left: 20px;
-    }
-    
-    .changelist table th, .changelist table td {
-        text-align: right;
-    }
-    
-    .form-row label {
-        text-align: right;
-    }
-    
-    .submit-row {
-        text-align: right;
-    }
-    
-    /* Custom Admin Header */
+    /* Header and branding */
     #header {
-        background: linear-gradient(135deg, #4a90e2, #357abd);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    #header h1 {
-        color: white;
-        font-size: 1.8em;
-        font-weight: 600;
-    }
-    
-    /* Custom Module Icons */
-    .module-list li {
-        padding: 15px;
-        margin-bottom: 10px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-    }
-    
-    .module-list li:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .module-list li a {
-        color: #333;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .module-list li a i {
-        color: #4a90e2;
-        font-size: 1.2em;
-    }
-    
-    /* Custom Dashboard Stats */
-    .dashboard .module {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
-    
-    .dashboard .module h2 {
-        background: linear-gradient(135deg, #4a90e2, #357abd);
-        color: white;
-        padding: 15px;
-        border-radius: 12px 12px 0 0;
-    }
-    
-    .dashboard .module ul {
-        padding: 15px;
-    }
-    
-    .dashboard .module li {
-        padding: 10px 0;
-        border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .dashboard .module li:last-child {
-        border-bottom: none;
-    }
-    
-    /* Custom Form Layout */
-    .form-row {
-        margin-bottom: 20px;
-    }
-    
-    .form-row label {
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 8px;
-    }
-    
-    .form-row input, .form-row select, .form-row textarea {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        padding: 10px 12px;
-        width: 100%;
-    }
-    
-    .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-        border-color: #4a90e2;
-        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
-    }
-    
-    /* Custom Buttons */
-    .button {
-        background: linear-gradient(135deg, #4a90e2, #357abd);
-        color: white;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         padding: 10px 20px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .button:hover {
-        background: linear-gradient(135deg, #357abd, #2a68a4);
-        transform: translateY(-1px);
-    }
-    
-    /* Custom Search Box */
-    #changelist-search input {
-        padding: 10px 15px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        width: 300px;
-    }
-    
-    #changelist-search input:focus {
-        border-color: #4a90e2;
-        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
-    }
-    
-    /* Custom Filter Sidebar */
-    .filters {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
-    
-    .filters h2 {
-        background: linear-gradient(135deg, #4a90e2, #357abd);
         color: white;
-        padding: 12px;
-        border-radius: 12px 12px 0 0;
     }
     
-    .filters .filter {
-        padding: 12px;
+    #branding h1 {
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    
+    #branding h1 a:link, 
+    #branding h1 a:visited {
+        color: white !important;
+        text-decoration: none;
+    }
+    
+    /* Navigation */
+    #user-tools {
+        float: left;
+        margin: 0;
+        padding: 0;
+        font-size: 0.9rem;
+        text-align: left;
+    }
+    
+    #user-tools a {
+        color: white !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    
+    #user-tools a:hover {
+        color: #f8f9fa !important;
+        text-decoration: none;
+    }
+    
+    /* Content */
+    #content {
+        padding: 20px;
+    }
+    
+    /* Module improvements */
+    .dashboard .module {
+        margin: 0 0 20px 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .module h2, 
+    .module caption, 
+    .inline-group h2 {
+        background: #f5f5f5;
+        padding: 12px 15px;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
         border-bottom: 1px solid #e0e0e0;
     }
     
-    .filters .filter:last-child {
+    /* Forms */
+    .form-row {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .form-row:last-child {
         border-bottom: none;
     }
-</style>
-<script src="{% static 'admin/js/admin_enhancements.js' %}"></script>
-{% endblock %}
-
-{% block branding %}
-<div class="brand-container">
-    <a href="{% url 'admin:index' %}" class="brand-link">
-        <img src="{% static 'admin/img/logo.svg' %}" height="40px" alt="Logo" class="brand-logo">
-        <span class="brand-text">نظام السند - لوحة التحكم</span>
-    </a>
-</div>
-{% endblock %}
-
-{% block nav-global %}
-<div class="user-panel">
-    <div class="user-info">
-        {% if user.is_authenticated %}
-            <div class="user-avatar">
-                <i class="fas fa-user-circle"></i>
-            </div>
-            <span class="username">مرحباً، {{ user.get_full_name|default:user.username }}</span>
-            <div class="user-actions">
-                <a href="{% url 'admin:logout' %}" class="logout-link">
-                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-                </a>
-                <a href="{% url 'admin:password_change' %}" class="password-link">
-                    <i class="fas fa-key"></i> تغيير كلمة المرور
-                </a>
-            </div>
-        {% endif %}
-    </div>
-</div>
-{% endblock %}
-
-{% block extrastyle %}
-<style>
-    .brand-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 20px;
-    }
     
-    .brand-link {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: white;
-        text-decoration: none;
-    }
-    
-    .brand-logo {
-        border-radius: 8px;
-    }
-    
-    .brand-text {
-        font-size: 1.2em;
+    .form-row label {
+        display: block;
+        margin-bottom: 5px;
         font-weight: 600;
     }
     
-    .user-panel {
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        z-index: 1000;
-    }
-    
-    .user-info {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        color: #666;
-        font-size: 0.9em;
-    }
-    
-    .user-avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: #4a90e2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    }
-    
-    .user-actions {
-        display: flex;
-        gap: 15px;
-    }
-    
-    .user-actions a {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        color: #666;
-        text-decoration: none;
-        padding: 5px 10px;
+    /* Buttons */
+    .button, 
+    input[type="submit"], 
+    input[type="button"], 
+    .submit-row input,
+    .submit-row a.button {
+        background: var(--primary);
+        color: white !important;
+        border: none;
         border-radius: 4px;
-        transition: all 0.3s ease;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: none;
+        transition: all 0.2s;
     }
     
-    .user-actions a:hover {
-        background: #f8f9fa;
+    .button:hover, 
+    input[type="submit"]:hover, 
+    input[type="button"]:hover,
+    .submit-row a.button:hover {
+        background: var(--primary-dark);
+        text-decoration: none;
     }
     
-    .logout-link {
-        color: #dc3545;
+    .submit-row {
+        padding: 12px 15px;
+        background: #f9f9f9;
+        border-top: 1px solid #eee;
+        text-align: left;
+        overflow: hidden;
     }
     
-    .logout-link:hover {
-        color: #c82333;
-        background: #fff3f3;
+    /* Tables */
+    .changelist {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 20px;
     }
     
-    .password-link {
-        color: #198754;
+    .changelist table {
+        width: 100%;
+        border-collapse: collapse;
     }
     
-    .password-link:hover {
-        color: #157347;
-        background: #f0fff4;
+    .changelist thead th {
+        background: #f5f5f5;
+        padding: 12px 15px;
+        text-align: right;
+        font-weight: 600;
+        border-bottom: 2px solid #e0e0e0;
+    }
+    
+    .changelist tbody td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .changelist tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        #header {
+            padding: 10px;
+            text-align: center;
+        }
+        
+        #user-tools {
+            float: none;
+            text-align: center;
+            margin: 10px 0 0;
+        }
+        
+        .changelist table {
+            display: block;
+            overflow-x: auto;
+        }
+        
+        .submit-row {
+            text-align: center;
+        }
+        
+        .submit-row input,
+        .submit-row a.button {
+            display: block;
+            width: 100%;
+            margin-bottom: 8px;
+        }
     }
 </style>
 {% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <i class="fas fa-book-open" style="margin-left: 8px;"></i>
+        {{ site_header|default:_('نظام السند') }}
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

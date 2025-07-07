@@ -21,14 +21,14 @@
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     
-                    <div class="mb-3">
-                        <label for="{{ form.chain_order.id_for_label }}" class="form-label">
-                            {% trans 'Chain Order' %}
+                    <div class="mb-3 form-check">
+                        {{ form.is_mutawatir }}
+                        <label for="{{ form.is_mutawatir.id_for_label }}" class="form-check-label">
+                            {% trans 'Is Mutawatir' %}
                         </label>
-                        {{ form.chain_order }}
-                        {{ form.chain_order.errors }}
+                        {{ form.is_mutawatir.errors }}
                         <div class="form-text">
-                            {% trans 'The order of this chain in the hadith' %}
+                            {% trans 'Check if this is a Mutawatir hadith' %}
                         </div>
                     </div>
                     

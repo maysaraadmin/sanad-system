@@ -16,13 +16,10 @@ class SanadForm(forms.ModelForm):
     
     class Meta:
         model = Sanad
-        fields = ['chain_order', 'notes', 'narrators']
+        fields = ['is_mutawatir', 'notes', 'narrators']
         widgets = {
-            'chain_order': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'min': 1,
-                'step': 1,
-                'dir': 'ltr'
+            'is_mutawatir': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
             }),
             'notes': forms.Textarea(attrs={
                 'class': 'form-control',
