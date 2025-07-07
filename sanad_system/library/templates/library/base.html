@@ -4,6 +4,15 @@
 {% block extrastyle %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'library/css/library.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -15,11 +24,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="library-container">
+<div class="library-container" data-search-url="{% url 'library:document_search' %}">
     <div class="sidebar">
         <h3>{% trans 'Categories' %}</h3>
         <ul>
             <li><a href="{% url 'library:document_list' %}" {% if not category_id %}class="active"{% endif %}>{% trans 'All Documents' %}</a></li>
+            <li><a href="{% url 'library:document_search' %}" {% if 'search' in request.path %}class="active"{% endif %}><i class="fas fa-search"></i> {% trans 'Search Library' %}</a></li>
+        </ul>
+        
+        <h4>{% trans 'Categories' %}</h4>
+        <ul class="category-list">
             {% for cat in categories %}
             <li><a href="{% url 'library:document_category' cat.id %}" {% if category_id == cat.id|stringformat:'s' %}class="active"{% endif %}>{{ cat.name }} ({{ cat.document_set.count }})</a></li>
             {% endfor %}

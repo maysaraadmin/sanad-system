@@ -1,0 +1,484 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block extra_css %}
+{{ block.super }}
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<!-- Custom CSS -->
+<link href="{% static 'library/css/library.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}{% trans 'Search Library' %}{% endblock %}
+
+{% block content %}
+<div class="container py-4" data-controller="document-search">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h2 mb-0" id="main-heading">{% trans 'Search Library' %}</h1>
+                    <p class="text-muted mb-0" id="search-description">
+                        {% trans 'Search through our collection of documents, books, and resources' %}
+                    </p>
+                </div>
+                <a href="{% url 'library:document_list' %}" class="btn btn-outline-secondary" aria-label="{% trans 'Back to Library' %}">
+                    <i class="fas fa-arrow-left me-1" aria-hidden="true"></i> {% trans 'Back to Library' %}
+                </a>
+            </div>
+            
+            <!-- Search Form -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body p-4">
+                    <form method="get" class="search-form" id="document-search-form" 
+                          aria-labelledby="main-heading" 
+                          aria-describedby="search-description"
+                          data-document-search-target="form"
+                          data-action="submit->document-search#handleSubmit">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                {{ form.query|add_class:'form-control form-control-lg'|attr:'aria-required:true'|attr:'aria-describedby:searchHelp'|attr:'autocomplete:off'|attr:'placeholder: '|attr:'data-document-search-target:query'|attr:'data-action:input->document-search#handleInput' }}
+                                <label for="{{ form.query.id_for_label }}" class="fw-medium">
+                                    <i class="fas fa-search me-1" aria-hidden="true"></i>
+                                    {% trans 'Search query' %}
+                                    <span class="text-danger" aria-hidden="true">*</span>
+                                    <span class="visually-hidden">{% trans 'required' %}</span>
+                                </label>
+                                {% if form.query.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.query.errors|join:" " }}
+                                    </div>
+                                {% endif %}
+                                <div id="searchHelp" class="form-text">
+                                    {% trans 'Enter keywords to search in document titles, descriptions, and content' %}
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                {{ form.category|add_class:'form-select'|attr:'aria-label:Filter by category'|attr:'data-placeholder:Select a category'|attr:'data-document-search-target:category'|attr:'data-action:change->document-search#handleCategoryChange' }}
+                                <label for="{{ form.category.id_for_label }}" class="fw-medium">
+                                    <i class="fas fa-folder me-1" aria-hidden="true"></i>
+                                    {% trans 'Category' %}
+                                </label>
+                                {% if form.category.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.category.errors|join:" " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-floating">
+                                {{ form.file_type|add_class:'form-select'|attr:'aria-label:Filter by file type'|attr:'data-placeholder:Select a file type'|attr:'data-document-search-target:fileType'|attr:'data-action:change->document-search#handleFileTypeChange' }}
+                                <label for="{{ form.file_type.id_for_label }}" class="fw-medium">
+                                    <i class="fas fa-file me-1" aria-hidden="true"></i>
+                                    {% trans 'File Type' %}
+                                </label>
+                                {% if form.file_type.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.file_type.errors|join:" " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary btn-lg w-100" data-searching-text="{% trans 'Searching...' %}" aria-label="{% trans 'Search documents' %}">
+                                    <i class="fas fa-search me-1" aria-hidden="true"></i>
+                                    <span class="d-none d-md-inline">{% trans 'Search' %}</span>
+                                    <span class="visually-hidden">{% trans 'Submit search' %}</span>
+                                </button>
+                            </div>
+                        </div>
+                        {% if request.GET %}
+                        <div class="mt-3">
+                            <a href="{% url 'library:document_search' %}" class="btn btn-sm btn-outline-secondary btn-clear-filters" data-search-url="{% url 'library:document_search' %}">
+                                <i class="fas fa-times me-1"></i> {% trans 'Clear filters' %}
+                            </a>
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Search Results -->
+            <div class="card shadow-sm" aria-live="polite" aria-atomic="true">
+                <div class="card-header bg-white py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="h5 mb-0" id="search-results-heading">
+                            {% if request.GET %}
+                                {% if documents %}
+                                    {% blocktrans count counter=total_results %}
+                                        <span class="fw-bold">{{ counter }}</span> result found
+                                    {% plural %}
+                                        <span class="fw-bold">{{ counter }}</span> results found
+                                    {% endblocktrans %}
+                                    {% if query %}
+                                        {% trans 'for' %} "<span class="text-primary">{{ query }}</span>"
+                                    {% endif %}
+                                {% else %}
+                                    {% trans 'No results found' %}
+                                    {% if query %}
+                                        {% trans 'for' %} "<span class="text-primary">{{ query }}</span>"
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% trans 'Search the library' %}
+                            {% endif %}
+                        </h2>
+                        {% if documents.has_other_pages %}
+                        <div class="d-flex align-items-center">
+                            <span class="text-muted me-2">{% trans 'Page' %}</span>
+                            <span class="fw-bold">{{ documents.number }}</span>
+                            <span class="text-muted mx-1">{% trans 'of' %}</span>
+                            <span class="fw-bold">{{ documents.paginator.num_pages }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if documents %}
+                    <div class="list-group list-group-flush" role="list" aria-labelledby="search-results-heading">
+                        {% for document in documents %}
+                            <a href="{{ document.get_absolute_url }}" class="list-group-item list-group-item-action p-4" role="listitem" aria-labelledby="document-{{ document.id }}-title">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0 me-3">
+                                        {% if document.file_type == 'pdf' %}
+                                            <div class="bg-light rounded p-3 text-center" style="width: 80px;">
+                                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                            </div>
+                                        {% elif document.file_type == 'docx' %}
+                                            <div class="bg-light rounded p-3 text-center" style="width: 80px;">
+                                                <i class="fas fa-file-word fa-2x text-primary"></i>
+                                            </div>
+                                        {% else %}
+                                            <div class="bg-light rounded p-3 text-center" style="width: 80px;">
+                                                <i class="fas fa-file-alt fa-2x text-secondary"></i>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h5 class="mb-1 text-primary" id="document-{{ document.id }}-title">
+                                                {{ document.title }}
+                                                <span class="visually-hidden">
+                                                    {% if document.description %}
+                                                        {{ document.description|truncatewords:20 }}
+                                                    {% endif %}
+                                                    {% if document.category %}
+                                                        {% trans 'Category:' %} {{ document.category }}
+                                                    {% endif %}
+                                                    {% if document.created_at %}
+                                                        {% trans 'Uploaded' %} {{ document.created_at|timesince }} {% trans 'ago' %}
+                                                    {% endif %}
+                                                </span>
+                                            </h5>
+                                            <span class="badge bg-light text-dark border">{{ document.get_file_type_display|upper }}</span>
+                                        </div>
+                                        
+                                        {% if document.description %}
+                                            <p class="text-muted mb-3">
+                                                {{ document.description|truncatewords:40 }}
+                                            </p>
+                                        {% endif %}
+                                        
+                                        <div class="d-flex flex-wrap gap-3 text-muted small">
+                                            {% if document.category %}
+                                                <span class="d-flex align-items-center">
+                                                    <i class="fas fa-folder me-1"></i>
+                                                    <a href="{% url 'library:document_category' document.category.id %}" class="text-decoration-none text-muted">
+                                                        {{ document.category }}
+                                                    </a>
+                                                </span>
+                                            {% endif %}
+                                            
+                                            <span class="d-flex align-items-center">
+                                                <i class="far fa-clock me-1"></i>
+                                                <span>{% trans 'Uploaded' %} {{ document.created_at|timesince }} {% trans 'ago' %}</span>
+                                            </span>
+                                            
+                                            <span class="d-flex align-items-center">
+                                                <i class="far fa-calendar-alt me-1"></i>
+                                                <span>{{ document.created_at|date:"M d, Y" }}</span>
+                                            </span>
+                                            
+                                            {% if document.page_count %}
+                                                <span class="d-flex align-items-center">
+                                                    <i class="fas fa-file-alt me-1"></i>
+                                                    <span>{{ document.page_count }} {% trans 'pages' %}</span>
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Pagination -->
+                    {% if documents.has_other_pages %}
+                        <div class="card-footer bg-white">
+                            <nav aria-label="{% trans 'Search results pagination' %}">
+                                <ul class="pagination justify-content-center mb-0" role="navigation">
+                                    <!-- First Page Link -->
+                                    {% if documents.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" 
+                                               href="?page=1{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+                                               aria-label="{% trans 'First page' %}"
+                                               title="{% trans 'Go to first page' %}">
+                                                <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'First page' %}</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" 
+                                               href="?page={{ documents.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+                                               rel="prev"
+                                               aria-label="{% trans 'Previous page' %}"
+                                               title="{% trans 'Go to previous page' %}">
+                                                <i class="fas fa-angle-left" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'Previous' %}</span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link" tabindex="-1" aria-disabled="true">
+                                                <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'First page' %}</span>
+                                            </span>
+                                        </li>
+                                        <li class="page-item disabled">
+                                            <span class="page-link" tabindex="-1" aria-disabled="true">
+                                                <i class="fas fa-angle-left" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'Previous' %}</span>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                                    
+                                    <!-- Page Numbers -->
+                                    {% for i in documents.paginator.page_range %}
+                                        {% if documents.number == i %}
+                                            <li class="page-item active" aria-current="page">
+                                                <span class="page-link">
+                                                    {{ i }}
+                                                    <span class="visually-hidden">{% trans '(current page)' %}</span>
+                                                </span>
+                                            </li>
+                                        {% elif i > documents.number|add:'-3' and i < documents.number|add:'3' or i == 1 or i == documents.paginator.num_pages %}
+                                            <li class="page-item">
+                                                <a class="page-link" 
+                                                   href="?page={{ i }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"
+                                                   aria-label="{% blocktrans with number=i %}Go to page {{ number }}{% endblocktrans %}">
+                                                    {{ i }}
+                                                </a>
+                                            </li>
+                                        {% elif i == documents.number|add:'-3' or i == documents.number|add:'3' %}
+                                            <li class="page-item disabled d-none d-md-block">
+                                                <span class="page-link" aria-hidden="true">…</span>
+                                                <span class="visually-hidden">{% trans 'More pages' %}</span>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    
+                                    <!-- Next/Last Page Links -->
+                                    {% if documents.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link" 
+                                               href="?page={{ documents.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+                                               rel="next"
+                                               aria-label="{% trans 'Next page' %}"
+                                               title="{% trans 'Go to next page' %}">
+                                                <i class="fas fa-angle-right" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'Next' %}</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" 
+                                               href="?page={{ documents.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+                                               aria-label="{% trans 'Last page' %}"
+                                               title="{% trans 'Go to last page' %}">
+                                                <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'Last page' %}</span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link" tabindex="-1" aria-disabled="true">
+                                                <i class="fas fa-angle-right" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'Next' %}</span>
+                                            </span>
+                                        </li>
+                                        <li class="page-item disabled">
+                                            <span class="page-link" tabindex="-1" aria-disabled="true">
+                                                <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+                                                <span class="visually-hidden">{% trans 'Last page' %}</span>
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                <p class="text-center text-muted small mt-2">
+                                    {% blocktrans with current=documents.number total=documents.paginator.num_pages %}
+                                        Page {{ current }} of {{ total }}
+                                    {% endblocktrans %}
+                                </p>
+                            </nav>
+                        </div>
+                    {% endif %}
+                    
+                {% elif request.GET %}
+                    <div class="card-body text-center py-5">
+                        <div class="empty-state">
+                            <div class="empty-state-icon mb-4">
+                                <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                                <div class="empty-state-icon-bg"></div>
+                            </div>
+                            
+                            <h2 class="h4 mb-3" id="no-results-heading">
+                                {% trans 'No documents found matching your search criteria' %}
+                            </h2>
+                            
+                            <div class="text-muted mb-4">
+                                <p class="mb-2">
+                                    {% trans 'Try these suggestions to find what you\'re looking for:' %}
+                                </p>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        {% trans 'Check your spelling' %}
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        {% trans 'Use more general keywords' %}
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        {% trans 'Try different search terms' %}
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        {% trans 'Remove some filters' %}
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="d-flex justify-content-center gap-3">
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-outline-secondary btn-clear-filters" 
+                                            data-document-search-target="clearButton"
+                                            data-action="click->document-search#clearFilters"
+                                            data-search-url="{% url 'library:document_search' %}" 
+                                            aria-label="{% trans 'Clear all search filters' %}">
+                                        <i class="fas fa-undo me-2" aria-hidden="true"></i>
+                                        <span class="button-text">{% trans 'Clear Filters' %}</span>
+                                    </button>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg" 
+                                            id="search-button" 
+                                            data-document-search-target="submitButton"
+                                            data-searching-text="{% trans 'Searching...' %}"
+                                            data-action="click->document-search#handleSubmit">
+                                        <i class="fas fa-search me-2" aria-hidden="true"></i>
+                                        <span class="button-text">{% trans 'Search' %}</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <p class="small text-muted mb-2">{% trans 'Or try one of these popular searches:' %}</p>
+                                <div class="d-flex flex-wrap justify-content-center gap-2">
+                                    <a href="?q=Quran" class="btn btn-sm btn-outline-secondary">Quran</a>
+                                    <a href="?q=Hadith" class="btn btn-sm btn-outline-secondary">Hadith</a>
+                                    <a href="?q=Fiqh" class="btn btn-sm btn-outline-secondary">Fiqh</a>
+                                    <a href="?q=Tafsir" class="btn btn-sm btn-outline-secondary">Tafsir</a>
+                                    <a href="?q=Seerah" class="btn btn-sm btn-outline-secondary">Seerah</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="card-body text-center py-5">
+                        <div class="empty-state">
+                            <div class="empty-state-icon mb-4">
+                                <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                                <div class="empty-state-icon-bg"></div>
+                            </div>
+                            
+                            <h2 class="h4 mb-3" id="no-results-heading">
+                                {% trans 'No documents found' %}
+                            </h2>
+                            
+                            <div class="text-muted mb-4">
+                                <p>{% trans 'There are currently no documents available in the library.' %}</p>
+                                {% if perms.library.add_document %}
+                                    <p>{% trans 'You can add new documents by clicking the button below.' %}</p>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="{% url 'library:document_list' %}" class="btn btn-primary">
+                                    <i class="fas fa-book me-1"></i> {% trans 'Browse all documents' %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- Custom JS -->
+<script src="{% static 'library/js/document_search.js' %}" defer></script>
+
+<script>
+// Wait for the document to be fully loaded and the custom script to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+            container: 'body',
+            trigger: 'hover focus'
+        });
+    });
+    
+    // Focus management for better keyboard navigation
+    var searchForm = document.getElementById('document-search-form');
+    if (searchForm) {
+        // Focus the first form element with an error, or the search input
+        var firstError = searchForm.querySelector('.is-invalid');
+        if (firstError) {
+            firstError.focus();
+        } else {
+            var searchInput = searchForm.querySelector('input[name="q"]');
+            if (searchInput && !searchInput.value.trim()) {
+                setTimeout(function() {
+                    searchInput.focus();
+                }, 100);
+            }
+        }
+        
+        // Add a class when JavaScript is enabled for progressive enhancement
+        searchForm.classList.add('js-enabled');
+    }
+    
+    // Add a class to the body when JavaScript is enabled
+    document.body.classList.add('js-enabled');
+});
+</script>
+{% endblock %}

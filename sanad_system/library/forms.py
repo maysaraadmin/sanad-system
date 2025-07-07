@@ -84,6 +84,40 @@ class DocumentForm(forms.ModelForm):
         # Add any cross-field validation here if needed
         return cleaned_data
 
+class DocumentSearchForm(forms.Form):
+    """Form for searching documents in the library."""
+    query = forms.CharField(
+        label=_('Search'),
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': _('Search in all books...'),
+            'aria-label': _('Search'),
+        })
+    )
+    
+    category = forms.ModelChoiceField(
+        label=_('Category'),
+        queryset=DocumentCategory.objects.all(),
+        required=False,
+        widget=forms.Select(attrs={
+            'class': 'form-select',
+        })
+    )
+    
+    file_type = forms.ChoiceField(
+        label=_('File Type'),
+        choices=[('', _('All Types'))] + list(Document.DOCUMENT_TYPES),
+        required=False,
+        widget=forms.Select(attrs={
+            'class': 'form-select',
+        })
+    )
+    
+    class Meta:
+        fields = ['query', 'category', 'file_type']
+
+
 class DocumentCategoryForm(forms.ModelForm):
     class Meta:
         model = DocumentCategory
