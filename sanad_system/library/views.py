@@ -399,11 +399,11 @@ def extract_hadiths(request, pk):
         }, status=500)
 
 
-@login_required
-class DocumentSearchView(TemplateView):
+class DocumentSearchView(LoginRequiredMixin, TemplateView):
     """View for searching documents in the library."""
     template_name = 'library/document_search.html'
     paginate_by = 10
+    login_url = 'login'
     
     def get_queryset(self):
         """Get the base queryset for the search."""
