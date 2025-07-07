@@ -49,7 +49,7 @@ urlpatterns = [
     
     # Redirect /documents/ to /library/ for backward compatibility
     path('documents/', RedirectView.as_view(url='/library/', permanent=True)),
-    path('documents/<path:path>/', RedirectView.as_view(pattern_name='library:document_detail', kwargs={'path': '%(path)s'}), name='document_redirect'),
+    path('documents/<path:path>/', RedirectView.as_view(pattern_name='library:document_detail', query_string=True), name='document_redirect'),
     
     # Language switcher
     path('i18n/', include('django.conf.urls.i18n')),

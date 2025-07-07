@@ -39,7 +39,7 @@ isort>=5.12.0
 
 # Security
 python-decouple>=3.8
-django-csp>=5.0.0
+django-csp>=4.0,<5.0.0
 django-axes>=6.0.0
 
 # Database (uncomment if using PostgreSQL)
