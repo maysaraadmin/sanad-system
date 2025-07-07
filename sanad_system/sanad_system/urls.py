@@ -39,7 +39,8 @@ urlpatterns = [
         redirect_authenticated_user=True
     ), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(
-        template_name='registration/logged_out.html'
+        template_name='registration/logged_out.html',
+        next_page='hadith_app:hadith_list'
     ), name='logout'),
     
     # App URLs
@@ -48,11 +49,13 @@ urlpatterns = [
     
     # Redirect /documents/ to /library/ for backward compatibility
     path('documents/', RedirectView.as_view(url='/library/', permanent=True)),
-    path('documents/<path:path>', RedirectView.as_view(url='/library/%(path)s', permanent=True)),
+    path('documents/<path:path>/', RedirectView.as_view(pattern_name='library:document_detail', kwargs={'path': '%(path)s'}), name='document_redirect'),
     
-    # Static and media files
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Language switcher
+    path('i18n/', include('django.conf.urls.i18n')),
+] 
 
 # Serve media and static files in development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

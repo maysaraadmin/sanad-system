@@ -1,6 +1,6 @@
 import os
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, CreateView, DeleteView, View
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, View, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse, JsonResponse, HttpResponseForbidden, Http404, FileResponse
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from django.db.models import Q
 import os
 from django.conf import settings
 
@@ -17,7 +18,7 @@ from django.http import JsonResponse
 import json
 
 from .models import Document, DocumentCategory
-from .forms import DocumentForm
+from .forms import DocumentForm, DocumentSearchForm
 from .utils import render_pdf_page_to_image
 from .hadith_processor import process_document
 
@@ -396,6 +397,79 @@ def extract_hadiths(request, pk):
             'task_id': task_id,
             'error': error_msg
         }, status=500)
+
+
+@login_required
+class DocumentSearchView(TemplateView):
+    """View for searching documents in the library."""
+    template_name = 'library/document_search.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        """Get the base queryset for the search."""
+        queryset = Document.objects.all()
+        
+        # Filter by public documents or user's private documents
+        if not self.request.user.is_authenticated:
+            queryset = queryset.filter(is_public=True)
+        elif not self.request.user.is_staff:
+            queryset = queryset.filter(
+                Q(is_public=True) | Q(uploaded_by=self.request.user)
+            )
+            
+        return queryset.select_related('category', 'uploaded_by')
+    
+    def get_context_data(self, **kwargs):
+        """Add search form and results to the context."""
+        context = super().get_context_data(**kwargs)
+        
+        # Initialize the form with GET data
+        form = DocumentSearchForm(self.request.GET or None)
+        context['form'] = form
+        
+        # Get the base queryset
+        queryset = self.get_queryset()
+        
+        # Apply search filters if form is valid
+        if form.is_valid():
+            query = form.cleaned_data.get('query')
+            category = form.cleaned_data.get('category')
+            file_type = form.cleaned_data.get('file_type')
+            
+            # Apply search query
+            if query:
+                queryset = queryset.filter(
+                    Q(title__icontains=query) |
+                    Q(description__icontains=query) |
+                    Q(file__icontains=query)
+                )
+            
+            # Apply category filter
+            if category:
+                queryset = queryset.filter(category=category)
+            
+            # Apply file type filter
+            if file_type:
+                queryset = queryset.filter(file_type=file_type)
+        
+        # Add pagination
+        from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+        
+        page = self.request.GET.get('page')
+        paginator = Paginator(queryset, self.paginate_by)
+        
+        try:
+            documents = paginator.page(page)
+        except PageNotAnInteger:
+            documents = paginator.page(1)
+        except EmptyPage:
+            documents = paginator.page(paginator.num_pages)
+        
+        context['documents'] = documents
+        context['categories'] = DocumentCategory.objects.all()
+        context['total_results'] = queryset.count()
+        
+        return context
 
 
 @login_required

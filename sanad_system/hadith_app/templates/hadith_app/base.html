@@ -315,33 +315,40 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <form class="d-flex me-3 position-relative" action="{% url 'hadith_app:search' %}" method="get" style="min-width: 250px;">
-                        <input class="form-control rounded-pill ps-4 pe-5 border-0 shadow-sm" 
-                               type="search" 
-                               name="q" 
-                               placeholder="ابحث عن حديث أو راوٍ..."
-                               aria-label="بحث"
-                               id="searchInput">
-                        <button class="btn btn-outline-light rounded-pill ms-2" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <div id="searchSuggestions" class="position-absolute top-100 start-0 end-0 mt-2 bg-white rounded shadow-sm p-2 d-none">
-                            <div class="list-group">
-                                <div class="list-group-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-book me-2 text-primary"></i>
-                                        <span>الأحاديث</span>
-                                    </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-users me-2 text-primary"></i>
-                                        <span>الرواة</span>
-                                    </div>
+                    <div class="dropdown me-3" style="min-width: 300px;">
+                        <form class="d-flex position-relative" action="{% url 'hadith_app:search' %}" method="get" id="globalSearchForm">
+                            <div class="input-group">
+                                <input class="form-control rounded-pill-start ps-4 pe-5 border-0 shadow-sm" 
+                                       type="search" 
+                                       name="q" 
+                                       id="globalSearchInput"
+                                       placeholder="{% trans 'Search hadiths...' %}" 
+                                       aria-label="{% trans 'Search' %}"
+                                       value="{{ request.GET.q }}"
+                                       autocomplete="off"
+                                       data-search-hadiths="{% url 'hadith_app:search' %}"
+                                       data-search-library="{% url 'library:document_search' %}">
+                                <button class="btn btn-outline-secondary rounded-pill-end border-0 bg-white" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu w-100 p-2" id="searchTypeDropdown" style="display: none;">
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-sm btn-outline-primary active search-type-btn" data-type="hadith">
+                                        <i class="fas fa-book-hadith"></i> {% trans 'Hadiths' %}
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary search-type-btn" data-type="library">
+                                        <i class="fas fa-book"></i> {% trans 'Library' %}
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                            <div id="searchSuggestions" class="position-absolute w-100 bg-white rounded shadow-lg mt-1" style="top: 100%; left: 0; z-index: 1000; display: none;">
+                                <div class="list-group list-group-flush">
+                                    <!-- Search suggestions will appear here -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="d-flex align-items-center gap-2">
                         <!-- Theme Switcher -->
                         <div class="btn-group rounded-pill shadow-sm" role="group" aria-label="Theme Switcher">
@@ -494,8 +501,10 @@
     </script>
     
     <!-- Initialize messages -->
+    <!-- Global Search Functionality -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Messages handling
         try {
             const messagesData = JSON.parse(document.getElementById('messages-data').textContent);
             if (messagesData.messages && messagesData.messages.length > 0) {
@@ -509,6 +518,137 @@
             }
         } catch (e) {
             console.error('Error processing messages:', e);
+        }
+
+        // Global search functionality
+        const searchInput = document.getElementById('globalSearchInput');
+        const searchForm = document.getElementById('globalSearchForm');
+        const searchTypeBtns = document.querySelectorAll('.search-type-btn');
+        const searchTypeDropdown = document.getElementById('searchTypeDropdown');
+        let currentSearchType = 'hadith';
+        
+        if (searchInput && searchForm) {
+            // Show/hide search type dropdown on focus/blur
+            searchInput.addEventListener('focus', function() {
+                searchTypeDropdown.style.display = 'block';
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (searchInput && !searchInput.contains(e.target) && 
+                    searchTypeDropdown && !searchTypeDropdown.contains(e.target)) {
+                    searchTypeDropdown.style.display = 'none';
+                }
+            });
+            
+            // Handle search type selection
+            searchTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state
+                    searchTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update search type
+                    currentSearchType = this.dataset.type;
+                    
+                    // Update placeholder and form action
+                    if (currentSearchType === 'hadith') {
+                        searchInput.placeholder = '{% trans "Search hadiths..." %}';
+                        searchForm.action = searchInput.dataset.searchHadiths;
+                    } else {
+                        searchInput.placeholder = '{% trans "Search library..." %}';
+                        searchForm.action = searchInput.dataset.searchLibrary;
+                    }
+                    
+                    // Focus back on input
+                    searchInput.focus();
+                });
+            });
+            
+            // Submit form on Enter
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                    e.preventDefault();
+                    searchForm.submit();
+                }
+            });
+            
+            // Initialize search type based on current page
+            if (window.location.pathname.startsWith('/library/')) {
+                const libraryBtn = document.querySelector('.search-type-btn[data-type="library"]');
+                if (libraryBtn) {
+                    libraryBtn.click();
+                }
+            }
+            
+            // Initialize suggestions
+            let debounceTimer;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    updateSearchSuggestions(this.value.trim());
+                }, 300);
+            });
+        }
+        
+        function updateSearchSuggestions(query) {
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            if (!suggestionsContainer) return;
+            
+            if (!query) {
+                suggestionsContainer.style.display = 'none';
+                return;
+            }
+            
+            // Show loading state
+            suggestionsContainer.innerHTML = `
+                <div class="list-group-item">
+                    <div class="d-flex align-items-center justify-content-center py-2">
+                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                        <span>{% trans "Loading suggestions..." %}</span>
+                    </div>
+                </div>`;
+            suggestionsContainer.style.display = 'block';
+            
+            // Fetch suggestions based on search type
+            const url = currentSearchType === 'hadith' 
+                ? `/api/hadith/suggestions/?q=${encodeURIComponent(query)}`
+                : `/api/library/suggestions/?q=${encodeURIComponent(query)}`;
+                
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.suggestions && data.suggestions.length > 0) {
+                        let html = '';
+                        data.suggestions.forEach(item => {
+                            const icon = currentSearchType === 'hadith' 
+                                ? '<i class="fas fa-book-hadith me-2"></i>'
+                                : '<i class="fas fa-book me-2"></i>';
+                            html += `
+                                <a href="${item.url}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex align-items-center">
+                                        ${icon}
+                                        <div>
+                                            <div class="fw-bold">${item.title}</div>
+                                            ${item.description ? `<div class="text-muted small">${item.description}</div>` : ''}
+                                        </div>
+                                    </div>
+                                </a>`;
+                        });
+                        suggestionsContainer.innerHTML = html;
+                    } else {
+                        suggestionsContainer.innerHTML = `
+                            <div class="list-group-item">
+                                <div class="text-muted text-center py-2">
+                                    <i class="fas fa-search me-2"></i>
+                                    <span>{% trans "No suggestions found" %}</span>
+                                </div>
+                            </div>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching suggestions:', error);
+                    suggestionsContainer.style.display = 'none';
+                });
         }
     });
     </script>

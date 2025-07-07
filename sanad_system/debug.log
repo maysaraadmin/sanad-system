@@ -1161,3 +1161,37 @@ INFO 2025-07-07 20:22:43,639 basehttp "GET / HTTP/1.1" 200 23356
 INFO 2025-07-07 20:22:43,721 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
 INFO 2025-07-07 20:22:45,970 basehttp "GET /library/ HTTP/1.1" 200 14356
 INFO 2025-07-07 20:22:48,674 basehttp "GET /library/document/1/ HTTP/1.1" 200 34303
+INFO 2025-07-07 20:28:03,212 basehttp "HEAD /library/document/1/ HTTP/1.1" 200 0
+INFO 2025-07-07 20:28:04,409 basehttp - Broken pipe from ('127.0.0.1', 50806)
+INFO 2025-07-07 20:28:16,003 basehttp "GET /library/document/1/ HTTP/1.1" 200 34686
+INFO 2025-07-07 20:30:26,038 basehttp "GET /library/document/1/page/0/ HTTP/1.1" 200 4473423
+INFO 2025-07-07 20:30:31,196 basehttp - Broken pipe from ('127.0.0.1', 50979)
+INFO 2025-07-07 20:33:11,358 basehttp "GET /library/document/1/ HTTP/1.1" 200 32551
+INFO 2025-07-07 20:42:00,606 basehttp "GET /library/document/1/ HTTP/1.1" 200 36025
+INFO 2025-07-07 20:42:00,646 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-07 21:27:27,660 basehttp "GET /library/document/1/ HTTP/1.1" 200 37833
+INFO 2025-07-07 21:27:27,705 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 200 2737
+INFO 2025-07-07 21:27:27,705 basehttp "GET /static/library/css/library.css HTTP/1.1" 200 7037
+INFO 2025-07-07 21:27:27,734 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 21:27:27,735 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-07 21:27:27,737 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-07 21:27:27,739 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-07-07 21:35:06,901 basehttp - Broken pipe from ('127.0.0.1', 59424)
+INFO 2025-07-07 21:35:06,892 basehttp - Broken pipe from ('127.0.0.1', 59419)
+INFO 2025-07-07 21:35:18,230 basehttp "GET /admin/ HTTP/1.1" 200 23910
+INFO 2025-07-07 21:35:18,546 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-07 21:35:18,550 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 21:35:18,596 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-07 21:35:18,626 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-07-07 21:35:18,646 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-07 21:35:18,798 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-07 21:35:21,641 basehttp "GET / HTTP/1.1" 200 23356
+INFO 2025-07-07 21:35:21,788 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2025-07-07 21:39:38,804 basehttp "GET /library/ HTTP/1.1" 200 14356
+INFO 2025-07-07 21:39:41,947 basehttp "GET /library/document/1/ HTTP/1.1" 200 37833
+INFO 2025-07-07 21:52:57,672 basehttp "GET /library/ HTTP/1.1" 200 14356
+INFO 2025-07-07 21:52:57,928 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-07 21:53:00,603 basehttp "GET /library/document/3/ HTTP/1.1" 200 37484
+INFO 2025-07-07 21:53:06,134 basehttp "GET /library/document/3/download/ HTTP/1.1" 200 38669981
+INFO 2025-07-07 21:53:23,780 autoreload D:\sanad system\sanad_system\library\forms.py changed, reloading.
+INFO 2025-07-07 21:53:24,605 autoreload D:\sanad system\sanad_system\library\forms.py changed, reloading.

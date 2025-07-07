@@ -63,7 +63,14 @@ class Hadith(models.Model):
     reference_edition = models.CharField(max_length=100, null=True, blank=True, verbose_name="طبعة المرجع")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="أضيف بواسطة")
+    created_by = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        verbose_name="أضيف بواسطة",
+        related_name='created_hadiths',
+        editable=False
+    )
 
     class Meta:
         verbose_name = "حديث"
