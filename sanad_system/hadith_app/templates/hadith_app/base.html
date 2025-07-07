@@ -306,6 +306,13 @@
                             <span>إضافة حديث</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center {% if 'library' in request.path or '/documents/' in request.path %}active fw-bold{% endif %}" 
+                           href="{% url 'library:document_list' %}">
+                            <i class="fas fa-book me-2"></i>
+                            <span>المكتبة</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <form class="d-flex me-3 position-relative" action="{% url 'hadith_app:search' %}" method="get" style="min-width: 250px;">

@@ -1,0 +1,39 @@
+{% extends "library/base.html" %}
+{% load i18n %}
+
+{% block breadcrumb %}
+&rsaquo; <a href="{% url 'library:document_list' %}">{% trans 'Documents' %}</a>
+&rsaquo; <a href="{{ document.get_absolute_url }}">{{ document.title }}</a>
+&rsaquo; {% trans 'Delete' %}
+{% endblock %}
+
+{% block library_content %}
+<div class="delete-confirmation">
+    <h1>{% trans 'Delete Document' %}</h1>
+    
+    <div class="message warning">
+        <p>{% trans 'Are you sure you want to delete this document?' %}</p>
+        <p><strong>{{ document.title }}</strong></p>
+        
+        {% if document.description %}
+        <div class="document-description">
+            {{ document.description|truncatewords:30 }}
+        </div>
+        {% endif %}
+        
+        <div class="document-meta">
+            <p>{% blocktrans with type=document.get_file_type_display size=document.file.size|filesizeformat %}
+            Type: {{ type }} | Size: {{ size }}
+            {% endblocktrans %}</p>
+        </div>
+    </div>
+    
+    <form method="post" class="form">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="button danger">{% trans 'Yes, delete' %}</button>
+            <a href="{{ document.get_absolute_url }}" class="button">{% trans 'No, take me back' %}</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

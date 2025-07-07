@@ -1,0 +1,1163 @@
+INFO 2025-07-07 17:35:01,895 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 17:37:22,221 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 17:37:33,309 basehttp "GET /library/document/1/ HTTP/1.1" 200 24120
+INFO 2025-07-07 17:37:34,468 basehttp "GET /library/document/1/page/0/?zoom=1 HTTP/1.1" 200 1062047
+INFO 2025-07-07 17:37:35,625 basehttp "GET /library/ HTTP/1.1" 200 14356
+INFO 2025-07-07 17:37:38,205 basehttp "GET /library/document/1/ HTTP/1.1" 200 24120
+INFO 2025-07-07 17:37:38,958 basehttp "GET /library/document/1/page/0/?zoom=1 HTTP/1.1" 200 1062047
+INFO 2025-07-07 17:39:00,003 basehttp "GET /library/document/1/ HTTP/1.1" 200 24120
+INFO 2025-07-07 17:39:00,808 basehttp "GET /library/document/1/page/0/?zoom=1 HTTP/1.1" 200 1062047
+INFO 2025-07-07 17:39:01,744 views Extracting hadiths from document 1
+INFO 2025-07-07 17:39:01,970 hadith_processor Extracting text from PDF file
+INFO 2025-07-07 17:39:01,970 hadith_processor Starting PDF extraction with OCR: False
+INFO 2025-07-07 17:39:01,970 hadith_processor File type: <class 'django.db.models.fields.files.FieldFile'>
+INFO 2025-07-07 17:39:02,117 hadith_processor Attempting standard text extraction...
+INFO 2025-07-07 17:39:02,171 hadith_processor Attempting PyPDF2 text extraction
+INFO 2025-07-07 17:39:02,341 hadith_processor PDF has 179 pages
+WARNING 2025-07-07 17:39:02,392 hadith_processor No text found on page 1
+WARNING 2025-07-07 17:39:02,393 hadith_processor No text found on page 2
+WARNING 2025-07-07 17:39:02,393 hadith_processor No text found on page 3
+WARNING 2025-07-07 17:39:02,394 hadith_processor No text found on page 4
+WARNING 2025-07-07 17:39:02,395 hadith_processor No text found on page 5
+WARNING 2025-07-07 17:39:02,395 hadith_processor No text found on page 6
+WARNING 2025-07-07 17:39:02,396 hadith_processor No text found on page 7
+WARNING 2025-07-07 17:39:02,396 hadith_processor No text found on page 8
+WARNING 2025-07-07 17:39:02,397 hadith_processor No text found on page 9
+WARNING 2025-07-07 17:39:02,398 hadith_processor No text found on page 10
+WARNING 2025-07-07 17:39:02,399 hadith_processor No text found on page 11
+WARNING 2025-07-07 17:39:02,399 hadith_processor No text found on page 12
+WARNING 2025-07-07 17:39:02,400 hadith_processor No text found on page 13
+WARNING 2025-07-07 17:39:02,400 hadith_processor No text found on page 14
+WARNING 2025-07-07 17:39:02,401 hadith_processor No text found on page 15
+WARNING 2025-07-07 17:39:02,402 hadith_processor No text found on page 16
+WARNING 2025-07-07 17:39:02,402 hadith_processor No text found on page 17
+WARNING 2025-07-07 17:39:02,403 hadith_processor No text found on page 18
+WARNING 2025-07-07 17:39:02,404 hadith_processor No text found on page 19
+WARNING 2025-07-07 17:39:02,405 hadith_processor No text found on page 20
+WARNING 2025-07-07 17:39:02,405 hadith_processor No text found on page 21
+WARNING 2025-07-07 17:39:02,406 hadith_processor No text found on page 22
+WARNING 2025-07-07 17:39:02,406 hadith_processor No text found on page 23
+WARNING 2025-07-07 17:39:02,407 hadith_processor No text found on page 24
+WARNING 2025-07-07 17:39:02,408 hadith_processor No text found on page 25
+WARNING 2025-07-07 17:39:02,408 hadith_processor No text found on page 26
+WARNING 2025-07-07 17:39:02,409 hadith_processor No text found on page 27
+WARNING 2025-07-07 17:39:02,410 hadith_processor No text found on page 28
+WARNING 2025-07-07 17:39:02,410 hadith_processor No text found on page 29
+WARNING 2025-07-07 17:39:02,411 hadith_processor No text found on page 30
+WARNING 2025-07-07 17:39:02,412 hadith_processor No text found on page 31
+WARNING 2025-07-07 17:39:02,413 hadith_processor No text found on page 32
+WARNING 2025-07-07 17:39:02,413 hadith_processor No text found on page 33
+WARNING 2025-07-07 17:39:02,415 hadith_processor No text found on page 34
+WARNING 2025-07-07 17:39:02,416 hadith_processor No text found on page 35
+WARNING 2025-07-07 17:39:02,416 hadith_processor No text found on page 36
+WARNING 2025-07-07 17:39:02,417 hadith_processor No text found on page 37
+WARNING 2025-07-07 17:39:02,418 hadith_processor No text found on page 38
+WARNING 2025-07-07 17:39:02,419 hadith_processor No text found on page 39
+WARNING 2025-07-07 17:39:02,420 hadith_processor No text found on page 40
+WARNING 2025-07-07 17:39:02,421 hadith_processor No text found on page 41
+WARNING 2025-07-07 17:39:02,422 hadith_processor No text found on page 42
+WARNING 2025-07-07 17:39:02,423 hadith_processor No text found on page 43
+WARNING 2025-07-07 17:39:02,425 hadith_processor No text found on page 44
+WARNING 2025-07-07 17:39:02,426 hadith_processor No text found on page 45
+WARNING 2025-07-07 17:39:02,427 hadith_processor No text found on page 46
+WARNING 2025-07-07 17:39:02,429 hadith_processor No text found on page 47
+WARNING 2025-07-07 17:39:02,430 hadith_processor No text found on page 48
+WARNING 2025-07-07 17:39:02,431 hadith_processor No text found on page 49
+WARNING 2025-07-07 17:39:02,432 hadith_processor No text found on page 50
+WARNING 2025-07-07 17:39:02,433 hadith_processor No text found on page 51
+WARNING 2025-07-07 17:39:02,434 hadith_processor No text found on page 52
+WARNING 2025-07-07 17:39:02,434 hadith_processor No text found on page 53
+WARNING 2025-07-07 17:39:02,435 hadith_processor No text found on page 54
+WARNING 2025-07-07 17:39:02,436 hadith_processor No text found on page 55
+WARNING 2025-07-07 17:39:02,437 hadith_processor No text found on page 56
+WARNING 2025-07-07 17:39:02,438 hadith_processor No text found on page 57
+WARNING 2025-07-07 17:39:02,439 hadith_processor No text found on page 58
+WARNING 2025-07-07 17:39:02,440 hadith_processor No text found on page 59
+WARNING 2025-07-07 17:39:02,441 hadith_processor No text found on page 60
+WARNING 2025-07-07 17:39:02,442 hadith_processor No text found on page 61
+WARNING 2025-07-07 17:39:02,443 hadith_processor No text found on page 62
+WARNING 2025-07-07 17:39:02,444 hadith_processor No text found on page 63
+WARNING 2025-07-07 17:39:02,444 hadith_processor No text found on page 64
+WARNING 2025-07-07 17:39:02,445 hadith_processor No text found on page 65
+WARNING 2025-07-07 17:39:02,446 hadith_processor No text found on page 66
+WARNING 2025-07-07 17:39:02,446 hadith_processor No text found on page 67
+WARNING 2025-07-07 17:39:02,448 hadith_processor No text found on page 68
+WARNING 2025-07-07 17:39:02,449 hadith_processor No text found on page 69
+WARNING 2025-07-07 17:39:02,450 hadith_processor No text found on page 70
+WARNING 2025-07-07 17:39:02,451 hadith_processor No text found on page 71
+WARNING 2025-07-07 17:39:02,452 hadith_processor No text found on page 72
+WARNING 2025-07-07 17:39:02,452 hadith_processor No text found on page 73
+WARNING 2025-07-07 17:39:02,453 hadith_processor No text found on page 74
+WARNING 2025-07-07 17:39:02,454 hadith_processor No text found on page 75
+WARNING 2025-07-07 17:39:02,455 hadith_processor No text found on page 76
+WARNING 2025-07-07 17:39:02,455 hadith_processor No text found on page 77
+WARNING 2025-07-07 17:39:02,456 hadith_processor No text found on page 78
+WARNING 2025-07-07 17:39:02,456 hadith_processor No text found on page 79
+WARNING 2025-07-07 17:39:02,457 hadith_processor No text found on page 80
+WARNING 2025-07-07 17:39:02,458 hadith_processor No text found on page 81
+WARNING 2025-07-07 17:39:02,459 hadith_processor No text found on page 82
+WARNING 2025-07-07 17:39:02,459 hadith_processor No text found on page 83
+WARNING 2025-07-07 17:39:02,460 hadith_processor No text found on page 84
+WARNING 2025-07-07 17:39:02,460 hadith_processor No text found on page 85
+WARNING 2025-07-07 17:39:02,461 hadith_processor No text found on page 86
+WARNING 2025-07-07 17:39:02,462 hadith_processor No text found on page 87
+WARNING 2025-07-07 17:39:02,462 hadith_processor No text found on page 88
+WARNING 2025-07-07 17:39:02,463 hadith_processor No text found on page 89
+WARNING 2025-07-07 17:39:02,463 hadith_processor No text found on page 90
+WARNING 2025-07-07 17:39:02,464 hadith_processor No text found on page 91
+WARNING 2025-07-07 17:39:02,465 hadith_processor No text found on page 92
+WARNING 2025-07-07 17:39:02,466 hadith_processor No text found on page 93
+WARNING 2025-07-07 17:39:02,466 hadith_processor No text found on page 94
+WARNING 2025-07-07 17:39:02,467 hadith_processor No text found on page 95
+WARNING 2025-07-07 17:39:02,467 hadith_processor No text found on page 96
+WARNING 2025-07-07 17:39:02,468 hadith_processor No text found on page 97
+WARNING 2025-07-07 17:39:02,469 hadith_processor No text found on page 98
+WARNING 2025-07-07 17:39:02,470 hadith_processor No text found on page 99
+WARNING 2025-07-07 17:39:02,471 hadith_processor No text found on page 100
+WARNING 2025-07-07 17:39:02,472 hadith_processor No text found on page 101
+WARNING 2025-07-07 17:39:02,473 hadith_processor No text found on page 102
+WARNING 2025-07-07 17:39:02,475 hadith_processor No text found on page 103
+WARNING 2025-07-07 17:39:02,476 hadith_processor No text found on page 104
+WARNING 2025-07-07 17:39:02,477 hadith_processor No text found on page 105
+WARNING 2025-07-07 17:39:02,482 hadith_processor No text found on page 106
+WARNING 2025-07-07 17:39:02,483 hadith_processor No text found on page 107
+WARNING 2025-07-07 17:39:02,484 hadith_processor No text found on page 108
+WARNING 2025-07-07 17:39:02,485 hadith_processor No text found on page 109
+WARNING 2025-07-07 17:39:02,486 hadith_processor No text found on page 110
+WARNING 2025-07-07 17:39:02,487 hadith_processor No text found on page 111
+WARNING 2025-07-07 17:39:02,488 hadith_processor No text found on page 112
+WARNING 2025-07-07 17:39:02,488 hadith_processor No text found on page 113
+WARNING 2025-07-07 17:39:02,489 hadith_processor No text found on page 114
+WARNING 2025-07-07 17:39:02,490 hadith_processor No text found on page 115
+WARNING 2025-07-07 17:39:02,491 hadith_processor No text found on page 116
+WARNING 2025-07-07 17:39:02,492 hadith_processor No text found on page 117
+WARNING 2025-07-07 17:39:02,493 hadith_processor No text found on page 118
+WARNING 2025-07-07 17:39:02,494 hadith_processor No text found on page 119
+WARNING 2025-07-07 17:39:02,495 hadith_processor No text found on page 120
+WARNING 2025-07-07 17:39:02,496 hadith_processor No text found on page 121
+WARNING 2025-07-07 17:39:02,497 hadith_processor No text found on page 122
+WARNING 2025-07-07 17:39:02,498 hadith_processor No text found on page 123
+WARNING 2025-07-07 17:39:02,499 hadith_processor No text found on page 124
+WARNING 2025-07-07 17:39:02,499 hadith_processor No text found on page 125
+WARNING 2025-07-07 17:39:02,500 hadith_processor No text found on page 126
+WARNING 2025-07-07 17:39:02,501 hadith_processor No text found on page 127
+WARNING 2025-07-07 17:39:02,502 hadith_processor No text found on page 128
+WARNING 2025-07-07 17:39:02,503 hadith_processor No text found on page 129
+WARNING 2025-07-07 17:39:02,503 hadith_processor No text found on page 130
+WARNING 2025-07-07 17:39:02,504 hadith_processor No text found on page 131
+WARNING 2025-07-07 17:39:02,505 hadith_processor No text found on page 132
+WARNING 2025-07-07 17:39:02,506 hadith_processor No text found on page 133
+WARNING 2025-07-07 17:39:02,507 hadith_processor No text found on page 134
+WARNING 2025-07-07 17:39:02,508 hadith_processor No text found on page 135
+WARNING 2025-07-07 17:39:02,509 hadith_processor No text found on page 136
+WARNING 2025-07-07 17:39:02,510 hadith_processor No text found on page 137
+WARNING 2025-07-07 17:39:02,510 hadith_processor No text found on page 138
+WARNING 2025-07-07 17:39:02,511 hadith_processor No text found on page 139
+WARNING 2025-07-07 17:39:02,512 hadith_processor No text found on page 140
+WARNING 2025-07-07 17:39:02,513 hadith_processor No text found on page 141
+WARNING 2025-07-07 17:39:02,514 hadith_processor No text found on page 142
+WARNING 2025-07-07 17:39:02,515 hadith_processor No text found on page 143
+WARNING 2025-07-07 17:39:02,516 hadith_processor No text found on page 144
+WARNING 2025-07-07 17:39:02,517 hadith_processor No text found on page 145
+WARNING 2025-07-07 17:39:02,518 hadith_processor No text found on page 146
+WARNING 2025-07-07 17:39:02,518 hadith_processor No text found on page 147
+WARNING 2025-07-07 17:39:02,519 hadith_processor No text found on page 148
+WARNING 2025-07-07 17:39:02,520 hadith_processor No text found on page 149
+WARNING 2025-07-07 17:39:02,520 hadith_processor No text found on page 150
+WARNING 2025-07-07 17:39:02,521 hadith_processor No text found on page 151
+WARNING 2025-07-07 17:39:02,522 hadith_processor No text found on page 152
+WARNING 2025-07-07 17:39:02,523 hadith_processor No text found on page 153
+WARNING 2025-07-07 17:39:02,524 hadith_processor No text found on page 154
+WARNING 2025-07-07 17:39:02,525 hadith_processor No text found on page 155
+WARNING 2025-07-07 17:39:02,525 hadith_processor No text found on page 156
+WARNING 2025-07-07 17:39:02,527 hadith_processor No text found on page 157
+WARNING 2025-07-07 17:39:02,528 hadith_processor No text found on page 158
+WARNING 2025-07-07 17:39:02,529 hadith_processor No text found on page 159
+WARNING 2025-07-07 17:39:02,530 hadith_processor No text found on page 160
+WARNING 2025-07-07 17:39:02,531 hadith_processor No text found on page 161
+WARNING 2025-07-07 17:39:02,532 hadith_processor No text found on page 162
+WARNING 2025-07-07 17:39:02,532 hadith_processor No text found on page 163
+WARNING 2025-07-07 17:39:02,533 hadith_processor No text found on page 164
+WARNING 2025-07-07 17:39:02,533 hadith_processor No text found on page 165
+WARNING 2025-07-07 17:39:02,534 hadith_processor No text found on page 166
+WARNING 2025-07-07 17:39:02,535 hadith_processor No text found on page 167
+WARNING 2025-07-07 17:39:02,535 hadith_processor No text found on page 168
+WARNING 2025-07-07 17:39:02,536 hadith_processor No text found on page 169
+WARNING 2025-07-07 17:39:02,536 hadith_processor No text found on page 170
+WARNING 2025-07-07 17:39:02,536 hadith_processor No text found on page 171
+WARNING 2025-07-07 17:39:02,537 hadith_processor No text found on page 172
+WARNING 2025-07-07 17:39:02,537 hadith_processor No text found on page 173
+WARNING 2025-07-07 17:39:02,538 hadith_processor No text found on page 174
+WARNING 2025-07-07 17:39:02,539 hadith_processor No text found on page 175
+WARNING 2025-07-07 17:39:02,539 hadith_processor No text found on page 176
+WARNING 2025-07-07 17:39:02,540 hadith_processor No text found on page 177
+WARNING 2025-07-07 17:39:02,540 hadith_processor No text found on page 178
+WARNING 2025-07-07 17:39:02,541 hadith_processor No text found on page 179
+WARNING 2025-07-07 17:39:02,541 hadith_processor PyPDF2 extraction returned no text
+WARNING 2025-07-07 17:39:02,541 hadith_processor No text found with standard extraction, falling back to OCR...
+INFO 2025-07-07 17:39:02,541 hadith_processor Starting OCR processing...
+INFO 2025-07-07 17:39:02,541 hadith_processor Starting OCR processing
+INFO 2025-07-07 17:39:03,026 hadith_processor Converting PDF to images: C:\Users\T\AppData\Local\Temp\tmp2qak3l84.pdf
+ERROR 2025-07-07 17:39:03,032 hadith_processor Error converting PDF to images: Unable to get page count. Is poppler installed and in PATH?
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+ERROR 2025-07-07 17:39:03,041 hadith_processor OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 117, in extract_with_ocr
+    raise Exception(f"Failed to convert PDF to images: {str(e)}")
+Exception: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+DEBUG 2025-07-07 17:39:03,049 hadith_processor Cleaned up temporary file
+WARNING 2025-07-07 17:39:03,049 hadith_processor Error in standard extraction: Failed to extract text from PDF: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?, trying with OCR...
+INFO 2025-07-07 17:39:03,050 hadith_processor Starting PDF extraction with OCR: True
+INFO 2025-07-07 17:39:03,050 hadith_processor File type: <class 'django.db.models.fields.files.FieldFile'>
+INFO 2025-07-07 17:39:03,059 hadith_processor Starting OCR processing...
+INFO 2025-07-07 17:39:03,059 hadith_processor Starting OCR processing
+INFO 2025-07-07 17:39:03,207 hadith_processor Converting PDF to images: C:\Users\T\AppData\Local\Temp\tmp8p_536qs.pdf
+ERROR 2025-07-07 17:39:03,211 hadith_processor Error converting PDF to images: Unable to get page count. Is poppler installed and in PATH?
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 117, in extract_with_ocr
+    raise Exception(f"Failed to convert PDF to images: {str(e)}")
+Exception: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 179, in extract_text_from_pdf
+    text = extract_with_ocr(file_path)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 159, in extract_with_ocr
+    raise Exception(f"OCR processing failed: {str(e)}")
+Exception: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 304, in process_document
+    text = extract_text_from_pdf(file, use_ocr=False)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 199, in extract_text_from_pdf
+    raise Exception(_(error_msg))
+Exception: Failed to extract text from PDF: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+ERROR 2025-07-07 17:39:03,220 hadith_processor OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 117, in extract_with_ocr
+    raise Exception(f"Failed to convert PDF to images: {str(e)}")
+Exception: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 179, in extract_text_from_pdf
+    text = extract_with_ocr(file_path)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 159, in extract_with_ocr
+    raise Exception(f"OCR processing failed: {str(e)}")
+Exception: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 304, in process_document
+    text = extract_text_from_pdf(file, use_ocr=False)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 199, in extract_text_from_pdf
+    raise Exception(_(error_msg))
+Exception: Failed to extract text from PDF: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 117, in extract_with_ocr
+    raise Exception(f"Failed to convert PDF to images: {str(e)}")
+Exception: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+DEBUG 2025-07-07 17:39:03,236 hadith_processor Cleaned up temporary file
+ERROR 2025-07-07 17:39:03,236 hadith_processor Error extracting text from document: Failed to extract text from PDF: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 117, in extract_with_ocr
+    raise Exception(f"Failed to convert PDF to images: {str(e)}")
+Exception: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 179, in extract_text_from_pdf
+    text = extract_with_ocr(file_path)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 159, in extract_with_ocr
+    raise Exception(f"OCR processing failed: {str(e)}")
+Exception: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 304, in process_document
+    text = extract_text_from_pdf(file, use_ocr=False)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 199, in extract_text_from_pdf
+    raise Exception(_(error_msg))
+Exception: Failed to extract text from PDF: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+  File "C:\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 113, in extract_with_ocr
+    images = convert_from_path(pdf_path, dpi=300)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ~~~~~~~~~~~~~~~~~^
+        pdf_path, userpw, ownerpw, poppler_path=poppler_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )["Pages"]
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+        "Unable to get page count. Is poppler installed and in PATH?"
+    )
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 117, in extract_with_ocr
+    raise Exception(f"Failed to convert PDF to images: {str(e)}")
+Exception: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 179, in extract_text_from_pdf
+    text = extract_with_ocr(file_path)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 159, in extract_with_ocr
+    raise Exception(f"OCR processing failed: {str(e)}")
+Exception: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 310, in process_document
+    text = extract_text_from_pdf(file, use_ocr=True)
+  File "D:\sanad system\sanad_system\library\hadith_processor.py", line 199, in extract_text_from_pdf
+    raise Exception(_(error_msg))
+Exception: Failed to extract text from PDF: OCR processing failed: Failed to convert PDF to images: Unable to get page count. Is poppler installed and in PATH?
+INFO 2025-07-07 17:39:03,246 views Document processing completed. Success: False
+WARNING 2025-07-07 17:39:03,349 log Bad Request: /library/document/1/extract-hadiths/
+WARNING 2025-07-07 17:39:03,350 basehttp "POST /library/document/1/extract-hadiths/ HTTP/1.1" 400 206
+INFO 2025-07-07 17:40:20,889 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 17:40:24,415 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 17:40:54,589 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 17:40:57,787 basehttp "GET /library/document/1/ HTTP/1.1" 200 24433
+INFO 2025-07-07 17:40:58,601 basehttp "GET /library/document/1/page/0/?zoom=1 HTTP/1.1" 200 1062047
+INFO 2025-07-07 17:41:03,173 basehttp "GET /admin/ HTTP/1.1" 200 24167
+INFO 2025-07-07 17:41:03,275 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-07 17:41:03,478 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-07 17:41:03,500 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-07-07 17:41:03,531 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-07 17:41:05,835 basehttp "GET / HTTP/1.1" 200 23356
+INFO 2025-07-07 17:41:07,739 basehttp "GET /library/ HTTP/1.1" 200 14356
+INFO 2025-07-07 17:41:10,167 basehttp "GET /library/document/1/ HTTP/1.1" 200 24120
+INFO 2025-07-07 17:41:10,780 basehttp "GET /library/document/1/page/0/?zoom=1 HTTP/1.1" 200 1062047
+INFO 2025-07-07 17:41:12,469 views Extracting hadiths from document 1
+INFO 2025-07-07 17:41:12,538 hadith_processor Extracting text from PDF file
+INFO 2025-07-07 17:41:12,538 hadith_processor Starting PDF extraction with OCR: False
+INFO 2025-07-07 17:41:12,538 hadith_processor File type: <class 'django.db.models.fields.files.FieldFile'>
+INFO 2025-07-07 17:41:12,553 hadith_processor Attempting standard text extraction...
+INFO 2025-07-07 17:41:12,553 hadith_processor Attempting PyPDF2 text extraction
+INFO 2025-07-07 17:41:12,638 hadith_processor PDF has 179 pages
+WARNING 2025-07-07 17:41:12,639 hadith_processor No text found on page 1
+WARNING 2025-07-07 17:41:12,639 hadith_processor No text found on page 2
+WARNING 2025-07-07 17:41:12,640 hadith_processor No text found on page 3
+WARNING 2025-07-07 17:41:12,641 hadith_processor No text found on page 4
+WARNING 2025-07-07 17:41:12,641 hadith_processor No text found on page 5
+WARNING 2025-07-07 17:41:12,642 hadith_processor No text found on page 6
+WARNING 2025-07-07 17:41:12,645 hadith_processor No text found on page 7
+WARNING 2025-07-07 17:41:12,646 hadith_processor No text found on page 8
+WARNING 2025-07-07 17:41:12,647 hadith_processor No text found on page 9
+WARNING 2025-07-07 17:41:12,648 hadith_processor No text found on page 10
+WARNING 2025-07-07 17:41:12,649 hadith_processor No text found on page 11
+WARNING 2025-07-07 17:41:12,649 hadith_processor No text found on page 12
+WARNING 2025-07-07 17:41:12,650 hadith_processor No text found on page 13
+WARNING 2025-07-07 17:41:12,650 hadith_processor No text found on page 14
+WARNING 2025-07-07 17:41:12,651 hadith_processor No text found on page 15
+WARNING 2025-07-07 17:41:12,651 hadith_processor No text found on page 16
+WARNING 2025-07-07 17:41:12,652 hadith_processor No text found on page 17
+WARNING 2025-07-07 17:41:12,653 hadith_processor No text found on page 18
+WARNING 2025-07-07 17:41:12,653 hadith_processor No text found on page 19
+WARNING 2025-07-07 17:41:12,654 hadith_processor No text found on page 20
+WARNING 2025-07-07 17:41:12,656 hadith_processor No text found on page 21
+WARNING 2025-07-07 17:41:12,657 hadith_processor No text found on page 22
+WARNING 2025-07-07 17:41:12,658 hadith_processor No text found on page 23
+WARNING 2025-07-07 17:41:12,660 hadith_processor No text found on page 24
+WARNING 2025-07-07 17:41:12,662 hadith_processor No text found on page 25
+WARNING 2025-07-07 17:41:12,664 hadith_processor No text found on page 26
+WARNING 2025-07-07 17:41:12,665 hadith_processor No text found on page 27
+WARNING 2025-07-07 17:41:12,665 hadith_processor No text found on page 28
+WARNING 2025-07-07 17:41:12,666 hadith_processor No text found on page 29
+WARNING 2025-07-07 17:41:12,666 hadith_processor No text found on page 30
+WARNING 2025-07-07 17:41:12,667 hadith_processor No text found on page 31
+WARNING 2025-07-07 17:41:12,668 hadith_processor No text found on page 32
+WARNING 2025-07-07 17:41:12,668 hadith_processor No text found on page 33
+WARNING 2025-07-07 17:41:12,669 hadith_processor No text found on page 34
+WARNING 2025-07-07 17:41:12,669 hadith_processor No text found on page 35
+WARNING 2025-07-07 17:41:12,670 hadith_processor No text found on page 36
+WARNING 2025-07-07 17:41:12,671 hadith_processor No text found on page 37
+WARNING 2025-07-07 17:41:12,671 hadith_processor No text found on page 38
+WARNING 2025-07-07 17:41:12,672 hadith_processor No text found on page 39
+WARNING 2025-07-07 17:41:12,672 hadith_processor No text found on page 40
+WARNING 2025-07-07 17:41:12,674 hadith_processor No text found on page 41
+WARNING 2025-07-07 17:41:12,675 hadith_processor No text found on page 42
+WARNING 2025-07-07 17:41:12,677 hadith_processor No text found on page 43
+WARNING 2025-07-07 17:41:12,679 hadith_processor No text found on page 44
+WARNING 2025-07-07 17:41:12,681 hadith_processor No text found on page 45
+WARNING 2025-07-07 17:41:12,681 hadith_processor No text found on page 46
+WARNING 2025-07-07 17:41:12,682 hadith_processor No text found on page 47
+WARNING 2025-07-07 17:41:12,683 hadith_processor No text found on page 48
+WARNING 2025-07-07 17:41:12,683 hadith_processor No text found on page 49
+WARNING 2025-07-07 17:41:12,684 hadith_processor No text found on page 50
+WARNING 2025-07-07 17:41:12,684 hadith_processor No text found on page 51
+WARNING 2025-07-07 17:41:12,685 hadith_processor No text found on page 52
+WARNING 2025-07-07 17:41:12,685 hadith_processor No text found on page 53
+WARNING 2025-07-07 17:41:12,686 hadith_processor No text found on page 54
+WARNING 2025-07-07 17:41:12,686 hadith_processor No text found on page 55
+WARNING 2025-07-07 17:41:12,687 hadith_processor No text found on page 56
+WARNING 2025-07-07 17:41:12,688 hadith_processor No text found on page 57
+WARNING 2025-07-07 17:41:12,688 hadith_processor No text found on page 58
+WARNING 2025-07-07 17:41:12,689 hadith_processor No text found on page 59
+WARNING 2025-07-07 17:41:12,689 hadith_processor No text found on page 60
+WARNING 2025-07-07 17:41:12,690 hadith_processor No text found on page 61
+WARNING 2025-07-07 17:41:12,690 hadith_processor No text found on page 62
+WARNING 2025-07-07 17:41:12,692 hadith_processor No text found on page 63
+WARNING 2025-07-07 17:41:12,694 hadith_processor No text found on page 64
+WARNING 2025-07-07 17:41:12,694 hadith_processor No text found on page 65
+WARNING 2025-07-07 17:41:12,695 hadith_processor No text found on page 66
+WARNING 2025-07-07 17:41:12,696 hadith_processor No text found on page 67
+WARNING 2025-07-07 17:41:12,696 hadith_processor No text found on page 68
+WARNING 2025-07-07 17:41:12,697 hadith_processor No text found on page 69
+WARNING 2025-07-07 17:41:12,698 hadith_processor No text found on page 70
+WARNING 2025-07-07 17:41:12,698 hadith_processor No text found on page 71
+WARNING 2025-07-07 17:41:12,699 hadith_processor No text found on page 72
+WARNING 2025-07-07 17:41:12,700 hadith_processor No text found on page 73
+WARNING 2025-07-07 17:41:12,700 hadith_processor No text found on page 74
+WARNING 2025-07-07 17:41:12,701 hadith_processor No text found on page 75
+WARNING 2025-07-07 17:41:12,701 hadith_processor No text found on page 76
+WARNING 2025-07-07 17:41:12,702 hadith_processor No text found on page 77
+WARNING 2025-07-07 17:41:12,703 hadith_processor No text found on page 78
+WARNING 2025-07-07 17:41:12,704 hadith_processor No text found on page 79
+WARNING 2025-07-07 17:41:12,704 hadith_processor No text found on page 80
+WARNING 2025-07-07 17:41:12,705 hadith_processor No text found on page 81
+WARNING 2025-07-07 17:41:12,706 hadith_processor No text found on page 82
+WARNING 2025-07-07 17:41:12,707 hadith_processor No text found on page 83
+WARNING 2025-07-07 17:41:12,708 hadith_processor No text found on page 84
+WARNING 2025-07-07 17:41:12,709 hadith_processor No text found on page 85
+WARNING 2025-07-07 17:41:12,710 hadith_processor No text found on page 86
+WARNING 2025-07-07 17:41:12,711 hadith_processor No text found on page 87
+WARNING 2025-07-07 17:41:12,712 hadith_processor No text found on page 88
+WARNING 2025-07-07 17:41:12,713 hadith_processor No text found on page 89
+WARNING 2025-07-07 17:41:12,713 hadith_processor No text found on page 90
+WARNING 2025-07-07 17:41:12,714 hadith_processor No text found on page 91
+WARNING 2025-07-07 17:41:12,715 hadith_processor No text found on page 92
+WARNING 2025-07-07 17:41:12,715 hadith_processor No text found on page 93
+WARNING 2025-07-07 17:41:12,716 hadith_processor No text found on page 94
+WARNING 2025-07-07 17:41:12,717 hadith_processor No text found on page 95
+WARNING 2025-07-07 17:41:12,717 hadith_processor No text found on page 96
+WARNING 2025-07-07 17:41:12,718 hadith_processor No text found on page 97
+WARNING 2025-07-07 17:41:12,719 hadith_processor No text found on page 98
+WARNING 2025-07-07 17:41:12,719 hadith_processor No text found on page 99
+WARNING 2025-07-07 17:41:12,720 hadith_processor No text found on page 100
+WARNING 2025-07-07 17:41:12,721 hadith_processor No text found on page 101
+WARNING 2025-07-07 17:41:12,722 hadith_processor No text found on page 102
+WARNING 2025-07-07 17:41:12,723 hadith_processor No text found on page 103
+WARNING 2025-07-07 17:41:12,724 hadith_processor No text found on page 104
+WARNING 2025-07-07 17:41:12,726 hadith_processor No text found on page 105
+WARNING 2025-07-07 17:41:12,727 hadith_processor No text found on page 106
+WARNING 2025-07-07 17:41:12,728 hadith_processor No text found on page 107
+WARNING 2025-07-07 17:41:12,728 hadith_processor No text found on page 108
+WARNING 2025-07-07 17:41:12,729 hadith_processor No text found on page 109
+WARNING 2025-07-07 17:41:12,730 hadith_processor No text found on page 110
+WARNING 2025-07-07 17:41:12,731 hadith_processor No text found on page 111
+WARNING 2025-07-07 17:41:12,732 hadith_processor No text found on page 112
+WARNING 2025-07-07 17:41:12,733 hadith_processor No text found on page 113
+WARNING 2025-07-07 17:41:12,734 hadith_processor No text found on page 114
+WARNING 2025-07-07 17:41:12,734 hadith_processor No text found on page 115
+WARNING 2025-07-07 17:41:12,735 hadith_processor No text found on page 116
+WARNING 2025-07-07 17:41:12,735 hadith_processor No text found on page 117
+WARNING 2025-07-07 17:41:12,736 hadith_processor No text found on page 118
+WARNING 2025-07-07 17:41:12,736 hadith_processor No text found on page 119
+WARNING 2025-07-07 17:41:12,737 hadith_processor No text found on page 120
+WARNING 2025-07-07 17:41:12,738 hadith_processor No text found on page 121
+WARNING 2025-07-07 17:41:12,739 hadith_processor No text found on page 122
+WARNING 2025-07-07 17:41:12,739 hadith_processor No text found on page 123
+WARNING 2025-07-07 17:41:12,740 hadith_processor No text found on page 124
+WARNING 2025-07-07 17:41:12,741 hadith_processor No text found on page 125
+WARNING 2025-07-07 17:41:12,742 hadith_processor No text found on page 126
+WARNING 2025-07-07 17:41:12,743 hadith_processor No text found on page 127
+WARNING 2025-07-07 17:41:12,744 hadith_processor No text found on page 128
+WARNING 2025-07-07 17:41:12,744 hadith_processor No text found on page 129
+WARNING 2025-07-07 17:41:12,745 hadith_processor No text found on page 130
+WARNING 2025-07-07 17:41:12,745 hadith_processor No text found on page 131
+WARNING 2025-07-07 17:41:12,746 hadith_processor No text found on page 132
+WARNING 2025-07-07 17:41:12,747 hadith_processor No text found on page 133
+WARNING 2025-07-07 17:41:12,747 hadith_processor No text found on page 134
+WARNING 2025-07-07 17:41:12,748 hadith_processor No text found on page 135
+WARNING 2025-07-07 17:41:12,748 hadith_processor No text found on page 136
+WARNING 2025-07-07 17:41:12,750 hadith_processor No text found on page 137
+WARNING 2025-07-07 17:41:12,750 hadith_processor No text found on page 138
+WARNING 2025-07-07 17:41:12,751 hadith_processor No text found on page 139
+WARNING 2025-07-07 17:41:12,752 hadith_processor No text found on page 140
+WARNING 2025-07-07 17:41:12,752 hadith_processor No text found on page 141
+WARNING 2025-07-07 17:41:12,753 hadith_processor No text found on page 142
+WARNING 2025-07-07 17:41:12,753 hadith_processor No text found on page 143
+WARNING 2025-07-07 17:41:12,754 hadith_processor No text found on page 144
+WARNING 2025-07-07 17:41:12,755 hadith_processor No text found on page 145
+WARNING 2025-07-07 17:41:12,755 hadith_processor No text found on page 146
+WARNING 2025-07-07 17:41:12,756 hadith_processor No text found on page 147
+WARNING 2025-07-07 17:41:12,756 hadith_processor No text found on page 148
+WARNING 2025-07-07 17:41:12,757 hadith_processor No text found on page 149
+WARNING 2025-07-07 17:41:12,757 hadith_processor No text found on page 150
+WARNING 2025-07-07 17:41:12,758 hadith_processor No text found on page 151
+WARNING 2025-07-07 17:41:12,759 hadith_processor No text found on page 152
+WARNING 2025-07-07 17:41:12,760 hadith_processor No text found on page 153
+WARNING 2025-07-07 17:41:12,761 hadith_processor No text found on page 154
+WARNING 2025-07-07 17:41:12,762 hadith_processor No text found on page 155
+WARNING 2025-07-07 17:41:12,763 hadith_processor No text found on page 156
+WARNING 2025-07-07 17:41:12,763 hadith_processor No text found on page 157
+WARNING 2025-07-07 17:41:12,764 hadith_processor No text found on page 158
+WARNING 2025-07-07 17:41:12,765 hadith_processor No text found on page 159
+WARNING 2025-07-07 17:41:12,765 hadith_processor No text found on page 160
+WARNING 2025-07-07 17:41:12,766 hadith_processor No text found on page 161
+WARNING 2025-07-07 17:41:12,767 hadith_processor No text found on page 162
+WARNING 2025-07-07 17:41:12,767 hadith_processor No text found on page 163
+WARNING 2025-07-07 17:41:12,768 hadith_processor No text found on page 164
+WARNING 2025-07-07 17:41:12,768 hadith_processor No text found on page 165
+WARNING 2025-07-07 17:41:12,769 hadith_processor No text found on page 166
+WARNING 2025-07-07 17:41:12,769 hadith_processor No text found on page 167
+WARNING 2025-07-07 17:41:12,770 hadith_processor No text found on page 168
+WARNING 2025-07-07 17:41:12,771 hadith_processor No text found on page 169
+WARNING 2025-07-07 17:41:12,772 hadith_processor No text found on page 170
+WARNING 2025-07-07 17:41:12,773 hadith_processor No text found on page 171
+WARNING 2025-07-07 17:41:12,774 hadith_processor No text found on page 172
+WARNING 2025-07-07 17:41:12,776 hadith_processor No text found on page 173
+WARNING 2025-07-07 17:41:12,776 hadith_processor No text found on page 174
+WARNING 2025-07-07 17:41:12,777 hadith_processor No text found on page 175
+WARNING 2025-07-07 17:41:12,778 hadith_processor No text found on page 176
+WARNING 2025-07-07 17:41:12,779 hadith_processor No text found on page 177
+WARNING 2025-07-07 17:41:12,779 hadith_processor No text found on page 178
+WARNING 2025-07-07 17:41:12,780 hadith_processor No text found on page 179
+WARNING 2025-07-07 17:41:12,780 hadith_processor PyPDF2 extraction returned no text
+WARNING 2025-07-07 17:41:12,780 hadith_processor No text found with standard extraction, falling back to OCR...
+INFO 2025-07-07 17:41:12,781 hadith_processor Starting OCR processing...
+INFO 2025-07-07 17:41:12,781 hadith_processor Starting OCR processing
+INFO 2025-07-07 17:41:12,936 hadith_processor Converting PDF to images: C:\Users\T\AppData\Local\Temp\tmpl4dbg6kk.pdf
+INFO 2025-07-07 17:46:41,845 hadith_processor Converted 179 pages to images
+DEBUG 2025-07-07 17:46:42,627 hadith_processor Processing page 1/179
+DEBUG 2025-07-07 17:47:03,062 hadith_processor Extracted 1371 characters from page 1
+DEBUG 2025-07-07 17:47:03,063 hadith_processor Processing page 2/179
+DEBUG 2025-07-07 17:47:06,281 hadith_processor Extracted 85 characters from page 2
+DEBUG 2025-07-07 17:47:06,282 hadith_processor Processing page 3/179
+DEBUG 2025-07-07 17:47:12,383 hadith_processor Extracted 10 characters from page 3
+DEBUG 2025-07-07 17:47:12,384 hadith_processor Processing page 4/179
+DEBUG 2025-07-07 17:47:16,947 hadith_processor Extracted 91 characters from page 4
+DEBUG 2025-07-07 17:47:16,948 hadith_processor Processing page 5/179
+DEBUG 2025-07-07 17:47:23,505 hadith_processor Extracted 112 characters from page 5
+INFO 2025-07-07 17:47:23,506 hadith_processor Processed 5/179 pages
+DEBUG 2025-07-07 17:47:23,506 hadith_processor Processing page 6/179
+DEBUG 2025-07-07 17:47:27,714 hadith_processor Extracted 845 characters from page 6
+DEBUG 2025-07-07 17:47:27,714 hadith_processor Processing page 7/179
+DEBUG 2025-07-07 17:47:33,323 hadith_processor Extracted 1520 characters from page 7
+DEBUG 2025-07-07 17:47:33,323 hadith_processor Processing page 8/179
+DEBUG 2025-07-07 17:47:38,325 hadith_processor Extracted 1256 characters from page 8
+DEBUG 2025-07-07 17:47:38,325 hadith_processor Processing page 9/179
+DEBUG 2025-07-07 17:47:41,620 hadith_processor Extracted 576 characters from page 9
+DEBUG 2025-07-07 17:47:41,620 hadith_processor Processing page 10/179
+DEBUG 2025-07-07 17:47:44,956 hadith_processor Extracted 496 characters from page 10
+INFO 2025-07-07 17:47:44,957 hadith_processor Processed 10/179 pages
+DEBUG 2025-07-07 17:47:44,957 hadith_processor Processing page 11/179
+DEBUG 2025-07-07 17:47:52,520 hadith_processor Extracted 1218 characters from page 11
+DEBUG 2025-07-07 17:47:52,520 hadith_processor Processing page 12/179
+DEBUG 2025-07-07 17:47:55,163 hadith_processor Extracted 429 characters from page 12
+DEBUG 2025-07-07 17:47:55,164 hadith_processor Processing page 13/179
+WARNING 2025-07-07 17:47:57,168 hadith_processor No text recognized on page 13
+DEBUG 2025-07-07 17:47:57,169 hadith_processor Processing page 14/179
+DEBUG 2025-07-07 17:48:00,708 hadith_processor Extracted 785 characters from page 14
+DEBUG 2025-07-07 17:48:00,709 hadith_processor Processing page 15/179
+DEBUG 2025-07-07 17:48:03,237 hadith_processor Extracted 207 characters from page 15
+INFO 2025-07-07 17:48:03,238 hadith_processor Processed 15/179 pages
+DEBUG 2025-07-07 17:48:03,238 hadith_processor Processing page 16/179
+DEBUG 2025-07-07 17:48:05,854 hadith_processor Extracted 172 characters from page 16
+DEBUG 2025-07-07 17:48:05,855 hadith_processor Processing page 17/179
+WARNING 2025-07-07 17:48:07,975 hadith_processor No text recognized on page 17
+DEBUG 2025-07-07 17:48:07,975 hadith_processor Processing page 18/179
+DEBUG 2025-07-07 17:48:12,215 hadith_processor Extracted 854 characters from page 18
+DEBUG 2025-07-07 17:48:12,215 hadith_processor Processing page 19/179
+DEBUG 2025-07-07 17:48:18,028 hadith_processor Extracted 1561 characters from page 19
+DEBUG 2025-07-07 17:48:18,028 hadith_processor Processing page 20/179
+DEBUG 2025-07-07 17:48:21,458 hadith_processor Extracted 737 characters from page 20
+INFO 2025-07-07 17:48:21,458 hadith_processor Processed 20/179 pages
+DEBUG 2025-07-07 17:48:21,458 hadith_processor Processing page 21/179
+DEBUG 2025-07-07 17:48:24,426 hadith_processor Extracted 494 characters from page 21
+DEBUG 2025-07-07 17:48:24,427 hadith_processor Processing page 22/179
+DEBUG 2025-07-07 17:48:29,814 hadith_processor Extracted 1530 characters from page 22
+DEBUG 2025-07-07 17:48:29,814 hadith_processor Processing page 23/179
+DEBUG 2025-07-07 17:48:36,163 hadith_processor Extracted 1462 characters from page 23
+DEBUG 2025-07-07 17:48:36,163 hadith_processor Processing page 24/179
+DEBUG 2025-07-07 17:48:41,153 hadith_processor Extracted 882 characters from page 24
+DEBUG 2025-07-07 17:48:41,154 hadith_processor Processing page 25/179
+DEBUG 2025-07-07 17:48:50,789 hadith_processor Extracted 1294 characters from page 25
+INFO 2025-07-07 17:48:50,934 hadith_processor Processed 25/179 pages
+DEBUG 2025-07-07 17:48:50,935 hadith_processor Processing page 26/179
+DEBUG 2025-07-07 17:48:58,337 hadith_processor Extracted 802 characters from page 26
+DEBUG 2025-07-07 17:48:58,337 hadith_processor Processing page 27/179
+DEBUG 2025-07-07 17:49:03,519 hadith_processor Extracted 1085 characters from page 27
+DEBUG 2025-07-07 17:49:03,519 hadith_processor Processing page 28/179
+DEBUG 2025-07-07 17:49:08,504 hadith_processor Extracted 1079 characters from page 28
+DEBUG 2025-07-07 17:49:08,504 hadith_processor Processing page 29/179
+DEBUG 2025-07-07 17:49:14,183 hadith_processor Extracted 1431 characters from page 29
+DEBUG 2025-07-07 17:49:14,184 hadith_processor Processing page 30/179
+DEBUG 2025-07-07 17:49:18,582 hadith_processor Extracted 1210 characters from page 30
+INFO 2025-07-07 17:49:18,582 hadith_processor Processed 30/179 pages
+DEBUG 2025-07-07 17:49:18,582 hadith_processor Processing page 31/179
+DEBUG 2025-07-07 17:49:21,961 hadith_processor Extracted 605 characters from page 31
+DEBUG 2025-07-07 17:49:21,962 hadith_processor Processing page 32/179
+DEBUG 2025-07-07 17:49:25,990 hadith_processor Extracted 1022 characters from page 32
+DEBUG 2025-07-07 17:49:25,990 hadith_processor Processing page 33/179
+DEBUG 2025-07-07 17:49:29,558 hadith_processor Extracted 735 characters from page 33
+DEBUG 2025-07-07 17:49:29,558 hadith_processor Processing page 34/179
+DEBUG 2025-07-07 17:49:34,201 hadith_processor Extracted 1163 characters from page 34
+DEBUG 2025-07-07 17:49:34,201 hadith_processor Processing page 35/179
+DEBUG 2025-07-07 17:49:39,251 hadith_processor Extracted 1455 characters from page 35
+INFO 2025-07-07 17:49:39,252 hadith_processor Processed 35/179 pages
+DEBUG 2025-07-07 17:49:39,252 hadith_processor Processing page 36/179
+DEBUG 2025-07-07 17:49:43,461 hadith_processor Extracted 1007 characters from page 36
+DEBUG 2025-07-07 17:49:43,461 hadith_processor Processing page 37/179
+DEBUG 2025-07-07 17:49:48,775 hadith_processor Extracted 1477 characters from page 37
+DEBUG 2025-07-07 17:49:48,775 hadith_processor Processing page 38/179
+DEBUG 2025-07-07 17:49:53,360 hadith_processor Extracted 1272 characters from page 38
+DEBUG 2025-07-07 17:49:53,360 hadith_processor Processing page 39/179
+DEBUG 2025-07-07 17:49:58,060 hadith_processor Extracted 1283 characters from page 39
+DEBUG 2025-07-07 17:49:58,061 hadith_processor Processing page 40/179
+DEBUG 2025-07-07 17:50:02,470 hadith_processor Extracted 1158 characters from page 40
+INFO 2025-07-07 17:50:02,470 hadith_processor Processed 40/179 pages
+DEBUG 2025-07-07 17:50:02,470 hadith_processor Processing page 41/179
+DEBUG 2025-07-07 17:50:05,693 hadith_processor Extracted 758 characters from page 41
+DEBUG 2025-07-07 17:50:05,694 hadith_processor Processing page 42/179
+DEBUG 2025-07-07 17:50:09,984 hadith_processor Extracted 995 characters from page 42
+DEBUG 2025-07-07 17:50:09,985 hadith_processor Processing page 43/179
+DEBUG 2025-07-07 17:50:15,801 hadith_processor Extracted 1577 characters from page 43
+DEBUG 2025-07-07 17:50:15,801 hadith_processor Processing page 44/179
+DEBUG 2025-07-07 17:50:19,975 hadith_processor Extracted 1215 characters from page 44
+DEBUG 2025-07-07 17:50:19,975 hadith_processor Processing page 45/179
+DEBUG 2025-07-07 17:50:24,430 hadith_processor Extracted 1091 characters from page 45
+INFO 2025-07-07 17:50:24,430 hadith_processor Processed 45/179 pages
+DEBUG 2025-07-07 17:50:24,430 hadith_processor Processing page 46/179
+DEBUG 2025-07-07 17:50:28,310 hadith_processor Extracted 925 characters from page 46
+DEBUG 2025-07-07 17:50:28,310 hadith_processor Processing page 47/179
+DEBUG 2025-07-07 17:50:32,998 hadith_processor Extracted 954 characters from page 47
+DEBUG 2025-07-07 17:50:32,999 hadith_processor Processing page 48/179
+DEBUG 2025-07-07 17:50:38,100 hadith_processor Extracted 1479 characters from page 48
+DEBUG 2025-07-07 17:50:38,100 hadith_processor Processing page 49/179
+DEBUG 2025-07-07 17:50:43,980 hadith_processor Extracted 1404 characters from page 49
+DEBUG 2025-07-07 17:50:43,980 hadith_processor Processing page 50/179
+DEBUG 2025-07-07 17:50:50,005 hadith_processor Extracted 1649 characters from page 50
+INFO 2025-07-07 17:50:50,006 hadith_processor Processed 50/179 pages
+DEBUG 2025-07-07 17:50:50,006 hadith_processor Processing page 51/179
+DEBUG 2025-07-07 17:50:54,194 hadith_processor Extracted 980 characters from page 51
+DEBUG 2025-07-07 17:50:54,194 hadith_processor Processing page 52/179
+DEBUG 2025-07-07 17:50:59,992 hadith_processor Extracted 1437 characters from page 52
+DEBUG 2025-07-07 17:50:59,992 hadith_processor Processing page 53/179
+DEBUG 2025-07-07 17:51:05,532 hadith_processor Extracted 1370 characters from page 53
+DEBUG 2025-07-07 17:51:05,533 hadith_processor Processing page 54/179
+DEBUG 2025-07-07 17:51:12,590 hadith_processor Extracted 1550 characters from page 54
+DEBUG 2025-07-07 17:51:12,590 hadith_processor Processing page 55/179
+DEBUG 2025-07-07 17:51:18,766 hadith_processor Extracted 1264 characters from page 55
+INFO 2025-07-07 17:51:18,767 hadith_processor Processed 55/179 pages
+DEBUG 2025-07-07 17:51:18,767 hadith_processor Processing page 56/179
+DEBUG 2025-07-07 17:51:25,370 hadith_processor Extracted 1471 characters from page 56
+DEBUG 2025-07-07 17:51:25,370 hadith_processor Processing page 57/179
+DEBUG 2025-07-07 17:51:31,112 hadith_processor Extracted 948 characters from page 57
+DEBUG 2025-07-07 17:51:31,112 hadith_processor Processing page 58/179
+DEBUG 2025-07-07 17:51:38,402 hadith_processor Extracted 1498 characters from page 58
+DEBUG 2025-07-07 17:51:38,402 hadith_processor Processing page 59/179
+DEBUG 2025-07-07 17:51:43,677 hadith_processor Extracted 931 characters from page 59
+DEBUG 2025-07-07 17:51:43,677 hadith_processor Processing page 60/179
+DEBUG 2025-07-07 17:51:52,253 hadith_processor Extracted 1346 characters from page 60
+INFO 2025-07-07 17:51:52,253 hadith_processor Processed 60/179 pages
+DEBUG 2025-07-07 17:51:52,253 hadith_processor Processing page 61/179
+DEBUG 2025-07-07 17:52:00,551 hadith_processor Extracted 1097 characters from page 61
+DEBUG 2025-07-07 17:52:00,552 hadith_processor Processing page 62/179
+DEBUG 2025-07-07 17:52:08,056 hadith_processor Extracted 1315 characters from page 62
+DEBUG 2025-07-07 17:52:08,056 hadith_processor Processing page 63/179
+DEBUG 2025-07-07 17:52:15,696 hadith_processor Extracted 1491 characters from page 63
+DEBUG 2025-07-07 17:52:15,696 hadith_processor Processing page 64/179
+DEBUG 2025-07-07 17:52:21,114 hadith_processor Extracted 973 characters from page 64
+DEBUG 2025-07-07 17:52:21,115 hadith_processor Processing page 65/179
+DEBUG 2025-07-07 17:52:29,275 hadith_processor Extracted 1482 characters from page 65
+INFO 2025-07-07 17:52:29,275 hadith_processor Processed 65/179 pages
+DEBUG 2025-07-07 17:52:29,276 hadith_processor Processing page 66/179
+DEBUG 2025-07-07 17:52:37,310 hadith_processor Extracted 1339 characters from page 66
+DEBUG 2025-07-07 17:52:37,310 hadith_processor Processing page 67/179
+DEBUG 2025-07-07 17:52:45,402 hadith_processor Extracted 1151 characters from page 67
+DEBUG 2025-07-07 17:52:45,403 hadith_processor Processing page 68/179
+DEBUG 2025-07-07 17:52:50,324 hadith_processor Extracted 702 characters from page 68
+DEBUG 2025-07-07 17:52:50,325 hadith_processor Processing page 69/179
+INFO 2025-07-07 17:52:52,319 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 17:53:06,733 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 17:54:26,418 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 17:54:29,961 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 17:58:08,585 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-07 17:58:11,180 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:02:20,617 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-07 18:02:22,878 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:02:49,559 autoreload D:\sanad system\sanad_system\library\urls.py changed, reloading.
+INFO 2025-07-07 18:02:52,442 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:09:38,724 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:09:40,753 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:12:49,356 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:12:51,693 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:14:48,543 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:14:50,745 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:18:41,284 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:18:43,157 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:19:29,543 basehttp "GET /library/document/1/ HTTP/1.1" 200 32408
+INFO 2025-07-07 18:19:29,821 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:19:29,985 basehttp "GET /static/library/css/library.css HTTP/1.1" 200 7037
+INFO 2025-07-07 18:19:39,048 basehttp "GET /library/document/1/ HTTP/1.1" 200 32408
+INFO 2025-07-07 18:30:17,962 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-07 18:30:20,780 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:32:18,051 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:32:20,965 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:33:02,783 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:33:04,296 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:33:57,163 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:33:58,663 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:42:33,396 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:42:37,072 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:45:15,290 autoreload D:\sanad system\sanad_system\library\hadith_processor.py changed, reloading.
+INFO 2025-07-07 18:45:17,809 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 18:45:40,760 basehttp "GET /library/document/1/ HTTP/1.1" 200 30021
+INFO 2025-07-07 18:45:40,903 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:40,906 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:40,923 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:40,988 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:40,990 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:40,991 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:40,992 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 18:45:41,086 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-07-07 18:46:01,455 basehttp "GET /library/document/1/ HTTP/1.1" 200 30021
+INFO 2025-07-07 19:04:35,117 basehttp "GET /library/document/1/ HTTP/1.1" 200 30041
+INFO 2025-07-07 19:04:35,167 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:04:35,180 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:14:00,434 basehttp "GET /library/document/1/ HTTP/1.1" 200 30738
+INFO 2025-07-07 19:14:00,486 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:14:01,905 basehttp "GET /library/document/1/ HTTP/1.1" 200 30738
+INFO 2025-07-07 19:47:11,300 basehttp "GET /library/document/1/ HTTP/1.1" 200 34295
+INFO 2025-07-07 19:47:11,373 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,379 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,385 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,395 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,396 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,397 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,397 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:11,417 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-07-07 19:47:13,928 basehttp "GET /library/document/1/ HTTP/1.1" 200 34295
+INFO 2025-07-07 19:47:15,707 basehttp "GET /library/document/1/download/ HTTP/1.1" 200 8079021
+INFO 2025-07-07 19:50:35,239 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-07 19:50:39,915 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 20:18:14,110 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-07 20:18:15,722 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 20:19:50,096 autoreload Watching for file changes with StatReloader
+INFO 2025-07-07 20:20:02,260 basehttp "GET /library/document/1/ HTTP/1.1" 200 34295
+INFO 2025-07-07 20:20:02,864 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 200 2737
+INFO 2025-07-07 20:20:02,868 basehttp "GET /static/library/css/library.css HTTP/1.1" 200 7037
+WARNING 2025-07-07 20:20:03,155 log Not Found: /favicon.ico
+INFO 2025-07-07 20:20:03,157 basehttp - Broken pipe from ('127.0.0.1', 50069)
+INFO 2025-07-07 20:20:07,908 basehttp "GET /admin/ HTTP/1.1" 200 24167
+INFO 2025-07-07 20:20:08,055 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-07-07 20:20:08,063 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-07 20:20:08,084 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:08,110 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-07 20:20:13,214 basehttp "GET /admin/hadith_app/hadithbook/ HTTP/1.1" 200 18813
+INFO 2025-07-07 20:20:13,366 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-07-07 20:20:13,369 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-07-07 20:20:13,371 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-07-07 20:20:13,375 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,391 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,397 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,400 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,401 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,401 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,419 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:20:13,445 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:20:13,449 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-07-07 20:20:13,512 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-07-07 20:20:16,847 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23123
+INFO 2025-07-07 20:20:17,001 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:20:17,006 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-07-07 20:20:17,094 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-07-07 20:20:17,129 basehttp "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-07-07 20:20:20,510 basehttp "GET /admin/auth/user/1/change/ HTTP/1.1" 200 35004
+INFO 2025-07-07 20:20:20,731 basehttp "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-07-07 20:20:20,736 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+INFO 2025-07-07 20:20:20,740 basehttp "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15292
+INFO 2025-07-07 20:20:20,741 basehttp "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+INFO 2025-07-07 20:20:20,742 basehttp "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-07-07 20:20:20,746 basehttp "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-07-07 20:20:20,746 basehttp "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-07-07 20:20:20,768 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:20:20,849 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+INFO 2025-07-07 20:20:21,259 basehttp "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+INFO 2025-07-07 20:20:21,275 basehttp "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+INFO 2025-07-07 20:20:21,275 basehttp "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+INFO 2025-07-07 20:20:21,276 basehttp "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-07-07 20:20:21,277 basehttp "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-07-07 20:20:54,592 basehttp "POST /admin/auth/user/1/change/ HTTP/1.1" 302 0
+INFO 2025-07-07 20:20:54,676 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23353
+INFO 2025-07-07 20:20:54,832 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:21:01,765 basehttp "GET /admin/auth/user/2/change/ HTTP/1.1" 200 35044
+INFO 2025-07-07 20:21:01,911 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:21:27,270 basehttp "POST /admin/auth/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-07-07 20:21:27,322 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23386
+INFO 2025-07-07 20:21:27,452 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:21:35,594 basehttp "GET /admin/auth/user/1/change/ HTTP/1.1" 200 35056
+INFO 2025-07-07 20:21:35,801 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:21:43,728 basehttp "GET /admin/auth/user/1/password/ HTTP/1.1" 200 18550
+INFO 2025-07-07 20:21:58,549 basehttp "POST /admin/auth/user/1/password/ HTTP/1.1" 200 18903
+INFO 2025-07-07 20:22:25,424 basehttp "POST /admin/auth/user/1/password/ HTTP/1.1" 302 0
+INFO 2025-07-07 20:22:25,518 basehttp "GET /admin/auth/user/1/change/ HTTP/1.1" 200 35215
+INFO 2025-07-07 20:22:25,727 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:22:35,022 basehttp "GET /admin/auth/user/ HTTP/1.1" 200 23179
+INFO 2025-07-07 20:22:35,267 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 14011
+INFO 2025-07-07 20:22:41,462 basehttp "GET /admin/ HTTP/1.1" 200 23910
+INFO 2025-07-07 20:22:43,639 basehttp "GET / HTTP/1.1" 200 23356
+INFO 2025-07-07 20:22:43,721 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:22:45,970 basehttp "GET /library/ HTTP/1.1" 200 14356
+INFO 2025-07-07 20:22:48,674 basehttp "GET /library/document/1/ HTTP/1.1" 200 34303

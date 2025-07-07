@@ -6,11 +6,13 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.html import format_html
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+
+# Import models
 from .models import Narrator, Hadith, Sanad, SanadNarrator, HadithCategory, HadithBook
 from .forms import HadithForm
 
-# Import the custom admin site instance from urls.py
-from sanad_system.urls import admin_site
+# Import the custom admin site
+from .admin_site import admin_site
 
 # Get the User model
 User = get_user_model()
@@ -243,16 +245,164 @@ class SanadNarratorAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         return super().get_queryset(request).select_related('sanad', 'narrator')
 
-# Register all models with the custom admin site
-models_to_register = [
-    (Hadith, HadithAdmin),
-    (Sanad, SanadAdmin),
-    (HadithCategory, HadithCategoryAdmin),
-    (HadithBook, HadithBookAdmin),
-    (Narrator, NarratorAdmin),
-    (SanadNarrator, SanadNarratorAdmin)
-]
+# Define admin classes without registering them yet
+class HadithAdmin(admin.ModelAdmin):
+    form = HadithForm
+    list_display = ('short_text', 'source', 'get_grade_display', 'sanad_count', 'created_at')
+    search_fields = ('text', 'source', 'source_hadith_number')
+    list_filter = ('grade', 'categories', 'created_at')
+    filter_horizontal = ('categories',)
+    inlines = [SanadInline]
+    fieldsets = (
+        (None, {
+            'fields': ('text', 'source', 'grade', 'categories')
+        }),
+        (_('معلومات المصدر'), {
+            'fields': ('source_page', 'source_hadith_number')
+        }),
+        (_('معلومات إضافية'), {
+            'classes': ('collapse',),
+            'fields': ('context', 'reference_page', 'reference_edition'),
+        }),
+    )
 
-for model, model_admin in models_to_register:
-    if not admin_site.is_registered(model):
-        admin_site.register(model, model_admin)
+    def short_text(self, obj):
+        return obj.text[:100] + '...' if len(obj.text) > 100 else obj.text
+    short_text.short_description = _('نص الحديث')
+
+    def sanad_count(self, obj):
+        return obj.sanad_set.count()
+    sanad_count.short_description = _('عدد الأسانيد')
+    sanad_count.admin_order_field = 'sanad_count'
+
+@admin.register(Sanad, site=admin_site)
+class SanadAdmin(admin.ModelAdmin):
+    list_display = ('hadith_link', 'narrators_list', 'is_mutawatir', 'created_at')
+    list_filter = ('is_mutawatir', 'created_at')
+    search_fields = ('hadith__text', 'narrators__name')
+    inlines = [SanadNarratorInline]
+
+    def hadith_link(self, obj):
+        return format_html('<a href="{}">{}</a>', 
+                         reverse('admin:hadith_app_hadith_change', args=[obj.hadith.id]),
+                         str(obj.hadith)[:50])
+    hadith_link.short_description = _('الحديث')
+
+    def narrators_list(self, obj):
+        return ", ".join([n.name for n in obj.narrators.all()])
+    narrators_list.short_description = _('سلسلة الرواة')
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related('hadith')
+
+@admin.register(HadithCategory, site=admin_site)
+class HadithCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent')
+    search_fields = ('name', 'description')
+    list_filter = ('parent',)
+    fields = ('name', 'parent', 'description')
+
+@admin.register(HadithBook, site=admin_site)
+class HadithBookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'year_written')
+    search_fields = ('title', 'author', 'description')
+    list_filter = ('year_written',)
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'author', 'year_written')
+        }),
+        (_('وصف الكتاب'), {
+            'fields': ('description',)
+        }),
+    )
+
+@admin.register(Narrator, site=admin_site)
+class NarratorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'birth_year', 'death_year', 'get_reliability_display', 'hadith_count')
+    search_fields = ('name', 'biography')
+    list_filter = ('reliability',)
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'birth_year', 'death_year', 'biography')
+        }),
+        (_('معلومات التوثيق'), {
+            'fields': ('reliability',)
+        }),
+    )
+
+    def hadith_count(self, obj):
+        # Count the number of unique hadiths through the narrations related name
+        return obj.narrations.values('sanad__hadith').distinct().count()
+    hadith_count.short_description = _('عدد الأحاديث')
+    hadith_count.admin_order_field = 'hadith_count'
+
+@admin.register(SanadNarrator, site=admin_site)
+class SanadNarratorAdmin(admin.ModelAdmin):
+    list_display = ('sanad_link', 'narrator_link', 'order', 'narration_method')
+    list_filter = ('narration_method',)
+    search_fields = ('narrator__name', 'sanad__hadith__text')
+    autocomplete_fields = ['narrator', 'sanad']
+
+    def sanad_link(self, obj):
+        return format_html('<a href="{}">{}</a>', 
+                         reverse('admin:hadith_app_sanad_change', args=[obj.sanad.id]),
+                         str(obj.sanad))
+    sanad_link.short_description = _('السند')
+    sanad_link.admin_order_field = 'sanad__id'
+
+    def narrator_link(self, obj):
+        return format_html('<a href="{}">{}</a>', 
+                         reverse('admin:hadith_app_narrator_change', args=[obj.narrator.id]),
+                         str(obj.narrator))
+    narrator_link.short_description = _('الراوي')
+    narrator_link.admin_order_field = 'narrator__name'
+    
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related('sanad', 'narrator')
+
+# Register all models with the custom admin site
+# This prevents double registration by checking if the model is already registered
+    
+if not admin_site.is_registered(Hadith):
+    admin_site.register(Hadith, HadithAdmin)
+
+if not admin_site.is_registered(Sanad):
+    admin_site.register(Sanad, SanadAdmin)
+
+if not admin_site.is_registered(HadithCategory):
+    admin_site.register(HadithCategory, HadithCategoryAdmin)
+
+if not admin_site.is_registered(HadithBook):
+    admin_site.register(HadithBook, HadithBookAdmin)
+
+if not admin_site.is_registered(Narrator):
+    admin_site.register(Narrator, NarratorAdmin)
+
+if not admin_site.is_registered(SanadNarrator):
+    admin_site.register(SanadNarrator, SanadNarratorAdmin)
+
+# Register the User model with custom admin
+if not admin_site.is_registered(get_user_model()):
+    class CustomUserAdmin(UserAdmin):
+        list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
+        list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
+        search_fields = ('username', 'first_name', 'last_name', 'email')
+        ordering = ('username',)
+        
+        fieldsets = (
+            (None, {'fields': ('username', 'password')}),
+            (_('المعلومات الشخصية'), {'fields': ('first_name', 'last_name', 'email')}),
+            (_('الصلاحيات'), {
+                'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
+            }),
+            (_('مهم'), {'fields': ('last_login', 'date_joined')}),
+        )
+        
+        add_fieldsets = (
+            (None, {
+                'classes': ('wide',),
+                'fields': ('username', 'password1', 'password2'),
+            }),
+        )
+    
+    admin_site.register(get_user_model(), CustomUserAdmin)

@@ -12,6 +12,7 @@ def user_avatar_path(instance, filename):
     filename = f'avatar.{ext}'
     return os.path.join('avatars', f'user_{instance.user.id}', filename)
 
+
 class Narrator(models.Model):
     name = models.CharField(max_length=100, verbose_name="اسم الراوي")
     birth_year = models.IntegerField(null=True, blank=True, verbose_name="سنة الميلاد")
@@ -92,7 +93,7 @@ class Sanad(models.Model):
 
 class SanadNarrator(models.Model):
     sanad = models.ForeignKey(Sanad, on_delete=models.CASCADE, verbose_name="السند")
-    narrator = models.ForeignKey(Narrator, on_delete=models.CASCADE, verbose_name="الراوي")
+    narrator = models.ForeignKey(Narrator, on_delete=models.CASCADE, verbose_name="الراوي", related_name='narrations')
     order = models.IntegerField(verbose_name="ترتيب الراوي في السند")
     narration_method = models.CharField(
         max_length=100,

@@ -1,0 +1,419 @@
+{% extends "hadith_app/base.html" %}
+{% load i18n static %}
+
+{% block extra_css %}
+<style>
+    /* Form styling */
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control, .form-select {
+        border-radius: 0.375rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .form-text {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+    
+    /* File upload area */
+    .file-upload-container {
+        border: 2px dashed #dee2e6;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        text-align: center;
+        background-color: #f8f9fa;
+        transition: all 0.3s ease;
+        margin-bottom: 1rem;
+    }
+    
+    .file-upload-container:hover {
+        border-color: #0d6efd;
+        background-color: #f1f8ff;
+    }
+    
+    .file-upload-icon {
+        font-size: 2.5rem;
+        color: #6c757d;
+        margin-bottom: 1rem;
+    }
+    
+    .file-input {
+        display: none;
+    }
+    
+    .file-name {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #495057;
+        word-break: break-word;
+    }
+    
+    /* Required field indicator */
+    .required-field::after {
+        content: ' *';
+        color: #dc3545;
+    }
+    
+    /* Error messages */
+    .errorlist {
+        list-style: none;
+        padding: 0;
+        margin: 0.25rem 0 0 0;
+    }
+    
+    .errorlist li {
+        color: #dc3545;
+        font-size: 0.875rem;
+    }
+    
+    /* Form actions */
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">
+                <i class="fas fa-upload me-2"></i>
+                {% if form.instance.pk %}{% trans 'Edit Document' %}{% else %}{% trans 'Upload New Document' %}{% endif %}
+            </h4>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <i class="fas fa-check-circle me-2"></i>
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                    {% else %}
+                        <i class="fas fa-info-circle me-2"></i>
+                    {% endif %}
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    {% for error in form.non_field_errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <!-- Title Field -->
+                <div class="mb-4">
+                    <label for="id_title" class="form-label required-field">{{ form.title.label }}</label>
+                    {{ form.title }}
+                    {% if form.title.help_text %}
+                        <div class="form-text">{{ form.title.help_text }}</div>
+                    {% endif %}
+                    {% if form.title.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.title.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Description Field -->
+                <div class="mb-4">
+                    <label for="id_description" class="form-label">{{ form.description.label }}</label>
+                    {{ form.description }}
+                    {% if form.description.help_text %}
+                        <div class="form-text">{{ form.description.help_text }}</div>
+                    {% endif %}
+                    {% if form.description.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.description.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Category Field -->
+                <div class="mb-4">
+                    <label for="id_category" class="form-label">{{ form.category.label }}</label>
+                    {{ form.category }}
+                    {% if form.category.help_text %}
+                        <div class="form-text">{{ form.category.help_text }}</div>
+                    {% endif %}
+                    {% if form.category.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.category.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- File Upload Field -->
+                <div class="mb-4">
+                    <label class="form-label required-field">{{ form.file.label }}</label>
+                    <div class="file-upload-container" id="drop-area">
+                        <div class="file-upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h5>{% trans 'Drag & drop your file here' %}</h5>
+                        <p class="text-muted mb-3">{% trans 'or' %}</p>
+                        <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('id_file').click()">
+                            <i class="fas fa-folder-open me-2"></i>{% trans 'Browse Files' %}
+                        </button>
+                        <div id="file-name" class="file-name mt-3"></div>
+                        <div class="form-text mt-2">
+                            {% trans 'Maximum file size: 412MB • Allowed formats: PDF, DOC, DOCX' %}
+                        </div>
+                    </div>
+                    {{ form.file }}
+                    {% if form.file.help_text %}
+                        <div class="form-text">{{ form.file.help_text }}</div>
+                    {% endif %}
+                    {% if form.file.errors %}
+                        <div class="alert alert-danger mt-2">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            {{ form.file.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                {% if form.instance.file %}
+                <div class="mt-2">
+                    <strong>{% trans 'Current file:' %}</strong> 
+                    <a href="{{ form.instance.file.url }}" target="_blank" class="text-primary">
+                        {{ form.instance.file.name|slice:":30" }}{% if form.instance.file.name|length > 30 %}...{% endif %}
+                    </a>
+                    ({{ form.instance.file.size|filesizeformat }})
+                </div>
+                {% endif %}
+                
+                <!-- Is Public Field -->
+                <div class="mb-4">
+                    <div class="form-check">
+                        {{ form.is_public }}
+                        <label class="form-check-label" for="id_is_public">
+                            {{ form.is_public.label }}
+                        </label>
+                        {% if form.is_public.help_text %}
+                            <div class="form-text">{{ form.is_public.help_text }}</div>
+                        {% endif %}
+                    </div>
+                    {% if form.is_public.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.is_public.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Hidden Fields -->
+                {% if form.uploaded_by %}
+                    {{ form.uploaded_by }}
+                {% endif %}
+                
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <a href="{% url 'library:document_list' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-times me-1"></i> {% trans 'Cancel' %}
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> {% trans 'Save Document' %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Fix for RTL layout */
+    .form-check-input {
+        margin-left: 0.5rem;
+        margin-right: -1.5em;
+    }
+    
+    .form-check-label {
+        margin-right: 1.5em;
+    }
+    
+    /* File input styling */
+    .custom-file-upload {
+        border: 2px dashed #ddd;
+        display: inline-block;
+        padding: 2rem;
+        cursor: pointer;
+        border-radius: 8px;
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+    }
+    
+    .custom-file-upload:hover {
+        border-color: #0d6efd;
+        background-color: #f1f8ff;
+    }
+    
+    #file-name {
+        margin-top: 10px;
+        font-size: 0.95em;
+        color: #495057;
+        word-break: break-word;
+    }
+    
+    .upload-icon {
+        font-size: 2.5rem;
+        color: #6c757d;
+        margin-bottom: 0.5rem;
+    }
+    
+    .file-input-container {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+    
+    .file-input {
+        position: absolute;
+        font-size: 100px;
+        opacity: 0;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+    }
+    
+    .progress {
+        height: 25px;
+        margin-top: 10px;
+        display: none;
+    }
+    
+    .progress-bar {
+        line-height: 25px;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('id_file');
+        const dropArea = document.getElementById('drop-area');
+        const fileNameDisplay = document.getElementById('file-name');
+        const titleField = document.getElementById('id_title');
+        
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        // Highlight drop area when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        // Handle dropped files
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        // Handle file selection via button
+        fileInput.addEventListener('change', handleFiles, false);
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        function highlight() {
+            dropArea.classList.add('border-primary');
+            dropArea.style.backgroundColor = '#f1f8ff';
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('border-primary');
+            dropArea.style.backgroundColor = '#f8f9fa';
+        }
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles({ target: { files } });
+        }
+        
+        function handleFiles(e) {
+            const files = e.target.files;
+            
+            if (files.length > 0) {
+                const file = files[0];
+                
+                // Update file name display
+                fileNameDisplay.textContent = file.name;
+                
+                // Auto-fill title if empty
+                if (titleField && !titleField.value) {
+                    const baseName = file.name.split('.').slice(0, -1).join('.');
+                    titleField.value = baseName;
+                }
+                
+                // Validate file size
+                const maxSize = 412 * 1024 * 1024; // 412MB
+                if (file.size > maxSize) {
+                    const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                    showError(`حجم الملف كبير جداً (${sizeMB} MB). الحد الأقصى المسموح به هو 412 ميجابايت`);
+                    fileInput.value = '';
+                    fileNameDisplay.textContent = '';
+                    return;
+                }
+                
+                // Validate file extension
+                const validExtensions = ['.pdf', '.doc', '.docx'];
+                const fileExt = '.' + file.name.split('.').pop().toLowerCase();
+                
+                if (!validExtensions.includes(fileExt)) {
+                    showError(`نوع الملف غير مدعوم. يرجى رفع ملف من الأنواع التالية: ${validExtensions.join(', ')}`);
+                    fileInput.value = '';
+                    fileNameDisplay.textContent = '';
+                    return;
+                }
+            }
+        }
+        
+        function showError(message) {
+            // Remove any existing error alerts
+            const existingAlerts = document.querySelectorAll('.alert.alert-danger');
+            existingAlerts.forEach(alert => alert.remove());
+            
+            // Create new error alert
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger alert-dismissible fade show mt-3';
+            alertDiv.role = 'alert';
+            alertDiv.innerHTML = `
+                <i class="fas fa-exclamation-circle me-2"></i>
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            // Insert after the form
+            const form = document.querySelector('form');
+            form.parentNode.insertBefore(alertDiv, form.nextSibling);
+        }
+    });
+</script>
+{% endblock %}

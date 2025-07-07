@@ -20,24 +20,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.utils.translation import gettext_lazy as _
+from django.views.generic.base import RedirectView
 
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
-from django.utils.translation import gettext_lazy as _
+# Import the custom admin site instance from admin_site.py
+from hadith_app.admin_site import admin_site
 
-# Import the custom admin site
-from hadith_app.admin_site import CustomAdminSite
-
-# Create and set the custom admin site
-admin_site = CustomAdminSite(name='admin')
+# Ensure the default admin site is using our custom admin site
 admin.site = admin_site
+admin.sites.site = admin_site
 
 urlpatterns = [
     # Admin URLs - Using custom admin site
-    path('admin/', admin_site.urls),
+    path('admin/', admin.site.urls),
     
     # Authentication URLs - Using our custom templates
     path('accounts/login/', auth_views.LoginView.as_view(
@@ -50,9 +44,15 @@ urlpatterns = [
     
     # App URLs
     path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),
+    path('library/', include(('library.urls', 'library'), namespace='library')),
+    
+    # Redirect /documents/ to /library/ for backward compatibility
+    path('documents/', RedirectView.as_view(url='/library/', permanent=True)),
+    path('documents/<path:path>', RedirectView.as_view(url='/library/%(path)s', permanent=True)),
     
     # Static and media files
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# Serve media and static files in development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
