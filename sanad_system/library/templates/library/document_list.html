@@ -1,0 +1,78 @@
+{% extends "library/base.html" %}
+{% load i18n %}
+
+{% block breadcrumb %}
+{% if current_category %}
+&rsaquo; {{ current_category.name }}
+{% endif %}
+{% endblock %}
+
+{% block library_content %}
+<div class="document-list">
+    <div class="actions">
+        <a href="{% url 'library:document_upload' %}" class="button">{% trans 'Upload Document' %}</a>
+    </div>
+    
+    <h1>{% if current_category %}{{ current_category.name }}{% else %}{% trans 'All Documents' %}{% endif %}</h1>
+    
+    {% if documents %}
+    <table class="document-table">
+        <thead>
+            <tr>
+                <th>{% trans 'Title' %}</th>
+                <th>{% trans 'Type' %}</th>
+                <th>{% trans 'Category' %}</th>
+                <th>{% trans 'Uploaded' %}</th>
+                <th>{% trans 'Actions' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for document in documents %}
+            <tr>
+                <td><a href="{{ document.get_absolute_url }}">{{ document.title }}</a></td>
+                <td>{{ document.get_file_type_display }}</td>
+                <td>{% if document.category %}{{ document.category.name }}{% else %}-{% endif %}</td>
+                <td>{{ document.created_at|date:"Y-m-d" }}</td>
+                <td class="actions">
+                    <a href="{% url 'library:document_download' document.pk %}" class="button" title="{% trans 'Download' %}">
+                        <span class="icon">↓</span>
+                    </a>
+                    {% if document.uploaded_by == user or user.is_staff %}
+                    <a href="{% url 'admin:library_document_change' document.pk %}" class="button" title="{% trans 'Edit' %}">
+                        <span class="icon">✏️</span>
+                    </a>
+                    <a href="{% url 'library:document_delete' document.pk %}" class="button" title="{% trans 'Delete' %}">
+                        <span class="icon">🗑️</span>
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% if is_paginated %}
+    <div class="pagination">
+        <span class="page-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
+            {% endif %}
+            
+            <span class="page-current">
+                {% blocktrans with num=page_obj.number num_pages=page_obj.paginator.num_pages %}
+                Page {{ num }} of {{ num_pages }}.
+                {% endblocktrans %}
+            </span>
+            
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">{% trans 'next' %}</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endif %}
+    
+    {% else %}
+    <p>{% trans 'No documents found.' %}</p>
+    {% endif %}
+</div>
+{% endblock %}

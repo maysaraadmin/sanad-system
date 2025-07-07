@@ -1,0 +1,43 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'library/css/library.css' %}">
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'library:document_list' %}">{% trans 'Library' %}</a>
+{% block breadcrumb %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="library-container">
+    <div class="sidebar">
+        <h3>{% trans 'Categories' %}</h3>
+        <ul>
+            <li><a href="{% url 'library:document_list' %}" {% if not category_id %}class="active"{% endif %}>{% trans 'All Documents' %}</a></li>
+            {% for cat in categories %}
+            <li><a href="{% url 'library:document_category' cat.id %}" {% if category_id == cat.id|stringformat:'s' %}class="active"{% endif %}>{{ cat.name }} ({{ cat.document_set.count }})</a></li>
+            {% endfor %}
+        </ul>
+        
+        {% if user.is_staff %}
+        <div class="admin-actions">
+            <h3>{% trans 'Admin Actions' %}</h3>
+            <ul>
+                <li><a href="{% url 'admin:library_document_add' %}" class="addlink">{% trans 'Add Document' %}</a></li>
+                <li><a href="{% url 'admin:library_documentcategory_add' %}" class="addlink">{% trans 'Add Category' %}</a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="content">
+        {% block library_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

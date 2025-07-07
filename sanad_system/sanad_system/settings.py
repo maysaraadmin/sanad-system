@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_jalali',
     'hadith_app',
+    'library',
 ]
 
 MIDDLEWARE = [
@@ -197,6 +198,52 @@ LOGIN_URL = 'login'  # URL to redirect to for login
 # Session settings
 SESSION_COOKIE_AGE = 86400  # 1 day in seconds
 SESSION_SAVE_EVERY_REQUEST = True
+
+# Logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'library': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'hadith_processor': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Static files (CSS, JavaScript, Images)

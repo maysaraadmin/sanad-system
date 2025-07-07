@@ -5,6 +5,9 @@ from django.urls import path, reverse
 from django.apps import apps as django_apps
 from django.http import Http404
 
+# Import models only - admin classes will be registered separately
+from .models import Narrator, Hadith, Sanad, SanadNarrator, HadithCategory, HadithBook
+
 class CustomAdminSite(AdminSite):
     site_header = _('إدارة نظام السند')
     site_title = _('نظام السند')
@@ -111,34 +114,12 @@ class CustomAdminSite(AdminSite):
 # Create the admin site instance
 admin_site = CustomAdminSite(name='admin')
 
-# Register all models with the custom admin site
-def register_models():
-    from django.apps import apps
-    from django.contrib import admin
-    from django.contrib.admin.sites import AlreadyRegistered
-    
-    # Get all models
-    for model in apps.get_models():
-        try:
-            # Skip if already registered
-            if model in admin_site._registry:
-                continue
-                
-            # Get the admin class if it exists
-            model_admin = admin.site._registry.get(model)
-            if model_admin:
-                admin_site.register(model, model_admin.__class__)
-            else:
-                admin_site.register(model)
-                
-        except AlreadyRegistered:
-            pass
-        except Exception as e:
-            print(f"Error registering {model.__name__}: {e}")
-
-# Register all models
-register_models()
+# Create the admin site instance
+admin_site = CustomAdminSite(name='admin')
 
 # Override the default admin site
 admin.site = admin_site
 admin.sites.site = admin_site
+
+# This will be imported by admin.py to register models
+# No need to call register_models() here as it will be done by Django's autodiscover

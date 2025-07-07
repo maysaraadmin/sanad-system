@@ -64,7 +64,7 @@ urlpatterns = [
     path('search/', SearchView.as_view(), name='search'),
     
     # Sanad URLs
-    path('sanad/create/<int:hadith_id>/', SanadCreateView.as_view(), name='sanad_create'),
+    path('sanad/add/', SanadCreateView.as_view(), name='sanad_add'),
     
     # Profile
     path('profile/', ProfileView.as_view(), name='profile'),
