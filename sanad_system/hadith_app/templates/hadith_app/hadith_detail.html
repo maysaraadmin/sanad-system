@@ -33,8 +33,8 @@
             </div>
             <div class="col-md-6">
                 <div class="d-flex justify-content-end">
-                    <a href="{% url 'admin:hadith_app_hadith_change' hadith.id %}" class="btn btn-sm btn-outline-primary me-2">تعديل</a>
-                    <a href="{% url 'admin:hadith_app_hadith_delete' hadith.id %}" class="btn btn-sm btn-outline-danger">حذف</a>
+                    <a href="{% url 'hadith_app:hadith_update' hadith.id %}" class="btn btn-sm btn-outline-primary me-2">تعديل</a>
+                    <a href="{% url 'hadith_app:hadith_delete' hadith.id %}" class="btn btn-sm btn-outline-danger">حذف</a>
                 </div>
             </div>
         </div>
@@ -82,5 +82,5 @@
 </div>
 {% endfor %}
 
-<a href="{% url 'admin:hadith_app_sanad_add' %}?hadith={{ hadith.id }}" class="btn btn-primary">إضافة سند جديد</a>
+<a href="{% url 'hadith_app:sanad_create' hadith.id %}" class="btn btn-primary">إضافة سند جديد</a>
 {% endblock %}

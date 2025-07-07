@@ -20,21 +20,26 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.utils.translation import gettext_lazy as _
+from hadith_app.admin_site import admin_site as custom_admin
 
-# Configure admin site
-admin.site.site_header = _('Hadith System Administration')
-admin.site.site_title = _('Hadith System Admin')
-admin.site.index_title = _('Welcome to Hadith System Admin')
+# Use custom admin site instead of default admin
+admin_site = custom_admin
 
 urlpatterns = [
-    # Admin URLs
-    path('admin/', admin.site.urls),
+    # Admin URLs - Using custom admin site
+    path('admin/', custom_admin.urls),
     
-    # Authentication URLs
-    path('accounts/', include('django.contrib.auth.urls')),
+    # Authentication URLs - Using our custom templates
+    path('accounts/login/', auth_views.LoginView.as_view(
+        template_name='registration/login.html',
+        redirect_authenticated_user=True
+    ), name='login'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(
+        template_name='registration/logged_out.html'
+    ), name='logout'),
     
     # App URLs
-    path('', include('hadith_app.urls')),
+    path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),
     
     # Static and media files
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

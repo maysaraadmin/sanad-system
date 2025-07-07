@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from ..models import Narrator, Hadith
 from ..forms import NarratorForm
 from ..utils import get_similar_narrators
@@ -77,6 +80,4 @@ class NarratorDetailView(DetailView):
             'similar_narrators': similar_narrators,
             'paginator': paginator,
         })
-        return context
-        
         return context
