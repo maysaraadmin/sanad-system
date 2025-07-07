@@ -20,14 +20,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.utils.translation import gettext_lazy as _
-from hadith_app.admin_site import admin_site as custom_admin
 
-# Use custom admin site instead of default admin
-admin_site = custom_admin
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from django.utils.translation import gettext_lazy as _
+
+# Import the custom admin site
+from hadith_app.admin_site import CustomAdminSite
+
+# Create and set the custom admin site
+admin_site = CustomAdminSite(name='admin')
+admin.site = admin_site
 
 urlpatterns = [
     # Admin URLs - Using custom admin site
-    path('admin/', custom_admin.urls),
+    path('admin/', admin_site.urls),
     
     # Authentication URLs - Using our custom templates
     path('accounts/login/', auth_views.LoginView.as_view(

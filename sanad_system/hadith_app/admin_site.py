@@ -1,112 +1,144 @@
-import os
-import shutil
-import os
-import shutil
-import datetime
+from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.utils.translation import gettext_lazy as _
-from django.db.models import Count
-from django.utils import timezone
-from datetime import timedelta
-from django.contrib.auth import get_user_model
-from hadith_app.models import Hadith, Narrator
-from django.template.response import TemplateResponse
+from django.urls import path, reverse
+from django.apps import apps as django_apps
+from django.http import Http404
 
 class CustomAdminSite(AdminSite):
-    site_header = _('نظام السند - لوحة التحكم')
+    site_header = _('إدارة نظام السند')
     site_title = _('نظام السند')
     index_title = _('لوحة التحكم')
-    login_template = 'admin/login.html'
-    logout_template = 'registration/logged_out.html'
-    
-    def get_system_stats(self):
-        """Get system statistics and status."""
-        User = get_user_model()
-        
-        # Calculate storage usage
-        total, used, free = shutil.disk_usage('/')
-        storage_total = f"{total // (2**30)} GB"
-        storage_used = f"{used // (2**30)} GB"
-        storage_percent = round((used / total) * 100, 1)
-        
-        # Check database status
-        try:
-            # Test database connection
-            Hadith.objects.first()
-            db_status = 'online'
-        except:
-            db_status = 'offline'
-        
-        # Get active users (last 30 days)
-        thirty_days_ago = timezone.now() - timedelta(days=30)
-        active_users = User.objects.filter(last_login__gte=thirty_days_ago).count()
-        
-        return {
-            'hadith_count': Hadith.objects.count(),
-            'narrator_count': Narrator.objects.count(),
-            'user_count': User.objects.count(),
-            'active_users': active_users,
-            'system_status': 'healthy' if db_status == 'online' else 'degraded',
-            'database_status': db_status,
-            'storage_status': 'ok' if storage_percent < 90 else 'warning',
-            'storage_total': storage_total,
-            'storage_used': storage_used,
-            'storage_percent': storage_percent,
-        }
-    
-    def get_recent_activities(self):
-        """Generate sample recent activities."""
-        now = timezone.now()
-        return [
-            {
-                'type': 'success',
-                'icon': 'user-plus',
-                'message': _('New user registered: admin'),
-                'time': '10:30 AM',
-                'date': now.strftime('%b %d, %Y')
-            },
-            {
-                'type': 'info',
-                'icon': 'book',
-                'message': _('New hadith added: #1234'),
-                'time': 'Yesterday',
-                'date': (now - timedelta(days=1)).strftime('%b %d, %Y')
-            },
-            {
-                'type': 'warning',
-                'icon': 'exclamation-triangle',
-                'message': _('Storage usage is high (85% used)'),
-                'time': 'Jul 6',
-                'date': (now - timedelta(days=2)).strftime('%b %d, %Y')
-            },
-            {
-                'type': 'error',
-                'icon': 'server',
-                'message': _('Database backup failed'),
-                'time': 'Jul 5',
-                'date': (now - timedelta(days=3)).strftime('%b %d, %Y')
-            },
-        ]
-    
-    def index(self, request, extra_context=None):
-        """Override the admin index view to use our custom dashboard."""
-        app_list = self.get_app_list(request)
-        
-        context = {
-            **self.each_context(request),
-            'title': self.index_title,
-            'app_list': app_list,
-            'stats': self.get_system_stats(),
-            'recent_activities': self.get_recent_activities(),
-            **(extra_context or {}),
-        }
-        
-        request.current_app = self.name
-        return TemplateResponse(request, 'admin/dashboard.html', context)
     
     def get_urls(self):
+        from django.urls import include, path
+        
+        # Get the default URLs
         urls = super().get_urls()
-        return urls
+        
+        # Add any custom URLs here if needed
+        custom_urls = [
+            # Add your custom URLs here
+        ]
+        
+        return custom_urls + urls
+        
+    def each_context(self, request):
+        context = super().each_context(request)
+        # Add any custom context here if needed
+        return context
+    
+    def _build_app_dict(self, request, app_label=None):
+        """
+        Build the app dictionary. The optional `app_label` argument filters an
+        app of specific interest.
+        """
+        # Start with the default implementation
+        app_dict = {}
+        
+        if app_label:
+            # If a specific app is requested, only process that one
+            apps = [app for app in self.get_app_list(request) 
+                   if app['app_label'] == app_label]
+        else:
+            # Otherwise, process all apps
+            apps = self.get_app_list(request)
+            
+        # Process each app
+        for app in apps:
+            app_label = app['app_label']
+            app_dict[app_label] = app
+            
+            # Sort models within the app
+            models = app.get('models', [])
+            hadith_models = []
+            other_models = []
+            
+            for model in models:
+                if model.get('object_name') in ['Hadith', 'Sanad', 'Narrator', 'SanadNarrator', 'HadithCategory', 'HadithBook']:
+                    hadith_models.append(model)
+                else:
+                    other_models.append(model)
+            
+            # Apply custom ordering
+            app['models'] = hadith_models + other_models
+        
+        return app_dict
+    
+    def get_app_list(self, request, app_label=None):
+        """
+        Return a sorted list of all the installed apps that have been
+        registered in this site.
+        """
+        # Use the parent's implementation to get the app list
+        app_list = []
+        
+        # Get all registered models
+        for model, model_admin in self._registry.items():
+            app_label = model._meta.app_label
+            app_name = model._meta.app_config.verbose_name
+            
+            # Find or create the app in the app_list
+            app = next((app for app in app_list if app['app_label'] == app_label), None)
+            if not app:
+                app = {
+                    'name': app_name,
+                    'app_label': app_label,
+                    'app_url': f'/admin/{app_label}/',
+                    'has_module_perms': True,
+                    'models': []
+                }
+                app_list.append(app)
+            
+            # Add the model to the app
+            model_dict = {
+                'name': model._meta.verbose_name_plural,
+                'object_name': model._meta.object_name,
+                'admin_url': f'/admin/{app_label}/{model._meta.model_name}/',
+                'add_url': f'/admin/{app_label}/{model._meta.model_name}/add/',
+                'view_only': False
+            }
+            app['models'].append(model_dict)
+        
+        # Sort the apps and their models
+        for app in app_list:
+            app['models'].sort(key=lambda x: x['name'])
+        
+        app_list.sort(key=lambda x: x['name'].lower())
+        
+        return app_list
 
-# Use the custom admin site
-admin_site = CustomAdminSite(name='customadmin')
+# Create the admin site instance
+admin_site = CustomAdminSite(name='admin')
+
+# Register all models with the custom admin site
+def register_models():
+    from django.apps import apps
+    from django.contrib import admin
+    from django.contrib.admin.sites import AlreadyRegistered
+    
+    # Get all models
+    for model in apps.get_models():
+        try:
+            # Skip if already registered
+            if model in admin_site._registry:
+                continue
+                
+            # Get the admin class if it exists
+            model_admin = admin.site._registry.get(model)
+            if model_admin:
+                admin_site.register(model, model_admin.__class__)
+            else:
+                admin_site.register(model)
+                
+        except AlreadyRegistered:
+            pass
+        except Exception as e:
+            print(f"Error registering {model.__name__}: {e}")
+
+# Register all models
+register_models()
+
+# Override the default admin site
+admin.site = admin_site
+admin.sites.site = admin_site

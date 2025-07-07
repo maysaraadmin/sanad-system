@@ -1,0 +1,153 @@
+/* RTL Admin Styles */
+
+/* Base styles */
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+#header {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    padding: 10px 20px;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#branding h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+
+#branding h1 a:link, #branding h1 a:visited {
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Navigation */
+#user-tools {
+    float: left;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+}
+
+/* Content */
+#content {
+    padding: 20px;
+}
+
+/* Tables */
+.changelist {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.changelist table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.changelist thead th {
+    background: #f5f5f5;
+    padding: 12px 15px;
+    text-align: right;
+    font-weight: 600;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.changelist tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.changelist tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Forms */
+.form-row {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.form-row:last-child {
+    border-bottom: none;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row input[type="email"],
+.form-row input[type="password"],
+.form-row textarea,
+.form-row select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+.button, input[type="submit"], input[type="button"], .submit-row input {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background: #357abd;
+}
+
+/* Dashboard */
+.dashboard .module {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.dashboard .module h2 {
+    background: #f5f5f5;
+    padding: 10px 15px;
+    margin: 0;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #header {
+        padding: 10px;
+    }
+    
+    #user-tools {
+        float: none;
+        text-align: right;
+        margin-top: 10px;
+    }
+    
+    .changelist table {
+        display: block;
+        overflow-x: auto;
+    }
+}
