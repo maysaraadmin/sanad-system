@@ -1,0 +1,189 @@
+{% extends 'hadith_app/base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'المكتبة - قائمة المستندات' %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2 class="mb-3">
+                <i class="fas fa-book me-2"></i>
+                {% trans 'المكتبة' %}
+            </h2>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <a href="{% url 'pdf_reader:document_upload' %}" class="btn btn-primary">
+                <i class="fas fa-upload me-2"></i>
+                {% trans 'رفع مستند جديد' %}
+            </a>
+        </div>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="{% trans 'ابحث في المستندات...' %}" value="{{ request.GET.q }}">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select name="type" class="form-select" onchange="this.form.submit()">
+                        <option value="">{% trans 'كل الملفات' %}</option>
+                        <option value="pdf" {% if request.GET.type == 'pdf' %}selected{% endif %}>PDF</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Documents List -->
+    <div class="card">
+        <div class="card-body p-0">
+            {% if documents %}
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>{% trans 'العنوان' %}</th>
+                                <th>{% trans 'النوع' %}</th>
+                                <th>{% trans 'الحجم' %}</th>
+                                <th>{% trans 'آخر تحديث' %}</th>
+                                <th>{% trans 'إجراءات' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for document in documents %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ document.get_absolute_url }}" class="text-decoration-none">
+                                            <i class="fas {% if document.file.name|lower|slice:'-4:' == '.pdf' %}fa-file-pdf text-danger{% else %}fa-file-alt text-primary{% endif %} me-2"></i>
+                                            {{ document.title }}
+                                        </a>
+                                        {% if not document.is_public %}
+                                            <span class="badge bg-secondary ms-2">{% trans 'خاص' %}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ document.get_file_extension|upper }}</td>
+                                    <td>
+                                        {% if document.file_size %}
+                                            {% with kb=1048576 %}{# 1024 * 1024 #}
+                                                {% if document.file_size < 1024 %}
+                                                    {{ document.file_size }} B
+                                                {% elif document.file_size < kb %}
+                                                    {{ document.file_size|filesizeformat }}
+                                                {% else %}
+                                                    {{ document.file_size|filesizeformat }}
+                                                {% endif %}
+                                            {% endwith %}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ document.uploaded_at|date:"Y/m/d H:i" }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="{% url 'pdf_reader:document_view' document.pk %}" class="btn btn-outline-primary" title="{% trans 'عرض' %}">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{% url 'pdf_reader:document_download' document.pk %}" class="btn btn-outline-secondary" title="{% trans 'تحميل' %}">
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                            {% if document.uploaded_by == request.user or request.user.is_staff %}
+                                                <a href="{% url 'pdf_reader:document_update' document.pk %}" class="btn btn-outline-info" title="{% trans 'تعديل' %}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="{% url 'pdf_reader:document_delete' document.pk %}" class="btn btn-outline-danger" title="{% trans 'حذف' %}">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center p-5">
+                    <div class="mb-3">
+                        <i class="fas fa-inbox fa-4x text-muted"></i>
+                    </div>
+                    <h5 class="text-muted">{% trans 'لا توجد مستندات متاحة' %}</h5>
+                    <p class="text-muted">
+                        {% trans 'لم يتم العثور على أي مستندات تطابق معايير البحث.' %}
+                    </p>
+                    <a href="{% url 'pdf_reader:document_upload' %}" class="btn btn-primary mt-3">
+                        <i class="fas fa-upload me-2"></i>
+                        {% trans 'رفع مستند جديد' %}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" aria-label="{% trans 'السابق' %}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">&laquo;</span>
+                    </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" aria-label="{% trans 'التالي' %}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">&raquo;</span>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add confirmation for delete actions
+    const deleteButtons = document.querySelectorAll('.btn-outline-danger');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            if (!confirm('{% trans "هل أنت متأكد من أنك تريد حذف هذا المستند؟" %}')) {
+                e.preventDefault();
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

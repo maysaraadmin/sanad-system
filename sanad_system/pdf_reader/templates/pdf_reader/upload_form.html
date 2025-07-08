@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4>PDF Reader</h4>
+                </div>
+                <div class="card-body">
+                    <form id="pdfUploadForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="pdfFile" class="form-label">Select PDF File</label>
+                            <input class="form-control" type="file" id="pdfFile" accept=".pdf" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload and Extract Text</button>
+                    </form>
+                    
+                    <div id="result" class="mt-4" style="display: none;">
+                        <h5>Extracted Text:</h5>
+                        <div class="border p-3 bg-light" id="extractedText" style="max-height: 400px; overflow-y: auto;">
+                            <!-- Extracted text will be displayed here -->
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h5>Metadata:</h5>
+                            <pre id="metadata" class="bg-light p-3 border rounded"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto" id="toast-title">Notification</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="toast-message">
+      <!-- Message will be inserted here -->
+    </div>
+  </div>
+</div>
+
+<script>
+// Initialize toast
+var toastEl = document.getElementById('toast');
+var toast = new bootstrap.Toast(toastEl, {delay: 5000});
+
+function showToast(title, message, type = 'info') {
+    const toastTitle = document.getElementById('toast-title');
+    const toastMessage = document.getElementById('toast-message');
+    
+    // Set title and message
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+    
+    // Set toast style based on type
+    const toast = document.getElementById('toast');
+    toast.className = 'toast';
+    toast.classList.add(`bg-${type}`, 'text-white');
+    
+    // Show the toast
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+
+document.getElementById('pdfUploadForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const fileInput = document.getElementById('pdfFile');
+    const formData = new FormData();
+    formData.append('pdf_file', fileInput.files[0]);
+    
+    // Reset previous results
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('extractedText').textContent = '';
+    document.getElementById('metadata').textContent = '';
+    
+    try {
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+        
+        // Show loading message
+        showToast('Processing', 'Uploading and processing PDF file...', 'info');
+        
+        // Upload PDF and extract text
+        const response = await fetch('/api/pdf/upload/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            // Display extracted text
+            document.getElementById('extractedText').textContent = result.text;
+            
+            // Get and display metadata
+            try {
+                const metaResponse = await fetch(`/api/pdf/metadata/?file=${encodeURIComponent(result.filename)}`);
+                const metaResult = await metaResponse.json();
+                
+                if (metaResult.status === 'success') {
+                    document.getElementById('metadata').textContent = JSON.stringify(metaResult.metadata, null, 2);
+                }
+            } catch (metaError) {
+                console.error('Error fetching metadata:', metaError);
+                document.getElementById('metadata').textContent = 'Could not load metadata';
+            }
+            
+            // Show results
+            document.getElementById('result').style.display = 'block';
+            showToast('Success', `Successfully processed ${result.pages} page(s) with ${result.text.length} characters extracted.`, 'success');
+            
+        } else if (result.status === 'warning') {
+            showToast('Warning', result.message, 'warning');
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('extractedText').textContent = 'No text could be extracted from this PDF.';
+        } else {
+            showToast('Error', result.message || 'Failed to process PDF', 'danger');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        showToast('Error', 'An error occurred while processing the PDF. Please check the console for details.', 'danger');
+    } finally {
+        // Reset button state
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Upload and Extract Text';
+        }
+    }
+});
+
+// Add file type validation
+const fileInput = document.getElementById('pdfFile');
+fileInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        if (!file.name.toLowerCase().endsWith('.pdf')) {
+            showToast('Error', 'Please select a PDF file', 'danger');
+            this.value = ''; // Clear the file input
+        } else if (file.size > 10 * 1024 * 1024) { // 10MB limit
+            showToast('Error', 'File size should be less than 10MB', 'danger');
+            this.value = ''; // Clear the file input
+        }
+    }
+});
+</script>
+{% endblock %}

@@ -307,8 +307,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center {% if 'library' in request.path or '/documents/' in request.path %}active fw-bold{% endif %}" 
-                           href="{% url 'library:document_list' %}">
+                        <a class="nav-link d-flex align-items-center {% if 'pdf-reader' in request.path or '/documents/' in request.path %}active fw-bold{% endif %}" 
+                           href="{% url 'pdf_reader:document_list' %}">
                             <i class="fas fa-book me-2"></i>
                             <span>المكتبة</span>
                         </a>
@@ -326,21 +326,10 @@
                                        aria-label="{% trans 'Search' %}"
                                        value="{{ request.GET.q }}"
                                        autocomplete="off"
-                                       data-search-hadiths="{% url 'hadith_app:search' %}"
-                                       data-search-library="{% url 'library:document_search' %}">
+                                       data-search-hadiths="{% url 'hadith_app:search' %}">
                                 <button class="btn btn-outline-secondary rounded-pill-end border-0 bg-white" type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
-                            </div>
-                            <div class="dropdown-menu w-100 p-2" id="searchTypeDropdown" style="display: none;">
-                                <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-sm btn-outline-primary active search-type-btn" data-type="hadith">
-                                        <i class="fas fa-book-hadith"></i> {% trans 'Hadiths' %}
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary search-type-btn" data-type="library">
-                                        <i class="fas fa-book"></i> {% trans 'Library' %}
-                                    </button>
-                                </div>
                             </div>
                             <div id="searchSuggestions" class="position-absolute w-100 bg-white rounded shadow-lg mt-1" style="top: 100%; left: 0; z-index: 1000; display: none;">
                                 <div class="list-group list-group-flush">
@@ -523,47 +512,8 @@
         // Global search functionality
         const searchInput = document.getElementById('globalSearchInput');
         const searchForm = document.getElementById('globalSearchForm');
-        const searchTypeBtns = document.querySelectorAll('.search-type-btn');
-        const searchTypeDropdown = document.getElementById('searchTypeDropdown');
-        let currentSearchType = 'hadith';
         
         if (searchInput && searchForm) {
-            // Show/hide search type dropdown on focus/blur
-            searchInput.addEventListener('focus', function() {
-                searchTypeDropdown.style.display = 'block';
-            });
-            
-            document.addEventListener('click', function(e) {
-                if (searchInput && !searchInput.contains(e.target) && 
-                    searchTypeDropdown && !searchTypeDropdown.contains(e.target)) {
-                    searchTypeDropdown.style.display = 'none';
-                }
-            });
-            
-            // Handle search type selection
-            searchTypeBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active state
-                    searchTypeBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update search type
-                    currentSearchType = this.dataset.type;
-                    
-                    // Update placeholder and form action
-                    if (currentSearchType === 'hadith') {
-                        searchInput.placeholder = '{% trans "Search hadiths..." %}';
-                        searchForm.action = searchInput.dataset.searchHadiths;
-                    } else {
-                        searchInput.placeholder = '{% trans "Search library..." %}';
-                        searchForm.action = searchInput.dataset.searchLibrary;
-                    }
-                    
-                    // Focus back on input
-                    searchInput.focus();
-                });
-            });
-            
             // Submit form on Enter
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter' && searchInput.value.trim() !== '') {
@@ -571,14 +521,6 @@
                     searchForm.submit();
                 }
             });
-            
-            // Initialize search type based on current page
-            if (window.location.pathname.startsWith('/library/')) {
-                const libraryBtn = document.querySelector('.search-type-btn[data-type="library"]');
-                if (libraryBtn) {
-                    libraryBtn.click();
-                }
-            }
             
             // Initialize suggestions
             let debounceTimer;
@@ -609,10 +551,8 @@
                 </div>`;
             suggestionsContainer.style.display = 'block';
             
-            // Fetch suggestions based on search type
-            const url = currentSearchType === 'hadith' 
-                ? `/api/hadith/suggestions/?q=${encodeURIComponent(query)}`
-                : `/api/library/suggestions/?q=${encodeURIComponent(query)}`;
+            // Fetch hadith suggestions
+            const url = `/api/hadith/suggestions/?q=${encodeURIComponent(query)}`;
                 
             fetch(url)
                 .then(response => response.json())
@@ -620,13 +560,10 @@
                     if (data.suggestions && data.suggestions.length > 0) {
                         let html = '';
                         data.suggestions.forEach(item => {
-                            const icon = currentSearchType === 'hadith' 
-                                ? '<i class="fas fa-book-hadith me-2"></i>'
-                                : '<i class="fas fa-book me-2"></i>';
                             html += `
                                 <a href="${item.url}" class="list-group-item list-group-item-action">
                                     <div class="d-flex align-items-center">
-                                        ${icon}
+                                        <i class="fas fa-book-hadith me-2"></i>
                                         <div>
                                             <div class="fw-bold">${item.title}</div>
                                             ${item.description ? `<div class="text-muted small">${item.description}</div>` : ''}
