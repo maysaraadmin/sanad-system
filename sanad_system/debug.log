@@ -1236,3 +1236,1448 @@ INFO 2025-07-07 23:33:45,012 basehttp "GET / HTTP/1.1" 200 30219
 INFO 2025-07-07 23:33:47,510 basehttp "GET /library/ HTTP/1.1" 200 15085
 INFO 2025-07-07 23:33:47,769 basehttp "GET /static/library/css/library.css HTTP/1.1" 200 21303
 INFO 2025-07-07 23:33:50,641 basehttp "GET /library/document/1/ HTTP/1.1" 200 38562
+INFO 2025-07-07 23:34:32,635 basehttp "GET /admin/ HTTP/1.1" 200 23910
+INFO 2025-07-07 23:34:32,721 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-07 23:34:34,940 basehttp "GET / HTTP/1.1" 200 30219
+INFO 2025-07-07 23:34:36,903 basehttp "GET /hadith/ HTTP/1.1" 200 34315
+INFO 2025-07-07 23:34:38,603 basehttp "GET /narrators/ HTTP/1.1" 200 37243
+INFO 2025-07-07 23:34:40,382 basehttp "GET /hadith/create/ HTTP/1.1" 200 33720
+INFO 2025-07-07 23:34:43,541 basehttp "GET /library/ HTTP/1.1" 200 15085
+WARNING 2025-07-07 23:35:02,694 log Not Found: /api/library/suggestions/
+WARNING 2025-07-07 23:35:02,698 basehttp "GET /api/library/suggestions/?q=h HTTP/1.1" 404 7772
+WARNING 2025-07-07 23:35:03,151 log Not Found: /api/library/suggestions/
+WARNING 2025-07-07 23:35:03,158 basehttp "GET /api/library/suggestions/?q=hg HTTP/1.1" 404 7773
+WARNING 2025-07-07 23:35:07,499 log Not Found: /api/library/suggestions/
+WARNING 2025-07-07 23:35:07,501 basehttp "GET /api/library/suggestions/?q=%D8%A7%D9%84%D8%A7 HTTP/1.1" 404 7789
+WARNING 2025-07-07 23:35:07,972 log Not Found: /api/library/suggestions/
+WARNING 2025-07-07 23:35:07,974 basehttp "GET /api/library/suggestions/?q=%D8%A7%D9%84%D8%A7%D9%8A HTTP/1.1" 404 7795
+WARNING 2025-07-07 23:35:08,402 log Not Found: /api/library/suggestions/
+WARNING 2025-07-07 23:35:08,404 basehttp "GET /api/library/suggestions/?q=%D8%A7%D9%84%D8%A7%D9%8A%D9%85 HTTP/1.1" 404 7801
+WARNING 2025-07-07 23:35:09,056 log Not Found: /api/library/suggestions/
+WARNING 2025-07-07 23:35:09,058 basehttp "GET /api/library/suggestions/?q=%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86 HTTP/1.1" 404 7813
+ERROR 2025-07-07 23:35:09,755 log Internal Server Error: /library/search/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'widget_tweaks'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'widget_tweaks' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+highlight_filters
+humanize
+i18n
+jformat
+l10n
+log
+static
+tz
+ERROR 2025-07-07 23:35:09,857 basehttp "GET /library/search/?q=%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86 HTTP/1.1" 500 231552
+INFO 2025-07-08 13:48:21,736 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 13:48:37,326 basehttp "GET /accounts/login/?next=/ HTTP/1.1" 302 0
+INFO 2025-07-08 13:48:38,393 basehttp "GET / HTTP/1.1" 200 30219
+INFO 2025-07-08 13:48:39,305 basehttp "GET /pdf-reader/ HTTP/1.1" 200 28810
+INFO 2025-07-08 13:48:39,477 basehttp "GET /pdf-reader/ HTTP/1.1" 200 28810
+INFO 2025-07-08 13:48:40,463 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2025-07-08 13:48:40,470 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2025-07-08 13:48:42,980 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:48:42,985 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,550 basehttp "GET /library/ HTTP/1.1" 200 15085
+INFO 2025-07-08 13:49:03,737 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,740 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,752 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,753 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,755 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,756 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,760 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,767 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-08 13:49:03,957 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-07-08 13:49:24,392 basehttp "GET /library/document/1/ HTTP/1.1" 200 38562
+INFO 2025-07-08 13:55:20,927 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-08 13:55:42,973 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 13:56:15,311 autoreload D:\sanad system\sanad_system\library\urls.py changed, reloading.
+INFO 2025-07-08 13:56:17,474 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 13:57:09,219 autoreload D:\sanad system\sanad_system\library\views.py changed, reloading.
+INFO 2025-07-08 13:57:10,901 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 13:58:20,142 basehttp "GET /library/ HTTP/1.1" 200 15085
+INFO 2025-07-08 14:13:34,725 basehttp - Broken pipe from ('127.0.0.1', 49864)
+INFO 2025-07-08 14:34:19,335 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:35:02,287 basehttp "GET / HTTP/1.1" 200 30219
+INFO 2025-07-08 14:35:08,567 basehttp "GET /library/ HTTP/1.1" 200 15085
+INFO 2025-07-08 14:35:09,780 basehttp - Broken pipe from ('127.0.0.1', 52004)
+ERROR 2025-07-08 14:35:11,457 log Internal Server Error: /library/document/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'pdf_reader_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'pdf_reader_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+highlight_filters
+humanize
+i18n
+jformat
+l10n
+log
+static
+tz
+ERROR 2025-07-08 14:35:11,569 basehttp "GET /library/document/1/ HTTP/1.1" 500 230949
+INFO 2025-07-08 14:35:45,749 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:35:45,867 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:35:53,823 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:36:10,549 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:37:40,070 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:37:40,121 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:37:45,050 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:37:45,051 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:38:46,887 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:38:47,099 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:38:50,624 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:38:50,634 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:39:07,304 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:39:07,512 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 14:39:15,206 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:39:15,207 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:39:33,400 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 14:39:33,408 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 14:39:36,690 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:39:36,695 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:39:51,309 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 14:39:51,612 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 14:40:00,767 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:40:00,767 autoreload Watching for file changes with StatReloader
+ERROR 2025-07-08 14:53:16,186 log Internal Server Error: /library/document/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 967, in do_if
+    nodelist = parser.parse(("endif",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 205: 'else', expected 'endif'. Did you forget to register or load this tag?
+ERROR 2025-07-08 14:53:16,529 basehttp "GET /library/document/1/ HTTP/1.1" 500 216947
+INFO 2025-07-08 14:53:31,076 autoreload D:\sanad system\sanad_system\pdf_reader\templatetags\__init__.py changed, reloading.
+INFO 2025-07-08 14:53:34,784 autoreload D:\sanad system\sanad_system\pdf_reader\templatetags\__init__.py changed, reloading.
+INFO 2025-07-08 14:53:40,411 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:53:40,412 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:54:54,639 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 14:55:35,957 autoreload Watching for file changes with StatReloader
+ERROR 2025-07-08 14:55:50,106 log Internal Server Error: /library/document/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 967, in do_if
+    nodelist = parser.parse(("endif",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 205: 'else', expected 'endif'. Did you forget to register or load this tag?
+ERROR 2025-07-08 14:55:50,129 basehttp "GET /library/document/1/ HTTP/1.1" 500 216591
+ERROR 2025-07-08 15:00:41,096 log Internal Server Error: /library/document/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'trans'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 237, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "D:\sanad system\sanad_system\pdf_reader\templatetags\pdf_reader_tags.py", line 13, in pdf_reader
+    return mark_safe(render_to_string('pdf_reader/pdf_reader_component.html', {
+                     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'pdf_url': pdf_url,
+        ^^^^^^^^^^^^^^^^^^^
+        'request': context.get('request')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    }))
+    ^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 568, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 13: 'trans'. Did you forget to register or load this tag?
+ERROR 2025-07-08 15:00:41,295 basehttp "GET /library/document/1/ HTTP/1.1" 500 344930
+INFO 2025-07-08 15:06:51,608 basehttp "GET /library/document/1/ HTTP/1.1" 200 29030
+INFO 2025-07-08 15:07:08,307 basehttp "GET /media/documents/%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AB/%D9%85%D8%AE%D8%AA%D8%B5%D8%B1_%D8%B4%D8%B9%D8%A8_%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86_%D9%84%D9%84%D8%A8%D9%8A%D9%87%D9%82%D9%89.pdf HTTP/1.1" 200 8079021
+INFO 2025-07-08 15:08:05,232 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 15:08:15,351 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:08:52,124 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 15:08:55,160 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:20:06,151 basehttp "GET /library/document/1/ HTTP/1.1" 200 31647
+INFO 2025-07-08 15:20:06,762 basehttp "GET /static/library/css/library.css HTTP/1.1" 304 0
+INFO 2025-07-08 15:23:34,343 autoreload D:\sanad system\sanad_system\pdf_reader\templatetags\pdf_reader_tags.py changed, reloading.
+INFO 2025-07-08 15:23:46,243 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:26:23,531 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 15:26:27,443 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:26:50,924 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 15:26:53,442 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:27:50,903 autoreload D:\sanad system\sanad_system\pdf_reader\templatetags\pdf_reader_tags.py changed, reloading.
+INFO 2025-07-08 15:28:18,949 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:36:13,168 basehttp "GET /library/document/1/ HTTP/1.1" 200 35456
+INFO 2025-07-08 15:36:25,010 basehttp "GET /library/document/2/ HTTP/1.1" 200 35165
+INFO 2025-07-08 15:51:32,127 basehttp "GET /library/document/2/ HTTP/1.1" 200 32809
+WARNING 2025-07-08 15:51:42,378 log Not Found: /pdf-reader/pdf/\u0635\u062d\u064a\u062d_\u0627\u0644\u0628\u062e\u0627\u0631\u064a.pdf
+WARNING 2025-07-08 15:51:42,380 basehttp "GET /pdf-reader/pdf/%D8%B5%D8%AD%D9%8A%D8%AD_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A.pdf HTTP/1.1" 404 18
+INFO 2025-07-08 15:51:46,377 basehttp "GET /library/document/2/ HTTP/1.1" 200 32809
+WARNING 2025-07-08 15:51:49,129 log Not Found: /pdf-reader/pdf/\u0635\u062d\u064a\u062d_\u0627\u0644\u0628\u062e\u0627\u0631\u064a.pdf
+WARNING 2025-07-08 15:51:49,168 basehttp "GET /pdf-reader/pdf/%D8%B5%D8%AD%D9%8A%D8%AD_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A.pdf HTTP/1.1" 404 18
+INFO 2025-07-08 15:51:57,126 basehttp "GET /library/document/1/ HTTP/1.1" 200 33028
+WARNING 2025-07-08 15:51:57,622 log Not Found: /pdf-reader/pdf/\u0645\u062e\u062a\u0635\u0631_\u0634\u0639\u0628_\u0627\u0644\u0627\u064a\u0645\u0627\u0646_\u0644\u0644\u0628\u064a\u0647\u0642\u0649.pdf
+WARNING 2025-07-08 15:51:57,623 basehttp "GET /pdf-reader/pdf/%D9%85%D8%AE%D8%AA%D8%B5%D8%B1_%D8%B4%D8%B9%D8%A8_%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86_%D9%84%D9%84%D8%A8%D9%8A%D9%87%D9%82%D9%89.pdf HTTP/1.1" 404 18
+ERROR 2025-07-08 15:56:11,143 log Internal Server Error: /library/document/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+                   ~~~~~~~~~~^
+        parser,
+        ^^^^^^^
+    ...<8 lines>...
+        function_name,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 320, in parse_bits
+    raise TemplateSyntaxError(
+        "'%s' received unexpected keyword argument '%s'" % (name, param)
+    )
+django.template.exceptions.TemplateSyntaxError: 'pdf_reader' received unexpected keyword argument 'pdf_url'
+ERROR 2025-07-08 15:56:11,231 basehttp "GET /library/document/1/ HTTP/1.1" 500 225863
+INFO 2025-07-08 15:58:17,333 autoreload D:\sanad system\sanad_system\pdf_reader\templatetags\pdf_reader_tags.py changed, reloading.
+INFO 2025-07-08 15:58:24,755 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:59:23,852 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 15:59:27,826 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 15:59:49,212 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 15:59:51,134 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:26:15,114 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:27:37,336 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:27:37,455 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:27:41,378 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:27:41,379 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:30:28,467 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:31:47,036 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:34:34,420 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:39:34,890 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:40:40,171 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:40:40,215 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:40:40,375 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:40:40,412 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:40:42,329 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:40:42,831 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:40:43,220 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:40:43,225 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:41:09,491 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:41:35,838 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:41:35,845 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:41:35,852 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:41:36,373 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:41:36,403 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:41:38,666 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:41:38,811 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:41:38,989 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:41:39,103 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:41:39,202 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:08,014 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:43:08,027 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:43:08,075 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:43:08,580 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:43:08,671 autoreload D:\sanad system\sanad_system\hadith_app\views\__init__.py changed, reloading.
+INFO 2025-07-08 16:43:11,156 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:11,225 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:11,234 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:11,605 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:13,119 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:21,124 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:43:21,132 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:43:21,258 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:43:21,266 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:43:21,723 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:43:25,198 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:25,603 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:25,612 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:25,839 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:25,958 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:43:43,427 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:00,140 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:44:00,404 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:44:00,596 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:44:00,624 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:44:00,735 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:44:00,772 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:44:03,057 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:03,645 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:03,740 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:04,069 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:05,250 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:07,711 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:11,747 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:44:12,067 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:44:12,112 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:44:12,580 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:44:12,819 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:44:12,877 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:44:15,360 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:15,696 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:16,137 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:17,202 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:17,291 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:19,354 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:44:31,933 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:19,259 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:19,382 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:19,390 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:19,750 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:19,756 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:19,784 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:19,835 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:45:23,411 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:23,983 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:23,986 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:24,021 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:24,029 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:24,177 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:26,417 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:45:37,987 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:44,022 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,037 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,055 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,496 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,506 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,650 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,779 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:44,802 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-08 16:46:50,031 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,039 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,121 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,528 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,541 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,543 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,545 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:50,677 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:46:59,241 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:46:59,416 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:46:59,661 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:46:59,987 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:46:59,979 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:47:00,754 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:47:00,824 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:47:00,991 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 16:47:04,169 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:04,291 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:04,991 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:05,102 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:05,212 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:05,849 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:09,469 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 16:47:18,217 autoreload Watching for file changes with StatReloader
+ERROR 2025-07-08 16:47:37,624 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'library'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'library' is not a registered namespace
+ERROR 2025-07-08 16:47:37,640 basehttp "GET / HTTP/1.1" 500 139030
+ERROR 2025-07-08 16:49:10,076 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'library'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'library' is not a registered namespace
+ERROR 2025-07-08 16:49:10,084 basehttp "GET / HTTP/1.1" 500 139543
+ERROR 2025-07-08 16:49:11,458 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'library'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'library' is not a registered namespace
+ERROR 2025-07-08 16:49:11,462 basehttp "GET / HTTP/1.1" 500 139543
+INFO 2025-07-08 17:17:56,560 basehttp "GET / HTTP/1.1" 200 26973
+INFO 2025-07-08 17:18:33,837 basehttp "GET /admin/ HTTP/1.1" 200 22645
+INFO 2025-07-08 17:18:36,519 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:36,891 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:36,978 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:37,173 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:37,179 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:37,183 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:37,184 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:38,067 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-08 17:18:38,148 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-07-08 17:18:38,309 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-08 17:18:39,755 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-07-08 17:18:39,760 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-08 17:20:46,410 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:46,473 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:46,629 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:46,596 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:47,097 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:47,128 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:46,779 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:47,246 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:20:51,955 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:20:52,197 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:20:52,202 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:20:52,932 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:20:53,006 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:20:53,019 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:20:53,283 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:24,327 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,361 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,594 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,610 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,610 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,724 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,957 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:24,955 autoreload D:\sanad system\sanad_system\pdf_reader\admin.py changed, reloading.
+INFO 2025-07-08 17:21:28,966 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:29,202 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:29,493 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:29,489 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:29,570 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:30,635 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:30,679 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:21:33,697 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:22,510 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:22,561 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:22,588 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:22,649 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:22,676 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:22,985 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:23,009 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:23,149 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:23:32,526 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,527 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,521 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,542 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,548 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,549 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,553 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:23:32,891 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:45,979 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,016 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,024 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,304 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,657 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,697 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,775 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:46,778 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:49:54,458 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:54,458 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:54,465 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:54,468 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:54,476 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:54,483 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:49:54,525 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:51,390 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:51,535 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:51,552 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:51,567 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:51,692 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:52,031 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:52,043 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:52,331 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:55:56,658 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,666 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,667 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,686 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,689 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,698 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,698 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:55:56,714 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:13,711 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:13,828 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:13,846 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:13,932 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:14,016 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:14,043 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:14,065 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:14,347 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 17:56:19,100 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:19,100 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:19,127 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:19,106 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:19,140 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:20,435 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:20,500 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:56:21,280 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:35,336 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:35,379 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:35,411 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:35,835 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:35,839 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:35,927 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:36,030 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:36,366 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 17:58:41,347 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:42,792 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:43,293 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:43,337 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:43,792 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:44,042 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:44,515 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 17:58:45,110 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:13:45,131 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:11,027 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,267 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,756 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,306 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,357 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,360 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,842 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:11,854 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:15:21,631 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,731 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,731 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,576 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,433 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,387 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,304 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:15:21,406 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:31,867 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:31,868 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:31,906 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:32,222 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:32,397 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:32,671 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:32,694 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:32,705 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 18:17:40,293 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:40,295 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:40,296 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:40,311 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:40,312 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:40,326 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:17:40,416 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:18:54,014 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:21:25,308 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:22:51,398 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:56:40,905 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:13,072 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,105 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,132 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,252 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,533 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,702 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,779 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:13,867 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:14,125 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:14,320 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 18:57:19,848 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,788 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,670 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,471 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,450 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,372 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,016 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:20,096 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:19,984 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:23,960 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 18:57:46,475 basehttp "GET / HTTP/1.1" 200 26973
+INFO 2025-07-08 19:00:49,096 basehttp "GET / HTTP/1.1" 200 26875
+ERROR 2025-07-08 19:00:51,180 log Internal Server Error: /pdf-reader/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: pdf_reader_document
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 67, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+                                              ~~~~~~~~~~~~~~~~~~~~~~^
+        queryset, page_size
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 72, in page
+    number = self.validate_number(number)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+                ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 99, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+       ^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 93, in count
+    return c()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 568, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\query.py", line 554, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: pdf_reader_document
+ERROR 2025-07-08 19:00:51,311 basehttp "GET /pdf-reader/ HTTP/1.1" 500 186750
+ERROR 2025-07-08 19:04:25,225 log Internal Server Error: /pdf-reader/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\smartif.py", line 179, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: '*'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 960, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 885, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\smartif.py", line 170, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\smartif.py", line 181, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 888, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '*' from '*'
+ERROR 2025-07-08 19:04:25,342 basehttp "GET /pdf-reader/ HTTP/1.1" 500 397069
+INFO 2025-07-08 19:06:27,989 basehttp "GET /pdf-reader/ HTTP/1.1" 200 27673
+ERROR 2025-07-08 19:06:31,719 log Internal Server Error: /pdf-reader/upload/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 180, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 124, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 74, in get_context_data
+    kwargs["form"] = self.get_form()
+                     ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 39, in get_form
+    return form_class(**self.get_form_kwargs())
+TypeError: BaseModelForm.__init__() got an unexpected keyword argument 'user'
+ERROR 2025-07-08 19:06:31,731 basehttp "GET /pdf-reader/upload/ HTTP/1.1" 500 103513
+INFO 2025-07-08 19:07:28,659 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:28,838 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:28,899 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:28,908 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:28,962 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:29,022 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:29,492 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:29,641 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:29,831 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:29,788 autoreload D:\sanad system\sanad_system\pdf_reader\forms.py changed, reloading.
+INFO 2025-07-08 19:07:38,422 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:38,422 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:38,424 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:38,466 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:38,754 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:40,048 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:40,135 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:40,766 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:40,820 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:07:40,841 autoreload Watching for file changes with StatReloader
+ERROR 2025-07-08 19:08:01,677 log Internal Server Error: /pdf-reader/upload/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'crispy_forms_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'crispy_forms_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+highlight_filters
+humanize
+i18n
+jformat
+l10n
+log
+pdf_reader_tags
+static
+tz
+ERROR 2025-07-08 19:08:01,693 basehttp "GET /pdf-reader/upload/ HTTP/1.1" 500 229654
+INFO 2025-07-08 19:09:12,059 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:12,063 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:12,129 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:12,678 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:12,732 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:12,749 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:12,831 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:13,092 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:13,166 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:13,231 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 19:09:19,822 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:19,822 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:19,827 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:19,827 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:19,939 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:20,131 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:20,124 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:20,153 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:20,155 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:09:20,320 autoreload Watching for file changes with StatReloader

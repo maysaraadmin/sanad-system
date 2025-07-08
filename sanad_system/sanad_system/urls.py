@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import RedirectView
+from django.conf.urls import handler404, handler500
 
 # Import the custom admin site instance from admin_site.py
 from hadith_app.admin_site import admin_site
@@ -33,6 +34,15 @@ urlpatterns = [
     # Admin URLs - Using custom admin site
     path('admin/', admin.site.urls),
     
+    # App URLs - Main entry point for hadith_app
+    path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),
+    
+    # PDF Reader URLs
+    path('pdf-reader/', include(('pdf_reader.urls', 'pdf_reader'), namespace='pdf_reader')),  # PDF reader UI and API
+    
+    # API endpoints are now included within each app's URL configuration
+    # This provides better organization and versioning control
+    
     # Authentication URLs - Using our custom templates
     path('accounts/login/', auth_views.LoginView.as_view(
         template_name='registration/login.html',
@@ -43,17 +53,20 @@ urlpatterns = [
         next_page='hadith_app:hadith_list'
     ), name='logout'),
     
-    # App URLs
-    path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),
-    path('library/', include(('library.urls', 'library'), namespace='library')),
+    # Commented out until library app is created
+    # path('library/', include(('library.urls', 'library'), namespace='library')),
     
-    # Redirect /documents/ to /library/ for backward compatibility
-    path('documents/', RedirectView.as_view(url='/library/', permanent=True)),
-    path('documents/<path:path>/', RedirectView.as_view(pattern_name='library:document_detail', query_string=True), name='document_redirect'),
+    # Commented out library-related redirects
+    # path('documents/', RedirectView.as_view(url='/library/', permanent=True)),
+    # path('documents/<path:path>/', RedirectView.as_view(pattern_name='library:document_detail', query_string=True), name='document_redirect'),
     
     # Language switcher
     path('i18n/', include('django.conf.urls.i18n')),
 ] 
+
+# Error handlers (moved to global scope)
+handler404 = 'hadith_app.handlers.handler404'
+handler500 = 'hadith_app.handlers.handler500'
 
 # Serve media and static files in development
 if settings.DEBUG:

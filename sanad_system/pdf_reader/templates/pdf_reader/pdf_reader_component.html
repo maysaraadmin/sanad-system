@@ -1,0 +1,430 @@
+{% load static i18n %}
+
+<div class="pdf-reader-container">
+    <div class="pdf-reader-toolbar d-flex justify-content-between align-items-center mb-3">
+        <div class="btn-group">
+            <button id="prev-page" class="btn btn-outline-primary" disabled>
+                <i class="fas fa-chevron-left"></i> {% trans 'Previous' %}
+            </button>
+            <button id="next-page" class="btn btn-outline-primary" disabled>
+                {% trans 'Next' %} <i class="fas fa-chevron-right"></i>
+            </button>
+            <span class="input-group-text">
+                <span id="page-num">1</span> / <span id="page-count">-</span>
+            </span>
+        </div>
+        
+        <div class="btn-group">
+            <button id="zoom-out" class="btn btn-outline-secondary" title="{% trans 'Zoom Out' %}">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button id="zoom-in" class="btn btn-outline-secondary" title="{% trans 'Zoom In' %}">
+                <i class="fas fa-search-plus"></i>
+            </button>
+            <button id="fit-width" class="btn btn-outline-secondary" title="{% trans 'Fit Width' %}">
+                <i class="fas fa-arrows-alt-h"></i>
+            </button>
+            <button id="fit-page" class="btn btn-outline-secondary" title="{% trans 'Fit Page' %}">
+                <i class="fas fa-expand"></i>
+            </button>
+            <a id="download-pdf" href="{{ pdf_url }}" class="btn btn-outline-primary" title="{% trans 'Download PDF' %}" download>
+                <i class="fas fa-download"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div id="pdf-viewer" class="border rounded bg-light" style="min-height: 600px; position: relative;">
+        <div id="loading-message" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">{% trans 'Loading...' %}</span>
+            </div>
+            <p class="mt-2">{% trans 'Loading PDF document...' %}</p>
+        </div>
+        <canvas id="pdf-canvas" class="d-block mx-auto" style="max-width: 100%;"></canvas>
+    </div>
+    
+    <div id="error-message" class="alert alert-danger mt-3" style="display: none;">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <span id="error-text"></span>
+    </div>
+</div>
+
+<script>
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // PDF.js configuration
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        
+        // DOM elements
+        const container = document.getElementById('pdf-viewer');
+        const canvas = document.getElementById('pdf-canvas');
+        const ctx = canvas.getContext('2d');
+        const prevBtn = document.getElementById('prev-page');
+        const nextBtn = document.getElementById('next-page');
+        const pageNumEl = document.getElementById('page-num');
+        const pageCountEl = document.getElementById('page-count');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const fitWidthBtn = document.getElementById('fit-width');
+        const fitPageBtn = document.getElementById('fit-page');
+        const downloadBtn = document.getElementById('download-pdf');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        
+        // PDF document and page variables
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.0;
+        
+        // Initialize the PDF viewer
+        function initPdfViewer() {
+            // Show loading message
+            const loadingMessage = document.getElementById('loading-message');
+            if (loadingMessage) {
+                loadingMessage.style.display = 'block';
+            }
+            
+            // Get the PDF URL - use our server-side endpoint
+            const pdfUrl = '{{ pdf_url|escapejs }}';
+            
+            // Debug information
+            console.log('PDF URL:', pdfUrl);
+            
+            // Show loading state
+            const loadingHTML = `
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">{% trans 'Loading...' %}</span>
+                    </div>
+                    <p class="text-muted">{% trans 'Loading PDF document...' %}</p>
+                </div>
+            `;
+            container.innerHTML = loadingHTML;
+            
+            // Configure PDF.js worker
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+            
+            // Load the PDF document with better error handling
+            const loadingTask = pdfjsLib.getDocument({
+                url: pdfUrl,
+                withCredentials: true,
+                // Add CORS headers if needed
+                httpHeaders: {
+                    'Accept': 'application/pdf',
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                }
+            });
+            
+            loadingTask.promise.then(function(pdfDoc_) {
+                pdfDoc = pdfDoc_;
+                
+                // Update page count
+                if (pageCountEl) {
+                    pageCountEl.textContent = pdfDoc.numPages;
+                }
+                
+                // Initial page rendering
+                return renderPage(1);
+                
+            }).catch(function(error) {
+                console.error('Error loading PDF:', error);
+                
+                // Show error message
+                let errorMsg = '{% trans "Error loading PDF. Please try again or download the file." %}';
+                
+                if (error.name === 'PasswordException') {
+                    errorMsg = '{% trans "This PDF is password protected and cannot be displayed." %}';
+                } else if (error.message && error.message.includes('404')) {
+                    errorMsg = '{% trans "PDF file not found on the server." %}';
+                } else if (error.message && error.message.includes('Failed to fetch')) {
+                    errorMsg = '{% trans "Failed to load PDF. Please check your internet connection." %}';
+                }
+                
+                // Display error message
+                if (errorMessage && errorText) {
+                    errorText.textContent = errorMsg;
+                    errorMessage.style.display = 'block';
+                } else {
+                    container.innerHTML = `
+                        <div class="alert alert-danger m-3">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            ${errorMsg}
+                            <div class="mt-2">
+                                <a href="${pdfUrl}" class="btn btn-sm btn-outline-primary" download>
+                                    <i class="fas fa-download me-1"></i> {% trans 'Download PDF' %}
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        }
+        
+        // Render a page with error handling
+        function renderPage(num, zoom = null) {
+            if (!pdfDoc) {
+                console.error('PDF document not loaded');
+                return Promise.reject(new Error('PDF document not loaded'));
+            }
+
+            if (pageRendering) {
+                pageNumPending = num;
+                return Promise.resolve();
+            }
+            
+            pageRendering = true;
+            
+            // Show loading state for page
+            const pageLoadingHTML = `
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">{% trans 'Loading...' %}</span>
+                    </div>
+                    <p class="text-muted">{% trans 'Loading page' %} ${num} {% trans 'of' %} ${pdfDoc.numPages}</p>
+                </div>
+            `;
+            container.innerHTML = pageLoadingHTML;
+            
+            // Update page number
+            pageNum = num;
+            
+            // Update button states
+            if (prevBtn) prevBtn.disabled = num <= 1;
+            if (nextBtn) nextBtn.disabled = num >= pdfDoc.numPages;
+            if (pageNumEl) pageNumEl.textContent = num;
+            
+            // Get the page with error handling
+            return pdfDoc.getPage(num).then(function(page) {
+                // Clear container and add canvas
+                container.innerHTML = '';
+                container.appendChild(canvas);
+                
+                // Calculate scale based on zoom level
+                let newScale = scale;
+                if (zoom === 'width') {
+                    const containerWidth = container.clientWidth - 40; // Account for padding
+                    newScale = (containerWidth / page.getViewport({ scale: 1.0 }).width);
+                } else if (zoom === 'page') {
+                    const containerWidth = container.clientWidth - 40;
+                    const containerHeight = container.clientHeight - 40;
+                    const pageViewport = page.getViewport({ scale: 1.0 });
+                    const scaleX = (containerWidth / pageViewport.width);
+                    const scaleY = (containerHeight / pageViewport.height);
+                    newScale = Math.min(scaleX, scaleY);
+                } else if (typeof zoom === 'number') {
+                    newScale = zoom;
+                }
+                
+                // Update global scale if it changed
+                scale = newScale;
+                
+                const viewport = page.getViewport({ scale: scale });
+                
+                // Handle high-DPI displays
+                const outputScale = window.devicePixelRatio || 1;
+                canvas.width = Math.floor(viewport.width * outputScale);
+                canvas.height = Math.floor(viewport.height * outputScale);
+                canvas.style.width = Math.floor(viewport.width) + "px";
+                canvas.style.height = Math.floor(viewport.height) + "px";
+                
+                // Get canvas context with proper scaling
+                const context = canvas.getContext('2d');
+                context.scale(outputScale, outputScale);
+                
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                    intent: 'display'
+                };
+                
+                const renderTask = page.render(renderContext);
+                
+                // Wait for rendering to finish
+                return renderTask.promise.then(function() {
+                    pageRendering = false;
+                    
+                    // Update UI
+                    if (pageNumEl) pageNumEl.textContent = num;
+                    if (prevBtn) prevBtn.disabled = num <= 1;
+                    if (nextBtn) nextBtn.disabled = num >= pdfDoc.numPages;
+                    
+                    // Resolve any pending page rendering
+                    if (pageNumPending !== null) {
+                        const nextPageNum = pageNumPending;
+                        pageNumPending = null;
+                        renderPage(nextPageNum);
+                    }
+                });
+            }).catch(function(error) {
+                console.error('Error rendering page:', error);
+                pageRendering = false;
+                
+                // Show error message
+                if (errorMessage && errorText) {
+                    errorText.textContent = '{% trans "Error rendering PDF page. Please try again." %}';
+                    errorMessage.style.display = 'block';
+                } else {
+                    container.innerHTML = `
+                        <div class="alert alert-danger m-3">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            {% trans 'Error rendering PDF page. Please try again.' %}
+                        </div>
+                    `;
+                }
+                
+                // Reject the promise with the error
+                return Promise.reject(error);
+            });
+        }
+        
+        // Queue a page rendering
+        function queueRenderPage(num, zoom = null) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num, zoom);
+            }
+        }
+        
+        // Event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                if (pageNum <= 1 || !pdfDoc) return;
+                queueRenderPage(pageNum - 1);
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
+                queueRenderPage(pageNum + 1);
+            });
+        }
+        
+        if (zoomInBtn) {
+            zoomInBtn.addEventListener('click', function() {
+                if (!pdfDoc) return;
+                scale *= 1.25;
+                queueRenderPage(pageNum, scale);
+            });
+        }
+        
+        if (zoomOutBtn) {
+            zoomOutBtn.addEventListener('click', function() {
+                if (!pdfDoc) return;
+                scale = Math.max(0.5, scale / 1.25);
+                queueRenderPage(pageNum, scale);
+            });
+        }
+        
+        if (fitWidthBtn) {
+            fitWidthBtn.addEventListener('click', function() {
+                if (!pdfDoc) return;
+                queueRenderPage(pageNum, 'width');
+            });
+        }
+        
+        if (fitPageBtn) {
+            fitPageBtn.addEventListener('click', function() {
+                if (!pdfDoc) return;
+                queueRenderPage(pageNum, 'page');
+            });
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!pdfDoc) return;
+            
+            // Don't interfere with form controls
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
+                return;
+            }
+            
+            switch (e.key) {
+                case 'ArrowLeft':
+                case 'PageUp':
+                    if (pageNum > 1) {
+                        queueRenderPage(pageNum - 1);
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case 'ArrowRight':
+                case 'PageDown':
+                case ' ':
+                    if (pageNum < pdfDoc.numPages) {
+                        queueRenderPage(pageNum + 1);
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case 'Home':
+                    if (pageNum !== 1) {
+                        queueRenderPage(1);
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case 'End':
+                    if (pageNum !== pdfDoc.numPages) {
+                        queueRenderPage(pdfDoc.numPages);
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case '+':
+                    if (e.ctrlKey || e.metaKey) {
+                        scale *= 1.25;
+                        queueRenderPage(pageNum, scale);
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case '-':
+                    if (e.ctrlKey || e.metaKey) {
+                        scale = Math.max(0.5, scale / 1.25);
+                        queueRenderPage(pageNum, scale);
+                        e.preventDefault();
+                    }
+                    break;
+                    
+                case '0':
+                    if (e.ctrlKey || e.metaKey) {
+                        queueRenderPage(pageNum, 'width');
+                        e.preventDefault();
+                    }
+                    break;
+            }
+        });
+        
+        // Handle window resize with debounce
+        let resizeTimeout;
+        const handleResize = function() {
+            if (resizeTimeout) {
+                clearTimeout(resizeTimeout);
+            }
+            resizeTimeout = setTimeout(function() {
+                if (pdfDoc) {
+                    queueRenderPage(pageNum);
+                }
+            }, 250);
+        };
+        
+        // Add resize event listener
+        window.addEventListener('resize', handleResize);
+        
+        // Clean up event listeners when the component is removed
+        window.addEventListener('unload', function() {
+            window.removeEventListener('resize', handleResize);
+            document.removeEventListener('keydown', handleKeyDown);
+        });
+        
+        // Initialize the PDF viewer
+        initPdfViewer();
+    });
+</script>

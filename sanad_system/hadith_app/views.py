@@ -35,8 +35,19 @@ class HomeView(TemplateView):
 
 from django.contrib.sessions.models import Session
 from django.utils import timezone
+from django.shortcuts import render
 
 from .models import Hadith, Narrator, Sanad, HadithCategory, UserProfile, HadithBook
+
+
+def custom_404_view(request, exception):
+    """Custom 404 error handler."""
+    return render(request, '404.html', status=404)
+
+
+def custom_500_view(request):
+    """Custom 500 error handler."""
+    return render(request, '500.html', status=500)
 from .forms import ProfileUpdateForm, AvatarUploadForm, HadithForm
 from .utils import get_hadith_stats, get_narrator_stats
 

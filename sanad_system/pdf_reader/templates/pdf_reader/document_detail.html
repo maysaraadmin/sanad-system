@@ -1,0 +1,186 @@
+{% extends 'hadith_app/base.html' %}
+{% load i18n static humanize %}
+
+{% block title %}{{ document.title }} - {% trans 'عرض المستند' %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'pdf_reader:document_list' %}">{% trans 'المكتبة' %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ document.title|truncatechars:30 }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">{{ document.title }}</h5>
+                    <div>
+                        {% if document.uploaded_by == request.user or request.user.is_staff %}
+                            <a href="{% url 'pdf_reader:document_update' document.pk %}" class="btn btn-sm btn-outline-primary me-1">
+                                <i class="fas fa-edit me-1"></i> {% trans 'تعديل' %}
+                            </a>
+                            <a href="{% url 'pdf_reader:document_delete' document.pk %}" class="btn btn-sm btn-outline-danger" 
+                               onclick="return confirm('{% trans 'هل أنت متأكد من أنك تريد حذف هذا المستند؟' %}')">
+                                <i class="fas fa-trash me-1"></i> {% trans 'حذف' %}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if document.is_pdf %}
+                        <div class="ratio ratio-16x9 mb-4">
+                            <iframe src="{% url 'pdf_reader:document_view' document.pk %}" 
+                                    class="border rounded" 
+                                    style="background-color: #f8f9fa;">
+                            </iframe>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5 bg-light rounded mb-4">
+                            <i class="fas fa-file-alt fa-5x text-muted mb-3"></i>
+                            <p class="text-muted">{% trans 'معاينة غير متاحة لهذا النوع من الملفات' %}</p>
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-4">
+                        <h6>{% trans 'الوصف' %}</h6>
+                        <p class="text-muted">
+                            {{ document.description|default:_('لا يوجد وصف') }}
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h6>{% trans 'معلومات الملف' %}</h6>
+                                <ul class="list-unstyled text-muted">
+                                    <li class="mb-1">
+                                        <i class="fas fa-file me-2"></i>
+                                        {% trans 'النوع' %}: {{ document.get_file_extension|upper }}
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-hdd me-2"></i>
+                                        {% trans 'الحجم' %}: 
+                                        {% if document.file_size %}
+                                            {{ document.file_size|filesizeformat }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </li>
+                                    {% if document.is_pdf and document.page_count %}
+                                        <li class="mb-1">
+                                            <i class="fas fa-file-pdf me-2"></i>
+                                            {% trans 'عدد الصفحات' %}: {{ document.page_count }}
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h6>{% trans 'معلومات الرفع' %}</h6>
+                                <ul class="list-unstyled text-muted">
+                                    <li class="mb-1">
+                                        <i class="fas fa-user me-2"></i>
+                                        {% trans 'تم الرفع بواسطة' %}: 
+                                        {{ document.uploaded_by.get_full_name|default:document.uploaded_by.username }}
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="far fa-calendar-alt me-2"></i>
+                                        {% trans 'تاريخ الرفع' %}: {{ document.uploaded_at|date:"Y/m/d H:i" }}
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-globe me-2"></i>
+                                        {% trans 'الحالة' %}: 
+                                        {% if document.is_public %}
+                                            <span class="badge bg-success">{% trans 'عام' %}</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{% trans 'خاص' %}</span>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-between">
+                    <a href="{% url 'pdf_reader:document_download' document.pk %}" class="btn btn-primary">
+                        <i class="fas fa-download me-2"></i> {% trans 'تحميل الملف' %}
+                    </a>
+                    {% if document.is_pdf %}
+                        <a href="{% url 'pdf_reader:document_view' document.pk %}" class="btn btn-outline-primary" target="_blank">
+                            <i class="fas fa-external-link-alt me-2"></i> {% trans 'فتح في نافذة جديدة' %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Related Documents -->
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">{% trans 'مستندات أخرى' %}</h6>
+                </div>
+                <div class="list-group list-group-flush">
+                    {% for doc in related_documents %}
+                        <a href="{{ doc.get_absolute_url }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">{{ doc.title }}</h6>
+                                <small class="text-muted">{{ doc.uploaded_at|timesince }}</small>
+                            </div>
+                            <small class="text-muted">
+                                {{ doc.get_file_extension|upper }} • 
+                                {% if doc.file_size %}
+                                    {{ doc.file_size|filesizeformat }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </small>
+                        </a>
+                    {% empty %}
+                        <div class="list-group-item text-muted text-center py-3">
+                            <i class="fas fa-inbox fa-2x mb-2"></i>
+                            <p class="mb-0">{% trans 'لا توجد مستندات أخرى' %}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if related_documents %}
+                    <div class="card-footer bg-light text-center">
+                        <a href="{% url 'pdf_reader:document_list' %}" class="text-decoration-none">
+                            {% trans 'عرض الكل' %} <i class="fas fa-arrow-left me-1"></i>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Document Actions -->
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">{% trans 'إجراءات سريعة' %}</h6>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'pdf_reader:document_upload' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-upload me-2"></i> {% trans 'رفع مستند جديد' %}
+                    </a>
+                    <a href="{% url 'pdf_reader:document_download' document.pk %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-download me-2"></i> {% trans 'تحميل هذا الملف' %}
+                    </a>
+                    {% if document.uploaded_by == request.user or request.user.is_staff %}
+                        <a href="{% url 'pdf_reader:document_update' document.pk %}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-edit me-2"></i> {% trans 'تعديل تفاصيل الملف' %}
+                        </a>
+                    {% endif %}
+                    {% if document.is_pdf %}
+                        <a href="{% url 'pdf_reader:document_view' document.pk %}" target="_blank" class="list-group-item list-group-item-action">
+                            <i class="fas fa-external-link-alt me-2"></i> {% trans 'فتح في نافذة جديدة' %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

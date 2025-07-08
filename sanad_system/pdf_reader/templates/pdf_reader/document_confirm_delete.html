@@ -1,0 +1,71 @@
+{% extends 'hadith_app/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'تأكيد حذف المستند' %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        {% trans 'تأكيد حذف المستند' %}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-trash-alt fa-5x text-danger mb-4"></i>
+                        <h4>{% trans 'هل أنت متأكد من رغبتك في حذف هذا المستند؟' %}</h4>
+                        <p class="text-muted">
+                            {% trans 'سيتم حذف المستند بشكل دائم ولا يمكن استرجاعه. الرجاء التأكد قبل المتابعة.' %}
+                        </p>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ document.title }}</h5>
+                            <p class="card-text text-muted">
+                                <i class="fas fa-file me-2"></i> {{ document.get_file_extension|upper }}
+                                {% if document.file_size %}
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-hdd me-1"></i> {{ document.file_size|filesizeformat }}
+                                {% endif %}
+                                {% if document.is_pdf and document.page_count %}
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-file-pdf me-1"></i> {{ document.page_count }} {% trans 'صفحة' %}
+                                {% endif %}
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <i class="far fa-calendar-alt me-1"></i> 
+                                    {% trans 'تم الرفع في' %} {{ document.uploaded_at|date:"Y/m/d H:i" }}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <form method="post" class="text-center">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="{{ document.get_absolute_url }}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-right me-1"></i> {% trans 'إلغاء والعودة' %}
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash me-1"></i> {% trans 'نعم، احذف المستند' %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'pdf_reader:document_list' %}" class="text-decoration-none">
+                    <i class="fas fa-arrow-right me-1"></i> {% trans 'العودة إلى قائمة المستندات' %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -45,9 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django_jalali',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'hadith_app',
-    'library',
+    'pdf_reader',
 ]
+
+# Crispy Forms Settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -163,13 +169,21 @@ NUMBER_GROUPING = 3
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-# Media files
+# Media files (Uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Ensure the media directory exists
+os.makedirs(MEDIA_ROOT, exist_ok=True)
+
+# PDF Reader Settings
+PDF_UPLOAD_DIR = os.path.join(MEDIA_ROOT, 'pdf_uploads')
+os.makedirs(PDF_UPLOAD_DIR, exist_ok=True)
 
 # Security settings
 if not DEBUG:
@@ -198,8 +212,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # DEBUG = False  # Only set to False in production
 # ALLOWED_HOSTS = ['your-domain.com']  # Specify actual domains in production
 
-# Custom error handlers
-handler404 = 'hadith_app.views.custom_404_view'
+# Custom error handlers are now defined in urls.py
 
 # Authentication settings
 LOGIN_REDIRECT_URL = 'hadith_app:hadith_list'  # Redirect after login

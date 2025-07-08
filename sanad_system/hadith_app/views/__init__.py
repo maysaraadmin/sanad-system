@@ -6,3 +6,4 @@ from .profile_views import ProfileView, ProfileUpdateView
 from .search_views import SearchView
 from .set_theme import set_theme
 from .sanad_views import SanadCreateView
+from .error_views import custom_404_view, custom_500_view
