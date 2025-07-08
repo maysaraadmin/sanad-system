@@ -2681,3 +2681,7 @@ INFO 2025-07-08 19:09:20,124 autoreload Watching for file changes with StatReloa
 INFO 2025-07-08 19:09:20,153 autoreload Watching for file changes with StatReloader
 INFO 2025-07-08 19:09:20,155 autoreload Watching for file changes with StatReloader
 INFO 2025-07-08 19:09:20,320 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:13:59,117 basehttp "GET /pdf-reader/upload/ HTTP/1.1" 200 29748
+INFO 2025-07-08 19:14:26,287 basehttp "POST /pdf-reader/upload/ HTTP/1.1" 302 0
+INFO 2025-07-08 19:14:28,030 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32391
+INFO 2025-07-08 19:14:30,415 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28448
