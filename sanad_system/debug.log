@@ -2685,3 +2685,1425 @@ INFO 2025-07-08 19:13:59,117 basehttp "GET /pdf-reader/upload/ HTTP/1.1" 200 297
 INFO 2025-07-08 19:14:26,287 basehttp "POST /pdf-reader/upload/ HTTP/1.1" 302 0
 INFO 2025-07-08 19:14:28,030 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32391
 INFO 2025-07-08 19:14:30,415 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28448
+INFO 2025-07-08 19:18:50,167 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,193 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,203 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,246 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,513 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,571 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,610 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:50,828 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:51,156 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:51,214 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 19:18:59,073 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:18:59,152 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:18:59,209 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:18:59,221 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:18:59,921 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:00,014 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:00,408 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:00,430 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:00,511 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:15,057 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,139 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,273 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,349 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,447 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,531 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,634 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,654 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:15,862 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:16,305 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:22,014 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:22,422 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:22,728 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:23,610 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:24,024 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:24,715 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:24,894 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:25,231 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:25,834 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:30,764 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:48,995 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,135 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,138 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,191 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,453 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,485 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,629 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,642 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:49,856 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 19:19:56,323 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:56,366 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:56,411 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:56,581 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:56,609 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:56,655 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:57,025 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:57,251 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:57,251 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:19:57,426 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 19:48:41,639 basehttp - Broken pipe from ('127.0.0.1', 52925)
+INFO 2025-07-08 19:48:41,951 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30026
+INFO 2025-07-08 19:48:52,937 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32178
+INFO 2025-07-08 19:48:55,590 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28443
+INFO 2025-07-08 19:53:48,785 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-08 19:53:49,412 basehttp - Broken pipe from ('127.0.0.1', 53459)
+WARNING 2025-07-08 19:53:50,480 log Not Found: /favicon.ico
+INFO 2025-07-08 19:53:50,634 basehttp - Broken pipe from ('127.0.0.1', 53461)
+INFO 2025-07-08 19:53:52,259 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30026
+INFO 2025-07-08 19:56:35,887 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30026
+INFO 2025-07-08 19:56:41,929 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32178
+INFO 2025-07-08 19:56:42,235 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28443
+INFO 2025-07-08 20:06:31,733 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:31,782 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:31,843 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,071 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,090 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,106 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,510 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,522 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,642 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:32,655 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:06:40,273 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:40,285 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:40,354 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:40,363 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:40,777 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:40,872 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:41,007 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:41,052 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:41,125 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:06:41,172 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:05,857 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:05,859 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:05,880 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:05,891 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:06,413 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:06,433 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:06,498 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:06,515 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:06,626 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:06,759 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:08:12,184 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,195 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,206 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,220 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,201 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,265 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,267 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,345 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:08:12,665 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:10:46,117 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32178
+INFO 2025-07-08 20:10:47,281 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28443
+INFO 2025-07-08 20:21:51,561 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:51,792 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,171 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,138 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,283 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,289 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,406 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,056 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,085 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:21:52,288 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:22:14,989 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:14,990 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:14,990 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:14,991 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:14,999 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:15,005 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:15,010 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:15,107 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:15,765 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:22:16,012 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:23:54,262 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,436 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,439 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,618 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,622 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,697 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,745 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,687 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:23:54,792 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:24:02,709 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:02,770 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:02,821 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:02,846 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:02,847 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:02,864 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:02,899 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:03,106 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:03,149 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:03,187 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:24:21,116 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32840
+INFO 2025-07-08 20:24:29,315 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 8079021
+WARNING 2025-07-08 20:24:30,153 log Not Found: /favicon.ico
+WARNING 2025-07-08 20:24:30,155 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+WARNING 2025-07-08 20:25:08,279 base Session data corrupted
+INFO 2025-07-08 20:25:08,316 basehttp "GET /pdf-reader/1/ HTTP/1.1" 302 0
+INFO 2025-07-08 20:25:08,532 basehttp "GET /accounts/login/?next=/pdf-reader/1/ HTTP/1.1" 200 28473
+INFO 2025-07-08 20:25:09,835 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2025-07-08 20:25:09,928 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+WARNING 2025-07-08 20:25:11,669 log Not Found: /favicon.ico
+WARNING 2025-07-08 20:25:11,672 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-08 20:25:14,322 basehttp "POST /accounts/login/?next=/pdf-reader/1/ HTTP/1.1" 302 0
+INFO 2025-07-08 20:25:14,384 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32840
+INFO 2025-07-08 20:25:19,203 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 8079021
+INFO 2025-07-08 20:27:02,044 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,072 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,082 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,268 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,422 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,784 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,911 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:02,939 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:03,032 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:03,080 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:27:10,293 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,293 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,300 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,310 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,319 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,323 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,325 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,332 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:10,607 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:23,552 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:23,953 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,073 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,215 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,391 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,428 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,532 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,553 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,618 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:24,766 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:27:30,513 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:31,342 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:31,505 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:31,590 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:32,042 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:32,325 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:32,646 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:33,699 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:33,815 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:27:39,397 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:36,117 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,143 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,147 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,421 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,512 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,653 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,661 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,750 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:36,734 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:37,349 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:29:42,517 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:42,640 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:43,071 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:43,815 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:43,975 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:44,155 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:44,731 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:45,574 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:45,765 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:51,189 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:08,660 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:08,664 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:08,713 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:08,929 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:09,026 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:09,031 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:09,006 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:09,535 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:09,626 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:36:18,861 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:18,861 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:18,864 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:18,864 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:18,867 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:18,869 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:19,028 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:20,978 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,154 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,375 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,509 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,528 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,587 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,605 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,630 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:21,951 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:22,044 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:37:28,585 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,171 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,269 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,319 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,323 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,568 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,657 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:29,856 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:31,102 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:37:34,711 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:45:58,607 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32486
+INFO 2025-07-08 20:46:00,541 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28443
+INFO 2025-07-08 20:48:06,558 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:06,565 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:06,694 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:06,807 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:06,994 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:07,019 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:07,032 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:07,107 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:07,161 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:07,723 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 20:48:45,248 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,248 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,248 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,250 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,251 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,251 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,253 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,254 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,257 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:48:45,566 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:37,537 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:37,581 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:37,631 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:37,701 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:37,746 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:37,922 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:37,937 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:38,051 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:38,290 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:38,437 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:52:47,664 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,665 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,667 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,713 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,727 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,692 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,733 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,719 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:47,737 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:52:48,044 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:54:58,021 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,059 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,200 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,300 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,363 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,401 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,305 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,680 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:58,708 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:54:59,132 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 20:55:04,880 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:05,625 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:05,735 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:05,906 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:06,428 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:06,782 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:06,966 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:07,172 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:08,124 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 20:55:12,760 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:24:33,523 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32486
+INFO 2025-07-08 21:24:35,790 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 28443
+INFO 2025-07-08 21:26:42,075 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,075 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,125 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,266 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,266 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,299 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,374 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:42,838 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:43,023 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:43,148 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 21:26:56,733 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:27:20,929 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32488
+INFO 2025-07-08 21:27:22,464 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28443
+INFO 2025-07-08 21:29:23,267 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32488
+INFO 2025-07-08 21:29:23,744 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28443
+INFO 2025-07-08 21:29:35,604 basehttp "GET /accounts/login/?next=/pdf-reader/1/ HTTP/1.1" 302 0
+INFO 2025-07-08 21:29:35,862 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28443
+INFO 2025-07-08 21:29:47,274 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32488
+INFO 2025-07-08 21:29:47,612 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28443
+INFO 2025-07-08 21:29:51,513 basehttp "GET /pdf-reader/1/edit/ HTTP/1.1" 200 31708
+INFO 2025-07-08 21:30:09,929 basehttp "POST /pdf-reader/1/edit/ HTTP/1.1" 302 0
+INFO 2025-07-08 21:30:11,339 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 33005
+INFO 2025-07-08 21:30:14,190 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28449
+INFO 2025-07-08 21:32:02,924 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-08 21:32:05,752 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:33:25,363 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 21:33:27,404 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:34:05,345 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 21:34:07,844 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:34:17,576 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 21:34:20,060 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:34:50,194 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 21:34:52,287 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:38:47,336 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 21:39:34,275 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:40:23,925 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 21:40:28,897 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 21:46:08,977 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32788
+INFO 2025-07-08 21:46:17,787 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28449
+WARNING 2025-07-08 21:46:32,610 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-08 21:46:32,611 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7579
+INFO 2025-07-08 22:10:05,625 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32795
+ERROR 2025-07-08 22:10:06,655 log Internal Server Error: /pdf-reader/1/viewer/page/1/
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 349, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 376, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+ERROR 2025-07-08 22:10:06,705 basehttp "GET /pdf-reader/1/viewer/page/1/ HTTP/1.1" 500 355935
+INFO 2025-07-08 22:12:37,297 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32795
+ERROR 2025-07-08 22:12:37,994 log Internal Server Error: /pdf-reader/1/viewer/page/1/
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 349, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 376, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+ERROR 2025-07-08 22:12:38,045 basehttp "GET /pdf-reader/1/viewer/page/1/ HTTP/1.1" 500 354673
+INFO 2025-07-08 22:12:55,344 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 32795
+ERROR 2025-07-08 22:12:56,122 log Internal Server Error: /pdf-reader/1/viewer/page/1/
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 349, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 376, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+ERROR 2025-07-08 22:12:56,200 basehttp "GET /pdf-reader/1/viewer/page/1/ HTTP/1.1" 500 355940
+INFO 2025-07-08 22:15:13,097 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:15:18,104 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:15:51,598 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:15:53,974 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:16:08,341 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-08 22:16:09,831 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:16:25,033 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32795
+ERROR 2025-07-08 22:16:30,717 log Internal Server Error: /pdf-reader/1/viewer/page/1/
+Traceback (most recent call last):
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 360, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 387, in pdf_viewer
+    response = render(request, 'pdf_reader/pdf_viewer.html', context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1372, in url
+    viewname = parser.compile_filter(bits[1])
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '\'pdf_reader:document_detail\'' from '\'pdf_reader:document_detail\''
+ERROR 2025-07-08 22:16:30,756 basehttp "GET /pdf-reader/1/viewer/page/1/ HTTP/1.1" 500 354999
+INFO 2025-07-08 22:17:30,811 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 32795
+INFO 2025-07-08 22:17:31,242 basehttp "GET /pdf-reader/1/viewer/page/1/ HTTP/1.1" 200 28638
+INFO 2025-07-08 22:22:16,969 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:22:20,171 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:23:27,236 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:23:30,388 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:24:10,214 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:24:12,293 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:25:46,106 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:25:48,816 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:26:08,291 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:26:11,695 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:27:27,221 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:27:29,730 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:27:52,428 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:27:54,327 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:29:08,304 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 33238
+INFO 2025-07-08 22:29:08,557 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 28851
+INFO 2025-07-08 22:31:39,006 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 33597
+INFO 2025-07-08 22:31:39,234 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29218
+INFO 2025-07-08 22:31:40,910 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 33597
+INFO 2025-07-08 22:31:41,092 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29218
+INFO 2025-07-08 22:33:26,160 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:33:26,399 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29218
+INFO 2025-07-08 22:33:28,015 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:33:28,341 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29218
+INFO 2025-07-08 22:34:33,202 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:34:33,397 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29170
+INFO 2025-07-08 22:34:35,661 basehttp "GET /pdf-reader/1/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:34:35,887 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29170
+INFO 2025-07-08 22:35:16,639 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 22:35:19,328 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:36:42,830 basehttp "GET /pdf-reader/1/ HTTP/1.1" 302 0
+INFO 2025-07-08 22:36:43,046 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29186
+INFO 2025-07-08 22:40:12,801 basehttp "GET /pdf-reader/1/ HTTP/1.1" 302 0
+INFO 2025-07-08 22:40:12,895 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29186
+INFO 2025-07-08 22:40:36,891 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:40:53,322 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 302 0
+INFO 2025-07-08 22:40:53,496 basehttp "GET /accounts/login/?next=/pdf-reader/1/viewer/ HTTP/1.1" 200 28473
+INFO 2025-07-08 22:40:53,529 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 302 0
+INFO 2025-07-08 22:40:53,545 basehttp "GET /accounts/login/?next=/pdf-reader/1/viewer/ HTTP/1.1" 200 28473
+INFO 2025-07-08 22:40:54,247 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2025-07-08 22:40:54,281 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2025-07-08 22:41:06,652 basehttp "POST /accounts/login/?next=/pdf-reader/1/viewer/ HTTP/1.1" 302 0
+INFO 2025-07-08 22:41:06,934 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29186
+INFO 2025-07-08 22:41:06,988 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2025-07-08 22:41:06,992 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2025-07-08 22:44:30,691 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-08 22:44:30,837 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+WARNING 2025-07-08 22:44:31,543 log Not Found: /favicon.ico
+INFO 2025-07-08 22:44:31,545 basehttp - Broken pipe from ('127.0.0.1', 50864)
+INFO 2025-07-08 22:44:32,895 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-08 22:44:36,232 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:44:36,476 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 29186
+INFO 2025-07-08 22:50:00,935 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:50:01,276 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-08 22:50:04,329 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:50:04,358 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:50:20,328 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 22:50:20,384 autoreload D:\sanad system\sanad_system\pdf_reader\urls.py changed, reloading.
+INFO 2025-07-08 22:50:23,831 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:50:23,848 autoreload Watching for file changes with StatReloader
+INFO 2025-07-08 22:52:31,295 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:52:31,474 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+INFO 2025-07-08 22:52:38,898 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 34219
+INFO 2025-07-08 22:52:39,084 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+ERROR 2025-07-08 22:59:59,722 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 244038
+ERROR 2025-07-08 23:01:20,946 log Internal Server Error: /pdf-reader/1/details/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 6: 'block'. Looking for one of: endblock.
+ERROR 2025-07-08 23:01:20,952 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 188256
+ERROR 2025-07-08 23:01:22,004 log Internal Server Error: /pdf-reader/1/details/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 6: 'block'. Looking for one of: endblock.
+ERROR 2025-07-08 23:01:22,011 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 188256
+INFO 2025-07-09 05:49:37,165 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 05:50:03,338 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-09 05:50:05,769 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-07-09 05:50:06,760 basehttp - Broken pipe from ('127.0.0.1', 49453)
+INFO 2025-07-09 05:50:20,470 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-09 05:50:25,160 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 35262
+INFO 2025-07-09 05:50:48,633 basehttp "GET /media/documents/hgh_20250708151425.pdf HTTP/1.1" 200 8079021
+WARNING 2025-07-09 05:50:48,679 log Not Found: /favicon.ico
+WARNING 2025-07-09 05:50:48,681 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 06:02:26,653 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 06:02:38,687 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 35262
+INFO 2025-07-09 06:02:46,065 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+WARNING 2025-07-09 06:02:53,406 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:02:53,410 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 06:05:07,453 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 06:05:14,956 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 06:05:27,787 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 06:05:33,157 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 06:09:21,791 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 35262
+INFO 2025-07-09 06:09:28,400 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+WARNING 2025-07-09 06:09:32,500 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:09:32,504 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 06:22:13,356 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-09 06:22:17,786 basehttp - Broken pipe from ('127.0.0.1', 53741)
+WARNING 2025-07-09 06:22:18,055 log Not Found: /favicon.ico
+INFO 2025-07-09 06:22:18,061 basehttp - Broken pipe from ('127.0.0.1', 53751)
+INFO 2025-07-09 06:22:24,383 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-09 06:22:40,135 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 36469
+INFO 2025-07-09 06:23:15,348 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+WARNING 2025-07-09 06:23:19,237 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:23:19,238 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 06:26:25,703 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 36469
+INFO 2025-07-09 06:26:35,346 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+WARNING 2025-07-09 06:26:39,163 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:26:39,168 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 06:37:11,445 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 37236
+INFO 2025-07-09 06:37:14,129 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 37236
+INFO 2025-07-09 06:37:26,047 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 37236
+WARNING 2025-07-09 06:37:38,309 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:37:38,310 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+ERROR 2025-07-09 06:44:31,223 log Internal Server Error: /pdf-reader/1/details/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 6: 'block'. Looking for one of: endblock.
+ERROR 2025-07-09 06:44:31,284 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 186625
+INFO 2025-07-09 06:45:28,927 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 37236
+INFO 2025-07-09 06:45:54,772 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+WARNING 2025-07-09 06:45:58,492 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:45:58,494 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 06:48:34,195 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+INFO 2025-07-09 06:48:41,584 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 37236
+INFO 2025-07-09 06:55:56,298 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 37236
+INFO 2025-07-09 06:55:56,605 basehttp "GET /media/documents/hgh_20250708151425.pdf HTTP/1.1" 304 0
+INFO 2025-07-09 06:56:06,587 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+WARNING 2025-07-09 06:56:09,578 log Not Found: /favicon.ico
+WARNING 2025-07-09 06:56:09,579 basehttp "GET /favicon.ico HTTP/1.1" 404 7468
+INFO 2025-07-09 07:18:08,525 autoreload Watching for file changes with StatReloader
+ERROR 2025-07-09 07:18:17,226 log Internal Server Error: /pdf-reader/1/details/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 226, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'extra_css' appears more than once
+ERROR 2025-07-09 07:18:17,277 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 198567
+ERROR 2025-07-09 07:23:03,393 log Internal Server Error: /pdf-reader/1/details/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 226, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+ERROR 2025-07-09 07:23:03,413 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 214004
+ERROR 2025-07-09 07:23:40,859 log Internal Server Error: /pdf-reader/1/details/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 568, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 512: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-07-09 07:23:40,877 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 500 197800
+INFO 2025-07-09 07:25:06,489 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 39220
+INFO 2025-07-09 07:28:10,611 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 39202
+INFO 2025-07-09 07:28:19,681 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+INFO 2025-07-09 07:28:40,627 basehttp "GET /pdf-reader/1/viewer/ HTTP/1.1" 200 30096
+INFO 2025-07-09 07:32:43,060 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 41011
+INFO 2025-07-09 07:32:54,493 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 41011
+INFO 2025-07-09 07:33:08,060 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-09 07:33:10,154 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 41011
+INFO 2025-07-09 07:36:10,216 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 43165
+INFO 2025-07-09 07:36:27,509 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 43165
+INFO 2025-07-09 07:36:36,490 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 43165
+INFO 2025-07-09 07:38:47,576 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 45909
+INFO 2025-07-09 07:42:45,159 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 46126
+INFO 2025-07-09 07:45:35,456 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 07:45:39,567 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:45:57,099 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 07:45:58,947 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:46:13,312 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-09 07:46:14,902 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:46:54,231 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-09 07:46:56,215 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:47:29,135 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 07:47:31,586 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:47:49,982 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 07:47:51,851 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:53:31,789 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 46126
+INFO 2025-07-09 07:55:26,276 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 07:55:31,102 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:55:37,759 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 07:55:39,808 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:55:45,266 autoreload D:\sanad system\sanad_system\pdf_reader\models.py changed, reloading.
+INFO 2025-07-09 07:55:47,694 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 07:56:04,428 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 46126
+INFO 2025-07-09 08:00:10,635 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 49637
+INFO 2025-07-09 08:00:10,862 basehttp "GET /static/js/pdf-viewer.js HTTP/1.1" 200 17090
+INFO 2025-07-09 08:00:12,437 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 49637
+INFO 2025-07-09 08:15:07,898 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 54812
+INFO 2025-07-09 08:15:07,942 basehttp "GET /static/js/pdf-viewer.js HTTP/1.1" 200 40554
+INFO 2025-07-09 14:53:46,625 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 58283
+INFO 2025-07-09 14:53:46,738 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-07-09 14:53:46,782 basehttp "GET /static/js/pdf-viewer.js HTTP/1.1" 304 0
+ERROR 2025-07-09 14:53:57,556 log Internal Server Error: /pdf-reader/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "D:\sanad system\sanad_system\pdf_reader\views.py", line 87, in get_context_data
+    if page_obj:
+       ^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\paginator.py", line 174, in __len__
+    return len(self.object_list)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1883, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1273, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 2296, in prefetch_related_objects
+    raise AttributeError(
+    ...<7 lines>...
+    )
+AttributeError: Cannot find 'tags' on Document object, 'tags' is an invalid parameter to prefetch_related()
+ERROR 2025-07-09 14:53:57,836 basehttp "GET /pdf-reader/ HTTP/1.1" 500 115053
+INFO 2025-07-09 14:55:45,667 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 14:55:51,184 autoreload Watching for file changes with StatReloader
