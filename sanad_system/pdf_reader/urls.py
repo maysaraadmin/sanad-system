@@ -27,6 +27,10 @@ document_patterns = [
     
     # Document detail and actions
     path('<int:pk>/', 
+        login_required(RedirectView.as_view(pattern_name='pdf_reader:document_viewer', permanent=False)),
+        name='document_detail_redirect'
+    ),
+    path('<int:pk>/details/', 
         login_required(views.DocumentDetailView.as_view()),
         name='document_detail'
     ),
@@ -38,19 +42,31 @@ document_patterns = [
         login_required(views.DocumentDeleteView.as_view()),
         name='document_delete'
     ),
+    # Document viewing and metadata
+    path('<int:pk>/info/', 
+        login_required(views.document_info),
+        name='document_info'
+    ),
     path('<int:pk>/view/', 
-        vary_on_cookie(login_required(views.pdf_viewer)),
+        login_required(views.DocumentDetailView.as_view()),
         name='document_view'
+    ),
+    path('<int:pk>/viewer/', 
+        login_required(views.pdf_viewer),
+        name='document_viewer',
+        kwargs={'page': 1}
+    ),
+    path('<int:pk>/viewer/page/<int:page>/', 
+        login_required(views.pdf_viewer),
+        name='document_viewer_page'
+    ),
+    path('<int:pk>/metadata/', 
+        login_required(views.pdf_metadata),
+        name='document_metadata'
     ),
     path('<int:pk>/download/', 
         never_cache(login_required(views.serve_document)),
         name='document_download'
-    ),
-    
-    # PDF viewer with specific page
-    path('<int:pk>/view/page/<int:page>/', 
-        vary_on_cookie(login_required(views.pdf_viewer)),
-        name='document_view_page'
     ),
     
     # Document actions

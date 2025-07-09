@@ -39,6 +39,7 @@
 
                     <form action="{{ app_path }}" method="post" id="login-form" class="mt-4">
                         {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
                         
                         <div class="form-floating mb-4">
                             <input type="text" name="username" id="id_username" class="form-control form-control-lg" 

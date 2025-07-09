@@ -14,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy, reverse
@@ -34,9 +35,10 @@ class DocumentListView(LoginRequiredMixin, ListView):
     paginate_by = 12
     
     def get_queryset(self):
-        queryset = Document.objects.all()
+        # Start with the base queryset and select_related to avoid N+1 queries
+        queryset = Document.objects.select_related('uploaded_by')
         
-        # Apply search filter
+        # Apply search filter with proper indexing
         search_query = self.request.GET.get('q')
         if search_query:
             queryset = queryset.filter(
@@ -45,13 +47,20 @@ class DocumentListView(LoginRequiredMixin, ListView):
                 Q(uploaded_by__username__icontains=search_query)
             )
         
-        # Filter by document type
+        # Filter by document type using database indexes
         doc_type = self.request.GET.get('type')
         if doc_type == 'pdf':
             queryset = queryset.filter(file__iendswith='.pdf')
         elif doc_type == 'doc':
             queryset = queryset.filter(
                 Q(file__iendswith='.doc') | Q(file__iendswith='.docx')
+            )
+        elif doc_type == 'image':
+            queryset = queryset.filter(
+                Q(file__iendswith='.jpg') | 
+                Q(file__iendswith='.jpeg') | 
+                Q(file__iendswith='.png') |
+                Q(file__iendswith='.gif')
             )
         
         # For non-staff users, only show public documents or their own documents
@@ -60,16 +69,33 @@ class DocumentListView(LoginRequiredMixin, ListView):
                 Q(is_public=True) | Q(uploaded_by=self.request.user)
             )
         
-        # Order by most recent first
-        return queryset.order_by('-uploaded_at')
+        # Only count once after all filters are applied
+        self.total_count = queryset.count()
+        
+        # Order by most recent first with a secondary sort on ID for consistent pagination
+        return queryset.order_by('-uploaded_at', '-id')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = _('المكتبة')
         context['search_query'] = self.request.GET.get('q', '')
         context['doc_type'] = self.request.GET.get('type', '')
+        
+        # Add pagination information
+        page_obj = context.get('page_obj')
+        if page_obj:
+            context['show_pagination'] = page_obj.has_other_pages()
+            context['total_count'] = getattr(self, 'total_count', 0)
+            
+            # Calculate start and end indices for the current page
+            start_index = (page_obj.number - 1) * self.paginate_by + 1
+            end_index = min(page_obj.number * self.paginate_by, self.total_count)
+            
+            context['start_index'] = start_index
+            context['end_index'] = end_index
+        
         return context
-
+    
 class DocumentDetailView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = 'pdf_reader/document_detail.html'
@@ -103,6 +129,13 @@ class DocumentDetailView(LoginRequiredMixin, DetailView):
         })
         
         return context
+        
+    def render_to_response(self, context, **response_kwargs):
+        response = super().render_to_response(context, **response_kwargs)
+        # Allow embedding in iframes from the same origin
+        response['X-Frame-Options'] = 'SAMEORIGIN'
+        response['Content-Security-Policy'] = "frame-ancestors 'self'"
+        return response
 
 class DocumentCreateView(LoginRequiredMixin, CreateView):
     model = Document
@@ -206,6 +239,8 @@ def serve_document(request, pk):
     return response
 
 @login_required
+@require_http_methods(["POST"])
+@login_required
 def toggle_public_status(request, pk):
     """
     Toggle the public status of a document.
@@ -230,94 +265,288 @@ def toggle_public_status(request, pk):
 
 
 @login_required
-def pdf_viewer(request, pk, page=None):
+def pdf_viewer(request, pk, page=1):
     """
-    View for PDF.js viewer with support for direct page navigation.
+    View for rendering PDF files as images using PyMuPDF.
     
     Args:
         request: HTTP request object
         pk: Primary key of the document
-        page: Optional page number to navigate to (1-based index)
+        page: Page number to display (1-based index)
         
     Returns:
-        Rendered template with PDF viewer
+        Rendered template with PDF viewer or image data for AJAX requests
+    """
+    logger.info(f"PDF viewer requested for document {pk}, page {page}")
+    
+    document = None
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    
+    try:
+        document = get_object_or_404(Document, pk=pk)
+        logger.info(f"Document found: {document.title} (ID: {document.id})")
+        
+        # Check if user has permission to view this document
+        if not document.is_public and document.uploaded_by != request.user and not request.user.is_staff:
+            logger.warning(f"Permission denied for user {request.user} to view document {pk}")
+            raise Http404(_("You don't have permission to view this document."))
+        
+        # Get total pages from PDF
+        total_pages = 1
+        try:
+            with fitz.open(document.file.path) as doc:
+                total_pages = doc.page_count
+        except Exception as e:
+            logger.error(f"Error getting page count for document {pk}: {str(e)}")
+        
+        # Check if the file exists
+        if not document.file:
+            logger.error(f"Document {pk} has no file associated with it")
+            raise Http404(_("The requested file could not be found."))
+            
+        # For AJAX requests, return the page image
+        if is_ajax:
+            file_path = document.file.path if hasattr(document.file, 'path') else None
+            if not file_path or not os.path.exists(file_path):
+                logger.error(f"File not found at path: {file_path}")
+                if not document.file.url:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'File not found',
+                        'message': _('The requested file could not be found.')
+                    }, status=404)
+                # Try to serve via URL if available
+                return JsonResponse({
+                    'success': True,
+                    'redirect_url': document.file.url
+                })
+        
+        # For non-AJAX requests, check if the file is a PDF
+        if not document.is_pdf():
+            logger.warning(f"Non-PDF file requested for PDF viewer: {document.file.name}")
+            if document.file.url:
+                return redirect(document.file.url)
+            raise Http404(_("The requested file is not a PDF and cannot be displayed in the viewer."))
+        
+        # Update last viewed timestamp
+        document.last_viewed = timezone.now()
+        document.save(update_fields=['last_viewed'])
+        
+        # Get the page number from URL or query parameters
+        page_num = int(page) if str(page).isdigit() else 1
+        if 'page' in request.GET and request.GET['page'].isdigit():
+            page_num = int(request.GET['page'])
+        
+        logger.info(f"Processing request - Page: {page_num}, AJAX: {is_ajax}")
+        
+        # Initialize total_pages in case we can't open the document
+        total_pages = 1
+        
+        with fitz.open(document.file.path) as doc:
+            # Get total pages
+            total_pages = doc.page_count
+            logger.info(f"PDF opened successfully. Total pages: {total_pages}")
+            
+            # Validate page number
+            page_num = max(1, min(page_num, total_pages))
+            
+            # Handle AJAX requests for page images
+            if is_ajax:
+                try:
+                    logger.debug(f"Loading page {page_num}")
+                    # Get the requested page
+                    page = doc.load_page(page_num - 1)
+                    
+                    # Get zoom level from request
+                    zoom = float(request.GET.get('zoom', 1.5))
+                    logger.debug(f"Zoom level: {zoom}")
+                    
+                    # Create a matrix for zooming
+                    mat = fitz.Matrix(zoom, zoom)
+                    
+                    # Render page to an image (pixmap)
+                    pix = page.get_pixmap(matrix=mat, alpha=False)
+                    
+                    # Convert to PNG
+                    img_data = pix.tobytes('png')
+                    
+                    # Create response
+                    response = HttpResponse(img_data, content_type='image/png')
+                    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+                    response['Pragma'] = 'no-cache'
+                    response['Expires'] = '0'
+                    response['X-Frame-Options'] = 'SAMEORIGIN'
+                    response['Content-Security-Policy'] = "frame-ancestors 'self'"
+                    
+                    logger.debug(f"Successfully rendered page {page_num}")
+                    return response
+                    
+                except Exception as e:
+                    error_msg = f"Error rendering PDF page {page_num}: {str(e)}"
+                    logger.error(error_msg, exc_info=True)
+                    return JsonResponse({
+                        'success': False,
+                        'error': str(e),
+                        'message': _('Error rendering PDF page.')
+                    }, status=500)
+        
+        # For regular requests, render the PDF viewer template
+        context = {
+            'document': document,
+            'page': page,
+            'total_pages': total_pages,
+            'zoom_level': float(request.GET.get('zoom', 1.0)),
+            'can_download': document.uploaded_by == request.user or request.user.is_staff,
+            'can_edit': document.uploaded_by == request.user or request.user.is_staff,
+        }
+        
+        response = render(request, 'pdf_reader/pdf_viewer.html', context)
+        response['X-Frame-Options'] = 'SAMEORIGIN'
+        response['Content-Security-Policy'] = "frame-ancestors 'self'"
+        return response
+        
+    except Http404 as e:
+        # Re-raise 404 errors
+        raise e
+    except Exception as e:
+        error_msg = f"Unexpected error in PDF viewer: {str(e)}"
+        logger.error(error_msg, exc_info=True)
+        
+        if is_ajax:
+            return JsonResponse({
+                'success': False,
+                'error': 'server_error',
+                'message': _('An error occurred while processing your request. Please try again later.')
+            }, status=500)
+            
+        # For non-AJAX requests, render the error page
+        context = {
+            'document': document if document else None,
+            'page_title': _('Error - PDF Viewer'),
+            'current_page': 1,
+            'total_pages': 1,
+            'can_download': False,
+            'can_edit': False,
+            'error_message': _("An unexpected error occurred. Please try again later.")
+        }
+        response = render(request, 'pdf_reader/pdf_viewer.html', context)
+        
+        # Add security headers
+        response['X-Frame-Options'] = 'SAMEORIGIN'
+        response['Content-Security-Policy'] = "frame-ancestors 'self'"
+        response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response['Pragma'] = 'no-cache'
+        response['Expires'] = '0'
+        
+        return response
+
+@login_required
+def document_info(request, pk):
+    """
+    Get information about a document for the debug tool.
+    Returns JSON with document metadata and permissions.
+    """
+    try:
+        document = get_object_or_404(Document, pk=pk)
+        
+        # Check permissions
+        can_view = (
+            document.is_public or 
+            document.uploaded_by == request.user or 
+            request.user.is_staff
+        )
+        
+        if not can_view:
+            return JsonResponse({
+                'error': 'Permission denied',
+                'has_permission': False
+            }, status=403)
+        
+        # Get file info
+        file_info = {
+            'name': os.path.basename(document.file.name),
+            'size': document.file.size,
+            'url': document.file.url if hasattr(document.file, 'url') else None,
+            'exists': os.path.exists(document.file.path) if hasattr(document.file, 'path') else False
+        }
+        
+        # Get PDF-specific info if available
+        pdf_info = {}
+        if hasattr(document, 'page_count'):
+            pdf_info['page_count'] = document.page_count
+        
+        # Check if file is a PDF
+        is_pdf = file_info['name'].lower().endswith('.pdf')
+        pdf_info['is_pdf'] = is_pdf
+        
+        # Try to get page count if not already set
+        if is_pdf and 'page_count' not in pdf_info and hasattr(document.file, 'path'):
+            try:
+                with fitz.open(document.file.path) as doc:
+                    pdf_info['page_count'] = doc.page_count
+                    # Update the document's page count if it's not set
+                    if not hasattr(document, 'page_count') or document.page_count is None:
+                        document.page_count = doc.page_count
+                        document.save(update_fields=['page_count'])
+            except Exception as e:
+                logger.error(f"Error getting PDF page count: {str(e)}")
+                pdf_info['error'] = str(e)
+        
+        # Build the download URL
+        download_url = reverse('pdf_reader:document_download', kwargs={'pk': document.pk})
+        
+        response_data = {
+            'success': True,
+            'id': document.id,
+            'title': document.title,
+            'uploaded_by': document.uploaded_by.username,
+            'uploaded_at': document.uploaded_at.isoformat(),
+            'is_public': document.is_public,
+            'file': file_info,
+            'pdf': pdf_info,
+            'has_permission': True,
+            'can_download': True,
+            'can_edit': document.uploaded_by == request.user or request.user.is_staff,
+            'download_url': request.build_absolute_uri(download_url)
+        }
+        
+        return JsonResponse(response_data)
+        
+    except Exception as e:
+        logger.exception("Error in document_info view")
+        return JsonResponse({
+            'error': str(e),
+            'has_permission': False
+        }, status=500)
+
+def pdf_metadata(request, pk):
+    """
+    Get metadata about a PDF document.
     """
     document = get_object_or_404(Document, pk=pk)
     
-    # Check if user has permission to view this document
+    # Check permissions
     if not document.is_public and document.uploaded_by != request.user and not request.user.is_staff:
-        raise Http404(_("You don't have permission to view this document."))
+        return JsonResponse({
+            'success': False,
+            'error': _('Permission denied')
+        }, status=403)
     
-    # Check if the file exists
-    if not document.file:
-        raise Http404(_("The requested file does not exist."))
-    
-    # Get the absolute file path and check if it exists
-    if not os.path.exists(document.file.path):
-        raise Http404(_("The requested file could not be found on the server."))
-    
-    # Check if the file is a PDF
-    if not document.is_pdf():
-        # For non-PDF files, redirect to download
-        return redirect(document.file.url)
-    
-    # Update last viewed timestamp
-    document.last_viewed = timezone.now()
-    document.save(update_fields=['last_viewed'])
-    
-    # Get the URL for the PDF file (use the direct URL for better performance)
-    pdf_url = request.build_absolute_uri(document.file.url)
-    
-    # If this is an AJAX request, return JSON data for the PDF viewer component
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        try:
-            # Get PDF metadata using PyMuPDF
-            with fitz.open(document.file.path) as doc:
-                total_pages = doc.page_count
-                
-                # Validate page number
-                page_num = int(page) if page and str(page).isdigit() else 1
-                page_num = max(1, min(page_num, total_pages))
-                
-                # Get page dimensions
-                page = doc.load_page(page_num - 1)
-                rect = page.rect
-                
-                return JsonResponse({
-                    'success': True,
-                    'document': {
-                        'title': document.title,
-                        'total_pages': total_pages,
-                        'current_page': page_num,
-                        'page_width': rect.width,
-                        'page_height': rect.height,
-                        'url': pdf_url,
-                        'download_url': request.build_absolute_uri(document.get_download_url())
-                    }
-                })
-                
-        except Exception as e:
-            logger.error(f"Error getting PDF metadata: {e}", exc_info=True)
+    try:
+        with fitz.open(document.file.path) as doc:
             return JsonResponse({
-                'success': False,
-                'error': str(e),
-                'message': _('Error loading PDF document.')
-            }, status=500)
-    
-    # For regular requests, render the full page with the PDF viewer
-    context = {
-        'document': document,
-        'pdf_url': pdf_url,
-        'page_title': f"{document.title} - {_('PDF Viewer')}",
-        'current_page': int(page) if page and str(page).isdigit() else 1,
-        'is_embed': request.GET.get('embed', '').lower() in ('true', '1', 'yes'),
-        'can_download': document.uploaded_by == request.user or request.user.is_staff,
-        'can_edit': document.uploaded_by == request.user or request.user.is_staff,
-    }
-    
-    # If this is an embedded view, use a simpler template
-    template = 'pdf_reader/pdf_viewer_embed.html' if context['is_embed'] else 'pdf_reader/pdf_viewer.html'
-    
+                'success': True,
+                'total_pages': doc.page_count,
+                'title': document.title,
+                'download_url': request.build_absolute_uri(document.get_download_url())
+            })
+    except Exception as e:
+        logger.error(f"Error getting PDF metadata: {e}", exc_info=True)
+        return JsonResponse({
+            'success': False,
+            'error': str(e),
+            'message': _('Error getting PDF metadata')
+        }, status=500)
     return render(request, template, context)
 
 logger = logging.getLogger(__name__)
@@ -326,13 +555,16 @@ def pdf_reader_home(request):
     """Render the PDF reader upload form"""
     return render(request, 'pdf_reader/base_pdf_reader.html')
 
+@require_http_methods(["POST"])
+@login_required
 def upload_pdf(request):
     """Handle PDF file uploads with security validation."""
     if request.method != 'POST':
         logger.warning("Request method not allowed: %s", request.method)
         return JsonResponse({
             'status': 'error',
-            'message': 'Only POST method is allowed'
+            'message': 'Only POST method is allowed',
+            'code': 'method_not_allowed'
         }, status=405)
     
     # Check if file was provided
@@ -340,24 +572,55 @@ def upload_pdf(request):
         logger.warning("No file in request")
         return JsonResponse({
             'status': 'error',
-            'message': 'No file was provided in the request'
+            'message': 'No file was provided in the request',
+            'code': 'no_file_provided'
         }, status=400)
     
     pdf_file = request.FILES['pdf_file']
     
-    # Validate file size (max 10MB)
-    max_size = 10 * 1024 * 1024  # 10MB
+    # Validate file size (max 50MB)
+    max_size = 50 * 1024 * 1024  # 50MB
     if pdf_file.size > max_size:
         return JsonResponse({
             'status': 'error',
-            'message': 'File size exceeds the maximum limit of 10MB'
+            'message': 'File size exceeds the maximum limit of 50MB',
+            'code': 'file_too_large',
+            'max_size': max_size,
+            'file_size': pdf_file.size
         }, status=400)
     
-    # Validate file type
-    if not pdf_file.name.lower().endswith('.pdf'):
+    # Validate file type using magic numbers
+    import magic
+    from django.core.files.uploadedfile import InMemoryUploadedFile
+    
+    # Read first 2048 bytes for file type detection
+    file_content = b''
+    if hasattr(pdf_file, 'temporary_file_path'):
+        with open(pdf_file.temporary_file_path(), 'rb') as f:
+            file_content = f.read(2048)
+    else:
+        if isinstance(pdf_file, InMemoryUploadedFile):
+            file_content = pdf_file.read(2048)
+            pdf_file.seek(0)  # Reset file pointer
+    
+    # Check if file is actually a PDF using magic numbers
+    if file_content:
+        file_mime = magic.from_buffer(file_content, mime=True)
+        if file_mime != 'application/pdf':
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Invalid file type. Only PDF files are allowed.',
+                'code': 'invalid_file_type',
+                'detected_type': file_mime
+            }, status=400)
+    
+    # Additional filename validation
+    import re
+    if not re.match(r'^[\w\-. ]+\.pdf$', pdf_file.name, re.IGNORECASE):
         return JsonResponse({
             'status': 'error',
-            'message': 'Only PDF files are allowed'
+            'message': 'Invalid filename. Only alphanumeric, spaces, hyphens, underscores, and dots are allowed.',
+            'code': 'invalid_filename'
         }, status=400)
     
     try:
@@ -510,7 +773,7 @@ def serve_pdf(request, file_path):
     
     Args:
         request: HTTP request object
-        file_path: Relative path to the PDF file in the media directory
+        file_path: Relative path to the PDF file in the documents directory
         
     Returns:
         FileResponse with the PDF file or error response
@@ -518,57 +781,98 @@ def serve_pdf(request, file_path):
     try:
         logger.info(f"PDF request received for file: {file_path}")
         
-        # Security check: Ensure the file path is safe
-        if not file_path or any(c in file_path for c in ['..', '/', '\\']):
-            logger.error(f"Invalid file path: {file_path}")
+        # Security check: Basic validation
+        if not file_path or not isinstance(file_path, str):
+            logger.error("No file path provided")
+            return HttpResponse("No file specified", status=400)
+            
+        # Normalize and clean the path
+        file_path = file_path.strip()
+        if not file_path:
+            return HttpResponse("Invalid file path", status=400)
+            
+        # Check for path traversal attempts and other invalid characters
+        if any([
+            '..' in file_path,
+            file_path.startswith('/'),
+            '~' in file_path,
+            '//' in file_path,
+            '\\' in file_path,
+            ':' in file_path.replace(':/', ''),  # Allow Windows drive letters
+        ]):
+            logger.error(f"Suspicious path detected: {file_path}")
             return HttpResponse("Invalid file path", status=400)
             
         # Construct full file path - look in the documents/ directory
-        base_dir = os.path.join(settings.MEDIA_ROOT, 'documents')
-        full_path = os.path.normpath(os.path.join(base_dir, file_path))
+        base_dir = os.path.abspath(os.path.join(settings.MEDIA_ROOT, 'documents'))
+        full_path = os.path.abspath(os.path.join(base_dir, file_path))
         
-        logger.info(f"Looking for PDF at: {full_path}")
-        logger.info(f"Base directory: {base_dir}")
-        logger.info(f"Media root: {settings.MEDIA_ROOT}")
-        
-        # Verify the file is within the intended directory
-        if not os.path.abspath(full_path).startswith(os.path.abspath(base_dir)):
-            logger.error(f"Security violation: Attempted to access file outside media directory: {full_path}")
+        # Verify the resolved path is still within the base directory
+        if not full_path.startswith(base_dir):
+            logger.error(f"Security violation: Attempted directory traversal: {file_path}")
             return HttpResponse("Invalid file path", status=400)
             
         # Check if file exists and is a file
         if not os.path.isfile(full_path):
             logger.warning(f"PDF file not found: {full_path}")
-            # Check if the directory exists
-            if not os.path.exists(os.path.dirname(full_path)):
-                logger.warning(f"Directory does not exist: {os.path.dirname(full_path)}")
-            return HttpResponse("PDF file not found", status=404)
+            return HttpResponse("File not found", status=404)
             
-        # Check file extension
-        if not full_path.lower().endswith('.pdf'):
+        # Verify file extension
+        _, ext = os.path.splitext(full_path)
+        if ext.lower() != '.pdf':
             logger.warning(f"Invalid file type: {full_path}")
             return HttpResponse("Invalid file type", status=400)
             
-        # Open the file in binary mode and serve it
-        logger.info(f"Serving PDF file: {full_path}")
-        response = FileResponse(open(full_path, 'rb'), content_type='application/pdf')
-        
-        # Set content disposition to inline to display in browser
+        # Check file size (prevent serving extremely large files directly)
+        file_size = os.path.getsize(full_path)
+        max_size = getattr(settings, 'MAX_PDF_FILE_SIZE', 50 * 1024 * 1024)  # 50MB default
+        if file_size > max_size:
+            logger.warning(f"File too large: {full_path} ({file_size} bytes)")
+            return HttpResponse("File too large", status=413)
+            
+        # Set content type and disposition
+        content_type = 'application/pdf'
         filename = os.path.basename(full_path)
-        response['Content-Disposition'] = f'inline; filename="{filename}"'
         
-        # Enable CORS if needed
-        response['Access-Control-Allow-Origin'] = '*'
+        # Use FileResponse with context manager to ensure file handle is closed
+        response = FileResponse(
+            open(full_path, 'rb'),
+            content_type=content_type,
+            as_attachment=False,  # Display in browser
+            filename=filename
+        )
         
-        logger.info(f"Successfully served PDF: {filename}")
+        # Security headers
+        response['Content-Disposition'] = f'inline; filename="{os.path.basename(filename)}"'
+        response['X-Content-Type-Options'] = 'nosniff'
+        response['X-Frame-Options'] = 'SAMEORIGIN'
+        response['X-XSS-Protection'] = '1; mode=block'
+        response['Referrer-Policy'] = 'same-origin'
+        
+        # Enable CORS if needed (be specific with allowed origins in production)
+        response['Access-Control-Allow-Origin'] = getattr(settings, 'CORS_ALLOWED_ORIGINS', '*')
+        
+        # Cache control (adjust as needed)
+        response['Cache-Control'] = 'private, max-age=86400'  # 24 hours
+        
+        logger.info(f"Successfully served PDF: {filename} ({file_size} bytes)")
         return response
         
-    except ValueError as ve:
-        logger.error(f"Security error serving PDF: {str(ve)}", exc_info=True)
+    except (ValueError, TypeError) as ve:
+        logger.error(f"Validation error serving PDF: {str(ve)}", exc_info=True)
         return HttpResponse("Invalid request", status=400)
+    except PermissionError:
+        logger.error(f"Permission denied accessing file: {file_path}", exc_info=True)
+        return HttpResponse("Access denied", status=403)
+    except FileNotFoundError:
+        logger.warning(f"File not found: {file_path}")
+        return HttpResponse("File not found", status=404)
+    except OSError as oe:
+        logger.error(f"OS error serving file {file_path}: {str(oe)}", exc_info=True)
+        return HttpResponse("Error accessing file", status=500)
     except Exception as e:
-        logger.error(f"Error serving PDF: {str(e)}", exc_info=True)
-        return HttpResponse(f"Error serving PDF: {str(e)}", status=500)
+        logger.error(f"Unexpected error serving PDF: {str(e)}", exc_info=True)
+        return HttpResponse("An error occurred", status=500)
 
 def get_pdf_metadata(request):
     """
