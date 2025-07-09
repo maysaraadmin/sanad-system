@@ -4112,3 +4112,14 @@ INFO 2025-07-09 14:58:14,787 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 
 INFO 2025-07-09 15:22:53,911 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 60169
 INFO 2025-07-09 16:43:45,219 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 48541
 INFO 2025-07-09 16:43:55,078 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-09 16:57:14,419 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-09 16:57:17,106 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 48541
+INFO 2025-07-09 16:57:25,375 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 48541
+INFO 2025-07-09 17:04:34,887 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 48541
+INFO 2025-07-09 17:04:37,226 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 48541
+INFO 2025-07-09 17:05:19,851 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 48541
+INFO 2025-07-09 17:05:40,028 basehttp "GET /pdf-reader/1/view/ HTTP/1.1" 200 48541
+INFO 2025-07-09 17:05:42,421 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-09 17:06:05,283 basehttp "GET / HTTP/1.1" 200 26875
+INFO 2025-07-09 17:07:02,054 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
+INFO 2025-07-09 17:07:07,434 autoreload Watching for file changes with StatReloader
