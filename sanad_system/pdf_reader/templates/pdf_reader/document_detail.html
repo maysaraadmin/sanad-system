@@ -532,6 +532,7 @@
 {% endblock %}
 
 {% block content %}
+{% load static %}
 <div class="container py-4 px-lg-5">
     <!-- Document Header -->
     <div class="document-header">
@@ -995,7 +996,101 @@
 
 {% block extra_js %}
 {{ block.super }}
+<!-- Load the PDF viewer script -->
+<script src="{% static 'pdf_reader/js/pdf-viewer.js' %}"></script>
+
 <script>
+// Modern confirm dialog with SweetAlert2
+function confirmDelete(element) {
+    const message = '{% trans "هل أنت متأكد من أنك تريد حذف هذا المستند؟"|escapejs %}';
+    const confirmText = '{% trans "نعم، احذف"|escapejs %}';
+    const cancelText = '{% trans "إلغاء"|escapejs %}';
+    
+    Swal.fire({
+        title: '{% trans "تأكيد الحذف"|escapejs %}',
+        text: message,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: confirmText,
+        cancelButtonText: cancelText,
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If confirmed, submit the form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = element.href;
+            
+            // Add CSRF token
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+            if (csrfToken) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'csrfmiddlewaretoken';
+                input.value = csrfToken.value;
+                form.appendChild(input);
+            }
+            
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+    
+    // Prevent default action
+    return false;
+}
+
+// Copy to clipboard function
+function copyToClipboard(text, element) {
+    navigator.clipboard.writeText(text).then(function() {
+        // Show success message
+        const originalText = element.innerHTML;
+        element.innerHTML = '<i class="fas fa-check"></i> {% trans "تم النسخ" %}';
+        element.classList.add('text-success');
+        
+        // Revert after 2 seconds
+        setTimeout(function() {
+            element.innerHTML = originalText;
+            element.classList.remove('text-success');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+
+// Initialize tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+<!-- SweetAlert2 for beautiful alerts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Initialize animations -->
+<script>
+// Animate elements on scroll
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('animate__animated', 'animate__fadeInUp');
+        }
+    });
+}
+
+// Run animations on load and scroll
+window.addEventListener('load', animateOnScroll);
+window.addEventListener('scroll', animateOnScroll);
+</script>
+
+<!-- Keep existing scripts -->
+
 // Modern confirm dialog with SweetAlert2
 function confirmDelete(element) {
     const message = '{% trans "هل أنت متأكد من أنك تريد حذف هذا المستند؟"|escapejs %}';
@@ -1247,9 +1342,11 @@ const DocumentViewer = (function() {
     
     // Initialize the PDF viewer
     function initPdfViewer() {
-        if (isInitialized || !pdfIframe) return;
+        // Skip if already initialized or if we're in the middle of loading
+        if (isInitialized || !pdfIframe || window.isPdfLoading) return;
         
         isInitialized = true;
+        window.isPdfLoading = true;
         showLoading();
         
         // Set a timeout for loading
@@ -1258,23 +1355,40 @@ const DocumentViewer = (function() {
             if (loadingMessage && loadingMessage.style.display === 'flex') {
                 console.warn('PDF loading timed out');
                 showError('استغرقت عملية التحميل وقتاً طويلاً. يرجى تحديث الصفحة والمحاولة مرة أخرى.');
+                window.isPdfLoading = false;
             }
         }, 30000); // 30 seconds timeout
         
         // Set up event listeners
-        pdfIframe.onload = function() {
+        function handleLoad() {
             clearTimeout(loadTimeout);
+            window.isPdfLoading = false;
             showPdfViewer();
-        };
-        
-        pdfIframe.onerror = function() {
-            showError('حدث خطأ أثناء تحميل المستند. يرجى المحاولة مرة أخرى.');
-        };
-        
-        // Set the source if not already set
-        if (!pdfIframe.src) {
-            pdfIframe.src = '{{ document.file.url|escapejs }}';
+            
+            // Remove the event listener to prevent memory leaks
+            pdfIframe.removeEventListener('load', handleLoad);
+            pdfIframe.removeEventListener('error', handleError);
         }
+        
+        function handleError() {
+            clearTimeout(loadTimeout);
+            window.isPdfLoading = false;
+            showError('حدث خطأ أثناء تحميل المستند. يرجى المحاولة مرة أخرى.');
+            
+            // Remove the event listener to prevent memory leaks
+            pdfIframe.removeEventListener('load', handleLoad);
+            pdfIframe.removeEventListener('error', handleError);
+        }
+        
+        // Use addEventListener instead of onload/onerror to allow multiple listeners
+        pdfIframe.addEventListener('load', handleLoad);
+        pdfIframe.addEventListener('error', handleError);
+        
+        // Set the source with cache busting
+        const currentSrc = pdfIframe.src.split('?')[0];
+        const newSrc = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 't=' + new Date().getTime();
+        console.log('Loading PDF in iframe:', newSrc);
+        pdfIframe.src = newSrc;
     }
     
     // Public API
@@ -1290,7 +1404,8 @@ const DocumentViewer = (function() {
     
     // Initialize the document viewer with progress tracking
     function initDocumentViewer() {
-        const viewer = DocumentViewer && DocumentViewer.init ? DocumentViewer.init() : null;
+        // Use a different variable name to avoid conflict
+        const docViewer = DocumentViewer && DocumentViewer.init ? DocumentViewer.init() : null;
         let progressInterval;
         let loadTimeout;
         
@@ -1409,9 +1524,7 @@ const DocumentViewer = (function() {
             timeRemainingElement.textContent = remainingTime;
         }
         
-        // Initialize the PDF viewer when the document is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
+        // This code has been moved to the external PDF viewer file
                 // Configuration
                 const config = {
                     container: '#pdf-viewer-container',
@@ -1445,7 +1558,16 @@ const DocumentViewer = (function() {
                                 loadingEl.style.display = 'none';
                                 const pdfViewer = document.getElementById('pdf-viewer');
                                 if (pdfViewer) pdfViewer.style.display = 'flex';
+                                
+                                // Dispatch custom event when PDF is fully loaded
+                                const event = new Event('pdfViewerReady');
+                                document.dispatchEvent(event);
                             }, 300);
+                        }
+                        // Clear any existing timeouts to prevent multiple loads
+                        if (window.pdfLoadTimeout) {
+                            clearTimeout(window.pdfLoadTimeout);
+                            window.pdfLoadTimeout = null;
                         }
                     },
                     onPageChange: function(pageNum, pageCount) {
@@ -1459,24 +1581,71 @@ const DocumentViewer = (function() {
                         const errorEl = document.getElementById('error-message');
                         const errorTextEl = document.getElementById('error-text');
                         if (errorEl && errorTextEl) {
-                            errorTextEl.textContent = error.message || 'حدث خطأ أثناء تحميل المستند';
+                            let errorMessage = 'حدث خطأ أثناء تحميل المستند';
+                            if (error && error.message) {
+                                errorMessage += `: ${error.message}`;
+                                if (error.message.includes('Failed to fetch')) {
+                                    errorMessage = 'تعذر الاتصال بالخادم. يرجى التحقق من اتصال الشبكة والمحاولة مرة أخرى.';
+                                } else if (error.message.includes('Invalid PDF structure')) {
+                                    errorMessage = 'ملف PDF تالف أو غير صالح.';
+                                }
+                            }
+                            errorTextEl.textContent = errorMessage;
                             errorEl.classList.remove('hidden');
+                            
+                            // Show the error message for at least 5 seconds
+                            setTimeout(() => {
+                                if (errorEl) {
+                                    errorEl.classList.add('hidden');
+                                }
+                            }, 5000);
                         }
                     }
                 };
 
                 // Initialize the PDF viewer
-                const viewer = new PDFViewer(config);
+                const pdfViewer = new PDFViewer(config);
                 
-                // Load the PDF
-                viewer.load('{{ document.file.url }}');
+                // Store the viewer instance globally for debugging
+                window.pdfViewerInstance = pdfViewer;
+                
+                // Get the PDF URL using the document's download URL
+                const pdfUrl = '{% url "pdf_reader:document_download" document.pk %}';
+                const cacheBustedUrl = pdfUrl + '?t=' + new Date().getTime();
+                
+                console.log('PDF URL:', pdfUrl);
+                console.log('Cache-busted URL:', cacheBustedUrl);
+                
+                // Try loading the PDF
+                try {
+                    console.log('Attempting to load PDF...');
+                    // Add authentication headers if needed
+                    const headers = {};
+                    {% if request.user.is_authenticated %}
+                    headers['X-CSRFToken'] = '{{ csrf_token }}';
+                    {% endif %}
+                    
+                    // Pass headers as part of the options object
+                    const options = { headers: headers };
+                    pdfViewer.load(cacheBustedUrl, options);
+                } catch (error) {
+                    console.error('Failed to load PDF:', error);
+                    const errorEl = document.getElementById('error-message');
+                    const errorTextEl = document.getElementById('error-text');
+                    if (errorEl && errorTextEl) {
+                        errorTextEl.textContent = 'فشل تحميل الملف. يرجى التأكد من صحة الرابط.';
+                        errorEl.classList.remove('hidden');
+                    }
+                }
                 
                 // Handle window resize with debounce
                 let resizeTimer;
                 window.addEventListener('resize', function() {
                     clearTimeout(resizeTimer);
                     resizeTimer = setTimeout(function() {
-                        viewer.resize();
+                        if (pdfViewer && typeof pdfViewer.resize === 'function') {
+                            pdfViewer.resize();
+                        }
                     }, 250);
                 });
                 
@@ -1494,19 +1663,29 @@ const DocumentViewer = (function() {
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'ArrowLeft' && !e.ctrlKey && !e.metaKey) {
                         e.preventDefault();
-                        viewer.nextPage();
+                        if (pdfViewer && typeof pdfViewer.nextPage === 'function') {
+                            pdfViewer.nextPage();
+                        }
                     } else if (e.key === 'ArrowRight' && !e.ctrlKey && !e.metaKey) {
                         e.preventDefault();
-                        viewer.prevPage();
+                        if (pdfViewer && typeof pdfViewer.prevPage === 'function') {
+                            pdfViewer.prevPage();
+                        }
                     } else if ((e.key === '+' || e.key === '=') && (e.ctrlKey || e.metaKey)) {
                         e.preventDefault();
-                        viewer.zoomIn();
+                        if (pdfViewer && typeof pdfViewer.zoomIn === 'function') {
+                            pdfViewer.zoomIn();
+                        }
                     } else if ((e.key === '-' || e.key === '_') && (e.ctrlKey || e.metaKey)) {
                         e.preventDefault();
-                        viewer.zoomOut();
+                        if (pdfViewer && typeof pdfViewer.zoomOut === 'function') {
+                            pdfViewer.zoomOut();
+                        }
                     } else if (e.key === '0' && (e.ctrlKey || e.metaKey)) {
                         e.preventDefault();
-                        viewer.setScale(1.0);
+                        if (pdfViewer && typeof pdfViewer.setScale === 'function') {
+                            pdfViewer.setScale(1.0);
+                        }
                     }
                 });
                 
@@ -1518,13 +1697,13 @@ const DocumentViewer = (function() {
                 errorEl.classList.add('alert', 'alert-danger', 'm-3');
                 document.body.appendChild(errorEl);
             }
-        });
+        };
         
         // Add click animation to buttons
         document.querySelectorAll('.btn').forEach(function(button) {
             button.addEventListener('click', function() {
                 this.classList.add('active');
-                var self = this;
+                const self = this;
                 setTimeout(function() {
                     self.classList.remove('active');
                 }, 150);
@@ -1544,14 +1723,19 @@ const DocumentViewer = (function() {
         });
         
         // Add loading state to forms
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
+        const formElements = document.querySelectorAll('form');
+        formElements.forEach(form => {
             form.addEventListener('submit', function() {
                 const submitButton = this.querySelector('button[type="submit"]');
                 if (submitButton) {
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> جاري المعالجة...';
-function formatFileSize(bytes, decimals = 2) {
+                }
+            });
+        });
+        
+        // Format file size
+        function formatFileSize(bytes, decimals = 2) {
     if (bytes === 0) return '0 بايت';
     
     const k = 1024;
@@ -1828,11 +2012,12 @@ function formatFileSize(bytes, decimals = 2) {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializeDocumentViewer);
     } else {
-        initializeDocumentViewer();
+        // Use setTimeout to ensure the DOM is fully loaded
+        setTimeout(initializeDocumentViewer, 0);
     }
     
     // Single beforeunload event listener
     window.addEventListener('beforeunload', cleanupBeforeUnload);
-})(); // End of self-executing function
+})();
 </script>
 {% endblock %}

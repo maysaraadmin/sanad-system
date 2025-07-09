@@ -6,7 +6,7 @@ import json
 import uuid
 import re
 import mimetypes
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.http import JsonResponse, FileResponse, HttpResponseBadRequest, HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.cache import never_cache
@@ -219,7 +219,7 @@ class DocumentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return redirect(self.get_success_url())
 
 def serve_document(request, pk):
-    """Serve the document file for viewing"""
+    """Serve the document file for viewing with proper caching and security."""
     document = get_object_or_404(Document, pk=pk)
     
     # Check permissions
@@ -229,13 +229,71 @@ def serve_document(request, pk):
     file_path = document.file.path
     file_name = os.path.basename(file_path)
     
-    # For PDFs, we can serve them directly in the browser
-    if file_name.lower().endswith('.pdf'):
-        return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+    # Check if file exists
+    if not os.path.exists(file_path):
+        raise Http404("The requested file does not exist.")
     
-    # For other file types, force download
+    # Get file size for Content-Length header
+    file_size = os.path.getsize(file_path)
+    
+    # For PDFs, we can serve them directly in the browser with proper headers
+    if file_name.lower().endswith('.pdf'):
+        # Open the file in binary mode
+        file = open(file_path, 'rb')
+        
+        # Create a FileResponse with streaming
+        response = FileResponse(file, content_type='application/pdf')
+        
+        # Set content disposition to inline for PDFs (view in browser)
+        response['Content-Disposition'] = f'inline; filename="{file_name}"'
+        
+        # Set cache headers (1 day cache)
+        response['Cache-Control'] = 'public, max-age=86400'  # 24 hours
+        response['Expires'] = (datetime.now() + timedelta(days=1)).strftime('%a, %d %b %Y %H:%M:%S GMT')
+        
+        # Set content length
+        response['Content-Length'] = file_size
+        
+        # Set last modified header
+        response['Last-Modified'] = datetime.fromtimestamp(os.path.getmtime(file_path)).strftime('%a, %d %b %Y %H:%M:%S GMT')
+        
+        # Handle range requests for partial content (useful for large PDFs)
+        range_header = request.META.get('HTTP_RANGE', '').strip()
+        if range_header.startswith('bytes='):
+            ranges = range_header[6:].split('-')
+            range_start = int(ranges[0]) if ranges[0] else 0
+            range_end = int(ranges[1]) if len(ranges) > 1 and ranges[1] else file_size - 1
+            
+            if range_end >= file_size:
+                range_end = file_size - 1
+                
+            content_length = range_end - range_start + 1
+            
+            response.status_code = 206  # Partial Content
+            response['Content-Range'] = f'bytes {range_start}-{range_end}/{file_size}'
+            response['Content-Length'] = content_length
+            
+            # Seek to the requested range
+            file.seek(range_start)
+            response.file_to_stream = file
+            
+            # Use StreamingHttpResponse for large files
+            from django.http import StreamingHttpResponse
+            response = StreamingHttpResponse(
+                file,
+                status=206,
+                content_type='application/pdf'
+            )
+            response['Content-Disposition'] = f'inline; filename="{file_name}"'
+            response['Content-Range'] = f'bytes {range_start}-{range_end}/{file_size}'
+            response['Content-Length'] = content_length
+            
+        return response
+    
+    # For other file types, force download with streaming for large files
     response = FileResponse(open(file_path, 'rb'))
     response['Content-Disposition'] = f'attachment; filename="{file_name}"'
+    response['Content-Length'] = file_size
     return response
 
 @login_required
