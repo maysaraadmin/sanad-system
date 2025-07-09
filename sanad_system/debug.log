@@ -4107,3 +4107,8 @@ AttributeError: Cannot find 'tags' on Document object, 'tags' is an invalid para
 ERROR 2025-07-09 14:53:57,836 basehttp "GET /pdf-reader/ HTTP/1.1" 500 115053
 INFO 2025-07-09 14:55:45,667 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
 INFO 2025-07-09 14:55:51,184 autoreload Watching for file changes with StatReloader
+INFO 2025-07-09 14:58:11,688 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-09 14:58:14,787 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 58283
+INFO 2025-07-09 15:22:53,911 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 60169
+INFO 2025-07-09 16:43:45,219 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 48541
+INFO 2025-07-09 16:43:55,078 basehttp "GET / HTTP/1.1" 200 26875
