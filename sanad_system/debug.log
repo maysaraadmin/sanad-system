@@ -4192,3 +4192,236 @@ Traceback (most recent call last):
 django.urls.exceptions.NoReverseMatch: 'pdf_reader' is not a registered namespace
 ERROR 2025-07-11 11:03:57,247 basehttp "GET / HTTP/1.1" 500 139567
 INFO 2025-07-11 11:04:31,596 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:09:40,438 basehttp "GET /hadith/create/ HTTP/1.1" 200 30042
+INFO 2025-07-11 11:09:42,638 basehttp "GET /narrators/ HTTP/1.1" 200 33565
+INFO 2025-07-11 11:09:44,449 basehttp "GET /hadith/ HTTP/1.1" 200 30637
+INFO 2025-07-11 11:09:46,307 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:09:49,052 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:09:50,682 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:09:52,323 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:13:10,294 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-11 11:13:10,449 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-11 11:13:14,557 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:13:14,557 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:13:19,785 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-11 11:13:19,811 autoreload D:\sanad system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-07-11 11:13:21,348 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:13:21,406 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:13:43,647 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:13:43,766 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:13:44,691 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:13:45,208 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:14:15,555 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:14:17,221 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:14:18,303 basehttp "GET / HTTP/1.1" 200 26541
+INFO 2025-07-11 11:15:04,351 basehttp "GET / HTTP/1.1" 200 26876
+ERROR 2025-07-11 11:15:06,831 log Internal Server Error: /library/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 161, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+ERROR 2025-07-11 11:15:06,839 basehttp "GET /library/ HTTP/1.1" 500 129147
+INFO 2025-07-11 11:15:55,977 basehttp "GET /library/ HTTP/1.1" 200 26625
+ERROR 2025-07-11 11:15:58,253 log Internal Server Error: /library/document/create/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 161, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+ERROR 2025-07-11 11:15:58,257 basehttp "GET /library/document/create/ HTTP/1.1" 500 127710
+INFO 2025-07-11 11:16:33,590 basehttp "GET /library/document/create/ HTTP/1.1" 200 28059
+INFO 2025-07-11 11:17:31,767 basehttp "GET /library/ HTTP/1.1" 200 26625
+INFO 2025-07-11 11:17:38,014 basehttp "GET /library/document/create/ HTTP/1.1" 200 28059
+INFO 2025-07-11 11:18:11,725 autoreload D:\sanad system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-07-11 11:18:11,765 autoreload D:\sanad system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-07-11 11:18:15,637 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:18:15,638 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:18:53,503 basehttp "GET /library/ HTTP/1.1" 200 27753
+INFO 2025-07-11 11:18:55,246 basehttp "GET /library/document/create/ HTTP/1.1" 200 28379
+ERROR 2025-07-11 11:19:14,465 log Internal Server Error: /library/document/create/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "D:\sanad system\sanad_system\library_app\views.py", line 65, in form_valid
+    return super().form_valid(form)
+           ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 135, in form_valid
+    self.object = form.save()
+                  ~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\forms\models.py", line 542, in save
+    self.instance.save()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1747, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1695, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\files.py", line 317, in pre_save
+    file.save(file.name, file.file, save=False)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\files.py", line 92, in save
+    name = self.field.generate_filename(self.instance, name)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\db\models\fields\files.py", line 332, in generate_filename
+    filename = self.upload_to(instance, filename)
+  File "D:\sanad system\sanad_system\library_app\models.py", line 10, in upload_to
+    year = instance.uploaded_at.year
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'year'
+ERROR 2025-07-11 11:19:14,482 basehttp "POST /library/document/create/ HTTP/1.1" 500 165441
+INFO 2025-07-11 11:19:34,681 autoreload D:\sanad system\sanad_system\library_app\models.py changed, reloading.
+INFO 2025-07-11 11:19:34,947 autoreload D:\sanad system\sanad_system\library_app\models.py changed, reloading.
+INFO 2025-07-11 11:19:38,370 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:19:38,554 autoreload Watching for file changes with StatReloader

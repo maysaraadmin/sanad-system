@@ -1,0 +1,115 @@
+{% extends 'library_app/base.html' %}
+
+{% block library_title %}{{ document.title }}{% endblock %}
+
+{% block library_content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h3 class="card-title">{{ document.title }}</h3>
+                        <p class="card-text">
+                            {% if document.description %}
+                            {{ document.description|linebreaks }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-end gap-2">
+                            {% if user.is_authenticated %}
+                            <div class="btn-group">
+                                {% if document.uploaded_by == user %}
+                                <a href="{% url 'library_app:document_update' document.pk %}" 
+                                   class="btn btn-outline-primary">
+                                    <i class="fas fa-edit me-2"></i>تعديل
+                                </a>
+                                <a href="{% url 'library_app:document_delete' document.pk %}" 
+                                   class="btn btn-outline-danger">
+                                    <i class="fas fa-trash me-2"></i>حذف
+                                </a>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            <a href="{{ document.file.url }}" 
+                               class="btn btn-primary" 
+                               target="_blank">
+                                <i class="fas fa-download me-2"></i>تحميل
+                            </a>
+                            {% if document.file.name|lower|slice:'-4:' == '.pdf' %}
+                            <button type="button" 
+                                    class="btn btn-outline-primary" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#pdfViewerModal">
+                                <i class="fas fa-file-pdf me-2"></i>عرض PDF
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <h5 class="text-muted">نوع المستند:</h5>
+                            <p class="mb-0">{{ document.document_type.name }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="text-muted">الحجم:</h5>
+                            <p class="mb-0">{{ document.file_size }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="text-muted">الحالة:</h5>
+                            <p class="mb-0">
+                                {% if document.is_public %}
+                                <span class="badge bg-success">
+                                    <i class="fas fa-globe me-2"></i>عام
+                                </span>
+                                {% else %}
+                                <span class="badge bg-warning">
+                                    <i class="fas fa-lock me-2"></i>خاص
+                                </span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <h5 class="text-muted">تم رفعه بواسطة:</h5>
+                            <p class="mb-0">{{ document.uploaded_by.username }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="text-muted">تاريخ الرفع:</h5>
+                            <p class="mb-0">{{ document.uploaded_at|date:"j F Y" }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="text-muted">آخر تحديث:</h5>
+                            <p class="mb-0">{{ document.updated_at|date:"j F Y" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PDF Viewer Modal -->
+<div class="modal fade" id="pdfViewerModal" tabindex="-1" aria-labelledby="pdfViewerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pdfViewerModalLabel">{{ document.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-container" style="height: 80vh;">
+                    <iframe src="{{ document.file.url }}" 
+                            style="width: 100%; height: 100%; border: none;"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

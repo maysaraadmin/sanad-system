@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'hadith_app',
+    'library_app',
 ]
 
 # Crispy Forms Settings

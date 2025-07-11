@@ -1,0 +1,19 @@
+{% extends 'hadith_app/base.html' %}
+
+{% block title %}{% block library_title %}{% endblock %} | المكتبة{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="mb-3">المكتبة</h2>
+            {% block library_content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+{% block library_extra_js %}{% endblock %}
+{% endblock %}
