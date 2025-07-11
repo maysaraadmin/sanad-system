@@ -38,16 +38,6 @@ from django.utils import timezone
 from django.shortcuts import render
 
 from .models import Hadith, Narrator, Sanad, HadithCategory, UserProfile, HadithBook
-
-
-def custom_404_view(request, exception):
-    """Custom 404 error handler."""
-    return render(request, '404.html', status=404)
-
-
-def custom_500_view(request):
-    """Custom 500 error handler."""
-    return render(request, '500.html', status=500)
 from .forms import ProfileUpdateForm, AvatarUploadForm, HadithForm
 from .utils import get_hadith_stats, get_narrator_stats
 
@@ -104,11 +94,7 @@ def search_suggestions(request):
     })
 
 
-@require_POST
-def set_theme(request):
-    theme = request.POST.get('theme', 'auto')
-    request.session['theme'] = theme
-    return JsonResponse({'status': 'ok'})
+
 
 
 class HadithCreateView(LoginRequiredMixin, CreateView):
@@ -123,49 +109,53 @@ class HadithCreateView(LoginRequiredMixin, CreateView):
         return kwargs
     
     def form_valid(self, form):
-        # Save the hadith first
-        hadith = form.save(commit=False)
-        hadith.created_by = self.request.user
-        hadith.save()
-        form.save_m2m()  # Save many-to-many relationships (categories)
-        
-        # Create a Sanad for the hadith
-        narrator_chain = form.cleaned_data.get('narrator_chain', '')
-        if narrator_chain:
-            sanad = Sanad.objects.create(
-                hadith=hadith,
-                is_mutawatir=False
-            )
+        try:
+            # Save the hadith first
+            hadith = form.save(commit=False)
+            hadith.created_by = self.request.user
+            hadith.save()
+            form.save_m2m()  # Save many-to-many relationships (categories)
             
-            # Split narrator chain by common separators and create narrators
-            # Handle both Arabic and English commas
-            narrators = []
-            for sep in ['،', ',', ';', '؛']:
-                if sep in narrator_chain:
-                    narrators = [n.strip() for n in narrator_chain.split(sep) if n.strip()]
-                    break
-            else:
-                narrators = [narrator_chain.strip()]
+            # Create a Sanad for the hadith
+            narrator_chain = form.cleaned_data.get('narrator_chain', '')
+            if narrator_chain:
+                sanad = Sanad.objects.create(
+                    hadith=hadith,
+                    is_mutawatir=False
+                )
                 
-            for i, narrator_name in enumerate(narrators, 1):
-                if narrator_name:  # Only process non-empty names
-                    # Try to find existing narrator or create a new one
-                    narrator, created = Narrator.objects.get_or_create(
-                        name=narrator_name,
-                        defaults={
-                            'reliability': 'unknown',
-                            'biography': 'تمت إضافته تلقائياً من خلال إدخال حديث جديد'
-                        }
-                    )
-                    # Add narrator to sanad
-                    SanadNarrator.objects.create(
-                        sanad=sanad,
-                        narrator=narrator,
-                        order=i
-                    )
-        
-        messages.success(self.request, _('تمت إضافة الحديث بنجاح'))
-        return redirect(self.get_success_url())
+                # Split narrator chain by common separators and create narrators
+                # Handle both Arabic and English commas
+                narrators = []
+                for sep in ['،', ',', ';', '؛']:
+                    if sep in narrator_chain:
+                        narrators = [n.strip() for n in narrator_chain.split(sep) if n.strip()]
+                        break
+                else:
+                    narrators = [narrator_chain.strip()]
+                    
+                for i, narrator_name in enumerate(narrators, 1):
+                    if narrator_name:  # Only process non-empty names
+                        # Try to find existing narrator or create a new one
+                        narrator, created = Narrator.objects.get_or_create(
+                            name=narrator_name,
+                            defaults={
+                                'reliability': 'unknown',
+                                'biography': 'تمت إضافة الراوي تلقائياً من خلال إدخال حديث جديد'
+                            }
+                        )
+                        # Add narrator to sanad
+                        SanadNarrator.objects.create(
+                            sanad=sanad,
+                            narrator=narrator,
+                            order=i
+                        )
+            
+            messages.success(self.request, _('تمت إضافة الحديث بنجاح'))
+            return redirect(self.get_success_url())
+        except Exception as e:
+            messages.error(self.request, f'حدث خطأ أثناء إضافة الحديث: {str(e)}')
+            return self.form_invalid(form)
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

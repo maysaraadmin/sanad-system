@@ -369,10 +369,6 @@ class HadithForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['categories'].queryset = HadithCategory.objects.all()
         
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super().__init__(*args, **kwargs)
-        
     def save(self, commit=True):
         hadith = super().save(commit=False)
         if self.user:
@@ -384,22 +380,13 @@ class HadithForm(forms.ModelForm):
 class NarratorForm(forms.ModelForm):
     class Meta:
         model = Narrator
-        fields = ['name', 'biography', 'reliability']
+        fields = ['name', 'birth_year', 'death_year', 'biography', 'reliability']
         widgets = {
-            'name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'اسم الراوي',
-                'dir': 'rtl'
-            }),
-            'biography': forms.Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'نبذة عن الراوي',
-                'rows': 3,
-                'dir': 'rtl'
-            }),
-            'reliability': forms.Select(attrs={
-                'class': 'form-control'
-            })
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'اسم الراوي', 'dir': 'rtl'}),
+            'birth_year': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'سنة الميلاد', 'dir': 'ltr'}),
+            'death_year': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'سنة الوفاة', 'dir': 'ltr'}),
+            'biography': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'السيرة الذاتية', 'rows': 3, 'dir': 'rtl'}),
+            'reliability': forms.Select(attrs={'class': 'form-select', 'dir': 'rtl'})
         }
 
 

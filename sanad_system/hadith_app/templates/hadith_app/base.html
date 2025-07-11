@@ -306,13 +306,6 @@
                             <span>إضافة حديث</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center {% if 'pdf-reader' in request.path or '/documents/' in request.path %}active fw-bold{% endif %}" 
-                           href="{% url 'pdf_reader:document_list' %}">
-                            <i class="fas fa-book me-2"></i>
-                            <span>المكتبة</span>
-                        </a>
-                    </li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <div class="dropdown me-3" style="min-width: 300px;">

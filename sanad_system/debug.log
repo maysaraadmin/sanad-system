@@ -4124,3 +4124,17 @@ INFO 2025-07-09 17:06:05,283 basehttp "GET / HTTP/1.1" 200 26875
 INFO 2025-07-09 17:07:02,054 autoreload D:\sanad system\sanad_system\pdf_reader\views.py changed, reloading.
 INFO 2025-07-09 17:07:07,434 autoreload Watching for file changes with StatReloader
 INFO 2025-07-09 17:53:51,500 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 48542
+INFO 2025-07-11 11:01:12,092 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:01:15,793 basehttp "GET / HTTP/1.1" 200 24250
+INFO 2025-07-11 11:01:15,984 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-07-11 11:01:15,992 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2025-07-11 11:01:17,295 log Not Found: /favicon.ico
+INFO 2025-07-11 11:01:17,299 basehttp - Broken pipe from ('127.0.0.1', 60771)
+INFO 2025-07-11 11:01:33,399 basehttp "GET /pdf-reader/ HTTP/1.1" 302 0
+INFO 2025-07-11 11:01:33,768 basehttp "GET /accounts/login/?next=/pdf-reader/ HTTP/1.1" 200 28552
+INFO 2025-07-11 11:01:39,364 basehttp "POST /accounts/login/?next=/pdf-reader/ HTTP/1.1" 302 0
+INFO 2025-07-11 11:01:39,552 basehttp "GET /pdf-reader/ HTTP/1.1" 200 30036
+INFO 2025-07-11 11:01:43,467 basehttp "GET /pdf-reader/1/details/ HTTP/1.1" 200 48542
+INFO 2025-07-11 11:03:01,676 autoreload D:\sanad system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-07-11 11:03:05,558 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:03:47,298 autoreload Watching for file changes with StatReloader
