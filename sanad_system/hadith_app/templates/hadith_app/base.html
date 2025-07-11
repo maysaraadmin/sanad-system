@@ -293,10 +293,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center {% if active_page == 'narrator_list' %}active fw-bold{% endif %}" 
+                        <a class="nav-link d-flex align-items-center {% if active_page == 'narrators' %}active fw-bold{% endif %}" 
                            href="{% url 'hadith_app:narrator_list' %}">
                             <i class="fas fa-users me-2"></i>
-                            <span>الرواة</span>
+                            <span>الراويين</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center {% if active_page == 'library' %}active fw-bold{% endif %}" 
+                           href="{% url 'library_app:document_list' %}">
+                            <i class="fas fa-book me-2"></i>
+                            <span>المكتبة</span>
                         </a>
                     </li>
                     <li class="nav-item">

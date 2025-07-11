@@ -37,6 +37,9 @@ urlpatterns = [
     # App URLs - Main entry point for hadith_app
     path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),
     
+    # Library App URLs
+    path('library/', include(('library_app.urls', 'library_app'), namespace='library_app')),
+    
     # API endpoints are now included within each app's URL configuration
     # This provides better organization and versioning control
     
