@@ -4614,3 +4614,92 @@ tz
 ERROR 2025-07-11 11:23:02,194 basehttp "GET /library/document/1/ HTTP/1.1" 500 199355
 INFO 2025-07-11 11:23:45,400 basehttp "GET /library/document/1/ HTTP/1.1" 200 30600
 INFO 2025-07-11 11:23:46,088 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_%D9%85%D8%AE%D8%AA%D8%B5%D8%B1_%D8%B4%D8%B9%D8%A8_%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86_%D9%84%D9%84%D8%A8%D9%8A%D9%87%D9%82%D9%89.pdf HTTP/1.1" 200 8079021
+INFO 2025-07-11 11:24:42,300 basehttp "GET /profile/ HTTP/1.1" 200 30531
+INFO 2025-07-11 11:25:16,934 basehttp "GET /narrators/ HTTP/1.1" 200 33900
+INFO 2025-07-11 11:25:24,240 basehttp "GET /library/ HTTP/1.1" 200 29211
+INFO 2025-07-11 11:25:28,161 basehttp "GET /library/document/create/ HTTP/1.1" 200 28379
+INFO 2025-07-11 11:25:39,061 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:25:39,578 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:25:41,481 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:25:41,481 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:29:00,517 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:29:36,903 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:29:37,002 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:29:39,209 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:29:39,462 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:30:22,526 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:30:22,526 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:30:24,422 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:30:25,327 autoreload Watching for file changes with StatReloader
+ERROR 2025-07-11 11:30:37,692 log Internal Server Error: /library/document/create/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 152, in post
+    if form.is_valid():
+       ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\forms\forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+                                 ^^^^^^^^^^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\forms\forms.py", line 196, in errors
+    self.full_clean()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\forms\forms.py", line 433, in full_clean
+    self._clean_fields()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Roaming\Python\Python313\site-packages\django\forms\forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "D:\sanad system\sanad_system\library_app\forms.py", line 22, in clean_file
+    ext = os.path.splitext(file.name)[1].lower()
+          ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'?
+ERROR 2025-07-11 11:30:37,703 basehttp "POST /library/document/create/ HTTP/1.1" 500 108324
+INFO 2025-07-11 11:31:04,672 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:31:04,672 autoreload D:\sanad system\sanad_system\library_app\forms.py changed, reloading.
+INFO 2025-07-11 11:31:06,676 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:31:07,254 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:31:18,509 basehttp "POST /library/document/create/ HTTP/1.1" 302 0
+INFO 2025-07-11 11:31:19,687 basehttp "GET /library/ HTTP/1.1" 200 31063
+INFO 2025-07-11 11:31:23,439 basehttp "GET /library/document/2/ HTTP/1.1" 200 29872
+INFO 2025-07-11 11:31:24,591 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/first_IT_Coordinator__GIHS_Dubai.docx HTTP/1.1" 200 8416
+INFO 2025-07-11 11:32:43,749 basehttp "GET /library/ HTTP/1.1" 200 30851
+INFO 2025-07-11 11:32:45,818 basehttp "GET /library/document/2/ HTTP/1.1" 200 31194
+INFO 2025-07-11 11:32:45,979 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/first_IT_Coordinator__GIHS_Dubai.docx HTTP/1.1" 200 8416
+INFO 2025-07-11 11:32:46,131 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/first_IT_Coordinator__GIHS_Dubai.docx HTTP/1.1" 200 8416
+INFO 2025-07-11 11:33:44,715 basehttp "GET /library/document/2/ HTTP/1.1" 200 31258
+INFO 2025-07-11 11:33:44,869 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/first_IT_Coordinator__GIHS_Dubai.docx HTTP/1.1" 200 8416
+INFO 2025-07-11 11:34:15,745 autoreload D:\sanad system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-07-11 11:34:15,690 autoreload D:\sanad system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-07-11 11:34:18,662 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:34:18,663 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:34:40,172 autoreload D:\sanad system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-07-11 11:34:40,260 autoreload D:\sanad system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-07-11 11:34:42,337 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:34:42,342 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:34:55,289 autoreload D:\sanad system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-07-11 11:34:55,378 autoreload D:\sanad system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-07-11 11:34:57,457 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:34:57,954 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:35:10,080 basehttp "GET /library/document/2/ HTTP/1.1" 200 31206
+INFO 2025-07-11 11:35:10,330 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/first_IT_Coordinator__GIHS_Dubai.docx HTTP/1.1" 200 8416
+INFO 2025-07-11 11:36:14,516 autoreload D:\sanad system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-07-11 11:36:14,726 autoreload D:\sanad system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-07-11 11:36:18,176 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:36:18,179 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:36:27,752 autoreload D:\sanad system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-07-11 11:36:27,755 autoreload D:\sanad system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-07-11 11:36:29,961 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 11:36:30,240 autoreload Watching for file changes with StatReloader
