@@ -37,9 +37,6 @@ urlpatterns = [
     # App URLs - Main entry point for hadith_app
     path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),
     
-    # PDF Reader URLs
-    path('pdf-reader/', include(('pdf_reader.urls', 'pdf_reader'), namespace='pdf_reader')),  # PDF reader UI and API
-    
     # API endpoints are now included within each app's URL configuration
     # This provides better organization and versioning control
     
