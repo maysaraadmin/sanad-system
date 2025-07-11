@@ -1,4 +1,10 @@
 {% extends 'library_app/base.html' %}
+{% load static %}
+
+<!-- Add jQuery if not already included -->
+{% block library_extra_head %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
 
 {% block library_title %}{{ document.title }}{% endblock %}
 
@@ -43,6 +49,14 @@
                                     data-bs-toggle="modal" 
                                     data-bs-target="#pdfViewerModal">
                                 <i class="fas fa-file-pdf me-2"></i>عرض PDF
+                            </button>
+                            {% endif %}
+                            {% if document.file.name|lower|slice:'-4:' == '.doc' or document.file.name|lower|slice:'-5:' == '.docx' %}
+                            <button type="button" 
+                                    class="btn btn-outline-primary" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#wordViewerModal">
+                                <i class="fas fa-file-word me-2"></i>عرض Word
                             </button>
                             {% endif %}
                         </div>
@@ -112,4 +126,78 @@
         </div>
     </div>
 </div>
+
+<!-- Word Viewer Modal -->
+<div class="modal fade" id="wordViewerModal" tabindex="-1" aria-labelledby="wordViewerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="wordViewerModalLabel">{{ document.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="word-container" style="height: 80vh; overflow-y: auto;">
+                    <div id="word-content" class="p-3">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block library_extra_js %}
+<script>
+// Ensure jQuery is loaded
+if (typeof jQuery === 'undefined') {
+    document.write('<script src="https://code.jquery.com/jquery-3.6.0.min.js"><\/script>');
+}
+
+// Wait for the document to be fully loaded
+$(document).ready(function() {
+    // Initialize Bootstrap tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    // Initialize the Word viewer modal
+    var wordModal = new bootstrap.Modal(document.getElementById('wordViewerModal'));
+    
+    // Add event listener for modal shown
+    document.getElementById('wordViewerModal').addEventListener('shown.bs.modal', function (event) {
+        // Only load content once
+        if (isContentLoaded) {
+            return;
+        }
+        
+        // Show loading spinner
+        $('#word-content').html('<div class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>');
+        
+        // Load Word document content
+        const url = '{% url "library_app:word_to_html" document.pk %}';
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function(response) {
+                $('#word-content').html(response);
+                isContentLoaded = true;
+            },
+            error: function(xhr) {
+                $('#word-content').html('<div class="alert alert-danger">' + 
+                    '<i class="fas fa-exclamation-triangle me-2"></i>' +
+                    'حدث خطأ أثناء تحميل المستند: ' + xhr.status +
+                    '</div>');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}
