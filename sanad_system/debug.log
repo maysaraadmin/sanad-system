@@ -8852,3 +8852,8 @@ INFO 2025-12-08 00:04:34,535 basehttp - Broken pipe from ('127.0.0.1', 49410)
 INFO 2025-12-08 00:04:34,700 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 92064
 INFO 2025-12-08 00:04:38,600 basehttp "GET /api/document-analysis/analyses/26/ HTTP/1.1" 200 737
 INFO 2025-12-08 00:05:48,525 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 00:05:57,595 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 92868
+INFO 2025-12-08 00:06:24,169 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 369
+INFO 2025-12-08 00:06:28,751 basehttp - Broken pipe from ('127.0.0.1', 49598)
+INFO 2025-12-08 00:06:29,164 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 94921
+INFO 2025-12-08 00:06:33,434 basehttp "GET /api/document-analysis/analyses/27/ HTTP/1.1" 200 737
