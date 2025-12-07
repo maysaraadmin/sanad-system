@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import path, reverse
 from django.apps import apps as django_apps
 from django.http import Http404
+import shutil
+import os
 
 # Import models only - admin classes will be registered separately
 from .models import Narrator, Hadith, Sanad, SanadNarrator, HadithCategory, HadithBook
@@ -28,8 +30,56 @@ class CustomAdminSite(AdminSite):
         
     def each_context(self, request):
         context = super().each_context(request)
-        # Add any custom context here if needed
+        # Add system stats to context
+        context['stats'] = self.get_system_stats()
         return context
+    
+    def get_system_stats(self):
+        """Get system statistics for the admin dashboard"""
+        try:
+            # Get disk usage - handle both Windows and Unix systems
+            if os.name == 'nt':  # Windows
+                total, used, free = shutil.disk_usage('C:\\')
+            else:  # Unix/Linux/Mac
+                total, used, free = shutil.disk_usage('/')
+            
+            storage_total = self._format_bytes(total)
+            storage_used = self._format_bytes(used)
+            storage_percent = round((used / total) * 100, 1)
+            
+            # Determine storage status
+            if storage_percent < 80:
+                storage_status = 'ok'
+            elif storage_percent < 90:
+                storage_status = 'warning'
+            else:
+                storage_status = 'critical'
+                
+            return {
+                'system_status': 'healthy',
+                'database_status': 'online',
+                'storage_status': storage_status,
+                'storage_used': storage_used,
+                'storage_total': storage_total,
+                'storage_percent': storage_percent,
+            }
+        except Exception as e:
+            return {
+                'system_status': 'error',
+                'database_status': 'unknown',
+                'storage_status': 'unknown',
+                'storage_used': 'Unknown',
+                'storage_total': 'Unknown',
+                'storage_percent': 'Unknown',
+            }
+    
+    def _format_bytes(self, bytes_value):
+        """Format bytes to human readable format"""
+        for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+            if bytes_value < 1024.0:
+                return f"{bytes_value:.1f} {unit}"
+            bytes_value /= 1024.0
+        return f"{bytes_value:.1f} PB"
     
     def _build_app_dict(self, request, app_label=None):
         """
@@ -112,10 +162,7 @@ class CustomAdminSite(AdminSite):
         return app_list
 
 # Create the admin site instance
-admin_site = CustomAdminSite(name='admin')
-
-# Create the admin site instance
-admin_site = CustomAdminSite(name='admin')
+admin_site = CustomAdminSite(name='custom_admin')
 
 # Override the default admin site
 admin.site = admin_site

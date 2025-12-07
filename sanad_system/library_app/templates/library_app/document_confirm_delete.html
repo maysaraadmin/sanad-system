@@ -1,0 +1,66 @@
+{% extends 'library_app/base.html' %}
+{% load static %}
+
+{% block library_title %}حذف مستند{% endblock %}
+
+{% block library_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        تأكيد الحذف
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h5 class="alert-heading">
+                            <i class="fas fa-question-circle me-2"></i>
+                            هل أنت متأكد من حذف هذا المستند؟
+                        </h5>
+                        <p class="mb-0">
+                            سيتم حذف المستند "<strong>{{ object.title }}</strong>" بشكل نهائي ولا يمكن استعادته.
+                        </p>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <strong>العنوان:</strong> {{ object.title }}
+                        </div>
+                        <div class="col-md-6">
+                            <strong>النوع:</strong> {{ object.document_type.name }}
+                        </div>
+                    </div>
+                    
+                    {% if object.description %}
+                    <div class="mb-4">
+                        <strong>الوصف:</strong><br>
+                        {{ object.description|truncatewords:30 }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if object.file %}
+                    <div class="mb-4">
+                        <strong>الملف:</strong> {{ object.file.name }}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post" class="mt-4">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ object.get_absolute_url }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>
+                                إلغاء والعودة
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash me-2"></i>
+                                نعم، احذف المستند
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

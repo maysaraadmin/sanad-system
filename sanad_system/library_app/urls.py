@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .document_search_views import DocumentSearchView, document_search_api
 
 app_name = 'library_app'
 
@@ -13,6 +14,10 @@ urlpatterns = [
     path('document/<int:pk>/view/', views.document_view, name='document_view'),
     path('document/<int:pk>/pdf/', views.pdf_viewer, name='pdf_viewer'),
     path('document/<int:pk>/word-html/', views.word_to_html, name='word_to_html'),
+    
+    # Document Search
+    path('search/', DocumentSearchView.as_view(), name='document_search'),
+    path('search/api/', document_search_api, name='document_search_api'),
     
     # Document Type URLs
     path('document-type/create/', views.DocumentTypeCreateView.as_view(), name='document_type_create'),

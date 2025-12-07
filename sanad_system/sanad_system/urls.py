@@ -32,7 +32,7 @@ admin.sites.site = admin_site
 
 urlpatterns = [
     # Admin URLs - Using custom admin site
-    path('admin/', admin.site.urls),
+    path('admin/', admin_site.urls),
     
     # App URLs - Main entry point for hadith_app
     path('', include(('hadith_app.urls', 'hadith_app'), namespace='hadith_app')),

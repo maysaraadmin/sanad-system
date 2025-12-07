@@ -55,6 +55,13 @@ class DocumentDetailView(DetailView):
         if not self.request.user.is_authenticated:
             queryset = queryset.filter(is_public=True)
         return queryset
+    
+    def get(self, request, *args, **kwargs):
+        # Ensure this always returns the template, never downloads the file
+        response = super().get(request, *args, **kwargs)
+        # Set content type to HTML to prevent browser from treating it as file download
+        response['Content-Type'] = 'text/html; charset=utf-8'
+        return response
 
 @login_required
 def document_view(request, pk):

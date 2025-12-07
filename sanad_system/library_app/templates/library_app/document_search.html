@@ -1,0 +1,200 @@
+{% extends 'library_app/base.html' %}
+{% load static %}
+
+{% block library_title %}بحث في المستندات{% endblock %}
+
+{% block library_extra_head %}
+<style>
+.search-highlight {
+    background-color: #fff3cd;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.match-context {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.search-result-card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s;
+}
+
+.search-result-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.match-info {
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    margin-bottom: 10px;
+}
+</style>
+{% endblock %}
+
+{% block library_content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-search me-2"></i>
+            بحث في محتوى المستندات
+        </h2>
+        
+        <!-- Search Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <form method="get" class="row g-3">
+                    <div class="col-md-8">
+                        <label for="search-query" class="form-label">كلمة البحث:</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="search-query" 
+                               name="q" 
+                               value="{{ query }}"
+                               placeholder="أدخل كلمات للبحث داخل المستندات...">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="document-type" class="form-label">نوع المستند:</label>
+                        <select class="form-select" id="document-type" name="type">
+                            <option value="">جميع الأنواع</option>
+                            {% for type in document_types %}
+                            <option value="{{ type.id }}" {% if selected_type == type.id|stringformat:"s" %}selected{% endif %}>
+                                {{ type.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="form-label d-block">&nbsp;</label>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Availability Notice -->
+        {% if not pypdf2_available or not docx_available %}
+        <div class="alert alert-warning">
+            <h5><i class="fas fa-exclamation-triangle me-2"></i>ملاحظة:</h5>
+            {% if not pypdf2_available %}
+            <p>• البحث في ملفات PDF غير متاح (PyPDF2 غير مثبت)</p>
+            {% endif %}
+            {% if not docx_available %}
+            <p>• البحث في ملفات Word غير متاح (python-docx غير مثبت)</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Search Results -->
+        {% if query %}
+            <div class="mb-3">
+                <h4>نتائج البحث عن: "{{ query }}"</h4>
+                {% if results %}
+                    <p class="text-muted">تم العثور على {{ results.paginator.count }} مستند يحتوي على هذه الكلمة</p>
+                {% else %}
+                    <p class="text-muted">لم يتم العثور على نتائج</p>
+                {% endif %}
+            </div>
+
+            {% for result in results %}
+                <div class="search-result-card card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">
+                                    <a href="{{ result.document.get_absolute_url }}" class="text-decoration-none">
+                                        {{ result.document.title }}
+                                    </a>
+                                </h5>
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-file me-2"></i>{{ result.document.document_type.name }}
+                                    {% if result.document.file_size %}• {{ result.document.file_size }}{% endif %}
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <div class="match-info">
+                                    <strong>{{ result.match_count }}</strong> مطابقة
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Show first few matches -->
+                        {% if result.matches %}
+                            <div class="mt-3">
+                                <h6>أمثلة من النتائج:</h6>
+                                {% for match in result.matches|slice:":3" %}
+                                    <div class="match-context">
+                                        {% if match.page %}
+                                            <small class="text-muted">صفحة {{ match.page }}:</small>
+                                        {% elif match.paragraph %}
+                                            <small class="text-muted">فقرة {{ match.paragraph }}:</small>
+                                        {% elif match.line %}
+                                            <small class="text-muted">سطر {{ match.line }}:</small>
+                                        {% endif %}
+                                        <div>{{ match.context|safe }}</div>
+                                    </div>
+                                {% endfor %}
+                                {% if result.matches|length > 3 %}
+                                    <small class="text-muted">... و {{ result.matches|length|add:"-3" }} نتائج أخرى</small>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        
+                        <div class="mt-3">
+                            <a href="{{ result.document.get_absolute_url }}" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye me-1"></i>عرض المستند
+                            </a>
+                            {% if result.document.file_exists %}
+                                <a href="{{ result.document.safe_file_url }}" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-download me-1"></i>تحميل
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- Pagination -->
+            {% if results.has_other_pages %}
+                <nav aria-label="نتائج البحث">
+                    <ul class="pagination justify-content-center">
+                        {% if results.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?q={{ query }}&type={{ selected_type }}&page={{ results.previous_page_number }}">السابق</a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in results.paginator.page_range %}
+                            {% if results.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% elif num > results.number|add:'-3' and num < results.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query }}&type={{ selected_type }}&page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if results.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?q={{ query }}&type={{ selected_type }}&page={{ results.next_page_number }}">التالي</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -6495,3 +6495,281 @@ INFO 2025-12-06 16:52:52,390 basehttp "GET / HTTP/1.1" 200 26881
 INFO 2025-12-06 16:55:12,173 basehttp "GET / HTTP/1.1" 200 26556
 INFO 2025-12-06 16:55:20,693 basehttp "GET /hadith/ HTTP/1.1" 200 54793
 INFO 2025-12-06 16:55:24,769 basehttp "GET /hadith/135/ HTTP/1.1" 200 26917
+INFO 2025-12-07 11:52:04,761 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 11:53:53,537 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 11:54:51,820 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 11:57:17,299 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 11:58:12,917 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 11:58:42,593 basehttp "GET / HTTP/1.1" 200 23931
+INFO 2025-12-07 11:58:43,118 basehttp "GET /static/css/style.css HTTP/1.1" 200 3761
+INFO 2025-12-07 11:58:43,120 basehttp "GET /static/js/main.js HTTP/1.1" 200 4678
+WARNING 2025-12-07 11:58:44,198 log Not Found: /favicon.ico
+WARNING 2025-12-07 11:58:44,200 basehttp "GET /favicon.ico HTTP/1.1" 404 7465
+INFO 2025-12-07 11:58:53,141 basehttp "GET /accounts/register/ HTTP/1.1" 200 27836
+INFO 2025-12-07 11:58:57,560 basehttp "GET /accounts/login/ HTTP/1.1" 200 28221
+INFO 2025-12-07 11:59:03,328 basehttp "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-07 11:59:03,495 basehttp "GET /hadith/ HTTP/1.1" 200 54793
+INFO 2025-12-07 11:59:09,958 basehttp "GET /hadith/135/ HTTP/1.1" 200 26917
+ERROR 2025-12-07 11:59:17,575 log Internal Server Error: /sanad/add/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\edit.py", line 180, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\edit.py", line 144, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_views.py", line 22, in get_context_data
+    context['hadith'] = Hadith.objects.get(pk=self.kwargs['hadith_id'])
+                                              ~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'hadith_id'
+ERROR 2025-12-07 11:59:17,618 basehttp "GET /sanad/add/ HTTP/1.1" 500 92166
+INFO 2025-12-07 12:00:25,233 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-07 12:00:32,790 autoreload Watching for file changes with StatReloader
+WARNING 2025-12-07 12:00:59,341 log Not Found: /sanad/add/
+WARNING 2025-12-07 12:00:59,350 basehttp "GET /sanad/add/ HTTP/1.1" 404 7484
+INFO 2025-12-07 12:01:30,165 basehttp "GET / HTTP/1.1" 200 26556
+INFO 2025-12-07 12:01:34,331 basehttp "GET /hadith/ HTTP/1.1" 200 54793
+INFO 2025-12-07 12:01:37,578 basehttp "GET /hadith/create/ HTTP/1.1" 200 30057
+INFO 2025-12-07 12:02:04,579 basehttp "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-07 12:02:04,912 basehttp "GET /admin/ HTTP/1.1" 200 23847
+INFO 2025-12-07 12:02:05,603 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2025-12-07 12:02:05,605 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-12-07 12:02:05,606 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 200 2890
+INFO 2025-12-07 12:02:05,705 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 200 4918
+INFO 2025-12-07 12:02:05,706 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-12-07 12:02:05,706 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-12-07 12:02:05,706 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-07 12:02:05,709 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2025-12-07 12:02:05,711 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-07 12:02:05,799 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 200 1864
+INFO 2025-12-07 12:02:05,830 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-07 12:02:05,831 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-07 12:03:03,250 autoreload D:\sanad-system\sanad_system\hadith_app\admin_site.py changed, reloading.
+INFO 2025-12-07 12:03:06,423 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 12:03:13,551 autoreload D:\sanad-system\sanad_system\library_app\admin.py changed, reloading.
+INFO 2025-12-07 12:03:15,284 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 12:03:25,621 basehttp "GET /admin/ HTTP/1.1" 200 23847
+INFO 2025-12-07 12:04:15,529 autoreload D:\sanad-system\sanad_system\hadith_app\admin_site.py changed, reloading.
+INFO 2025-12-07 12:04:17,291 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 12:04:19,981 autoreload D:\sanad-system\sanad_system\hadith_app\admin_site.py changed, reloading.
+INFO 2025-12-07 12:04:21,463 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 12:04:24,108 autoreload D:\sanad-system\sanad_system\hadith_app\admin_site.py changed, reloading.
+INFO 2025-12-07 12:04:25,508 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 12:04:36,138 basehttp "GET /admin/ HTTP/1.1" 200 23882
+INFO 2025-12-07 12:04:36,177 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,189 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,197 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,214 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,214 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,218 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,224 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,231 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,231 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,319 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-12-07 12:04:36,320 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-12-07 12:05:05,866 basehttp "GET /hadith/ HTTP/1.1" 200 54793
+INFO 2025-12-07 12:05:16,353 basehttp "GET /hadith/?page=3 HTTP/1.1" 200 36809
+INFO 2025-12-07 12:05:27,420 basehttp "GET /narrators/ HTTP/1.1" 200 33559
+INFO 2025-12-07 12:05:34,582 basehttp "GET /narrators/3/ HTTP/1.1" 200 26978
+INFO 2025-12-07 12:05:40,824 basehttp "GET /narrators/3/update/ HTTP/1.1" 200 28596
+INFO 2025-12-07 12:05:46,763 basehttp "POST /narrators/3/update/ HTTP/1.1" 302 0
+INFO 2025-12-07 12:05:46,846 basehttp "GET /narrators/ HTTP/1.1" 200 33786
+INFO 2025-12-07 12:05:54,917 basehttp "GET /hadith/ HTTP/1.1" 200 54793
+INFO 2025-12-07 12:11:05,794 basehttp "GET /hadith/ HTTP/1.1" 200 40568
+ERROR 2025-12-07 12:11:17,934 log Internal Server Error: /hadith/169/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_add' with no arguments not found. 1 pattern(s) tried: ['sanad/(?P<hadith_id>[0-9]+)/add/\\Z']
+ERROR 2025-12-07 12:11:18,071 basehttp "GET /hadith/169/ HTTP/1.1" 500 157409
+INFO 2025-12-07 12:12:11,048 basehttp "GET /hadith/169/ HTTP/1.1" 200 26722
+INFO 2025-12-07 12:12:19,344 basehttp "GET /sanad/169/add/ HTTP/1.1" 200 28788
+INFO 2025-12-07 12:12:29,047 basehttp "GET /hadith/169/update/ HTTP/1.1" 200 30486
+INFO 2025-12-07 12:12:37,026 basehttp "GET /hadith/create/ HTTP/1.1" 200 30057
+INFO 2025-12-07 12:12:42,105 basehttp "GET /hadith/ HTTP/1.1" 200 40568
+INFO 2025-12-07 12:12:55,202 basehttp "GET /profile/ HTTP/1.1" 200 30963
+INFO 2025-12-07 12:13:07,836 basehttp "GET / HTTP/1.1" 200 26556
+INFO 2025-12-07 12:13:10,879 basehttp "GET /hadith/ HTTP/1.1" 200 40568
+INFO 2025-12-07 12:13:18,296 basehttp "GET /hadith/?grade=&category=2 HTTP/1.1" 200 40609
+INFO 2025-12-07 12:13:25,113 basehttp "GET /hadith/?grade=hasan&category=2 HTTP/1.1" 200 26997
+INFO 2025-12-07 12:13:31,065 basehttp "GET /hadith/?grade=sahih&category=2 HTTP/1.1" 200 40653
+INFO 2025-12-07 12:13:45,682 basehttp "GET /narrators/ HTTP/1.1" 200 33559
+INFO 2025-12-07 12:13:58,151 basehttp "GET /library/ HTTP/1.1" 200 32201
+INFO 2025-12-07 12:14:03,018 basehttp "GET /library/document/1/ HTTP/1.1" 200 30571
+ERROR 2025-12-07 12:14:19,166 log Internal Server Error: /library/document/1/delete/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: library_app/document_confirm_delete.html
+ERROR 2025-12-07 12:14:19,178 basehttp "GET /library/document/1/delete/ HTTP/1.1" 500 84624
+WARNING 2025-12-07 12:14:19,453 log Not Found: /favicon.ico
+INFO 2025-12-07 12:14:19,457 basehttp - Broken pipe from ('127.0.0.1', 60544)
+INFO 2025-12-07 12:15:23,844 basehttp "GET /library/document/1/delete/ HTTP/1.1" 200 27850
+INFO 2025-12-07 12:15:30,026 basehttp "POST /library/document/1/delete/ HTTP/1.1" 302 0
+INFO 2025-12-07 12:15:31,464 basehttp "GET /library/ HTTP/1.1" 200 30519
+INFO 2025-12-07 12:15:36,132 basehttp "GET /library/document/2/ HTTP/1.1" 200 30403
+INFO 2025-12-07 12:15:44,414 basehttp "GET /library/document/2/delete/ HTTP/1.1" 200 27751
+INFO 2025-12-07 12:15:49,935 basehttp "POST /library/document/2/delete/ HTTP/1.1" 302 0
+INFO 2025-12-07 12:15:52,848 basehttp "GET /library/ HTTP/1.1" 200 28879
+INFO 2025-12-07 12:16:02,698 basehttp "GET /library/document/3/ HTTP/1.1" 200 32936
+INFO 2025-12-07 12:16:03,035 basehttp "GET /library/document/3/pdf/ HTTP/1.1" 200 8415
+INFO 2025-12-07 12:16:06,368 basehttp - Broken pipe from ('127.0.0.1', 61039)
+INFO 2025-12-07 12:16:07,520 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-07 12:17:06,325 autoreload D:\sanad-system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-12-07 12:17:10,835 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 12:17:19,351 basehttp "GET /library/document/3/ HTTP/1.1" 200 32936
+INFO 2025-12-07 12:17:19,562 basehttp "GET /library/document/3/pdf/ HTTP/1.1" 200 8415
+INFO 2025-12-07 12:17:24,624 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-07 12:17:24,644 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-07 12:19:54,885 autoreload D:\sanad-system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-12-07 12:20:02,956 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 13:58:31,135 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:01:21,309 autoreload D:\sanad-system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-12-07 14:01:21,302 autoreload D:\sanad-system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-12-07 14:01:23,933 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:03:00,723 autoreload D:\sanad-system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-12-07 14:03:00,855 autoreload D:\sanad-system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-12-07 14:03:02,909 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:03:03,043 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:03:20,480 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:03:42,493 basehttp "GET /library/ HTTP/1.1" 200 29477
+INFO 2025-12-07 14:03:43,838 basehttp - Broken pipe from ('127.0.0.1', 54538)
+INFO 2025-12-07 14:03:46,071 basehttp - Broken pipe from ('127.0.0.1', 54531)
+ERROR 2025-12-07 14:03:52,516 log Internal Server Error: /library/search/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\library_app\document_search_views.py", line 44, in get
+    'document_types': DocumentType.objects.all(),
+                      ^^^^^^^^^^^^
+NameError: name 'DocumentType' is not defined. Did you mean: 'document_type'?
+ERROR 2025-12-07 14:03:52,801 basehttp "GET /library/search/ HTTP/1.1" 500 79493
+INFO 2025-12-07 14:04:13,516 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:04:13,660 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:04:13,908 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:04:17,675 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:04:17,844 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:04:17,892 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:04:32,746 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:05:35,364 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:05:38,335 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:06:08,122 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:06:35,886 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:06:37,251 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:06:38,207 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:06:39,301 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:06:41,686 basehttp "GET /library/ HTTP/1.1" 200 29477
+INFO 2025-12-07 14:06:44,609 basehttp "GET /narrators/ HTTP/1.1" 200 33559
+INFO 2025-12-07 14:06:47,447 basehttp "GET / HTTP/1.1" 200 26556
+INFO 2025-12-07 14:06:50,742 basehttp "GET /library/ HTTP/1.1" 200 29477
+INFO 2025-12-07 14:06:53,831 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:07:37,154 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:07:49,276 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:07:50,390 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:07:51,461 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:08:08,506 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:08:11,451 basehttp "GET /library/search/ HTTP/1.1" 200 29733
+INFO 2025-12-07 14:08:37,336 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:37,377 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:37,792 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:41,114 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:41,331 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:42,486 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:47,551 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:47,757 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:48,334 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:49,557 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:49,919 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:50,750 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:52,784 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:53,065 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:53,968 autoreload D:\sanad-system\sanad_system\library_app\document_search_views.py changed, reloading.
+INFO 2025-12-07 14:08:56,118 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:56,560 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:08:56,899 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:09:13,398 basehttp "GET /library/search/ HTTP/1.1" 200 29450
+INFO 2025-12-07 14:09:16,777 basehttp "GET /library/search/ HTTP/1.1" 200 29450
+INFO 2025-12-07 14:09:34,415 basehttp "GET /library/search/?q=%D8%B5%D9%84%D8%A7%D8%A9&type= HTTP/1.1" 200 29772
+INFO 2025-12-07 14:09:45,216 basehttp "GET /library/ HTTP/1.1" 200 29477
+INFO 2025-12-07 14:09:47,523 basehttp "GET /hadith/ HTTP/1.1" 200 40568
+INFO 2025-12-07 14:10:39,394 autoreload Watching for file changes with StatReloader
