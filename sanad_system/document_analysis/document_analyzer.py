@@ -570,7 +570,7 @@ class DocumentAnalyzer:
             best_match = None
             best_similarity = 0
             
-            for hadith in hadiths[:20]:  # Limit to first 20 for performance
+            for hadith in hadiths:  # Check all hadiths for comprehensive comparison
                 hadith_clean = self._clean_arabic_text(hadith.text)
                 hadith_words = set(hadith_clean.split())
                 
