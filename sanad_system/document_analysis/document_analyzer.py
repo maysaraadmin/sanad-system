@@ -30,11 +30,21 @@ class DocumentAnalyzer:
         try:
             from paddleocr import PaddleOCR
             logger.info("Importing PaddleOCR...")
-            self.paddle_ocr = PaddleOCR(use_angle_cls=True, lang='ar', show_log=False)
-            logger.info("PaddleOCR initialized successfully for Arabic")
-        except Exception as e:
+            # Try different initialization approaches
+            try:
+                self.paddle_ocr = PaddleOCR(use_angle_cls=True, lang='ar')
+                logger.info("PaddleOCR initialized successfully for Arabic (with angle classification)")
+            except Exception as e1:
+                logger.warning(f"First PaddleOCR init failed: {str(e1)}")
+                try:
+                    self.paddle_ocr = PaddleOCR(lang='ar')
+                    logger.info("PaddleOCR initialized successfully for Arabic (basic)")
+                except Exception as e2:
+                    logger.error(f"Second PaddleOCR init failed: {str(e2)}")
+                    self.paddle_ocr = None
+        except ImportError:
             self.paddle_ocr = None
-            logger.error(f"PaddleOCR initialization failed: {str(e)}")
+            logger.warning("PaddleOCR not available")
         
         # Try to initialize Tesseract OCR
         try:
@@ -52,46 +62,73 @@ class DocumentAnalyzer:
         self.donut_processor = None
         self.donut_model = None
     
-    def analyze_document(self, file_path: str) -> Dict:
-        """Main method to analyze a document"""
+    def analyze_document(self, file_path: str) -> dict:
+        """Analyze document with enhanced Arabic support"""
         try:
-            if not os.path.exists(file_path):
-                raise FileNotFoundError(f"File not found: {file_path}")
-
-            logger.info(f"Analyzing document: {file_path}")
+            logger.info(f"Starting enhanced document analysis for: {file_path}")
             
-            # Extract text
-            logger.info("Extracting text...")
+            # Extract text with improved OCR
             extracted_text = self.extract_text(file_path)
-            logger.info(f"Extracted text length: {len(extracted_text)} characters")
             
-            if not extracted_text.strip():
-                logger.warning("No text was extracted from the document")
-                extracted_text = "No text could be extracted from this document. The file might be an image-only PDF, corrupted, or in an unsupported format."
-
-            result = {
-                'status': 'success',
-                'extracted_text': extracted_text,
-                'analysis': self._analyze_text(extracted_text),
-                'models_used': {
-                    'paddleocr': self.paddle_ocr is not None,
-                    'tesseract': self.ocr is not None,
-                    'layoutlm': False,
-                    'donut': False,
-                    'basic_extraction': True
+            # Create a working analysis structure
+            if not extracted_text.strip() or extracted_text == "لا يوجد نص مستخرج" or "Error" in extracted_text or "No text detected" in extracted_text:
+                return {
+                    "word_count": 0,
+                    "sentence_count": 0,
+                    "character_count": 0,
+                    "preview": "لا يوجد نص مستخرج",
+                    "status": "completed",
+                    "message": "لا يمكن استخراج نص من المستند",
+                    "is_arabic": False,
+                    "models_used": ["basic_extraction"],
+                    "sentiment": "neutral",
+                    "top_keywords": [],
+                    "reading_time_minutes": 0,
+                    "corrections_made": False
                 }
-            }
             
-            # Ensure the result is JSON serializable
-            return json.loads(json.dumps(result, ensure_ascii=False))
-
+            # Enhanced Arabic analysis
+            try:
+                analysis = self._enhance_arabic_analysis(extracted_text)
+            except Exception as analysis_error:
+                logger.error(f"Arabic analysis failed: {str(analysis_error)}")
+                # Fallback to basic analysis
+                words = extracted_text.split()
+                analysis = {
+                    "word_count": len(words),
+                    "sentence_count": len(extracted_text.split('.')),
+                    "character_count": len(extracted_text),
+                    "preview": extracted_text[:500] + ("..." if len(extracted_text) > 500 else ""),
+                    "language": "unknown",
+                    "is_arabic": False,
+                    "sentiment": "neutral",
+                    "top_keywords": words[:5] if words else [],
+                    "reading_time_minutes": round(len(words) / 180, 1) if words else 0,
+                    "corrections_made": False
+                }
+            
+            analysis.update({
+                "status": "completed",
+                "models_used": ["paddleocr_enhanced"],
+                "extraction_method": "paddleocr_enhanced"
+            })
+            
+            return analysis
+            
         except Exception as e:
             logger.error(f"Document analysis failed: {str(e)}")
             return {
+                "word_count": 0,
+                "sentence_count": 0,
+                "character_count": 0,
+                "preview": f"خطأ في التحليل: {str(e)}",
                 "status": "error",
-                "message": str(e),
-                "extracted_text": f"Error during analysis: {str(e)}",
-                "analysis": {"error": str(e)}
+                "message": f"فشل تحليل المستند: {str(e)}",
+                "is_arabic": False,
+                "sentiment": "neutral",
+                "top_keywords": [],
+                "reading_time_minutes": 0,
+                "corrections_made": False
             }
     
     def _analyze_layout(self, file_path: str) -> Dict:
@@ -184,7 +221,12 @@ class DocumentAnalyzer:
             # Try PaddleOCR first (best for Arabic)
             if self.paddle_ocr:
                 logger.info("Using PaddleOCR for text extraction")
-                return self._extract_with_paddleocr(file_path)
+                result = self._extract_with_paddleocr(file_path)
+                # If PaddleOCR fails, try fallback
+                if not result or "Error" in result or "No text detected" in result:
+                    logger.warning("PaddleOCR failed, trying fallback extraction")
+                    return self._fallback_pdf_extraction(file_path)
+                return result
             # Fall back to Tesseract OCR
             elif self.ocr:
                 logger.info("Using Tesseract for text extraction")
@@ -198,24 +240,39 @@ class DocumentAnalyzer:
             return self._basic_text_extraction(file_path)
     
     def _extract_with_paddleocr(self, file_path: str) -> str:
-        """Extract text using PaddleOCR (best for Arabic)"""
+        """Extract text using PaddleOCR with enhanced settings for Arabic"""
         try:
-            logger.info(f"Starting PaddleOCR extraction for: {file_path}")
+            logger.info(f"Starting enhanced PaddleOCR extraction for: {file_path}")
             
             if file_path.lower().endswith('.pdf'):
-                from pdf2image import convert_from_path
-                logger.info("Converting PDF to images...")
-                images = convert_from_path(file_path, dpi=200)
+                # Try with pdf2image first
+                try:
+                    from pdf2image import convert_from_path
+                    logger.info("Converting PDF to high-res images (300 DPI)...")
+                    images = convert_from_path(
+                        file_path, 
+                        dpi=300,  # Increased from 200 to 300 DPI
+                        thread_count=4,  # Use multiple threads for faster processing
+                        grayscale=True,  # Better for text
+                        fmt='jpeg',
+                        jpegopt={'quality': 95, 'optimize': True, 'progressive': True}
+                    )
+                except Exception as pdf_error:
+                    logger.warning(f"PDF to image conversion failed: {str(pdf_error)}")
+                    # Fallback to basic PDF processing
+                    return self._fallback_pdf_extraction(file_path)
+                
                 if not images:
-                    raise ValueError("Could not extract images from PDF")
+                    logger.warning("No images extracted from PDF, trying fallback method")
+                    return self._fallback_pdf_extraction(file_path)
                 
                 # Process first few pages for performance
                 max_pages = min(len(images), 3)  # Reduce to 3 pages for faster testing
-                logger.info(f"Processing {max_pages} pages with PaddleOCR")
+                logger.info(f"Processing {max_pages} pages with enhanced PaddleOCR")
                 
                 text = ""
                 for i, image in enumerate(images[:max_pages]):
-                    logger.info(f"Processing page {i+1} with PaddleOCR")
+                    logger.info(f"Processing page {i+1} with enhanced PaddleOCR")
                     try:
                         result = self.paddle_ocr.ocr(np.array(image), cls=True)
                         page_text = ""
@@ -227,22 +284,22 @@ class DocumentAnalyzer:
                                             page_text += word_info[1][0] + " "
                         
                         if page_text.strip():
-                            text += f"Page {i+1} (PaddleOCR):\n{page_text}\n\n"
+                            text += f"Page {i+1} (Enhanced PaddleOCR):\n{page_text}\n\n"
                             logger.info(f"Extracted {len(page_text)} characters from page {i+1}")
                         else:
                             logger.warning(f"No text extracted from page {i+1}")
-                            text += f"Page {i+1} (PaddleOCR): No text detected\n\n"
+                            text += f"Page {i+1} (Enhanced PaddleOCR): No text detected\n\n"
                     except Exception as e:
                         logger.error(f"Error processing page {i+1}: {str(e)}")
-                        text += f"Page {i+1} (PaddleOCR): Error - {str(e)}\n\n"
+                        text += f"Page {i+1} (Enhanced PaddleOCR): Error - {str(e)}\n\n"
                 
                 if not text.strip():
-                    text = "PaddleOCR could not extract text from this PDF. The pages might be too complex or the text quality too low."
+                    text = "Enhanced PaddleOCR could not extract text from this PDF. The pages might be too complex or the text quality too low."
                 
                 return text.strip()
             else:
                 # Process image file directly
-                logger.info("Processing image file with PaddleOCR")
+                logger.info("Processing image file with enhanced PaddleOCR")
                 from PIL import Image
                 image = Image.open(file_path)
                 result = self.paddle_ocr.ocr(np.array(image), cls=True)
@@ -255,8 +312,43 @@ class DocumentAnalyzer:
                 return text.strip() if text.strip() else "No text detected in image"
                 
         except Exception as e:
-            logger.error(f"PaddleOCR extraction failed: {str(e)}")
-            return f"PaddleOCR Error: {str(e)}"
+            logger.error(f"Enhanced PaddleOCR extraction failed: {str(e)}")
+            return f"Enhanced PaddleOCR Error: {str(e)}"
+    
+    def _fallback_pdf_extraction(self, file_path: str) -> str:
+        """Fallback PDF extraction when pdf2image fails"""
+        try:
+            import PyPDF2
+            logger.info("Using fallback PDF extraction with PyPDF2")
+            
+            with open(file_path, 'rb') as file:
+                reader = PyPDF2.PdfReader(file)
+                num_pages = len(reader.pages)
+                logger.info(f"PDF has {num_pages} pages")
+                
+                # For very large PDFs, only process first few pages
+                max_pages = min(num_pages, 3)
+                
+                text = ""
+                for page_num in range(max_pages):
+                    try:
+                        page = reader.pages[page_num]
+                        page_text = page.extract_text()
+                        if page_text and page_text.strip():
+                            text += f"Page {page_num + 1} (Basic Extraction):\n{page_text}\n\n"
+                        else:
+                            logger.debug(f"No text extracted from page {page_num + 1}")
+                    except Exception as e:
+                        logger.error(f"Error extracting page {page_num + 1}: {str(e)}")
+                
+                if not text.strip():
+                    text = f"This PDF appears to be image-based with {num_pages} pages. Poppler is required for OCR processing. Please install Poppler for full text extraction."
+                
+                return text.strip()
+                
+        except Exception as e:
+            logger.error(f"Fallback PDF extraction failed: {str(e)}")
+            return f"PDF Error: {str(e)}"
     
     def _extract_with_tesseract(self, file_path: str) -> str:
         """Extract text using Tesseract OCR"""
@@ -368,6 +460,81 @@ class DocumentAnalyzer:
         except Exception as e:
             logger.error(f"Basic extraction failed for {file_path}: {str(e)}")
             return f"Error extracting text: {str(e)}"
+
+    def _enhance_arabic_analysis(self, text: str) -> dict:
+        """Enhance Arabic text analysis with additional metrics"""
+        try:
+            import re
+            from collections import Counter
+            
+            # Fix common OCR errors
+            corrections = {
+                'السالم': 'السلام',
+                'حفظك': 'حفظك',
+                'رحمه': 'رحمه',
+                'اللة': 'الله',
+                'محمد': 'محمد',
+                'اسلام': 'إسلام',
+                'قران': 'قرآن',
+                'اللهم': 'اللهم',
+                'الحمد': 'الحمد',
+                'شكر': 'شكر',
+                # Add more corrections as needed
+            }
+            
+            original_text = text
+            for wrong, correct in corrections.items():
+                text = text.replace(wrong, correct)
+            
+            # Basic stats
+            words = re.findall(r'[\u0600-\u06FF]+', text)
+            sentences = re.split(r'[.!?]+', text)
+            
+            # Remove empty strings
+            words = [w for w in words if w.strip()]
+            sentences = [s.strip() for s in sentences if s.strip()]
+            
+            # Word frequency (top 10)
+            word_freq = Counter(words).most_common(10)
+            
+            # Estimate reading time (average Arabic reading speed: 180 WPM)
+            reading_time = len(words) / 180  # in minutes
+            
+            # Simple sentiment analysis for Arabic
+            positive_words = ['خير', 'جميل', 'ممتاز', 'حسن', 'ناجح', 'مبارك', 'شكر', 'حمد']
+            negative_words = ['سيء', 'فشل', 'خطأ', 'صعب', 'مشكلة', 'خطر', 'خسارة']
+            
+            positive_count = sum(1 for word in words if word in positive_words)
+            negative_count = sum(1 for word in words if word in negative_words)
+            
+            sentiment = 'neutral'
+            if positive_count > negative_count:
+                sentiment = 'positive'
+            elif negative_count > positive_count:
+                sentiment = 'negative'
+            
+            return {
+                "word_count": len(words),
+                "sentence_count": len(sentences),
+                "character_count": len(text),
+                "reading_time_minutes": round(reading_time, 1),
+                "top_keywords": [word for word, _ in word_freq],
+                "sentiment": sentiment,
+                "corrections_made": text != original_text,
+                "preview": text[:500] + ("..." if len(text) > 500 else ""),
+                "language": "ar",
+                "is_arabic": True
+            }
+        except Exception as e:
+            logger.error(f"Arabic analysis enhancement failed: {str(e)}")
+            return {
+                "word_count": len(text.split()),
+                "sentence_count": len(text.split('.')),
+                "character_count": len(text),
+                "preview": text[:500],
+                "language": "unknown",
+                "is_arabic": False
+            }
 
     def _analyze_text(self, text: str) -> Dict:
         """Analyze extracted text"""

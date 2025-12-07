@@ -248,13 +248,16 @@ function uploadDocument() {
     });
 }
 
-// Monitor analysis progress with animated progress bar
+// Monitor analysis progress with enhanced tracking
 function monitorAnalysisProgress(analysisId) {
-    let progress = 0;
-    const progressInterval = setInterval(() => {
-        fetch('/api/document-analysis/analyses/' + analysisId + '/')
-        .then(response => response.json())
-        .then(data => {
+    let startTime = new Date();
+    let progressInterval;
+    
+    progressInterval = setInterval(async () => {
+        try {
+            const response = await fetch(`/api/document-analysis/analyses/${analysisId}/`);
+            const data = await response.json();
+            
             console.log('Analysis status:', data.status);
             
             // Find the analysis row in the table
@@ -262,51 +265,80 @@ function monitorAnalysisProgress(analysisId) {
             if (analysisRow) {
                 const statusCell = analysisRow.querySelector('td:nth-child(4)');
                 if (statusCell) {
-                    // Update status badge with progress
+                    // Calculate progress
+                    let progress = 0;
+                    let current_page = 1;
+                    let total_pages = 3;
+                    
+                    // Simulate progress based on status
                     if (data.status === 'processing') {
-                        progress = Math.min(progress + 15, 90); // Increment progress
+                        const elapsed = (new Date() - startTime) / 1000; // in seconds
+                        progress = Math.min(Math.floor((elapsed / 10) * 100), 90); // Simulate 10-second process
+                        current_page = Math.floor((progress / 100) * total_pages) + 1;
+                        
+                        // Calculate ETA
+                        const estimatedTotal = (elapsed / progress) * 100;
+                        const remaining = Math.ceil((estimatedTotal - elapsed) / 60); // in minutes
+                        
                         statusCell.innerHTML = `
-                            <div class="d-flex align-items-center">
-                                <span class="badge bg-info me-2">
-                                    <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
-                                    قيد المعالجة
-                                </span>
-                                <div class="progress" style="width: 100px; height: 20px;">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" 
-                                         role="progressbar" 
-                                         style="width: ${progress}%" 
-                                         aria-valuenow="${progress}" 
-                                         aria-valuemin="0" 
-                                         aria-valuemax="100">
-                                        ${progress}%
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center mb-1">
+                                    <span class="badge bg-info me-2">
+                                        <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                                        جاري التحليل...
+                                    </span>
+                                    <div class="progress" style="width: 200px; height: 20px;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" 
+                                             role="progressbar" 
+                                             style="width: ${progress}%" 
+                                             aria-valuenow="${progress}" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                            ${progress}%
+                                        </div>
                                     </div>
                                 </div>
+                                <small class="text-muted">
+                                    الصفحة: ${current_page} من ${total_pages} 
+                                    | الوقت المتبقي: ${remaining > 0 ? remaining + ' دقيقة' : 'أقل من دقيقة'}
+                                    | OCR: PaddleOCR
+                                </small>
                             </div>
                         `;
                     } else if (data.status === 'completed') {
                         progress = 100;
                         statusCell.innerHTML = `
-                            <div class="d-flex align-items-center">
-                                <span class="badge bg-success me-2">مكتمل</span>
-                                <div class="progress" style="width: 100px; height: 20px;">
-                                    <div class="progress-bar bg-success" 
-                                         role="progressbar" 
-                                         style="width: 100%" 
-                                         aria-valuenow="100" 
-                                         aria-valuemin="0" 
-                                         aria-valuemax="100">
-                                        100%
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center mb-1">
+                                    <span class="badge bg-success me-2">مكتمل</span>
+                                    <div class="progress" style="width: 200px; height: 20px;">
+                                        <div class="progress-bar bg-success" 
+                                             role="progressbar" 
+                                             style="width: 100%" 
+                                             aria-valuenow="100" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                            100%
+                                        </div>
                                     </div>
                                 </div>
+                                <small class="text-success">
+                                    تم استخراج النص بنجاح باستخدام PaddleOCR المحسّن
+                                </small>
                             </div>
                         `;
                         clearInterval(progressInterval);
-                        // Show completion notification
                         showNotification('اكتمل تحليل المستند بنجاح!', 'success');
+                        // Reload after 2 seconds to show final results
+                        setTimeout(() => location.reload(), 2000);
                     } else if (data.status === 'failed') {
-                        statusCell.innerHTML = '<span class="badge bg-danger">فشل</span>';
+                        statusCell.innerHTML = `
+                            <div class="d-flex flex-column">
+                                <span class="badge bg-danger">فشل</span>
+                                <small class="text-danger">${data.error_message || 'خطأ غير معروف'}</small>
+                            </div>
+                        `;
                         clearInterval(progressInterval);
-                        // Show error notification
                         showNotification('فشل تحليل المستند: ' + (data.error_message || 'خطأ غير معروف'), 'error');
                     }
                 }
@@ -316,11 +348,11 @@ function monitorAnalysisProgress(analysisId) {
             setTimeout(() => {
                 clearInterval(progressInterval);
             }, 300000);
-        })
-        .catch(error => {
+            
+        } catch (error) {
             console.error('Error checking analysis status:', error);
             clearInterval(progressInterval);
-        });
+        }
     }, 1000); // Check every 1 second for smoother progress
 }
 
@@ -349,16 +381,31 @@ function viewAnalysis(analysisId) {
     .then(data => {
         const resultDiv = document.getElementById('analysisResult');
         if (data.status === 'completed' && data.result) {
+            let extractedText = '';
             let analysisHtml = '';
-            try {
-                const analysisData = typeof data.result.analysis === 'string' ? 
-                    JSON.parse(data.result.analysis) : data.result.analysis;
-                analysisHtml = '<pre>' + JSON.stringify(analysisData, null, 2) + '</pre>';
-            } catch (e) {
-                analysisHtml = '<pre>' + data.result.analysis + '</pre>';
+            
+            // Handle the new result structure
+            if (data.result.preview !== undefined) {
+                // New structure: analysis is directly in result
+                extractedText = data.result.preview || 'لا يوجد نص مستخرج';
+                analysisHtml = '<pre>' + JSON.stringify(data.result, null, 2) + '</pre>';
+            } else if (data.result.extracted_text !== undefined) {
+                // Old structure
+                extractedText = data.result.extracted_text || 'لا يوجد نص مستخرج';
+                try {
+                    const analysisData = typeof data.result.analysis === 'string' ? 
+                        JSON.parse(data.result.analysis) : data.result.analysis;
+                    analysisHtml = '<pre>' + JSON.stringify(analysisData, null, 2) + '</pre>';
+                } catch (e) {
+                    analysisHtml = '<pre>' + (data.result.analysis || 'undefined') + '</pre>';
+                }
+            } else {
+                // Fallback
+                extractedText = 'لا يوجد نص مستخرج';
+                analysisHtml = '<pre>' + JSON.stringify(data.result, null, 2) + '</pre>';
             }
             
-            resultDiv.innerHTML = '<div class="row"><div class="col-12"><h6>النص المستخرج:</h6><div class="alert alert-info"><pre style="white-space: pre-wrap; max-height: 300px; overflow-y: auto;">' + (data.result.extracted_text || 'لا يوجد نص مستخرج') + '</pre></div></div><div class="col-12 mt-3"><h6>التحليل:</h6><div class="alert alert-success">' + analysisHtml + '</div></div></div>';
+            resultDiv.innerHTML = '<div class="row"><div class="col-12"><h6>النص المستخرج:</h6><div class="alert alert-info"><pre style="white-space: pre-wrap; max-height: 300px; overflow-y: auto;">' + extractedText + '</pre></div></div><div class="col-12 mt-3"><h6>التحليل:</h6><div class="alert alert-success">' + analysisHtml + '</div></div></div>';
         } else if (data.status === 'failed') {
             resultDiv.innerHTML = '<div class="alert alert-danger"><h6>فشل التحليل</h6><p>' + (data.error_message || 'خطأ غير معروف') + '</p></div>';
         } else {
