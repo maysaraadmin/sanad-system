@@ -1,0 +1,452 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}شجرة سند الحديث - {{ hadith.text|truncatechars:50 }}{% endblock %}
+
+{% block extra_head %}
+<!-- Vis.js for network visualization -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<style>
+.tree-container {
+    height: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.tree-controls {
+    background: white;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.sanad-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sanad-tab {
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    background: white;
+    color: #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sanad-tab.active {
+    background: #007bff;
+    color: white;
+}
+
+.sanad-tab:hover {
+    background: #0056b3;
+    color: white;
+}
+
+.tree-legend {
+    background: white;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    border-top: 1px solid #ddd;
+}
+
+.legend-item {
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.legend-prophet { background: #28a745; color: white; }
+.legend-companion { background: #17a2b8; color: white; }
+.legend-narrator { background: #007bff; color: white; }
+.legend-hadith { background: #6f42c1; color: white; }
+
+.hadith-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.narrator-popup {
+    max-width: 300px;
+}
+
+.narrator-popup h6 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.narrator-popup .biography {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 8px;
+}
+
+.tree-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.comparison-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.comparison-btn:hover {
+    background: #218838;
+}
+
+.export-btn {
+    background: #ffc107;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+    background: #e0a800;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Hadith Information -->
+    <div class="hadith-info">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>
+                    <i class="fas fa-sitemap me-2"></i>
+                    شجرة سند الحديث
+                </h2>
+                <p class="mb-2">{{ hadith.text }}</p>
+                <small>
+                    <i class="fas fa-book me-1"></i>
+                    {{ hadith.source }}
+                    {% if hadith.source_hadith_number %}
+                        - رقم {{ hadith.source_hadith_number }}
+                    {% endif %}
+                </small>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="tree-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">{{ total_sanads }}</div>
+                        <div class="stat-label">طرق الرواية</div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <span class="badge bg-light text-dark">{{ hadith.get_grade_display }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sanad Selection and Controls -->
+    <div class="tree-controls">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="sanad-selector">
+                    <strong>اختر سند:</strong>
+                    {% for sanad_tree in sanad_trees %}
+                        <div class="sanad-tab {% if forloop.first %}active{% endif %}" 
+                             data-sanad-id="{{ sanad_tree.sanad.id }}"
+                             data-tree-data="{{ sanad_tree.tree_json|escape }}">
+                            طريق {{ forloop.counter }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4 text-end">
+                {% if total_sanads > 1 %}
+                    <a href="{% url 'hadith_app:sanad_comparison' hadith.id %}" class="comparison-btn">
+                        <i class="fas fa-exchange-alt me-1"></i>
+                        مقارنة الأسانيد
+                    </a>
+                {% endif %}
+                <button class="export-btn ms-2" onclick="exportTree()">
+                    <i class="fas fa-download me-1"></i>
+                    تصدير
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tree Visualization -->
+    <div id="tree-container" class="tree-container"></div>
+
+    <!-- Legend -->
+    <div class="tree-legend">
+        <h6>مفتاح الشجرة:</h6>
+        <span class="legend-item legend-prophet">صحابي</span>
+        <span class="legend-item legend-companion">تابعي</span>
+        <span class="legend-item legend-narrator">راوٍ</span>
+        <span class="legend-item legend-hadith">الحديث</span>
+    </div>
+
+    <!-- Narrator Details Modal -->
+    <div class="modal fade" id="narratorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تفاصيل الراوي</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="narratorModalBody">
+                    <!-- Content will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let network = null;
+let currentTreeData = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize with first sanad
+    const firstTab = document.querySelector('.sanad-tab.active');
+    if (firstTab) {
+        loadTree(firstTab.dataset.treeData);
+    }
+
+    // Add click handlers to tabs
+    document.querySelectorAll('.sanad-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            document.querySelectorAll('.sanad-tab').forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+            // Load tree data
+            loadTree(this.dataset.treeData);
+        });
+    });
+});
+
+function loadTree(treeDataJson) {
+    try {
+        currentTreeData = JSON.parse(treeDataJson);
+        
+        // Create nodes with proper styling
+        const nodes = new vis.DataSet(currentTreeData.nodes.map(node => ({
+            id: node.id,
+            label: node.name,
+            title: createNodeTooltip(node),
+            level: node.level,
+            color: getNodeColor(node.type),
+            font: {
+                color: 'white',
+                bold: node.type === 'hadith'
+            },
+            shape: node.type === 'hadith' ? 'box' : 'dot',
+            size: node.type === 'hadith' ? 25 : 20,
+            borderWidth: 2,
+            chosen: {
+                node: function(values, id, selected, hovering) {
+                    values.size = selected ? 30 : 25;
+                    values.borderWidth = selected ? 4 : 2;
+                }
+            }
+        })));
+
+        // Create edges
+        const edges = new vis.DataSet(currentTreeData.edges.map(edge => ({
+            from: edge.from,
+            to: edge.to,
+            color: {
+                color: '#007bff',
+                highlight: '#0056b3'
+            },
+            width: 2,
+            smooth: {
+                type: 'cubicBezier',
+                roundness: 0.4
+            },
+            arrows: {
+                to: {
+                    enabled: true,
+                    scaleFactor: 0.5
+                }
+            }
+        })));
+
+        // Network options
+        const options = {
+            layout: {
+                hierarchical: {
+                    direction: 'UD',
+                    sortMethod: 'directed',
+                    levelSeparation: 100,
+                    nodeSpacing: 100
+                }
+            },
+            interaction: {
+                hover: true,
+                tooltipDelay: 200,
+                zoomView: true,
+                dragView: true
+            },
+            physics: {
+                hierarchicalRepulsion: {
+                    centralGravity: 0,
+                    springLength: 200,
+                    springConstant: 0.01,
+                    nodeDistance: 200,
+                    damping: 0.09
+                },
+                stabilization: {
+                    enabled: true,
+                    iterations: 200
+                }
+            }
+        };
+
+        // Create network
+        const container = document.getElementById('tree-container');
+        network = new vis.Network(container, { nodes, edges }, options);
+
+        // Add click handler for nodes
+        network.on('click', function(params) {
+            if (params.nodes.length > 0) {
+                const nodeId = params.nodes[0];
+                const node = currentTreeData.nodes.find(n => n.id === nodeId);
+                if (node && node.type !== 'hadith') {
+                    showNarratorDetails(node);
+                }
+            }
+        });
+
+        // Fit network to container
+        network.fit();
+
+    } catch (error) {
+        console.error('Error loading tree:', error);
+    }
+}
+
+function createNodeTooltip(node) {
+    let tooltip = `<strong>${node.name}</strong><br>`;
+    
+    if (node.death_year) {
+        tooltip += `ت: ${node.death_year} هـ<br>`;
+    }
+    
+    if (node.reliability) {
+        tooltip += `الوثاقة: ${node.reliability}<br>`;
+    }
+    
+    if (node.special) {
+        tooltip += `<em>${node.special}</em><br>`;
+    }
+    
+    if (node.grade && node.type === 'hadith') {
+        tooltip += `الدرجة: ${node.grade}<br>`;
+        tooltip += `المصدر: ${node.source}<br>`;
+    }
+    
+    if (node.biography) {
+        tooltip += `<br><small>${node.biography}</small>`;
+    }
+    
+    return tooltip;
+}
+
+function getNodeColor(type) {
+    switch(type) {
+        case 'prophet_companion': return '#28a745';
+        case 'final_narrator': return '#17a2b8';
+        case 'hadith': return '#6f42c1';
+        default: return '#007bff';
+    }
+}
+
+function showNarratorDetails(node) {
+    const modalBody = document.getElementById('narratorModalBody');
+    
+    let content = `
+        <div class="narrator-popup">
+            <h6>${node.name}</h6>
+            <p><strong>المستوى في السند:</strong> ${node.position + 1}</p>
+    `;
+    
+    if (node.death_year) {
+        content += `<p><strong>سنة الوفاة:</strong> ${node.death_year} هـ</p>`;
+    }
+    
+    if (node.reliability) {
+        content += `<p><strong>الوثاقة:</strong> ${node.reliability}</p>`;
+    }
+    
+    if (node.biography) {
+        content += `<div class="biography"><strong>الترجمة:</strong><br>${node.biography}</div>`;
+    }
+    
+    content += `
+            <div class="mt-3">
+                <a href="#" class="btn btn-primary btn-sm" onclick="viewNarratorPaths('${node.name}')">
+                    <i class="fas fa-sitemap me-1"></i>
+                    عرض جميع طرق الرواية
+                </a>
+            </div>
+        </div>
+    `;
+    
+    modalBody.innerHTML = content;
+    
+    // Show modal
+    const modal = new bootstrap.Modal(document.getElementById('narratorModal'));
+    modal.show();
+}
+
+function viewNarratorPaths(narratorName) {
+    // This would open a new view showing all hadiths with this narrator
+    // For now, we'll just show an alert
+    alert(`سيتم عرض جميع طرق رواية: ${narratorName}`);
+}
+
+function exportTree() {
+    if (!network || !currentTreeData) return;
+    
+    // Export as image
+    const canvas = network.canvas.frame.canvas;
+    const link = document.createElement('a');
+    link.download = `sanad-tree-{{ hadith.id }}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
+}
+</script>
+{% endblock %}

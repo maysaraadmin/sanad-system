@@ -25,4 +25,7 @@ urlpatterns = [
     
     # AJAX endpoints
     path('document/<int:pk>/toggle-public/', views.toggle_public, name='toggle_public'),
+    
+    # Document processing
+    path('document/<int:pk>/process/', views.process_document_view, name='process_document'),
 ]

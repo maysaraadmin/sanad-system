@@ -17,6 +17,8 @@ class Narrator(models.Model):
     name = models.CharField(max_length=100, verbose_name="اسم الراوي")
     birth_year = models.IntegerField(null=True, blank=True, verbose_name="سنة الميلاد")
     death_year = models.IntegerField(null=True, blank=True, verbose_name="سنة الوفاة")
+    birth_place = models.CharField(max_length=100, null=True, blank=True, verbose_name="مكان الميلاد")
+    death_place = models.CharField(max_length=100, null=True, blank=True, verbose_name="مكان الوفاة")
     biography = models.TextField(null=True, blank=True, verbose_name="السيرة الذاتية")
     reliability = models.CharField(
         max_length=20,
@@ -27,6 +29,27 @@ class Narrator(models.Model):
             ('unknown', 'مجهول')
         ],
         verbose_name="درجة التوثيق"
+    )
+    madhhab = models.CharField(
+        max_length=50,
+        choices=[
+            ('hanafi', 'حنفي'),
+            ('maliki', 'مالكي'),
+            ('shafi', 'شافعي'),
+            ('hanbali', 'حنبلي'),
+            ('other', 'أخرى'),
+            ('unknown', 'غير معروف')
+        ],
+        null=True,
+        blank=True,
+        verbose_name="المذهب"
+    )
+    teachers = models.ManyToManyField(
+        'self',
+        blank=True,
+        related_name='students',
+        verbose_name="الشيوخ",
+        symmetrical=False
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -41,12 +64,68 @@ class Narrator(models.Model):
 
     def get_reliability_display(self):
         reliability_choices = {
-            'thiqa': '???',
-            'saduq': '????',
-            'weak': '????',
-            'unknown': '?????'
+            'thiqa': 'ثقة',
+            'saduq': 'صدوق',
+            'weak': 'ضعيف',
+            'unknown': 'مجهول'
         }
         return reliability_choices.get(self.reliability, self.reliability)
+    
+    def get_madhhab_display(self):
+        madhhab_choices = {
+            'hanafi': 'حنفي',
+            'maliki': 'مالكي',
+            'shafi': 'شافعي',
+            'hanbali': 'حنبلي',
+            'other': 'أخرى',
+            'unknown': 'غير معروف'
+        }
+        return madhhab_choices.get(self.madhhab, self.madhhab)
+    
+    def get_age(self):
+        """Calculate narrator's age"""
+        if self.birth_year and self.death_year:
+            return self.death_year - self.birth_year
+        return None
+    
+    def get_contemporaries(self):
+        """Get narrators who lived during the same time period"""
+        if not self.birth_year:
+            return Narrator.objects.none()
+        
+        start_year = self.birth_year - 50
+        end_year = self.death_year + 50 if self.death_year else self.birth_year + 120
+        
+        return Narrator.objects.filter(
+            birth_year__gte=start_year,
+            birth_year__lte=end_year
+        ).exclude(id=self.id)
+    
+    def get_narration_locations(self):
+        """Get unique locations where this narrator narrated hadiths"""
+        from django.db.models import Count
+        from .models import SanadNarrator, Sanad
+        
+        # This would need to be enhanced with actual location data
+        # For now, return birth and death places
+        locations = []
+        if self.birth_place:
+            locations.append(self.birth_place)
+        if self.death_place and self.death_place != self.birth_place:
+            locations.append(self.death_place)
+        return locations
+    
+    def get_teacher_student_stats(self):
+        """Get statistics about teachers and students"""
+        teachers = self.teachers.all()
+        students = self.students.all()
+        
+        return {
+            'teachers_count': teachers.count(),
+            'students_count': students.count(),
+            'teachers': teachers,
+            'students': students
+        }
 
 class Hadith(models.Model):
     text = models.TextField(verbose_name="نص الحديث")

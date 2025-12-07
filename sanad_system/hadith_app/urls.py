@@ -8,6 +8,12 @@ from .views import (
     RegisterView, ProfileView, ProfileUpdateView,
     SearchView, set_theme, SanadCreateView
 )
+from .views.sanad_tree_views import SanadTreeView, sanad_comparison_view, narrator_paths_api
+from .views.narrator_analysis_views import (
+    narrator_analysis_view, narrator_relationship_network_api, 
+    narrator_timeline_api, narrator_geographical_api, 
+    narrator_comparison_api, narrator_hadith_paths_api, hadith_comparison_api
+)
 
 app_name = 'hadith_app'
 
@@ -60,11 +66,23 @@ urlpatterns = [
     path('narrators/<int:pk>/update/', NarratorUpdateView.as_view(), name='narrator_update'),
     path('narrators/<int:pk>/delete/', NarratorDeleteView.as_view(), name='narrator_delete'),
     
+    # Narrator Analysis URLs
+    path('narrator/<int:narrator_id>/analysis/', narrator_analysis_view, name='narrator_analysis'),
+    path('narrator/<int:narrator_id>/network/', narrator_relationship_network_api, name='narrator_network'),
+    path('narrator/<int:narrator_id>/timeline/', narrator_timeline_api, name='narrator_timeline'),
+    path('narrator/<int:narrator_id>/geographical/', narrator_geographical_api, name='narrator_geographical'),
+    path('narrator/<int:narrator_id>/comparison/', narrator_comparison_api, name='narrator_comparison'),
+    path('narrator/<int:narrator_id>/hadith-paths/', narrator_hadith_paths_api, name='narrator_hadith_paths'),
+    
     # Search
     path('search/', SearchView.as_view(), name='search'),
     
     # Sanad URLs
     path('sanad/<int:hadith_id>/add/', SanadCreateView.as_view(), name='sanad_add'),
+    path('sanad/<int:hadith_id>/tree/', SanadTreeView.as_view(), name='sanad_tree'),
+    path('sanad/<int:hadith_id>/comparison/', sanad_comparison_view, name='sanad_comparison'),
+    path('api/narrator/<int:narrator_id>/paths/', narrator_paths_api, name='narrator_paths'),
+    path('api/hadith/compare/<str:hadith_ids>/', hadith_comparison_api, name='hadith_comparison'),
     
     # Profile
     path('profile/', ProfileView.as_view(), name='profile'),

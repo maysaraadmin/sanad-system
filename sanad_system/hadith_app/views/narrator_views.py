@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.translation import gettext_lazy as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
@@ -79,5 +79,6 @@ class NarratorDetailView(DetailView):
             'hadiths': hadiths_page,
             'similar_narrators': similar_narrators,
             'paginator': paginator,
+            'analysis_url': reverse('hadith_app:narrator_analysis', kwargs={'narrator_id': narrator.id}),
         })
         return context

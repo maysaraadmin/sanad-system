@@ -40,6 +40,12 @@ urlpatterns = [
     # Library App URLs
     path('library/', include(('library_app.urls', 'library_app'), namespace='library_app')),
     
+    # Document Analysis Dashboard
+    path('document-analysis/', include(('document_analysis.urls', 'document_analysis'), namespace='document_analysis')),
+    
+    # Document Analysis API
+    path('api/document-analysis/', include(('document_analysis.urls', 'document_analysis'), namespace='document_analysis_api')),
+    
     # API endpoints are now included within each app's URL configuration
     # This provides better organization and versioning control
     

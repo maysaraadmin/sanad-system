@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from .document_processor import process_document
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
@@ -228,6 +232,66 @@ def toggle_public(request, pk):
     document.save()
     return JsonResponse({'status': 'success', 'is_public': document.is_public})
 
+@login_required
+def process_document_view(request, pk):
+    """View to process a document and extract hadith/narrator information"""
+    document = get_object_or_404(Document, pk=pk)
+    
+    # Check permissions
+    if not document.is_public and document.uploaded_by != request.user:
+        raise PermissionDenied
+    
+    results = None
+    error_message = None
+    debug_info = {}
+    
+    # Process the document if this is a POST request or if we have analysis parameters
+    if request.method == 'POST' or 'analyze' in request.GET or 'debug' in request.GET:
+        try:
+            from .document_processor import process_document
+            
+            # Process the document
+            results = process_document(document)
+            
+            # Check if we got any results
+            if not results:
+                error_message = 'لم يتم العثور على أي نتائج من معالجة المستند'
+                messages.warning(request, error_message)
+            elif 'error' in results:
+                error_message = results.get('error', 'حدث خطأ غير معروف')
+                messages.error(request, error_message)
+                if 'debug' in results:
+                    debug_info = results['debug']
+            else:
+                messages.success(request, 'تم تحليل المستند بنجاح')
+                
+                # Add some debug info to results
+                if 'debug' in results and 'debug' in request.GET:
+                    debug_info = results.pop('debug')
+                
+        except ImportError as e:
+            error_message = f'خطأ في استيراد المكتبات المطلوبة: {str(e)}. تأكد من تثبيت python-docx و PyPDF2'
+            messages.error(request, error_message)
+        except Exception as e:
+            import traceback
+            error_message = f'حدث خطأ أثناء تحليل المستند: {str(e)}'
+            messages.error(request, error_message)
+            debug_info = {
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            }
+    
+    context = {
+        'document': document,
+        'results': results,
+        'title': f'تحليل المستند: {document.title}',
+        'error_message': error_message,
+        'debug_info': debug_info,
+        'show_debug': 'debug' in request.GET
+    }
+    
+    return render(request, 'library_app/document_analysis.html', context)
+
 def pdf_viewer(request, pk):
     """Custom PDF viewer using Django template"""
     document = get_object_or_404(Document, pk=pk)
@@ -235,10 +299,9 @@ def pdf_viewer(request, pk):
     # Check permissions
     if not document.is_public and document.uploaded_by != request.user:
         raise PermissionDenied
-    
+        
     context = {
         'document': document,
-        'pdf_url': request.build_absolute_uri(document.file.url),
-        'title': document.title,
+        'file_url': document.file.url
     }
     return render(request, 'library_app/pdf_viewer.html', context)

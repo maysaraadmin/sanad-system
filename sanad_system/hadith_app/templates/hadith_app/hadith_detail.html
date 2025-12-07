@@ -83,4 +83,14 @@
 {% endfor %}
 
 <a href="{% url 'hadith_app:sanad_add' hadith.id %}" class="btn btn-primary">إضافة سند جديد</a>
+{% if hadith.asanid.exists %}
+    <a href="{% url 'hadith_app:sanad_tree' hadith.id %}" class="btn btn-info ms-2">
+        <i class="fas fa-sitemap me-2"></i>شجرة السند
+    </a>
+    {% if hadith.asanid.count > 1 %}
+        <a href="{% url 'hadith_app:sanad_comparison' hadith.id %}" class="btn btn-success ms-2">
+            <i class="fas fa-exchange-alt me-2"></i>مقارنة الأسانيد
+        </a>
+    {% endif %}
+{% endif %}
 {% endblock %}

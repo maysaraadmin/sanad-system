@@ -1,45 +1,287 @@
 {% extends 'hadith_app/base.html' %}
+{% load static %}
 
 {% block title %}نتائج البحث{% endblock %}
 
+{% block extra_head %}
+<style>
+.search-form-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hadith-card {
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.hadith-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.grade-badge {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.grade-sahih { background-color: #28a745; color: white; }
+.grade-hasan { background-color: #ffc107; color: black; }
+.grade-daif { background-color: #dc3545; color: white; }
+.grade-mawdu { background-color: #6f42c1; color: white; }
+
+.sanad-chain {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border-right: 3px solid #007bff;
+}
+
+.narrator-item {
+    padding: 8px 12px;
+    margin: 4px 0;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.filter-section {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-stats {
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card mb-4">
-    <div class="card-body">
-        <h2>نتائج البحث عن: "{{ query }}"</h2>
-        
-        {% if hadith_results or narrator_results %}
-            {% if hadith_results %}
-                <h3 class="mt-4">الأحاديث</h3>
-                <div class="list-group">
-                    {% for hadith in hadith_results %}
-                    <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ hadith.text|truncatechars:100 }}</h5>
-                            <small class="text-muted">{{ hadith.get_grade_display }}</small>
-                        </div>
-                        <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
-                    </a>
-                    {% endfor %}
-                </div>
-            {% endif %}
+<div class="container my-4">
+    <!-- Search Form -->
+    <div class="card search-form-card mb-4">
+        <div class="card-body">
+            <h2 class="mb-4">
+                <i class="fas fa-search me-2"></i>
+                محرر بحث حديثي متقدم
+            </h2>
             
-            {% if narrator_results %}
-                <h3 class="mt-4">الرواة</h3>
-                <div class="list-group">
-                    {% for narrator in narrator_results %}
-                    <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ narrator.name }}</h5>
-                            <small class="text-muted">{{ narrator.get_reliability_display }}</small>
+            <form method="get" class="row g-3">
+                <div class="col-12">
+                    <label for="{{ form.q.id_for_label }}" class="form-label">بحث في الأحاديث:</label>
+                    {{ form.q }}
+                    {% if form.q.errors %}
+                        <div class="text-danger mt-1">
+                            {% for error in form.q.errors %}{{ error }}{% endfor %}
                         </div>
-                        <p class="mb-1"><small>{{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }}</small></p>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="{{ form.search_in.id_for_label }}" class="form-label">نطاق البحث:</label>
+                    {{ form.search_in }}
+                </div>
+                
+                <div class="col-md-8">
+                    <label class="form-label">فلترة حسب الدرجة:</label>
+                    <div class="filter-section">
+                        <div class="checkbox-group">
+                            {% for choice in form.grade_filter %}
+                                <div class="checkbox-item">
+                                    {{ choice.tag }}
+                                    <label for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <div class="form-check">
+                        {{ form.show_sanad }}
+                        <label for="{{ form.show_sanad.id_for_label }}" class="form-check-label">
+                            عرض سند الحديث مع تراجم الرواة
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-light btn-lg">
+                        <i class="fas fa-search me-2"></i>بحث
+                    </button>
+                    <a href="{% url 'hadith_app:search' %}" class="btn btn-outline-light btn-lg ms-2">
+                        <i class="fas fa-redo me-2"></i>إعادة تعيين
                     </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    {% if query %}
+        <div class="search-stats">
+            <h4>نتائج البحث عن: "{{ query }}"</h4>
+            {% if hadith_results %}
+                <p>تم العثور على {{ hadith_results.paginator.count }} حديث</p>
+            {% endif %}
+            {% if narrator_results %}
+                <p>تم العثور على {{ narrator_results|length }} راوٍ</p>
+            {% endif %}
+        </div>
+
+        <!-- Hadith Results -->
+        {% if hadith_results %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3><i class="fas fa-book me-2"></i>الأحاديث</h3>
+                </div>
+                <div class="card-body">
+                    {% for item in hadith_results %}
+                        {% if show_sanad %}
+                            {% with hadith=item.hadith sanads=item.sanads %}
+                        {% else %}
+                            {% with hadith=item %}
+                        {% endif %}
+                        
+                        <div class="hadith-card card mb-3">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-10">
+                                        <h5 class="card-title">
+                                            <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="text-decoration-none">
+                                                {{ hadith.text|truncatechars:150 }}
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-2 text-end">
+                                        <span class="grade-badge grade-{{ hadith.grade }}">
+                                            {{ hadith.get_grade_display }}
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small class="text-muted">
+                                            <i class="fas fa-book-open me-1"></i>
+                                            {{ hadith.source }}
+                                        </small>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <small class="text-muted">
+                                            {% if hadith.source_hadith_number %}
+                                                رقم الحديث: {{ hadith.source_hadith_number }}
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                </div>
+                                
+                                <!-- Sanad Chain Display -->
+                                {% if show_sanad and sanads %}
+                                    {% for sanad in sanads %}
+                                        <div class="sanad-chain mt-3">
+                                            <h6 class="mb-3">
+                                                <i class="fas fa-link me-2"></i>
+                                                سند الحديث {% if sanads|length > 1 %}({{ forloop.counter }}){% endif %}
+                                            </h6>
+                                            
+                                            {% for sanad_narrator in sanad.narrators.all %}
+                                                <div class="narrator-item mb-2">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <strong>{{ sanad_narrator.narrator.name }}</strong>
+                                                            {% if sanad_narrator.narrator.death_year %}
+                                                                <small class="text-muted">(ت: {{ sanad_narrator.narrator.death_year }} هـ)</small>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div>
+                                                            {% if sanad_narrator.narrator.reliability %}
+                                                                <small class="badge bg-secondary">
+                                                                    {{ sanad_narrator.narrator.get_reliability_display }}
+                                                                </small>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    {% if sanad_narrator.narrator.biography %}
+                                                        <small class="text-muted d-block mt-1">
+                                                            {{ sanad_narrator.narrator.biography|truncatechars:100 }}
+                                                        </small>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endwith %}
                     {% endfor %}
                 </div>
-            {% endif %}
-        {% else %}
-            <div class="alert alert-info mt-4">لا توجد نتائج مطابقة للبحث</div>
+            </div>
         {% endif %}
-    </div>
+
+        <!-- Narrator Results -->
+        {% if narrator_results %}
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-user me-2"></i>الرواة</h3>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        {% for narrator in narrator_results %}
+                            <a href="{% url 'hadith_app:narrator_detail' narrator.pk %}" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ narrator.name }}</h5>
+                                    <div>
+                                        {% if narrator.reliability %}
+                                            <small class="badge bg-secondary">
+                                                {{ narrator.get_reliability_display }}
+                                            </small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <p class="mb-1">
+                                    <small class="text-muted">
+                                        {% if narrator.birth_year %}{{ narrator.birth_year }}{% else %}؟{% endif %} - 
+                                        {% if narrator.death_year %}{{ narrator.death_year }}{% else %}؟{% endif %} هـ
+                                    </small>
+                                </p>
+                                {% if narrator.biography %}
+                                    <p class="mb-1"><small>{{ narrator.biography|truncatechars:120 }}</small></p>
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- No Results -->
+        {% if not hadith_results and not narrator_results %}
+            <div class="alert alert-info text-center">
+                <h4><i class="fas fa-info-circle me-2"></i>لا توجد نتائج</h4>
+                <p>لم يتم العثور على أي نتائج مطابقة لبحثك. حاول استخدام كلمات مختلفة أو تعديل الفلاتر.</p>
+            </div>
+        {% endif %}
+    {% endif %}
 </div>
 {% endblock %}

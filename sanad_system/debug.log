@@ -6773,3 +6773,2021 @@ INFO 2025-12-07 14:09:34,415 basehttp "GET /library/search/?q=%D8%B5%D9%84%D8%A7
 INFO 2025-12-07 14:09:45,216 basehttp "GET /library/ HTTP/1.1" 200 29477
 INFO 2025-12-07 14:09:47,523 basehttp "GET /hadith/ HTTP/1.1" 200 40568
 INFO 2025-12-07 14:10:39,394 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:10:51,562 basehttp "GET /hadith/ HTTP/1.1" 200 61818
+INFO 2025-12-07 14:11:00,532 basehttp "GET /hadith/216/ HTTP/1.1" 200 27754
+INFO 2025-12-07 14:11:44,873 basehttp "GET /hadith/ HTTP/1.1" 200 61818
+INFO 2025-12-07 14:11:53,658 basehttp "GET /hadith/?grade=&category=2 HTTP/1.1" 200 61859
+INFO 2025-12-07 14:11:56,810 basehttp "GET /hadith/?grade=&category=2 HTTP/1.1" 200 61859
+INFO 2025-12-07 14:12:01,606 basehttp "GET /hadith/?grade=sahih&category=2 HTTP/1.1" 200 61903
+INFO 2025-12-07 14:18:35,525 autoreload D:\sanad-system\sanad_system\hadith_app\forms\search_forms.py changed, reloading.
+INFO 2025-12-07 14:18:35,556 autoreload D:\sanad-system\sanad_system\hadith_app\forms\search_forms.py changed, reloading.
+INFO 2025-12-07 14:18:35,619 autoreload D:\sanad-system\sanad_system\hadith_app\forms\search_forms.py changed, reloading.
+INFO 2025-12-07 14:18:48,895 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:18:48,899 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:18:48,993 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:23:43,617 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-07 14:23:43,721 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-07 14:23:44,730 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-07 14:23:50,528 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:23:50,531 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:23:50,540 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:26:01,681 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:26:01,738 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:26:01,868 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:26:05,025 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:26:06,155 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:26:06,616 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:28:01,872 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:28:11,216 basehttp "GET /hadith/?grade=sahih&category=2 HTTP/1.1" 200 61903
+INFO 2025-12-07 14:28:11,380 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-12-07 14:28:11,391 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-12-07 14:28:16,278 basehttp "GET /hadith/216/ HTTP/1.1" 200 27755
+INFO 2025-12-07 14:28:20,470 basehttp "GET /hadith/ HTTP/1.1" 200 61818
+INFO 2025-12-07 14:28:27,850 basehttp "GET /hadith/?page=3 HTTP/1.1" 200 40895
+INFO 2025-12-07 14:28:33,681 basehttp "GET /hadith/?page=5 HTTP/1.1" 200 55156
+INFO 2025-12-07 14:28:39,542 basehttp "GET /hadith/?page=7 HTTP/1.1" 200 36881
+INFO 2025-12-07 14:28:58,027 basehttp - Broken pipe from ('127.0.0.1', 57664)
+INFO 2025-12-07 14:28:58,189 basehttp "GET /hadith/1/ HTTP/1.1" 200 34239
+ERROR 2025-12-07 14:29:54,568 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 108, in get
+    self.object = self.get_object()
+                  ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 46, in get_object
+    raise AttributeError(
+    ...<2 lines>...
+    )
+AttributeError: Generic detail view SanadTreeView must be called with either an object pk or a slug in the URLconf.
+ERROR 2025-12-07 14:29:54,586 basehttp "GET /sanad/1/tree/ HTTP/1.1" 500 83142
+INFO 2025-12-07 14:31:17,883 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:32:12,044 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:32:18,100 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:32:22,160 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:32:24,810 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:32:29,644 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:32:31,874 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:32:36,559 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:32:38,599 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:34:20,244 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:34:22,634 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:36:30,563 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 108, in get
+    self.object = self.get_object()
+                  ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 46, in get_object
+    raise AttributeError(
+    ...<2 lines>...
+    )
+AttributeError: Generic detail view SanadTreeView must be called with either an object pk or a slug in the URLconf.
+INFO 2025-12-07 14:36:38,344 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:36:40,458 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:36:52,352 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 109, in get
+    context = self.get_context_data(object=self.object)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 21, in get_context_data
+    sanads = hadith.sanad_set.all().prefetch_related('narrators__narrator')
+             ^^^^^^^^^^^^^^^^
+AttributeError: 'Hadith' object has no attribute 'sanad_set'
+INFO 2025-12-07 14:36:59,169 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:37:01,753 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:37:04,609 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:37:06,264 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:37:17,891 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 109, in get
+    context = self.get_context_data(object=self.object)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 25, in get_context_data
+    for sanad in sanads:
+                 ^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 1888, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 1275, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 2301, in prefetch_related_objects
+    raise AttributeError(
+    ...<7 lines>...
+    )
+AttributeError: Cannot find 'narrator' on Narrator object, 'narrators__narrator' is an invalid parameter to prefetch_related()
+INFO 2025-12-07 14:37:25,491 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:37:27,084 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:37:30,891 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:37:32,997 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:37:55,433 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 109, in get
+    context = self.get_context_data(object=self.object)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 30, in get_context_data
+    'tree_json': json.dumps(tree_data, ensure_ascii=False)
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type __proxy__ is not JSON serializable
+when serializing dict item 'special'
+when serializing list item 0
+when serializing dict item 'nodes'
+INFO 2025-12-07 14:38:06,382 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:38:08,909 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:38:11,223 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:38:12,545 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 14:38:15,546 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:38:17,015 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:38:24,165 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 109, in get
+    context = self.get_context_data(object=self.object)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 30, in get_context_data
+    'tree_json': json.dumps(tree_data, ensure_ascii=False)
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type __proxy__ is not JSON serializable
+when serializing dict item 'name'
+when serializing list item 7
+when serializing dict item 'nodes'
+INFO 2025-12-07 14:38:34,391 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:38:37,304 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:39:12,275 log Internal Server Error: /sanad/1/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 148, in sanad_comparison_view
+    common_narrator_ids = set(common_narrators.values_list('id', flat=True))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'set' object has no attribute 'values_list'
+INFO 2025-12-07 14:39:23,500 autoreload D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py changed, reloading.
+INFO 2025-12-07 14:39:27,094 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 14:39:35,136 log Internal Server Error: /sanad/1/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 180, in sanad_comparison_view
+    return render(request, 'hadith_app/sanad_comparison.html', context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 839, in do_for
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'for' statements should use the format 'for x in y': for sanad_narrator in sanad.narrators.all.order_by 'position'
+ERROR 2025-12-07 14:40:02,994 log Internal Server Error: /sanad/1/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'set'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 180, in sanad_comparison_view
+    return render(request, 'hadith_app/sanad_comparison.html', context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 254: 'set', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR 2025-12-07 14:40:41,095 log Internal Server Error: /sanad/1/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 180, in sanad_comparison_view
+    return render(request, 'hadith_app/sanad_comparison.html', context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 1484, in do_with
+    raise TemplateSyntaxError(
+        "%r expected at least one variable assignment" % bits[0]
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' expected at least one variable assignment
+ERROR 2025-12-07 14:41:04,393 log Internal Server Error: /sanad/1/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 180, in sanad_comparison_view
+    return render(request, 'hadith_app/sanad_comparison.html', context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 1488, in do_with
+    raise TemplateSyntaxError(
+        "%r received an invalid token: %r" % (bits[0], remaining_bits[0])
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' received an invalid token: 'in'
+INFO 2025-12-07 14:44:06,109 basehttp "GET /hadith/1/ HTTP/1.1" 200 34373
+INFO 2025-12-07 14:44:14,453 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 43766
+INFO 2025-12-07 14:52:57,318 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 40782
+INFO 2025-12-07 14:55:02,811 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 43766
+INFO 2025-12-07 16:16:17,728 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 16:16:56,930 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-07 16:17:00,003 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 16:17:15,278 log Internal Server Error: /sanad/1/tree/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: hadith_app_narrator.birth_place
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\detail.py", line 109, in get
+    context = self.get_context_data(object=self.object)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_tree_views.py", line 25, in get_context_data
+    for sanad in sanads:
+                 ^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 1888, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 1275, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 2326, in prefetch_related_objects
+    obj_list, additional_lookups = prefetch_one_level(
+                                   ~~~~~~~~~~~~~~~~~~^
+        obj_to_fetch,
+        ^^^^^^^^^^^^^
+    ...<2 lines>...
+        level,
+        ^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 2485, in prefetch_one_level
+    all_related_objects = list(rel_qs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 1886, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: hadith_app_narrator.birth_place
+ERROR 2025-12-07 16:17:15,308 basehttp "GET /sanad/1/tree/ HTTP/1.1" 500 176416
+INFO 2025-12-07 16:18:33,178 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 16:18:39,645 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 43787
+INFO 2025-12-07 16:19:22,800 basehttp "GET /hadith/ HTTP/1.1" 200 61818
+INFO 2025-12-07 16:19:30,075 basehttp "GET /narrators/ HTTP/1.1" 200 33580
+INFO 2025-12-07 16:19:35,962 basehttp "GET /narrators/3/ HTTP/1.1" 200 27162
+ERROR 2025-12-07 16:19:39,987 log Internal Server Error: /narrator/3/analysis/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py", line 37, in narrator_analysis_view
+    locations = narrator.get_narration_locations()
+  File "D:\sanad-system\sanad_system\hadith_app\models.py", line 107, in get_narration_locations
+    from ..models import SanadNarrator, Sanad
+ImportError: attempted relative import beyond top-level package
+ERROR 2025-12-07 16:19:39,995 basehttp "GET /narrator/3/analysis/ HTTP/1.1" 500 77661
+INFO 2025-12-07 16:20:04,123 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-07 16:20:09,878 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-07 16:20:22,184 log Internal Server Error: /narrator/3/analysis/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py", line 37, in narrator_analysis_view
+    locations = narrator.get_narration_locations()
+  File "D:\sanad-system\sanad_system\hadith_app\models.py", line 107, in get_narration_locations
+    from ..models import SanadNarrator, Sanad
+ImportError: attempted relative import beyond top-level package
+ERROR 2025-12-07 16:20:22,190 basehttp "GET /narrator/3/analysis/ HTTP/1.1" 500 77661
+INFO 2025-12-07 16:41:25,523 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 16:41:34,092 basehttp "GET /narrator/3/analysis/ HTTP/1.1" 200 41192
+INFO 2025-12-07 16:41:34,379 basehttp "GET /narrator/3/network/ HTTP/1.1" 200 323
+INFO 2025-12-07 16:41:47,901 basehttp "GET /narrator/3/timeline/ HTTP/1.1" 200 672
+INFO 2025-12-07 16:41:48,178 basehttp "GET /narrator/3/timeline/ HTTP/1.1" 200 672
+INFO 2025-12-07 16:41:56,380 basehttp "GET /narrator/3/geographical/ HTTP/1.1" 200 255
+INFO 2025-12-07 16:41:58,548 basehttp "GET /narrator/3/comparison/ HTTP/1.1" 200 457
+INFO 2025-12-07 16:42:12,540 basehttp "GET / HTTP/1.1" 200 26556
+INFO 2025-12-07 16:54:35,895 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-07 16:54:42,808 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 16:54:46,990 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-07 16:54:49,541 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:02:46,344 basehttp "GET / HTTP/1.1" 200 26556
+INFO 2025-12-07 17:02:58,983 basehttp "GET /hadith/ HTTP/1.1" 200 61818
+INFO 2025-12-07 17:03:04,844 basehttp "GET /library/ HTTP/1.1" 200 29477
+INFO 2025-12-07 17:03:08,406 basehttp "GET /library/document/3/delete/ HTTP/1.1" 200 28358
+INFO 2025-12-07 17:03:11,490 basehttp "POST /library/document/3/delete/ HTTP/1.1" 302 0
+INFO 2025-12-07 17:03:11,781 basehttp "GET /library/ HTTP/1.1" 200 28042
+INFO 2025-12-07 17:03:14,689 basehttp "GET /library/document/create/ HTTP/1.1" 200 28975
+INFO 2025-12-07 17:04:26,318 basehttp "POST /library/document/create/ HTTP/1.1" 302 0
+INFO 2025-12-07 17:04:26,382 basehttp "GET /library/ HTTP/1.1" 200 29698
+INFO 2025-12-07 17:04:29,336 basehttp "GET /library/document/create/ HTTP/1.1" 200 28975
+INFO 2025-12-07 17:05:07,751 basehttp "POST /library/document/create/ HTTP/1.1" 302 0
+INFO 2025-12-07 17:05:07,892 basehttp "GET /library/ HTTP/1.1" 200 31357
+INFO 2025-12-07 17:05:10,668 basehttp "GET /library/document/create/ HTTP/1.1" 200 28975
+INFO 2025-12-07 17:05:46,839 basehttp "POST /library/document/create/ HTTP/1.1" 302 0
+INFO 2025-12-07 17:05:46,927 basehttp "GET /library/ HTTP/1.1" 200 33010
+INFO 2025-12-07 17:05:55,918 basehttp "GET /library/document/5/ HTTP/1.1" 200 33720
+INFO 2025-12-07 17:06:05,656 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 8725
+WARNING 2025-12-07 17:06:33,569 log The request's session was deleted before the request completed. The user may have logged out in a concurrent request, for example.: /media/library/\u0643\u062a\u0627\u0628/2025/_\u0635\u062d\u064a\u062d_\u0627\u0644\u0628\u062e\u0627\u0631\u064a.pdf
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\sessions\backends\db.py", line 86, in save
+    obj.save(
+    ~~~~~~~~^
+        force_insert=must_create, force_update=not must_create, using=using
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py", line 990, in _save_table
+    updated = self._do_update(
+        base_qs, using, pk_val, values, update_fields, forced_update
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\base.py", line 1054, in _do_update
+    return filtered._update(values) > 0
+           ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\query.py", line 1233, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\sql\compiler.py", line 1984, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\sessions\middleware.py", line 59, in process_response
+    request.session.save()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\sessions\backends\db.py", line 95, in save
+    raise UpdateError
+django.contrib.sessions.backends.base.UpdateError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\sessions\middleware.py", line 61, in process_response
+    raise SessionInterrupted(
+    ...<3 lines>...
+    )
+django.contrib.sessions.exceptions.SessionInterrupted: The request's session was deleted before the request completed. The user may have logged out in a concurrent request, for example.
+WARNING 2025-12-07 17:06:33,915 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_%D8%B5%D8%AD%D9%8A%D8%AD_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A.pdf HTTP/1.1" 400 168645
+INFO 2025-12-07 17:06:35,053 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_%D8%B5%D8%AD%D9%8A%D8%AD_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-07 17:07:04,620 basehttp "GET /admin/ HTTP/1.1" 200 23882
+INFO 2025-12-07 17:07:04,790 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2025-12-07 17:07:04,814 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-12-07 17:07:04,817 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 200 2890
+INFO 2025-12-07 17:07:04,817 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-12-07 17:07:04,822 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-07 17:07:04,832 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:07:04,835 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-12-07 17:07:04,838 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-07 17:07:04,842 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 200 4918
+INFO 2025-12-07 17:07:04,849 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2025-12-07 17:07:04,968 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-07 17:07:04,970 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-07 17:07:23,007 basehttp "GET /hadith/ HTTP/1.1" 200 61818
+INFO 2025-12-07 17:14:34,797 basehttp "GET /narrators/ HTTP/1.1" 200 33643
+INFO 2025-12-07 17:14:34,904 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:14:34,933 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 5147
+INFO 2025-12-07 17:14:34,934 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-12-07 17:14:39,158 basehttp "GET /hadith/ HTTP/1.1" 200 61881
+INFO 2025-12-07 17:14:39,225 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:14:40,821 basehttp "GET /library/ HTTP/1.1" 200 32861
+INFO 2025-12-07 17:14:45,362 basehttp "GET /library/document/5/ HTTP/1.1" 200 33783
+INFO 2025-12-07 17:14:45,409 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:14:45,657 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 8725
+INFO 2025-12-07 17:14:49,406 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_%D8%B5%D8%AD%D9%8A%D8%AD_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-07 17:14:49,419 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_%D8%B5%D8%AD%D9%8A%D8%AD_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-07 17:18:35,325 autoreload D:\sanad-system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-12-07 17:18:41,143 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:19:47,762 autoreload D:\sanad-system\sanad_system\library_app\urls.py changed, reloading.
+INFO 2025-12-07 17:19:52,909 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:20:45,284 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:21:37,282 basehttp "GET /library/ HTTP/1.1" 200 32861
+INFO 2025-12-07 17:21:37,351 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:21:43,094 basehttp "GET /library/document/5/ HTTP/1.1" 200 33783
+INFO 2025-12-07 17:21:43,460 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 17:22:48,498 basehttp "GET /library/document/5/ HTTP/1.1" 200 34032
+INFO 2025-12-07 17:22:48,531 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:22:48,741 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 17:22:56,455 basehttp "GET /library/document/5/ HTTP/1.1" 200 34032
+INFO 2025-12-07 17:22:56,620 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 17:23:02,944 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 32461
+INFO 2025-12-07 17:23:56,247 autoreload D:\sanad-system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-12-07 17:24:01,517 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:24:09,762 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 32455
+INFO 2025-12-07 17:24:09,872 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:24:12,072 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 32455
+INFO 2025-12-07 17:24:56,213 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:25:04,436 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 32455
+INFO 2025-12-07 17:26:13,954 basehttp - Broken pipe from ('127.0.0.1', 56632)
+INFO 2025-12-07 17:26:18,889 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 34101
+INFO 2025-12-07 17:26:19,027 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:26:31,918 basehttp "POST /library/document/5/process/ HTTP/1.1" 200 32848
+INFO 2025-12-07 17:27:29,497 autoreload D:\sanad-system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-12-07 17:27:34,702 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:28:00,718 basehttp "GET /library/ HTTP/1.1" 200 32861
+INFO 2025-12-07 17:28:00,762 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:28:03,402 basehttp "GET /library/document/5/ HTTP/1.1" 200 34032
+INFO 2025-12-07 17:28:03,731 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 17:28:05,673 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 34792
+INFO 2025-12-07 17:28:11,766 basehttp "POST /library/document/5/process/ HTTP/1.1" 200 33054
+INFO 2025-12-07 17:29:05,771 autoreload D:\sanad-system\sanad_system\library_app\document_processor.py changed, reloading.
+INFO 2025-12-07 17:29:09,364 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:29:24,596 autoreload D:\sanad-system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-12-07 17:29:27,029 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 17:53:51,519 basehttp "POST /library/document/5/process/ HTTP/1.1" 200 34149
+INFO 2025-12-07 17:53:51,631 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 17:54:00,619 basehttp "GET /library/ HTTP/1.1" 200 32861
+INFO 2025-12-07 17:54:05,464 basehttp "GET /library/document/5/ HTTP/1.1" 200 34032
+INFO 2025-12-07 17:54:08,606 basehttp "GET /library/document/5/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 17:54:15,752 basehttp "GET /library/document/5/process/ HTTP/1.1" 200 35023
+INFO 2025-12-07 17:54:27,604 basehttp "POST /library/document/5/process/ HTTP/1.1" 200 34149
+INFO 2025-12-07 17:54:33,955 basehttp "GET /library/document/5/process/?debug=1 HTTP/1.1" 200 45315
+INFO 2025-12-07 18:12:18,432 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:26:28,134 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:28:33,551 autoreload D:\sanad-system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-12-07 18:28:36,884 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:28:39,539 autoreload D:\sanad-system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-12-07 18:28:41,813 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:28:56,553 autoreload D:\sanad-system\sanad_system\sanad_system\__init__.py changed, reloading.
+INFO 2025-12-07 18:43:36,841 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:44:16,144 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 18:44:19,228 autoreload Watching for file changes with StatReloader
+WARNING 2025-12-07 18:47:20,666 log Forbidden: /api/document-analysis/analyses/
+WARNING 2025-12-07 18:47:20,674 basehttp "GET /api/document-analysis/analyses/ HTTP/1.1" 403 62
+WARNING 2025-12-07 18:47:20,963 log Not Found: /api/document-analysis/dashboard/
+WARNING 2025-12-07 18:47:20,965 basehttp "GET /api/document-analysis/dashboard/ HTTP/1.1" 404 10131
+ERROR 2025-12-07 18:49:27,908 log Internal Server Error: /library/document/5/process/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\library_app\views.py", line 293, in process_document_view
+    return render(request, 'library_app/document_analysis.html', context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'document-analysis-dashboard' not found. 'document-analysis-dashboard' is not a valid view function or pattern name.
+ERROR 2025-12-07 18:49:28,008 basehttp "GET /library/document/5/process/?debug=1 HTTP/1.1" 500 199008
+INFO 2025-12-07 18:50:34,427 autoreload D:\sanad-system\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2025-12-07 18:50:41,031 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:51:44,172 basehttp "GET /library/document/5/process/?debug=1 HTTP/1.1" 200 45853
+INFO 2025-12-07 18:51:44,375 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 18:52:02,522 basehttp "GET /library/document/5/process/?debug=1 HTTP/1.1" 200 45685
+ERROR 2025-12-07 18:52:10,264 log Internal Server Error: /document-analysis/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\engine.py", line 161, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 39, in document_analysis_dashboard
+    return render(request, 'document_analysis/dashboard.html', {'analyses': analyses})
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+ERROR 2025-12-07 18:52:10,297 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 500 138998
+INFO 2025-12-07 18:52:40,699 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 18:52:44,552 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:52:50,254 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 32028
+INFO 2025-12-07 18:53:42,818 basehttp "GET /library/ HTTP/1.1" 200 33231
+INFO 2025-12-07 18:53:45,632 basehttp "GET /library/document/6/ HTTP/1.1" 200 34318
+INFO 2025-12-07 18:53:45,844 basehttp "GET /library/document/6/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 18:53:49,510 basehttp "GET /library/document/6/process/ HTTP/1.1" 200 35375
+ERROR 2025-12-07 18:55:01,155 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    yield
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 180, in _consume_from
+    self._pubsub.subscribe(key)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 1090, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 914, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 133, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 428, in ensure
+    return retry_over_time(
+        fun, self.connection_errors, args, {},
+        partial(self.on_connection_error, max_retries),
+        **retry_policy)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 109, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\commands\core.py", line 2091, in mget
+    return self.execute_command("MGET", *args, **options)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 25, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\base.py", line 946, in send_task
+    self.backend.on_task_call(P, task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 417, in on_task_call
+    self.result_consumer.consume_from(task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 172, in consume_from
+    return self.start(task_id)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 150, in start
+    self._consume_from(initial_task_id)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 179, in _consume_from
+    with self.reconnect_on_error():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 136, in reconnect_on_error
+    raise RuntimeError(E_RETRY_LIMIT_EXCEEDED) from e
+RuntimeError: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+INFO 2025-12-07 18:55:01,391 basehttp - Broken pipe from ('127.0.0.1', 65268)
+ERROR 2025-12-07 18:55:15,902 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    yield
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 180, in _consume_from
+    self._pubsub.subscribe(key)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 1090, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 914, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 133, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 428, in ensure
+    return retry_over_time(
+        fun, self.connection_errors, args, {},
+        partial(self.on_connection_error, max_retries),
+        **retry_policy)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 109, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\commands\core.py", line 2091, in mget
+    return self.execute_command("MGET", *args, **options)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 25, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\base.py", line 946, in send_task
+    self.backend.on_task_call(P, task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 417, in on_task_call
+    self.result_consumer.consume_from(task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 172, in consume_from
+    return self.start(task_id)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 150, in start
+    self._consume_from(initial_task_id)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 179, in _consume_from
+    with self.reconnect_on_error():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 136, in reconnect_on_error
+    raise RuntimeError(E_RETRY_LIMIT_EXCEEDED) from e
+RuntimeError: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+INFO 2025-12-07 18:55:15,936 basehttp - Broken pipe from ('127.0.0.1', 65326)
+INFO 2025-12-07 18:55:28,920 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 35474
+INFO 2025-12-07 18:56:25,268 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 18:56:31,172 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:57:08,282 autoreload D:\sanad-system\sanad_system\document_analysis\serializers.py changed, reloading.
+INFO 2025-12-07 18:57:11,160 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:57:33,245 basehttp "GET /library/ HTTP/1.1" 200 33231
+INFO 2025-12-07 18:57:36,530 basehttp "GET /library/document/6/ HTTP/1.1" 200 34323
+INFO 2025-12-07 18:57:36,839 basehttp "GET /library/document/6/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 18:58:27,977 basehttp "GET /library/document/6/ HTTP/1.1" 200 34069
+INFO 2025-12-07 18:58:28,241 basehttp "GET /library/document/6/pdf/ HTTP/1.1" 200 7943
+INFO 2025-12-07 18:58:37,111 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 40430
+WARNING 2025-12-07 18:58:49,762 log Bad Request: /api/document-analysis/analyses/
+WARNING 2025-12-07 18:58:49,765 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 400 52
+INFO 2025-12-07 18:59:27,342 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 18:59:30,391 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:59:39,178 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 18:59:41,341 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 18:59:52,702 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 41116
+WARNING 2025-12-07 19:00:04,307 log Bad Request: /api/document-analysis/analyses/
+WARNING 2025-12-07 19:00:04,308 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 400 52
+INFO 2025-12-07 19:04:07,919 autoreload D:\sanad-system\sanad_system\document_analysis\serializers.py changed, reloading.
+INFO 2025-12-07 19:04:12,203 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:04:24,371 autoreload D:\sanad-system\sanad_system\document_analysis\models.py changed, reloading.
+INFO 2025-12-07 19:04:27,404 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:04:32,854 autoreload D:\sanad-system\sanad_system\document_analysis\serializers.py changed, reloading.
+INFO 2025-12-07 19:04:35,599 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:04:51,311 autoreload D:\sanad-system\sanad_system\document_analysis\tasks.py changed, reloading.
+INFO 2025-12-07 19:04:54,821 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:37:31,901 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:37:57,322 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 41116
+INFO 2025-12-07 19:37:57,610 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 19:37:59,394 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 41116
+ERROR 2025-12-07 19:39:58,414 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    yield
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 180, in _consume_from
+    self._pubsub.subscribe(key)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 1090, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 914, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 133, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 428, in ensure
+    return retry_over_time(
+        fun, self.connection_errors, args, {},
+        partial(self.on_connection_error, max_retries),
+        **retry_policy)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 109, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\commands\core.py", line 2091, in mget
+    return self.execute_command("MGET", *args, **options)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 31, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\app\base.py", line 946, in send_task
+    self.backend.on_task_call(P, task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 417, in on_task_call
+    self.result_consumer.consume_from(task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 172, in consume_from
+    return self.start(task_id)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 150, in start
+    self._consume_from(initial_task_id)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 179, in _consume_from
+    with self.reconnect_on_error():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\celery\backends\redis.py", line 136, in reconnect_on_error
+    raise RuntimeError(E_RETRY_LIMIT_EXCEEDED) from e
+RuntimeError: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+ERROR 2025-12-07 19:39:58,524 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 296762
+INFO 2025-12-07 19:42:18,305 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 19:42:25,554 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:42:40,312 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 19:42:43,065 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:48:51,350 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 19:50:01,440 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 19:52:19,275 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 19:52:25,848 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:42:12,735 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:42:24,188 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 43012
+INFO 2025-12-07 21:42:24,733 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-12-07 21:42:24,738 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 21:42:24,747 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-12-07 21:42:28,203 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 43012
+ERROR 2025-12-07 21:42:33,921 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 31, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 852, in send_task
+    driver_type = self.producer_pool.connections.connection.transport.driver_type
+                  ^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1503, in producer_pool
+    return self.amqp.producer_pool
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\amqp.py", line 633, in producer_pool
+    self.app.connection_for_write()]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 975, in connection_for_write
+    return self._connection(url or self.conf.broker_write_url, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1026, in _connection
+    return self.amqp.Connection(
+           ~~~~~~~~~~~~~~~~~~~~^
+        url,
+        ^^^^
+    ...<16 lines>...
+        ),
+        ^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\connection.py", line 202, in __init__
+    if not get_transport_cls(transport).can_parse_url:
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 92, in get_transport_cls
+    _transport_cache[transport] = resolve_transport(transport)
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 77, in resolve_transport
+    return symbol_by_name(transport)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\utils\imports.py", line 59, in symbol_by_name
+    module = imp(module_name, package=package, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\redis.py", line 274, in <module>
+    class PrefixedStrictRedis(GlobalKeyPrefixMixin, redis.Redis):
+                                                    ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'Redis'
+ERROR 2025-12-07 21:42:34,015 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 227295
+INFO 2025-12-07 21:42:41,772 basehttp "GET / HTTP/1.1" 200 26989
+INFO 2025-12-07 21:42:46,158 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 44491
+INFO 2025-12-07 21:45:24,766 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:47:39,141 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 21:47:44,847 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:47:57,720 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 39657
+ERROR 2025-12-07 21:48:56,133 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 31, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 852, in send_task
+    driver_type = self.producer_pool.connections.connection.transport.driver_type
+                  ^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1503, in producer_pool
+    return self.amqp.producer_pool
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\amqp.py", line 633, in producer_pool
+    self.app.connection_for_write()]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 975, in connection_for_write
+    return self._connection(url or self.conf.broker_write_url, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1026, in _connection
+    return self.amqp.Connection(
+           ~~~~~~~~~~~~~~~~~~~~^
+        url,
+        ^^^^
+    ...<16 lines>...
+        ),
+        ^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\connection.py", line 202, in __init__
+    if not get_transport_cls(transport).can_parse_url:
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 92, in get_transport_cls
+    _transport_cache[transport] = resolve_transport(transport)
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 77, in resolve_transport
+    return symbol_by_name(transport)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\utils\imports.py", line 59, in symbol_by_name
+    module = imp(module_name, package=package, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\redis.py", line 274, in <module>
+    class PrefixedStrictRedis(GlobalKeyPrefixMixin, redis.Redis):
+                                                    ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'Redis'
+ERROR 2025-12-07 21:48:56,185 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 227764
+INFO 2025-12-07 21:49:59,882 autoreload D:\sanad-system\sanad_system\document_analysis\serializers.py changed, reloading.
+INFO 2025-12-07 21:50:05,173 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:50:19,018 autoreload D:\sanad-system\sanad_system\document_analysis\serializers.py changed, reloading.
+INFO 2025-12-07 21:50:24,451 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:50:44,999 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:51:16,868 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 42024
+ERROR 2025-12-07 21:51:29,869 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 31, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 852, in send_task
+    driver_type = self.producer_pool.connections.connection.transport.driver_type
+                  ^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1503, in producer_pool
+    return self.amqp.producer_pool
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\amqp.py", line 633, in producer_pool
+    self.app.connection_for_write()]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 975, in connection_for_write
+    return self._connection(url or self.conf.broker_write_url, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1026, in _connection
+    return self.amqp.Connection(
+           ~~~~~~~~~~~~~~~~~~~~^
+        url,
+        ^^^^
+    ...<16 lines>...
+        ),
+        ^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\connection.py", line 202, in __init__
+    if not get_transport_cls(transport).can_parse_url:
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 92, in get_transport_cls
+    _transport_cache[transport] = resolve_transport(transport)
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 77, in resolve_transport
+    return symbol_by_name(transport)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\utils\imports.py", line 59, in symbol_by_name
+    module = imp(module_name, package=package, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\redis.py", line 274, in <module>
+    class PrefixedStrictRedis(GlobalKeyPrefixMixin, redis.Redis):
+                                                    ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'Redis'
+ERROR 2025-12-07 21:51:29,920 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 227764
+INFO 2025-12-07 21:52:05,146 autoreload D:\sanad-system\sanad_system\document_analysis\serializers.py changed, reloading.
+INFO 2025-12-07 21:52:10,933 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:52:19,447 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 21:52:22,789 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:53:47,336 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 44171
+ERROR 2025-12-07 21:54:07,987 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 36, in perform_create
+    process_document_analysis.delay(instance.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 852, in send_task
+    driver_type = self.producer_pool.connections.connection.transport.driver_type
+                  ^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1503, in producer_pool
+    return self.amqp.producer_pool
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\amqp.py", line 633, in producer_pool
+    self.app.connection_for_write()]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 975, in connection_for_write
+    return self._connection(url or self.conf.broker_write_url, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\celery\app\base.py", line 1026, in _connection
+    return self.amqp.Connection(
+           ~~~~~~~~~~~~~~~~~~~~^
+        url,
+        ^^^^
+    ...<16 lines>...
+        ),
+        ^^
+    )
+    ^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\connection.py", line 202, in __init__
+    if not get_transport_cls(transport).can_parse_url:
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 92, in get_transport_cls
+    _transport_cache[transport] = resolve_transport(transport)
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\__init__.py", line 77, in resolve_transport
+    return symbol_by_name(transport)
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\utils\imports.py", line 59, in symbol_by_name
+    module = imp(module_name, package=package, **kwargs)
+  File "C:\Users\T\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "D:\sanad-system\sanad_system\venv314\Lib\site-packages\kombu\transport\redis.py", line 274, in <module>
+    class PrefixedStrictRedis(GlobalKeyPrefixMixin, redis.Redis):
+                                                    ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'Redis'
+ERROR 2025-12-07 21:54:08,044 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 227841
+INFO 2025-12-07 21:54:58,758 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 21:55:06,010 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:55:09,776 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 21:55:11,915 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 21:55:26,169 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 45933
+INFO 2025-12-07 21:55:43,524 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 525
+INFO 2025-12-07 22:05:12,979 autoreload D:\sanad-system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-12-07 22:05:25,266 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 22:05:52,150 autoreload D:\sanad-system\sanad_system\sanad_system\celery.py changed, reloading.
+INFO 2025-12-07 22:05:56,250 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 22:07:36,980 autoreload D:\sanad-system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-12-07 22:07:42,404 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 22:07:45,301 autoreload D:\sanad-system\sanad_system\sanad_system\celery.py changed, reloading.
+INFO 2025-12-07 22:07:47,849 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 22:08:51,003 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 22:09:02,096 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 48051
+INFO 2025-12-07 22:09:18,718 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 525
+INFO 2025-12-07 22:09:27,603 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 49813
+INFO 2025-12-07 22:09:27,889 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 22:09:32,461 basehttp "GET /api/document-analysis/analyses/9/ HTTP/1.1" 200 525
+INFO 2025-12-07 22:53:57,408 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 22:54:11,348 basehttp "GET / HTTP/1.1" 200 26989
+INFO 2025-12-07 22:54:11,583 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 22:54:16,763 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 49813
+INFO 2025-12-07 22:54:20,678 basehttp "GET /api/document-analysis/analyses/9/ HTTP/1.1" 200 525
+INFO 2025-12-07 22:56:24,969 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 53073
+INFO 2025-12-07 22:57:13,104 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 526
+INFO 2025-12-07 22:57:23,298 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 54859
+INFO 2025-12-07 22:57:29,308 basehttp "GET /api/document-analysis/analyses/10/ HTTP/1.1" 200 526
+INFO 2025-12-07 23:00:01,951 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:01:08,078 autoreload D:\sanad-system\sanad_system\document_analysis\views.py changed, reloading.
+INFO 2025-12-07 23:01:12,519 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:03:08,680 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:03:20,535 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 54859
+INFO 2025-12-07 23:03:30,411 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 526
+INFO 2025-12-07 23:03:34,069 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 56645
+INFO 2025-12-07 23:03:37,864 basehttp "GET /api/document-analysis/analyses/11/ HTTP/1.1" 200 526
+INFO 2025-12-07 23:04:56,211 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:06:31,191 autoreload D:\sanad-system\sanad_system\document_analysis\tasks.py changed, reloading.
+INFO 2025-12-07 23:06:34,171 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:07:40,283 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:07:45,007 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 58571
+INFO 2025-12-07 23:07:46,439 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 58571
+INFO 2025-12-07 23:08:17,577 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 505
+INFO 2025-12-07 23:08:21,392 basehttp - Broken pipe from ('127.0.0.1', 60259)
+INFO 2025-12-07 23:08:21,485 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 60700
+INFO 2025-12-07 23:08:25,769 basehttp "GET /api/document-analysis/analyses/12/ HTTP/1.1" 200 693
+INFO 2025-12-07 23:08:55,316 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:09:01,533 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:09:20,989 basehttp "GET /api/document-analysis/analyses/12/ HTTP/1.1" 200 693
+INFO 2025-12-07 23:09:24,839 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 60700
+INFO 2025-12-07 23:10:15,327 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 529
+INFO 2025-12-07 23:10:33,995 basehttp - Broken pipe from ('127.0.0.1', 60418)
+INFO 2025-12-07 23:10:34,083 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 62845
+INFO 2025-12-07 23:10:37,000 basehttp "GET /api/document-analysis/analyses/13/ HTTP/1.1" 200 717
+INFO 2025-12-07 23:11:09,122 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:11:13,257 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:12:13,305 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:12:23,405 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 62845
+INFO 2025-12-07 23:12:24,813 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 62845
+INFO 2025-12-07 23:13:03,868 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:13:06,429 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:13:13,006 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:13:15,631 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:13:49,193 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 62845
+INFO 2025-12-07 23:13:50,394 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 62845
+INFO 2025-12-07 23:14:02,264 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 529
+INFO 2025-12-07 23:14:10,609 basehttp - Broken pipe from ('127.0.0.1', 60906)
+INFO 2025-12-07 23:14:10,734 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 64990
+INFO 2025-12-07 23:14:14,350 basehttp "GET /api/document-analysis/analyses/14/ HTTP/1.1" 200 988
+INFO 2025-12-07 23:16:11,680 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:16:23,433 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 64990
+INFO 2025-12-07 23:19:05,519 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 529
+INFO 2025-12-07 23:19:10,486 basehttp - Broken pipe from ('127.0.0.1', 61377)
+INFO 2025-12-07 23:19:10,714 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 67135
+INFO 2025-12-07 23:19:18,699 basehttp "GET /api/document-analysis/analyses/15/ HTTP/1.1" 200 1100
+INFO 2025-12-07 23:20:24,148 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:20:27,856 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:20:39,104 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:20:42,023 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:30:29,919 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:30:35,972 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 67135
+INFO 2025-12-07 23:30:36,215 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-07 23:32:29,318 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 529
+INFO 2025-12-07 23:32:34,079 basehttp - Broken pipe from ('127.0.0.1', 62459)
+INFO 2025-12-07 23:32:34,293 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 69280
+INFO 2025-12-07 23:32:41,627 basehttp "GET /api/document-analysis/analyses/16/ HTTP/1.1" 200 1099
+INFO 2025-12-07 23:34:20,143 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:34:31,805 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:35:03,195 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 69280
+INFO 2025-12-07 23:35:42,267 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 659
+INFO 2025-12-07 23:35:47,533 basehttp - Broken pipe from ('127.0.0.1', 62914)
+INFO 2025-12-07 23:35:47,686 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 71497
+INFO 2025-12-07 23:35:51,618 basehttp "GET /api/document-analysis/analyses/17/ HTTP/1.1" 200 1228
+INFO 2025-12-07 23:36:29,864 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:36:33,066 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:36:51,601 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 71497
+INFO 2025-12-07 23:37:07,926 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 683
+INFO 2025-12-07 23:37:12,965 basehttp - Broken pipe from ('127.0.0.1', 63085)
+INFO 2025-12-07 23:37:13,049 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 73730
+INFO 2025-12-07 23:37:15,694 basehttp "GET /api/document-analysis/analyses/18/ HTTP/1.1" 200 1252
+INFO 2025-12-07 23:37:41,555 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-07 23:37:44,987 autoreload Watching for file changes with StatReloader

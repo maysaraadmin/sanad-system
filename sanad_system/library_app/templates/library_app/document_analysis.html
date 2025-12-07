@@ -1,0 +1,460 @@
+{% extends 'hadith_app/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Debug Information (shown if debug mode is enabled or there's an error) -->
+    {% if debug_info and show_debug or error_message %}
+    <div class="alert {% if error_message %}alert-danger{% else %}alert-info{% endif %} mb-4">
+        <div class="d-flex justify-content-between align-items-start">
+            <h5 class="mb-3"><i class="fas fa-bug me-2"></i>معلومات التصحيح</h5>
+            <a href="?debug=1" class="btn btn-sm {% if show_debug %}btn-outline-dark{% else %}btn-outline-secondary{% endif %}">
+                <i class="fas fa-{{ show_debug|yesno:'eye-slash,code' }} me-1"></i>
+                {{ show_debug|yesno:'إخفاء,عرض' }} التفاصيل الفنية
+            </a>
+        </div>
+        
+        {% if show_debug %}
+            <div class="debug-info mt-2 p-3 bg-dark text-white rounded">
+                <pre class="mb-0" style="max-height: 300px; overflow-y: auto;">{{ debug_info|pprint }}</pre>
+            </div>
+        {% else %}
+            <div class="mt-2">
+                {% if debug_info.file_path %}
+                <div class="mb-1">
+                    <strong>الملف:</strong> {{ debug_info.file_path }}
+                    ({{ debug_info.file_size|filesizeformat }})
+                </div>
+                {% endif %}
+                {% if error_message %}
+                <div class="mt-2 p-2 bg-dark text-white rounded">
+                    <strong>الخطأ:</strong> {{ error_message }}
+                </div>
+                {% endif %}
+                <div class="mt-2">
+                    <a href="?debug=1" class="btn btn-sm btn-outline-light">
+                        <i class="fas fa-code me-1"></i>عرض التفاصيل الفنية
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-book-open me-2"></i>
+                        {{ title }}
+                    </h4>
+                    {% if not results %}
+                    <form method="post" action="{% url 'library_app:process_document' document.id %}" class="mb-0">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-play-circle me-2"></i> تشغيل التحليل
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <!-- Document Info -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>معلومات المستند</h5>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>العنوان:</th>
+                                    <td>{{ document.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>النوع:</th>
+                                    <td>{{ document.document_type }}</td>
+                                </tr>
+                                <tr>
+                                    <th>تم الرفع بواسطة:</th>
+                                    <td>{{ document.uploaded_by.get_full_name|default:document.uploaded_by.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th>تاريخ الرفع:</th>
+                                    <td>{{ document.uploaded_at|date:"Y/m/d H:i" }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="mb-0">إحصائيات التحليل</h5>
+                                {% if results %}
+                                <a href="?debug=1" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-bug me-1"></i>عرض التفاصيل
+                                </a>
+                                {% endif %}
+                            </div>
+                            
+                            {% if results and results.stats %}
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <div class="card h-100 {% if results.stats.total_hadiths == 0 %}border-warning{% else %}border-primary{% endif %}">
+                                        <div class="card-body text-center">
+                                            <h3 class="{% if results.stats.total_hadiths == 0 %}text-warning{% else %}text-primary{% endif %}">
+                                                {{ results.stats.total_hadiths }}
+                                            </h3>
+                                            <p class="mb-0">عدد الأحاديث المستخرجة</p>
+                                            {% if results.stats.total_hadiths == 0 %}
+                                            <small class="text-muted">لم يتم العثور على أحاديث</small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <div class="card h-100 {% if results.stats.total_narrators == 0 %}border-warning{% else %}border-success{% endif %}">
+                                        <div class="card-body text-center">
+                                            <h3 class="{% if results.stats.total_narrators == 0 %}text-warning{% else %}text-success{% endif %}">
+                                                {{ results.stats.total_narrators }}
+                                            </h3>
+                                            <p class="mb-0">عدد الرواة المستخرجين</p>
+                                            {% if results.stats.total_narrators == 0 %}
+                                            <small class="text-muted">لم يتم العثور على رواة</small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if results.stats.matched_hadiths > 0 or results.stats.matched_narrators > 0 %}
+                                <div class="col-6">
+                                    <div class="card h-100 border-success">
+                                        <div class="card-body text-center">
+                                            <h5 class="text-success">
+                                                {{ results.stats.matched_hadiths }} حديث / {{ results.stats.matched_narrators }} راوي
+                                            </h5>
+                                            <p class="mb-0 text-muted small">متطابق مع قاعدة البيانات</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if results.stats.new_hadiths > 0 or results.stats.new_narrators > 0 %}
+                                <div class="col-6">
+                                    <div class="card h-100 border-warning">
+                                        <div class="card-body text-center">
+                                            <h5 class="text-warning">
+                                                {{ results.stats.new_hadiths }} حديث / {{ results.stats.new_narrators }} راوي
+                                            </h5>
+                                            <p class="mb-0 text-muted small">جديد غير موجود في قاعدة البيانات</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% elif not results %}
+                            <div class="alert alert-info">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle fa-2x me-3"></i>
+                                    <div>
+                                        <h5 class="mb-1">لم يتم تحليل المستند بعد</h5>
+                                        <p class="mb-0">انقر على زر "تشغيل التحليل" أعلاه لبدء تحليل المستند واستخراج الأحاديث والرواة</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                                <div class="col-6 mb-3">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h3 class="text-success">{{ results.stats.matched_hadiths }}</h3>
+                                            <p class="mb-0">أحاديث متطابقة مع قاعدة البيانات</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h3 class="text-info">{{ results.stats.total_narrators }}</h3>
+                                            <p class="mb-0">عدد الرواة المستخرجين</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h3 class="text-warning">{{ results.stats.matched_narrators }}</h3>
+                                            <p class="mb-0">رواة متطابقون مع قاعدة البيانات</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs" id="analysisTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="hadith-tab" data-bs-toggle="tab" data-bs-target="#hadith" type="button" role="tab">
+                                <i class="fas fa-book-quran me-1"></i> الأحاديث
+                                <span class="badge bg-primary rounded-pill ms-1">{{ results.stats.total_hadiths }}</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="narrators-tab" data-bs-toggle="tab" data-bs-target="#narrators" type="button" role="tab">
+                                <i class="fas fa-users me-1"></i> الرواة
+                                <span class="badge bg-success rounded-pill ms-1">{{ results.stats.total_narrators }}</span>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    {% if results %}
+                    <div class="tab-content p-3 border border-top-0 rounded-bottom" id="analysisTabsContent">
+                    {% else %}
+                    <div class="p-3 border border-top-0 rounded-bottom text-center py-5">
+                        <div class="text-muted mb-4">
+                            <i class="fas fa-search fa-4x mb-3"></i>
+                            <h4>لا توجد نتائج للعرض</h4>
+                            <p class="mb-0">سيتم عرض نتائج التحليل هنا بعد تشغيله</p>
+                        </div>
+                        <form method="post" action="{% url 'library_app:process_document' document.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-play-circle me-2"></i> تشغيل التحليل الآن
+                            </button>
+                        </form>
+                    </div>
+                    {% endif %}
+                        <!-- Hadith Tab -->
+                        <div class="tab-pane fade show active" id="hadith" role="tabpanel">
+                            <div class="mb-3">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-outline-primary active" data-filter="all">الكل</button>
+                                    <button type="button" class="btn btn-outline-success" data-filter="matched">متطابقة</button>
+                                    <button type="button" class="btn btn-outline-warning" data-filter="new">جديدة</button>
+                                </div>
+                            </div>
+
+                            <!-- Matched Hadiths -->
+                            {% if results.comparison.hadith_matches %}
+                            <div class="mb-4">
+                                <h5 class="text-success">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    أحاديث متطابقة مع قاعدة البيانات
+                                </h5>
+                                <div class="list-group">
+                                    {% for hadith in results.comparison.hadith_matches %}
+                                    <div class="list-group-item list-group-item-action hadith-item matched">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 text-success">
+                                                <i class="fas fa-check-circle me-2"></i>
+                                                حديث متطابق
+                                            </h6>
+                                            <small>#{{ hadith.id }}</small>
+                                        </div>
+                                        <p class="mb-1">{{ hadith.text|truncatechars:200 }}</p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-book me-1"></i> {{ hadith.source }}
+                                            {% if hadith.grade %}
+                                            <span class="badge ms-2 {{ hadith.get_grade_display|lower }}">
+                                                {{ hadith.get_grade_display }}
+                                            </span>
+                                            {% endif %}
+                                        </small>
+                                        <div class="mt-2">
+                                            <a href="{% url 'hadith_app:hadith_detail' hadith.id %}" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-external-link-alt me-1"></i> عرض التفاصيل
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <!-- New Hadiths -->
+                            {% if results.comparison.new_hadiths %}
+                            <div>
+                                <h5 class="text-warning">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    أحاديث جديدة غير موجودة في قاعدة البيانات
+                                </h5>
+                                <div class="list-group">
+                                    {% for hadith in results.comparison.new_hadiths %}
+                                    <div class="list-group-item list-group-item-action hadith-item new">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 text-warning">
+                                                <i class="fas fa-exclamation-circle me-2"></i>
+                                                حديث جديد
+                                            </h6>
+                                        </div>
+                                        <p class="mb-1">{{ hadith.text|truncatechars:200 }}</p>
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-outline-success add-hadith" data-text="{{ hadith.text }}">
+                                                <i class="fas fa-plus-circle me-1"></i> إضافة حديث جديد
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Narrators Tab -->
+                        <div class="tab-pane fade" id="narrators" role="tabpanel">
+                            <div class="mb-3">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-outline-primary active" data-filter="all">الكل</button>
+                                    <button type="button" class="btn btn-outline-success" data-filter="matched">متطابقون</button>
+                                    <button type="button" class="btn btn-outline-warning" data-filter="new">جدد</button>
+                                </div>
+                            </div>
+
+                            <!-- Matched Narrators -->
+                            {% if results.comparison.narrator_matches %}
+                            <div class="mb-4">
+                                <h5 class="text-success">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    رواة متطابقون مع قاعدة البيانات
+                                </h5>
+                                <div class="row">
+                                    {% for narrator in results.comparison.narrator_matches %}
+                                    <div class="col-md-6 mb-3 narrator-item matched">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <h5 class="card-title mb-1">
+                                                        <i class="fas fa-user-check text-success me-2"></i>
+                                                        {{ narrator.name }}
+                                                    </h5>
+                                                    <span class="badge bg-{{ narrator.get_reliability_display|lower }}">
+                                                        {{ narrator.get_reliability_display }}
+                                                    </span>
+                                                </div>
+                                                <div class="narrator-details mt-2">
+                                                    {% if narrator.birth_year or narrator.death_year %}
+                                                    <p class="card-text small mb-1">
+                                                        <i class="far fa-calendar-alt me-1"></i>
+                                                        {{ narrator.birth_year|default:'غير معروف' }} - {{ narrator.death_year|default:'غير معروف' }}
+                                                    </p>
+                                                    {% endif %}
+                                                    {% if narrator.madhhab %}
+                                                    <p class="card-text small mb-1">
+                                                        <i class="fas fa-mosque me-1"></i>
+                                                        {{ narrator.get_madhhab_display }}
+                                                    </p>
+                                                    {% endif %}
+                                                </div>
+                                                <a href="{% url 'hadith_app:narrator_detail' narrator.id %}" class="btn btn-sm btn-outline-primary mt-2">
+                                                    <i class="fas fa-external-link-alt me-1"></i> عرض التفاصيل
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <!-- New Narrators -->
+                            {% if results.comparison.new_narrators %}
+                            <div>
+                                <h5 class="text-warning">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    رواة جدد غير موجودين في قاعدة البيانات
+                                </h5>
+                                <div class="row">
+                                    {% for narrator in results.comparison.new_narrators %}
+                                    <div class="col-md-6 mb-3 narrator-item new">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <h5 class="card-title mb-1">
+                                                        <i class="fas fa-user-plus text-warning me-2"></i>
+                                                        {{ narrator.name }}
+                                                    </h5>
+                                                    <span class="badge bg-secondary">جديد</span>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-success add-narrator" data-name="{{ narrator.name }}">
+                                                        <i class="fas fa-plus-circle me-1"></i> إضافة راوٍ جديد
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                        <a href="{% url 'library_app:document_detail' document.id %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-right me-1"></i> العودة إلى تفاصيل المستند
+                        </a>
+                    </div>
+                    {% if not results %}
+                    <form method="post" action="{% url 'library_app:process_document' document.id %}" class="mb-0">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sync-alt me-2"></i> إعادة المحاولة
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tab filtering
+        const filterButtons = document.querySelectorAll('[data-filter]');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                const tabContent = this.closest('.tab-pane');
+                const items = tabContent.querySelectorAll('.hadith-item, .narrator-item');
+                
+                // Update active state of buttons
+                filterButtons.forEach(btn => {
+                    if (btn.closest('.tab-pane') === tabContent) {
+                        btn.classList.remove('active');
+                    }
+                });
+                this.classList.add('active');
+                
+                // Filter items
+                items.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Add hadith button
+        document.querySelectorAll('.add-hadith').forEach(button => {
+            button.addEventListener('click', function() {
+                const hadithText = this.getAttribute('data-text');
+                // You can implement the logic to add a new hadith here
+                alert('سيتم إضافة حديث جديد: ' + hadithText.substring(0, 100) + '...');
+            });
+        });
+        
+        // Add narrator button
+        document.querySelectorAll('.add-narrator').forEach(button => {
+            button.addEventListener('click', function() {
+                const narratorName = this.getAttribute('data-name');
+                // You can implement the logic to add a new narrator here
+                alert('سيتم إضافة راوٍ جديد: ' + narratorName);
+            });
+        });
+    });
+</script>
+{% endblock %}
