@@ -8791,3 +8791,7 @@ INFO 2025-12-07 23:37:13,049 basehttp "GET /document-analysis/dashboard/ HTTP/1.
 INFO 2025-12-07 23:37:15,694 basehttp "GET /api/document-analysis/analyses/18/ HTTP/1.1" 200 1252
 INFO 2025-12-07 23:37:41,555 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
 INFO 2025-12-07 23:37:44,987 autoreload Watching for file changes with StatReloader
+INFO 2025-12-07 23:43:04,959 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 345
+INFO 2025-12-07 23:43:14,096 basehttp - Broken pipe from ('127.0.0.1', 63620)
+INFO 2025-12-07 23:43:14,414 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 75767
+INFO 2025-12-07 23:43:18,200 basehttp "GET /api/document-analysis/analyses/19/ HTTP/1.1" 200 634
