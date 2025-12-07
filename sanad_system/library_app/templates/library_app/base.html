@@ -1,6 +1,8 @@
 {% extends 'hadith_app/base.html' %}
 
-{% block title %}{% block library_title %}{% endblock %} | المكتبة{% endblock %}
+{% block title %}{% block library_title %}المكتبة{% endblock %} | نظام الأسانيد{% endblock %}
+
+{% block extra_head %}{% block library_extra_head %}{% endblock %}{% endblock %}
 
 {% block content %}
 <div class="container my-4">

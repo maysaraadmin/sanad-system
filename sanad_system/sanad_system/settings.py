@@ -29,9 +29,9 @@ import os
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-development-key-123')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,testserver', cast=Csv())
 
 
 # Application definition
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'hadith_app',
     'library_app',
+    'sslserver',
 ]
 
 # Crispy Forms Settings
@@ -187,9 +188,9 @@ os.makedirs(PDF_UPLOAD_DIR, exist_ok=True)
 
 # Security settings
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=False, cast=bool)
+    SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=False, cast=bool)
+    CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=False, cast=bool)
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'

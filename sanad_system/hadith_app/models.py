@@ -39,6 +39,14 @@ class Narrator(models.Model):
     def __str__(self):
         return self.name
 
+    def get_reliability_display(self):
+        reliability_choices = {
+            'thiqa': '???',
+            'saduq': '????',
+            'weak': '????',
+            'unknown': '?????'
+        }
+        return reliability_choices.get(self.reliability, self.reliability)
 
 class Hadith(models.Model):
     text = models.TextField(verbose_name="نص الحديث")
@@ -79,6 +87,15 @@ class Hadith(models.Model):
 
     def __str__(self):
         return self.text[:50] + "..." if len(self.text) > 50 else self.text
+
+    def get_grade_display(self):
+        grade_choices = {
+            'sahih': 'صحيح',
+            'hasan': 'حسن',
+            'daif': 'ضعيف',
+            'mawdu': 'موضوع'
+        }
+        return grade_choices.get(self.grade, self.grade)
 
 
 class Sanad(models.Model):

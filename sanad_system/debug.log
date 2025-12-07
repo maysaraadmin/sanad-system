@@ -4713,3 +4713,1785 @@ INFO 2025-07-11 13:06:10,397 basehttp "GET /library/document/2/ HTTP/1.1" 200 33
 INFO 2025-07-11 13:06:10,521 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/first_IT_Coordinator__GIHS_Dubai.docx HTTP/1.1" 200 8416
 INFO 2025-07-11 13:06:19,740 basehttp "GET /library/document/1/ HTTP/1.1" 200 33496
 INFO 2025-07-11 13:06:19,893 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_%D9%85%D8%AE%D8%AA%D8%B5%D8%B1_%D8%B4%D8%B9%D8%A8_%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86_%D9%84%D9%84%D8%A8%D9%8A%D9%87%D9%82%D9%89.pdf HTTP/1.1" 304 0
+INFO 2025-12-06 12:04:26,981 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 12:04:33,567 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:39,144 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:39,633 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:40,615 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:46,146 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:46,657 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:47,593 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:53,139 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:53,547 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:04:54,373 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:00,151 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:00,558 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:01,567 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:07,160 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:07,621 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:08,392 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:14,170 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:14,599 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:15,500 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:21,158 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:21,630 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:22,636 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:28,163 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:28,572 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:29,422 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:35,160 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:35,677 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:36,531 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:42,145 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:42,603 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:43,595 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:49,138 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:49,642 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:50,561 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:56,157 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:56,698 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:05:57,672 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:03,131 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:03,586 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:04,586 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:10,147 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:10,546 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:11,422 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:17,208 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:17,632 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:18,456 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:23,470 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:23,943 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:24,849 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:29,859 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:30,327 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:31,297 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:35,422 basehttp "GET /accounts/login/ HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:35,698 basehttp code 400, message Bad request version ('âT\x93\x15Ê\x82ÏãU\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:06:35,774 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:35,870 basehttp code 400, message Bad request version ('§ësÊÂ\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:06:35,883 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:36,378 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:36,861 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:37,639 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:42,663 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:43,171 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:44,149 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:48,750 basehttp "GET / HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:48,789 basehttp code 400, message Bad request version ('CþÉøV\x8cGZ\x06\x8b¨9ÿ´\x9eFp¹Tvqï\x8e!Ö\x01lãÀ\x92/\x8d\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:06:48,795 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:48,830 basehttp code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02~\x01\x00\x02z\x03\x03&\x87Ä\x89ÒÅX\x8d\x08l¼ÎÍ\x11³\x8eßg¡¯pè\x90Ã`Û\x07±÷\x9cÉ')
+ERROR 2025-12-06 12:06:48,830 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:49,177 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:49,611 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:50,410 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:55,443 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:55,918 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:56,576 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 301 0
+INFO 2025-12-06 12:06:56,592 basehttp code 400, message Bad request version ('â\x8c^Ö|+:hÂ×\x02\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:06:56,593 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:56,602 basehttp code 400, message Bad request version ('²YO\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:06:56,603 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:56,615 basehttp code 400, message Bad request version ('¸0V\x051Í¼á<ôý\x95_÷ówz@\x17\x00°G,Z\x18')
+ERROR 2025-12-06 12:06:56,618 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:06:56,842 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:01,576 basehttp code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x07O\x01\x00\x07K\x03\x03üVD\x03?¸á\x96;*')
+ERROR 2025-12-06 12:07:01,581 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:01,585 basehttp code 400, message Bad request version ('ê\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:01,586 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:01,864 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:02,263 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:02,520 basehttp code 400, message Bad request version ('Åá]\x93')
+ERROR 2025-12-06 12:07:02,521 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:02,527 basehttp code 400, message Bad request version ('=/\x97\x9aÙ÷w')
+ERROR 2025-12-06 12:07:02,530 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:03,242 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:03,321 basehttp code 400, message Bad request version ('\x95S¹?7\x87\x9dõ\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:03,323 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:03,344 basehttp code 400, message Bad request version ('\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:03,345 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:08,261 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:08,732 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:09,681 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:14,702 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:15,167 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:15,951 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:20,973 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:21,427 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:22,395 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:27,427 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:27,822 basehttp code 400, message Bad request version ('|ò\x80{H©\x7fÃ\xad\x93À_\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:27,823 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:27,827 basehttp code 400, message Bad request version ('GàëÛ\x8bù\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:27,828 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:27,913 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:28,871 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:33,895 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:34,352 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:35,195 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:35,259 basehttp "GET / HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:35,274 basehttp code 400, message Bad request version ('\x8cí\x80@Ô\x14\x89öþ0')
+ERROR 2025-12-06 12:07:35,283 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:35,287 basehttp code 400, message Bad request version ('\x03Y¸\x88½¢l\x82\x05\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:35,288 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:40,213 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:40,638 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:41,479 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:41,705 basehttp code 400, message Bad request version ('+h\x98ß0Á\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:41,706 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:41,709 basehttp code 400, message Bad request version ('Ú¨9\x94Ö8\x9cºxË%ò\x13Ð¾\x9e\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+ERROR 2025-12-06 12:07:41,710 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 12:07:46,501 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:46,977 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:47,989 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:53,002 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:53,453 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:54,231 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:59,259 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:07:59,726 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 12:08:00,645 basehttp "GET /v1/models HTTP/1.1" 301 0
+INFO 2025-12-06 14:22:06,176 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 14:43:19,835 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 14:44:11,255 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 14:44:34,659 basehttp "GET / HTTP/1.1" 200 24251
+ERROR 2025-12-06 14:44:37,267 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:44:37,284 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:44:43,327 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:45:06,004 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:45:06,204 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 21551
+INFO 2025-12-06 14:45:38,982 basehttp "POST /theme/set/ HTTP/1.1" 200 39
+INFO 2025-12-06 14:45:39,802 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 21552
+INFO 2025-12-06 14:45:40,255 basehttp "POST /theme/set/ HTTP/1.1" 200 38
+INFO 2025-12-06 14:45:40,919 basehttp "POST /theme/set/ HTTP/1.1" 200 38
+INFO 2025-12-06 14:45:41,185 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 21551
+INFO 2025-12-06 14:45:42,957 basehttp "POST /theme/set/ HTTP/1.1" 200 38
+INFO 2025-12-06 14:45:43,243 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 21551
+INFO 2025-12-06 14:46:30,752 basehttp "GET /accounts/login/ HTTP/1.1" 200 28541
+ERROR 2025-12-06 14:46:31,605 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:46:31,689 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:47:22,356 basehttp code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063')
+ERROR 2025-12-06 14:47:22,357 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:22,367 basehttp code 400, message Bad request version ('\x05¦0\x82õ\x97Ïa\x97w\x88ýT88\x87\x12`\x08å0XèèHý(')
+ERROR 2025-12-06 14:47:22,368 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:28,054 basehttp code 400, message Bad request version ('ºº\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06Sªª\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00')
+ERROR 2025-12-06 14:47:28,054 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:28,066 basehttp code 400, message Bad request version ('Äwp')
+ERROR 2025-12-06 14:47:28,067 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:35,372 basehttp code 400, message Bad request version ('\x19°\x14ê|Kò\x16\x94\x83\x10\x80\x99ñ')
+ERROR 2025-12-06 14:47:35,373 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:35,377 basehttp code 400, message Bad request version ('«À\x80O')
+ERROR 2025-12-06 14:47:35,377 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:44,624 basehttp code 400, message Bad request version ('®¯\x9d<\x00\x90ß{ñc\x8aß®r^p\x9e\x9bF\x9c½ßÔ¼\x8b\x07¿&ÁÓ;')
+ERROR 2025-12-06 14:47:44,625 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:44,633 basehttp code 400, message Bad request version ('\x08Ñþc\x97½,7y0\x13/Kí')
+ERROR 2025-12-06 14:47:44,635 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:50,096 basehttp code 400, message Bad request version ('ºX¡\x86¤\x0fC8V\x11\x06¥<º\x89¨\x98ÌsÇã\x13£YÀH\x0e|1çIpµ8\x04\x88Á½ÖkÇô&R÷D·\x02¸&¨vR\x897{¯É\x9c\x08è3')
+ERROR 2025-12-06 14:47:50,097 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:47:50,100 basehttp code 400, message Bad request version ('q\x01\\')
+ERROR 2025-12-06 14:47:50,100 basehttp You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-12-06 14:48:59,038 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:48:59,286 basehttp "GET /admin/ HTTP/1.1" 200 20681
+ERROR 2025-12-06 14:49:00,099 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:49:00,104 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:49:00,780 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 500 59
+WARNING 2025-12-06 14:49:24,368 log Forbidden (CSRF token from POST incorrect.): /accounts/login/
+WARNING 2025-12-06 14:49:24,404 basehttp "POST /accounts/login/ HTTP/1.1" 403 1081
+INFO 2025-12-06 14:49:32,464 basehttp "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:49:32,519 basehttp "GET /hadith/ HTTP/1.1" 200 30968
+INFO 2025-12-06 14:49:37,580 basehttp "POST /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:49:37,734 basehttp "GET /hadith/ HTTP/1.1" 200 27988
+ERROR 2025-12-06 14:49:38,731 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:49:38,748 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:49:40,071 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:49:42,564 basehttp "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:49:42,570 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:49:42,583 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 21551
+INFO 2025-12-06 14:49:48,369 basehttp "GET /accounts/login/ HTTP/1.1" 200 28541
+ERROR 2025-12-06 14:49:49,114 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:49:49,121 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:49:49,319 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:50:05,452 basehttp "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-06 14:50:05,533 basehttp "GET /hadith/ HTTP/1.1" 200 30972
+ERROR 2025-12-06 14:50:06,394 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:50:06,419 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:50:06,739 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:50:14,818 basehttp "GET /library/ HTTP/1.1" 200 30851
+ERROR 2025-12-06 14:50:15,699 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:50:15,721 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:50:20,711 basehttp "GET /library/document/1/ HTTP/1.1" 500 59
+INFO 2025-12-06 14:51:30,637 basehttp "GET / HTTP/1.1" 200 26876
+ERROR 2025-12-06 14:51:31,496 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:31,506 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:31,815 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:51:33,785 basehttp "GET /hadith/ HTTP/1.1" 200 30972
+ERROR 2025-12-06 14:51:34,845 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:34,894 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:51:37,181 basehttp "GET /hadith/create/ HTTP/1.1" 200 30377
+ERROR 2025-12-06 14:51:37,869 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:37,889 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:38,402 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:51:40,303 basehttp "GET /narrators/ HTTP/1.1" 200 33900
+ERROR 2025-12-06 14:51:41,130 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:41,136 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:41,707 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:51:43,435 basehttp "GET /narrators/create/ HTTP/1.1" 200 28586
+ERROR 2025-12-06 14:51:44,187 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:44,219 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:44,853 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:51:47,095 basehttp "GET /library/ HTTP/1.1" 200 30851
+ERROR 2025-12-06 14:51:47,780 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:47,780 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:51:48,085 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:52:45,941 basehttp "GET / HTTP/1.1" 200 26876
+ERROR 2025-12-06 14:52:46,654 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:52:46,658 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:52:47,119 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:52:53,629 basehttp "GET / HTTP/1.1" 200 26876
+ERROR 2025-12-06 14:52:54,269 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:52:54,306 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:52:58,316 basehttp "GET /narrators/ HTTP/1.1" 200 33900
+ERROR 2025-12-06 14:52:59,221 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:52:59,257 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:53:01,103 basehttp "GET /library/ HTTP/1.1" 200 30851
+ERROR 2025-12-06 14:53:01,916 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+ERROR 2025-12-06 14:53:01,928 basehttp "GET /static/css/style.css HTTP/1.1" 500 59
+ERROR 2025-12-06 14:53:02,355 basehttp "GET /static/js/main.js HTTP/1.1" 500 59
+INFO 2025-12-06 14:53:44,785 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 15:00:15,465 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 15:00:24,047 basehttp "GET /library/ HTTP/1.1" 200 30851
+WARNING 2025-12-06 15:00:24,396 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:00:24,398 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:00:24,420 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:00:24,426 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 15:00:28,203 basehttp "GET /library/document/1/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 15:00:28,363 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:00:28,368 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:00:28,459 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:00:28,461 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:00:28,593 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:00:28,596 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 15:02:11,076 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 15:03:50,621 autoreload D:\sanad-system\sanad_system\library_app\models.py changed, reloading.
+INFO 2025-12-06 15:03:55,686 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 15:04:26,952 basehttp "GET /library/document/1/ HTTP/1.1" 200 32703
+WARNING 2025-12-06 15:04:27,053 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:04:27,054 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:04:27,151 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:04:27,153 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 15:54:25,070 basehttp "GET / HTTP/1.1" 200 26876
+WARNING 2025-12-06 15:54:25,409 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:54:25,412 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:25,445 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:25,447 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:25,542 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:25,543 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:25,597 log Not Found: /favicon.ico
+INFO 2025-12-06 15:54:25,605 basehttp - Broken pipe from ('127.0.0.1', 59577)
+INFO 2025-12-06 15:54:28,201 basehttp "GET /hadith/ HTTP/1.1" 200 54847
+WARNING 2025-12-06 15:54:28,498 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:54:28,511 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:28,601 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:28,603 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:28,714 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:28,718 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 15:54:44,935 basehttp "GET /hadith/?page=2 HTTP/1.1" 200 51261
+WARNING 2025-12-06 15:54:45,132 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:54:45,136 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:45,163 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:45,165 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:45,365 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:45,367 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 15:54:52,261 basehttp "GET /hadith/?page=3 HTTP/1.1" 200 34436
+WARNING 2025-12-06 15:54:52,454 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:52,455 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:52,537 log Not Found: /static/css/style.css
+WARNING 2025-12-06 15:54:52,542 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 15:54:52,703 log Not Found: /static/js/main.js
+WARNING 2025-12-06 15:54:52,708 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:07:49,541 log Internal Server Error: /hadith/14/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:07:49,705 basehttp "GET /hadith/14/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:07:49,863 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:07:49,865 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:07:49,952 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:07:49,958 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:10:41,900 log Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-12-06 16:10:55,036 log Internal Server Error: /hadith/14/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:10:55,071 basehttp "GET /hadith/14/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:10:55,146 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:10:55,146 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:10:55,240 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:10:55,246 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:11:18,956 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-06 16:11:25,625 log Internal Server Error: /hadith/14/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:11:25,642 basehttp "GET /hadith/14/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:11:25,786 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:11:25,791 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:11:25,926 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:11:25,928 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:12:03,293 log Internal Server Error: /hadith/14/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:12:03,335 basehttp "GET /hadith/14/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:12:03,476 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:12:03,481 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:12:03,571 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:12:03,571 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:12:08,405 basehttp "GET /profile/ HTTP/1.1" 200 30461
+WARNING 2025-12-06 16:12:08,621 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:12:08,621 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:12:08,727 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:12:08,735 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:12:20,574 basehttp "GET /hadith/ HTTP/1.1" 200 54847
+WARNING 2025-12-06 16:12:20,684 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:12:20,686 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:12:20,797 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:12:20,797 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:12:20,891 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:12:20,893 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:12:22,896 log Internal Server Error: /hadith/52/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:12:22,942 basehttp "GET /hadith/52/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:12:23,028 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:12:23,029 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:12:23,062 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:12:23,068 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:14:23,084 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-06 16:14:28,265 log Internal Server Error: /hadith/52/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:14:28,290 basehttp "GET /hadith/52/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:14:28,449 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:14:28,454 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:14:28,542 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:14:28,544 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:14:34,090 log Internal Server Error: /hadith/52/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:14:34,106 basehttp "GET /hadith/52/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:14:34,353 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:14:34,359 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:14:34,567 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:14:34,591 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:14:34,991 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:14:35,000 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:14:49,163 basehttp "GET /hadith/14 HTTP/1.1" 301 0
+ERROR 2025-12-06 16:14:49,270 log Internal Server Error: /hadith/14/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_create' not found. 'sanad_create' is not a valid view function or pattern name.
+ERROR 2025-12-06 16:14:49,310 basehttp "GET /hadith/14/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:14:49,637 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:14:49,641 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:14:49,738 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:14:49,743 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:16:12,772 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 16:16:17,523 basehttp "GET /hadith/14/ HTTP/1.1" 200 28363
+WARNING 2025-12-06 16:16:17,736 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:16:17,738 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:16:17,824 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:16:17,825 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:16:26,987 basehttp "GET /hadith/14/update/ HTTP/1.1" 200 32138
+WARNING 2025-12-06 16:16:27,288 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:16:27,297 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:16:27,371 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:16:27,374 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:16:37,112 basehttp "POST /hadith/14/update/ HTTP/1.1" 302 0
+INFO 2025-12-06 16:16:37,314 basehttp "GET /hadith/ HTTP/1.1" 200 55061
+WARNING 2025-12-06 16:16:37,416 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:16:37,418 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:16:37,510 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:16:37,512 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:16:39,701 basehttp "GET /hadith/52/ HTTP/1.1" 200 27607
+WARNING 2025-12-06 16:16:40,064 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:16:40,066 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:16:40,206 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:16:40,213 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:16:40,288 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:16:40,289 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:19:57,101 log Not Found: /hadith/52/
+WARNING 2025-12-06 16:19:57,103 basehttp "GET /hadith/52/ HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:19:57,381 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:19:57,385 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:19:57,604 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:19:57,607 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:20:13,041 basehttp "GET / HTTP/1.1" 200 26876
+WARNING 2025-12-06 16:20:13,244 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:20:13,292 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:13,322 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:13,326 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:20:16,300 basehttp "GET /hadith/ HTTP/1.1" 200 55113
+WARNING 2025-12-06 16:20:16,404 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:16,414 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:16,486 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:20:16,489 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:16,637 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:16,639 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:20:18,662 basehttp "GET /hadith/135/ HTTP/1.1" 200 27237
+WARNING 2025-12-06 16:20:18,931 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:20:18,934 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:19,010 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:19,012 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:20:31,656 basehttp "GET /hadith/ HTTP/1.1" 200 55113
+WARNING 2025-12-06 16:20:31,747 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:20:31,747 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:31,792 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:31,794 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:20:41,829 basehttp "GET /hadith/?page=3 HTTP/1.1" 200 37129
+WARNING 2025-12-06 16:20:41,926 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:41,926 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:41,958 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:20:41,960 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:20:42,039 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:20:42,042 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:26:36,819 log Forbidden (CSRF token from POST incorrect.): /admin/login/
+WARNING 2025-12-06 16:26:36,896 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 403 1081
+WARNING 2025-12-06 16:26:43,496 log Forbidden (CSRF token from POST incorrect.): /admin/login/
+WARNING 2025-12-06 16:26:43,554 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 403 1081
+WARNING 2025-12-06 16:26:43,648 log Not Found: /favicon.ico
+INFO 2025-12-06 16:26:43,709 basehttp - Broken pipe from ('127.0.0.1', 49542)
+INFO 2025-12-06 16:27:00,128 basehttp "GET /hadith/?grade=hasan&category= HTTP/1.1" 200 31153
+WARNING 2025-12-06 16:27:00,252 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:27:00,255 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:27:00,324 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:27:00,324 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:27:00,407 log Not Found: /favicon.ico
+INFO 2025-12-06 16:27:00,412 basehttp - Broken pipe from ('127.0.0.1', 49571)
+INFO 2025-12-06 16:27:15,807 basehttp "GET /library/ HTTP/1.1" 200 30851
+WARNING 2025-12-06 16:27:16,032 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:27:16,035 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:27:16,114 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:27:16,119 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:27:16,189 log Not Found: /favicon.ico
+INFO 2025-12-06 16:27:16,193 basehttp - Broken pipe from ('127.0.0.1', 49591)
+INFO 2025-12-06 16:27:18,891 basehttp "GET /library/document/create/ HTTP/1.1" 200 28686
+WARNING 2025-12-06 16:27:19,028 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:27:19,037 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:27:19,109 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:27:19,112 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:27:59,903 basehttp "POST /library/document/create/ HTTP/1.1" 302 0
+INFO 2025-12-06 16:28:01,393 basehttp "GET /library/ HTTP/1.1" 200 32722
+WARNING 2025-12-06 16:28:02,635 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:28:02,635 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:28:03,067 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:28:03,069 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:28:03,373 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:28:03,375 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:28:07,246 basehttp "GET /library/document/3/ HTTP/1.1" 200 33235
+WARNING 2025-12-06 16:28:08,038 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:28:08,038 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:28:08,416 log Not Found: /media/library/\u0643\u062a\u0627\u0628/2025/_79565.pdf
+WARNING 2025-12-06 16:28:08,421 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:28:09,042 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:28:09,045 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:28:09,605 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:28:09,609 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:28:10,111 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:28:10,111 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:30:22,206 log Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+INFO 2025-12-06 16:30:41,459 autoreload D:\sanad-system\sanad_system\library_app\views.py changed, reloading.
+INFO 2025-12-06 16:30:44,061 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-06 16:31:20,606 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:31:20,629 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:31:20,717 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:31:20,717 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:20,763 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:20,763 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:31:22,178 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:31:22,197 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:31:22,281 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:31:22,282 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:22,313 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:22,318 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:31:25,545 basehttp "GET /library/ HTTP/1.1" 200 32510
+WARNING 2025-12-06 16:31:25,655 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:25,657 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:25,675 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:31:25,680 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:25,741 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:25,742 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:31:28,226 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:31:28,242 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:31:28,342 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:28,343 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:28,367 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:31:28,369 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:28,421 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:28,430 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:31:43,369 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-06 16:31:49,453 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:31:49,472 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:31:49,543 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:31:49,546 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:49,586 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:49,587 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:31:50,540 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:31:50,560 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:31:50,640 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:50,644 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:50,668 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:31:50,670 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:31:50,721 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:31:50,725 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:32:43,717 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:32:43,761 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:32:43,934 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:32:43,935 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:32:44,044 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:32:44,046 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:32:45,285 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:32:45,322 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:32:45,471 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:32:45,471 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:32:45,579 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:32:45,581 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:33:13,180 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-06 16:33:18,465 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:33:18,483 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:33:18,620 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:33:18,630 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:33:18,685 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:33:18,691 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+ERROR 2025-12-06 16:33:19,621 log Internal Server Error: /library/document/3/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\template\base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 11: 'block'. Looking for one of: endblock.
+ERROR 2025-12-06 16:33:19,645 basehttp "GET /library/document/3/ HTTP/1.1" 500 25988
+WARNING 2025-12-06 16:33:19,753 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:33:19,755 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:33:19,849 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:33:19,851 basehttp "GET /static/css/style.css HTTP/1.1" 404 25863
+WARNING 2025-12-06 16:33:19,947 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:33:19,949 basehttp "GET /static/js/main.js HTTP/1.1" 404 25863
+INFO 2025-12-06 16:36:14,659 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 16:36:19,987 basehttp "GET /library/document/3/ HTTP/1.1" 200 31398
+WARNING 2025-12-06 16:36:20,222 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:36:20,223 basehttp "GET /static/css/style.css HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:36:20,303 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:36:20,305 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:36:20,507 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:36:20,511 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+INFO 2025-12-06 16:36:22,531 basehttp "GET /library/document/3/view/ HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:37:43,647 basehttp "GET /library/document/3/ HTTP/1.1" 200 32406
+WARNING 2025-12-06 16:37:43,744 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:37:43,746 basehttp "GET /static/css/style.css HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:37:43,771 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:37:43,771 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+INFO 2025-12-06 16:37:45,549 basehttp "GET /library/document/3/view/ HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:37:57,014 basehttp "GET /library/document/3/update/ HTTP/1.1" 200 29091
+WARNING 2025-12-06 16:37:57,107 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:37:57,110 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:37:57,141 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:37:57,143 basehttp "GET /static/css/style.css HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:37:57,207 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:37:57,210 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:38:06,133 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:38:06,134 basehttp "GET /static/css/style.css HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:38:06,167 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:38:06,168 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+INFO 2025-12-06 16:38:08,291 basehttp "GET /library/document/3/view/ HTTP/1.1" 200 45304371
+ERROR 2025-12-06 16:38:37,242 log Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-12-06 16:38:49,375 log Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+INFO 2025-12-06 16:39:49,375 basehttp "GET /library/document/3/ HTTP/1.1" 200 32436
+WARNING 2025-12-06 16:39:49,468 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:39:49,470 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:39:49,504 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:39:49,506 basehttp "GET /static/css/style.css HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:39:49,557 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:39:49,558 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:39:49,611 log Not Found: /media/library/\u0643\u062a\u0627\u0628/2025/_79565.pdf
+WARNING 2025-12-06 16:39:49,611 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:39:49,674 log Not Found: /static/css/style.css
+WARNING 2025-12-06 16:39:49,674 basehttp "GET /static/css/style.css HTTP/1.1" 404 25868
+WARNING 2025-12-06 16:39:49,707 log Not Found: /static/js/main.js
+WARNING 2025-12-06 16:39:49,710 basehttp "GET /static/js/main.js HTTP/1.1" 404 25868
+INFO 2025-12-06 16:41:52,007 basehttp "GET /library/ HTTP/1.1" 200 32526
+INFO 2025-12-06 16:41:52,322 basehttp "GET /static/css/style.css HTTP/1.1" 200 3761
+INFO 2025-12-06 16:41:52,324 basehttp "GET /static/js/main.js HTTP/1.1" 200 4678
+INFO 2025-12-06 16:41:55,468 basehttp "GET /library/document/3/ HTTP/1.1" 200 32436
+INFO 2025-12-06 16:41:57,420 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:42:55,097 basehttp "GET /library/ HTTP/1.1" 200 32526
+INFO 2025-12-06 16:42:59,227 basehttp "GET /library/document/3/ HTTP/1.1" 200 32436
+INFO 2025-12-06 16:43:01,541 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:43:57,107 basehttp "GET /library/document/3/ HTTP/1.1" 200 32436
+INFO 2025-12-06 16:43:58,774 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:44:16,363 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 16:44:34,246 basehttp - Broken pipe from ('127.0.0.1', 55692)
+INFO 2025-12-06 16:44:40,841 basehttp - Broken pipe from ('127.0.0.1', 55695)
+INFO 2025-12-06 16:44:42,147 basehttp "GET / HTTP/1.1" 200 26881
+INFO 2025-12-06 16:44:51,635 basehttp "GET /library/ HTTP/1.1" 200 32526
+INFO 2025-12-06 16:44:55,024 basehttp "GET /library/document/3/ HTTP/1.1" 200 33261
+INFO 2025-12-06 16:44:56,587 basehttp "GET /library/document/3/pdf/ HTTP/1.1" 200 7208
+INFO 2025-12-06 16:45:02,376 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+ERROR 2025-12-06 16:48:16,696 log Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-12-06 16:48:35,735 log Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\T\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+INFO 2025-12-06 16:48:42,183 autoreload D:\sanad-system\sanad_system\sanad_system\settings.py changed, reloading.
+INFO 2025-12-06 16:48:43,821 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 16:49:38,238 basehttp "GET /hadith/ HTTP/1.1" 200 55118
+INFO 2025-12-06 16:49:40,407 basehttp "GET /library/ HTTP/1.1" 200 32526
+INFO 2025-12-06 16:49:42,861 basehttp "GET /library/document/3/ HTTP/1.1" 200 33261
+INFO 2025-12-06 16:49:43,007 basehttp "GET /library/document/3/pdf/ HTTP/1.1" 200 7208
+INFO 2025-12-06 16:49:45,635 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:51:37,415 autoreload Watching for file changes with StatReloader
+INFO 2025-12-06 16:51:42,154 basehttp "GET / HTTP/1.1" 200 26881
+INFO 2025-12-06 16:51:44,534 basehttp "GET /library/ HTTP/1.1" 200 32526
+INFO 2025-12-06 16:51:48,346 basehttp "GET /library/document/3/ HTTP/1.1" 200 33261
+INFO 2025-12-06 16:51:48,566 basehttp "GET /library/document/3/pdf/ HTTP/1.1" 200 8415
+INFO 2025-12-06 16:51:51,828 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:51:52,163 basehttp "GET /media/library/%D9%83%D8%AA%D8%A7%D8%A8/2025/_79565.pdf HTTP/1.1" 200 45304371
+INFO 2025-12-06 16:52:11,902 basehttp "GET / HTTP/1.1" 200 26881
+INFO 2025-12-06 16:52:13,627 basehttp "GET / HTTP/1.1" 200 26881
+INFO 2025-12-06 16:52:29,449 basehttp "GET / HTTP/1.1" 200 26881
+INFO 2025-12-06 16:52:52,390 basehttp "GET / HTTP/1.1" 200 26881
+INFO 2025-12-06 16:55:12,173 basehttp "GET / HTTP/1.1" 200 26556
+INFO 2025-12-06 16:55:20,693 basehttp "GET /hadith/ HTTP/1.1" 200 54793
+INFO 2025-12-06 16:55:24,769 basehttp "GET /hadith/135/ HTTP/1.1" 200 26917

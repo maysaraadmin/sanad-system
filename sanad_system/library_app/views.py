@@ -70,12 +70,19 @@ def document_view(request, pk):
     # Get the content type
     content_type = mimetypes.guess_type(file_path)[0]
     
-    # Return the file response
-    return FileResponse(
+    # Create the file response
+    response = FileResponse(
         open(file_path, 'rb'),
         content_type=content_type,
         as_attachment=False
     )
+    
+    # Add headers for PDF viewing in browser
+    if content_type == 'application/pdf':
+        response['Content-Disposition'] = 'inline; filename="{}.pdf"'.format(document.title)
+        response['Accept-Ranges'] = 'bytes'
+    
+    return response
 
 @login_required
 def word_to_html(request, pk):
@@ -213,3 +220,18 @@ def toggle_public(request, pk):
     document.is_public = not document.is_public
     document.save()
     return JsonResponse({'status': 'success', 'is_public': document.is_public})
+
+def pdf_viewer(request, pk):
+    """Custom PDF viewer using Django template"""
+    document = get_object_or_404(Document, pk=pk)
+    
+    # Check permissions
+    if not document.is_public and document.uploaded_by != request.user:
+        raise PermissionDenied
+    
+    context = {
+        'document': document,
+        'pdf_url': request.build_absolute_uri(document.file.url),
+        'title': document.title,
+    }
+    return render(request, 'library_app/pdf_viewer.html', context)

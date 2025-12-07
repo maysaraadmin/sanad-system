@@ -11,6 +11,7 @@ urlpatterns = [
     path('document/<int:pk>/update/', views.DocumentUpdateView.as_view(), name='document_update'),
     path('document/<int:pk>/delete/', views.DocumentDeleteView.as_view(), name='document_delete'),
     path('document/<int:pk>/view/', views.document_view, name='document_view'),
+    path('document/<int:pk>/pdf/', views.pdf_viewer, name='pdf_viewer'),
     path('document/<int:pk>/word-html/', views.word_to_html, name='word_to_html'),
     
     # Document Type URLs

@@ -64,9 +64,27 @@ class Document(models.Model):
     @property
     def file_size(self):
         """Return file size in a human-readable format"""
-        size = self.file.size
-        for unit in ['B', 'KB', 'MB', 'GB']:
-            if size < 1024:
-                return f"{size:.1f} {unit}"
-            size /= 1024
-        return f"{size:.1f} TB"
+        try:
+            size = self.file.size
+            for unit in ['B', 'KB', 'MB', 'GB']:
+                if size < 1024:
+                    return f"{size:.1f} {unit}"
+                size /= 1024
+            return f"{size:.1f} TB"
+        except (FileNotFoundError, OSError):
+            return "ملف غير متوفر"
+    
+    @property
+    def file_exists(self):
+        """Check if the file exists on filesystem"""
+        try:
+            return os.path.exists(self.file.path)
+        except (FileNotFoundError, OSError):
+            return False
+    
+    @property
+    def safe_file_url(self):
+        """Return file URL only if file exists, otherwise return None"""
+        if self.file_exists:
+            return self.file.url
+        return None

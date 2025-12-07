@@ -475,10 +475,14 @@ def logout_all_sessions(request):
     """Logout user from all sessions except the current one."""
     # Get all sessions except the current one
     current_session_key = request.session.session_key
-    sessions = Session.objects.filter(user=request.user).exclude(session_key=current_session_key)
     
-    # Delete all other sessions
-    sessions.delete()
+    # Iterate over all non-expired sessions to find those belonging to the user
+    # Note: This can be slow if there are many active sessions in the database
+    for session in Session.objects.filter(expire_date__gte=timezone.now()):
+        data = session.get_decoded()
+        if str(data.get('_auth_user_id')) == str(request.user.id):
+            if session.session_key != current_session_key:
+                session.delete()
     
     messages.success(request, _('تم تسجيل الخروج من جميع الأجهزة الأخرى بنجاح'))
     return redirect(reverse('hadith_app:profile') + '?tab=settings')

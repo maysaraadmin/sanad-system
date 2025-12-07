@@ -265,6 +265,7 @@
             color: #0d6efd;
         }
     </style>
+    {% block extra_head %}{% endblock %}
 </head>
 <body class="rtl">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); box-shadow: var(--shadow);" aria-label="القائمة الرئيسية">
@@ -278,13 +279,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center {% if active_page == 'home' %}active fw-bold{% endif %}" 
-                           href="{% url 'hadith_app:home' %}">
-                            <i class="fas fa-home me-2"></i>
-                            <span>الرئيسية</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center {% if active_page == 'hadith_list' %}active fw-bold{% endif %}" 
                            href="{% url 'hadith_app:hadith_list' %}">
