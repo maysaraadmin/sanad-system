@@ -1,13 +1,21 @@
 import os
-import re
 import logging
-import json
+import time
 from typing import Dict, List, Optional, Tuple
-from pathlib import Path
+from django.conf import settings
 from PIL import Image
+import pytesseract
+from paddleocr import PaddleOCR
+import PyPDF2
+import arabic_reshaper
+from bidi.algorithm import get_display
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import re
+from difflib import SequenceMatcher
+from collections import Counter
 
-# Configure logging
 logger = logging.getLogger(__name__)
 
 class DocumentAnalyzer:
@@ -90,6 +98,9 @@ class DocumentAnalyzer:
             # Enhanced Arabic analysis
             try:
                 analysis = self._enhance_arabic_analysis(extracted_text)
+                # Add hadith comparison if text contains hadith-like content
+                if analysis.get("is_arabic", False):
+                    analysis["hadith_comparison"] = self._compare_with_hadiths(extracted_text)
             except Exception as analysis_error:
                 logger.error(f"Arabic analysis failed: {str(analysis_error)}")
                 # Fallback to basic analysis
@@ -535,6 +546,133 @@ class DocumentAnalyzer:
                 "language": "unknown",
                 "is_arabic": False
             }
+    
+    def _compare_with_hadiths(self, text: str) -> dict:
+        """Compare extracted text with hadiths in the database"""
+        try:
+            from hadith_app.models import Hadith
+            
+            # Get all hadiths
+            hadiths = Hadith.objects.all()
+            
+            if not hadiths.exists():
+                return {
+                    "status": "no_hadiths",
+                    "message": "لا توجد أحاديث في قاعدة البيانات للمقارنة",
+                    "matches": []
+                }
+            
+            # Prepare text for comparison
+            text_clean = self._clean_arabic_text(text)
+            text_words = set(text_clean.split())
+            
+            matches = []
+            best_match = None
+            best_similarity = 0
+            
+            for hadith in hadiths[:20]:  # Limit to first 20 for performance
+                hadith_clean = self._clean_arabic_text(hadith.text)
+                hadith_words = set(hadith_clean.split())
+                
+                # Calculate similarity using multiple methods
+                similarity_scores = []
+                
+                # 1. Jaccard similarity (word overlap)
+                jaccard_sim = len(text_words & hadith_words) / len(text_words | hadith_words) if text_words | hadith_words else 0
+                similarity_scores.append(jaccard_sim)
+                
+                # 2. Sequence matcher similarity
+                seq_sim = SequenceMatcher(None, text_clean, hadith_clean).ratio()
+                similarity_scores.append(seq_sim)
+                
+                # 3. TF-IDF cosine similarity (if sklearn is available)
+                try:
+                    vectorizer = TfidfVectorizer()
+                    tfidf_matrix = vectorizer.fit_transform([text_clean, hadith_clean])
+                    cosine_sim = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])[0][0]
+                    similarity_scores.append(cosine_sim)
+                except:
+                    pass
+                
+                # Calculate average similarity
+                avg_similarity = sum(similarity_scores) / len(similarity_scores)
+                
+                # Consider it a match if similarity > 0.3
+                if avg_similarity > 0.3:
+                    match_info = {
+                        "hadith_id": hadith.id,
+                        "hadith_text": hadith.text[:200] + "..." if len(hadith.text) > 200 else hadith.text,
+                        "source": hadith.source,
+                        "grade": hadith.get_grade_display() if hadith.grade else "غير مصنف",
+                        "similarity": round(avg_similarity, 3),
+                        "jaccard_similarity": round(jaccard_sim, 3),
+                        "sequence_similarity": round(seq_sim, 3)
+                    }
+                    matches.append(match_info)
+                
+                # Track best match (always create the match_info)
+                current_match = {
+                    "hadith_id": hadith.id,
+                    "hadith_text": hadith.text[:200] + "..." if len(hadith.text) > 200 else hadith.text,
+                    "source": hadith.source,
+                    "grade": hadith.get_grade_display() if hadith.grade else "غير مصنف",
+                    "similarity": round(avg_similarity, 3),
+                    "jaccard_similarity": round(jaccard_sim, 3),
+                    "sequence_similarity": round(seq_sim, 3)
+                }
+                
+                if avg_similarity > best_similarity:
+                    best_similarity = avg_similarity
+                    best_match = current_match
+            
+            # Sort matches by similarity
+            matches.sort(key=lambda x: x["similarity"], reverse=True)
+            
+            result = {
+                "status": "completed",
+                "total_hadiths_checked": hadiths.count(),
+                "matches_found": len(matches),
+                "best_similarity": round(best_similarity, 3),
+                "matches": matches[:5]  # Return top 5 matches
+            }
+            
+            if best_match and best_similarity > 0.7:
+                result["message"] = f"تم العثور على تطابق قوي مع حديث من {best_match['source']}"
+            elif matches:
+                result["message"] = f"تم العثور على {len(matches)} تطابقات محتملة"
+            else:
+                result["message"] = "لم يتم العثور على تطابقات واضحة مع الأحاديث المعروفة"
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"Hadith comparison failed: {str(e)}")
+            return {
+                "status": "error",
+                "message": f"فشلت المقارنة مع الأحاديث: {str(e)}",
+                "matches": []
+            }
+    
+    def _clean_arabic_text(self, text: str) -> str:
+        """Clean and normalize Arabic text for comparison"""
+        # Remove control characters (like \u0002, \u0004, etc.)
+        text = re.sub(r'[\u0000-\u001F\u007F-\u009F]', '', text)
+        
+        # Remove diacritics (tashkeel)
+        text = re.sub(r'[\u064B-\u065F\u0670\u0674\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]', '', text)
+        
+        # Normalize Arabic characters
+        text = re.sub(r'[أإآ]', 'ا', text)  # Normalize alef variations
+        text = re.sub(r'[يى]', 'ي', text)   # Normalize yeh variations
+        text = re.sub(r'ة', 'ه', text)      # Normalize teh marbuta
+        
+        # Remove punctuation and special characters
+        text = re.sub(r'[^\u0600-\u06FF\s]', ' ', text)
+        
+        # Remove extra spaces and normalize whitespace
+        text = re.sub(r'\s+', ' ', text).strip()
+        
+        return text
 
     def _analyze_text(self, text: str) -> Dict:
         """Analyze extracted text"""

@@ -444,3 +444,49 @@ class SanadForm(forms.ModelForm):
                 SanadNarrator.objects.create(sanad=sanad, narrator=narrator)
                 
         return sanad
+
+
+class SearchForm(forms.Form):
+    q = forms.CharField(
+        label='نص البحث',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'ابحث عن حديث أو راوي...'
+        })
+    )
+    
+    search_in = forms.ChoiceField(
+        label='البحث في',
+        choices=[
+            ('all', 'الكل'),
+            ('hadith', 'الأحاديث فقط'),
+            ('narrator', 'الرواة فقط')
+        ],
+        initial='all',
+        widget=forms.Select(attrs={
+            'class': 'form-select'
+        })
+    )
+    
+    grade_filter = forms.MultipleChoiceField(
+        label='التصنيف',
+        choices=[
+            ('sahih', 'صحيح'),
+            ('hasan', 'حسن'),
+            ('daif', 'ضعيف'),
+            ('mawdu', 'موضوع'),
+        ],
+        required=False,
+        widget=forms.SelectMultiple(attrs={
+            'class': 'form-select'
+        })
+    )
+    
+    show_sanad = forms.BooleanField(
+        label='عرض السند',
+        required=False,
+        widget=forms.CheckboxInput(attrs={
+            'class': 'form-check-input'
+        })
+    )

@@ -22,7 +22,7 @@ class SearchView(TemplateView):
             search_in = form.cleaned_data.get('search_in', 'all')
             grade_filter = form.cleaned_data.get('grade_filter', [])
             show_sanad = form.cleaned_data.get('show_sanad', False)
-            page = request.GET.get('page', 1)
+            page = self.request.GET.get('page', 1)
             
             hadith_results = []
             narrator_results = []
