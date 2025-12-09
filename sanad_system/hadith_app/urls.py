@@ -12,7 +12,28 @@ from .views.sanad_tree_views import SanadTreeView, sanad_comparison_view, narrat
 from .views.narrator_analysis_views import (
     narrator_analysis_view, narrator_relationship_network_api, 
     narrator_timeline_api, narrator_geographical_api, 
-    narrator_comparison_api, narrator_hadith_paths_api, hadith_comparison_api
+    narrator_comparison_api, narrator_hadith_paths_api, hadith_comparison_api,
+    add_teacher_view, add_teacher_submit, remove_teacher
+)
+from .views.student_management_views import (
+    add_student_view, add_student_submit, remove_student, 
+    student_list_view, update_student_notes
+)
+from .views.hadith_text_views import (
+    hadith_texts_view, add_hadith_text_view, add_hadith_text_submit,
+    set_primary_text, delete_hadith_text, hadith_text_comparison_view
+)
+from .views.sanad_narrator_views import (
+    sanad_narrators_view, add_sanad_narrator_view, add_sanad_narrator_submit,
+    remove_sanad_narrator, reorder_sanad_narrators, update_sanad_narrator
+)
+from .views.sanad_management_views import (
+    SanadUpdateView, SanadDeleteView, sanad_list_view, 
+    sanad_duplicate_view, sanad_clear_narrators_view
+)
+from .views.sanad_text_views import (
+    sanad_text_detail_view, SanadTextCreateView, SanadTextUpdateView,
+    set_primary_sanad_text_view, hadith_sanad_texts_view, auto_create_sanad_texts_view
 )
 
 app_name = 'hadith_app'
@@ -59,6 +80,14 @@ urlpatterns = [
     path('hadith/<int:pk>/update/', HadithUpdateView.as_view(), name='hadith_update'),
     path('hadith/<int:pk>/delete/', HadithDeleteView.as_view(), name='hadith_delete'),
     
+    # Hadith Text Management URLs
+    path('hadith/<int:hadith_id>/texts/', hadith_texts_view, name='hadith_texts'),
+    path('hadith/<int:hadith_id>/texts/add/', add_hadith_text_view, name='add_hadith_text'),
+    path('hadith/<int:hadith_id>/texts/submit/', add_hadith_text_submit, name='add_hadith_text_submit'),
+    path('hadith/<int:hadith_id>/texts/<int:text_id>/set-primary/', set_primary_text, name='set_primary_text'),
+    path('hadith/<int:hadith_id>/texts/<int:text_id>/delete/', delete_hadith_text, name='delete_hadith_text'),
+    path('hadith/<int:hadith_id>/texts/comparison/', hadith_text_comparison_view, name='hadith_text_comparison'),
+    
     # Narrator URLs
     path('narrators/', NarratorListView.as_view(), name='narrator_list'),
     path('narrators/create/', NarratorCreateView.as_view(), name='narrator_create'),
@@ -74,6 +103,18 @@ urlpatterns = [
     path('narrator/<int:narrator_id>/comparison/', narrator_comparison_api, name='narrator_comparison'),
     path('narrator/<int:narrator_id>/hadith-paths/', narrator_hadith_paths_api, name='narrator_hadith_paths'),
     
+    # Teacher Management URLs
+    path('narrator/<int:narrator_id>/teachers/add/', add_teacher_view, name='add_teacher'),
+    path('narrator/<int:narrator_id>/teachers/submit/', add_teacher_submit, name='add_teacher_submit'),
+    path('narrator/<int:narrator_id>/teachers/<int:teacher_id>/remove/', remove_teacher, name='remove_teacher'),
+    
+    # Student Management URLs
+    path('narrator/<int:narrator_id>/students/add/', add_student_view, name='add_student'),
+    path('narrator/<int:narrator_id>/students/submit/', add_student_submit, name='add_student_submit'),
+    path('narrator/<int:narrator_id>/students/<int:student_id>/remove/', remove_student, name='remove_student'),
+    path('narrator/<int:narrator_id>/students/', student_list_view, name='student_list'),
+    path('narrator/<int:narrator_id>/students/<int:student_id>/update-notes/', update_student_notes, name='update_student_notes'),
+    
     # Search
     path('search/', SearchView.as_view(), name='search'),
     
@@ -83,6 +124,29 @@ urlpatterns = [
     path('sanad/<int:hadith_id>/comparison/', sanad_comparison_view, name='sanad_comparison'),
     path('api/narrator/<int:narrator_id>/paths/', narrator_paths_api, name='narrator_paths'),
     path('api/hadith/compare/<str:hadith_ids>/', hadith_comparison_api, name='hadith_comparison'),
+    
+    # Sanad Management URLs
+    path('sanad/<int:pk>/edit/', SanadUpdateView.as_view(), name='sanad_edit'),
+    path('sanad/<int:pk>/delete/', SanadDeleteView.as_view(), name='sanad_delete'),
+    path('sanad/<int:hadith_id>/list/', sanad_list_view, name='sanad_list'),
+    path('sanad/<int:sanad_id>/duplicate/', sanad_duplicate_view, name='sanad_duplicate'),
+    path('sanad/<int:sanad_id>/clear-narrators/', sanad_clear_narrators_view, name='sanad_clear_narrators'),
+    
+    # Sanad Narrator Management URLs
+    path('sanad/<int:sanad_id>/narrators/', sanad_narrators_view, name='sanad_narrators'),
+    path('sanad/<int:sanad_id>/narrators/add/', add_sanad_narrator_view, name='add_sanad_narrator'),
+    path('sanad/<int:sanad_id>/narrators/submit/', add_sanad_narrator_submit, name='add_sanad_narrator_submit'),
+    path('sanad/<int:sanad_id>/narrators/<int:narrator_id>/remove/', remove_sanad_narrator, name='remove_sanad_narrator'),
+    path('sanad/<int:sanad_id>/narrators/reorder/', reorder_sanad_narrators, name='reorder_sanad_narrators'),
+    path('sanad/<int:sanad_id>/narrators/<int:narrator_id>/update/', update_sanad_narrator, name='update_sanad_narrator'),
+    
+    # Sanad Text Management URLs
+    path('sanad/<int:sanad_id>/text/', sanad_text_detail_view, name='sanad_text_detail'),
+    path('sanad/<int:sanad_id>/text/create/', SanadTextCreateView.as_view(), name='sanad_text_create'),
+    path('sanad/<int:sanad_id>/text/edit/<int:pk>/', SanadTextUpdateView.as_view(), name='sanad_text_edit'),
+    path('sanad-text/<int:sanad_text_id>/set-primary/', set_primary_sanad_text_view, name='set_primary_sanad_text'),
+    path('hadith/<int:hadith_id>/sanad-texts/', hadith_sanad_texts_view, name='hadith_sanad_texts'),
+    path('hadith/<int:hadith_id>/sanad-texts/auto-create/', auto_create_sanad_texts_view, name='auto_create_sanad_texts'),
     
     # Profile
     path('profile/', ProfileView.as_view(), name='profile'),

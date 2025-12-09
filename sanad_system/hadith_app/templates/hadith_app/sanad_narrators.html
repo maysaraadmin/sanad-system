@@ -1,0 +1,243 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}رواة السند - {{ hadith.text|truncatewords:10 }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_detail' hadith.pk %}">{{ hadith.text|truncatewords:10 }}</a></li>
+            <li class="breadcrumb-item active">رواة السند</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-users me-2"></i>
+                        رواة السند
+                    </h2>
+                    <p class="text-muted mb-0">
+                        {{ hadith.text|truncatewords:20 }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:add_sanad_narrator' sanad.id %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-1"></i>
+                        إضافة راوٍ
+                    </a>
+                    <a href="{% url 'hadith_app:hadith_detail' hadith.id %}" class="btn btn-outline-secondary ms-2">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة للحديث
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Sanad Info -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>معلومات السند</h6>
+                    <p class="mb-1">
+                        <strong>رقم السند:</strong> {{ sanad.id }}
+                    </p>
+                    <p class="mb-1">
+                        <strong>عدد الرواة:</strong> {{ narrators.count }}
+                    </p>
+                    {% if sanad.is_mutawatir %}
+                        <span class="badge bg-success">متواتر</span>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    {% if sanad.notes %}
+                        <h6>ملاحظات على السند</h6>
+                        <p class="text-muted">{{ sanad.notes }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Narrators List -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="fas fa-list me-2"></i>
+                سلسلة الرواة ({{ narrators.count }})
+            </h5>
+        </div>
+        <div class="card-body">
+            {% if narrators %}
+                <div id="narrators-list">
+                    {% for sanad_narrator in narrators %}
+                        <div class="narrator-item" data-narrator-id="{{ sanad_narrator.narrator.id }}" data-order="{{ sanad_narrator.order }}">
+                            <div class="d-flex align-items-center p-3 border rounded mb-2">
+                                <div class="me-3">
+                                    <span class="badge bg-primary order-number">{{ sanad_narrator.order }}</span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">
+                                        <a href="{% url 'hadith_app:narrator_detail' sanad_narrator.narrator.id %}" class="text-decoration-none">
+                                            {{ sanad_narrator.narrator.name }}
+                                        </a>
+                                        <span class="badge bg-{% if sanad_narrator.narrator.reliability == 'thiqa' %}success{% elif sanad_narrator.narrator.reliability == 'saduq' %}info{% elif sanad_narrator.narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %} ms-2">
+                                            {{ sanad_narrator.narrator.get_reliability_display }}
+                                        </span>
+                                    </h6>
+                                    <p class="text-muted mb-1">
+                                        {% if sanad_narrator.narration_method %}
+                                            <span class="me-2">{{ sanad_narrator.narration_method }}</span>
+                                        {% endif %}
+                                        ({{ sanad_narrator.narrator.birth_year|default:"؟" }} - {{ sanad_narrator.narrator.death_year|default:"؟" }})
+                                    </p>
+                                    {% if sanad_narrator.narrator.biography %}
+                                        <small class="text-muted">{{ sanad_narrator.narrator.biography|truncatechars:100 }}</small>
+                                    {% endif %}
+                                </div>
+                                <div class="ms-3">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-sm btn-outline-info edit-narrator-btn" 
+                                                data-narrator-id="{{ sanad_narrator.narrator.id }}"
+                                                data-order="{{ sanad_narrator.order }}"
+                                                data-narration-method="{{ sanad_narrator.narration_method|default:'' }}"
+                                                title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <form method="post" action="{% url 'hadith_app:remove_sanad_narrator' sanad.id sanad_narrator.narrator.id %}" class="d-inline"
+                                              onsubmit="return confirm('هل أنت متأكد من إزالة هذا الراوي من السند؟')">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="إزالة">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">لا يوجد رواة في هذا السند</h5>
+                    <p class="text-muted mb-4">
+                        يمكنك إضافة الرواة لتكوين سند الحديث
+                    </p>
+                    <a href="{% url 'hadith_app:add_sanad_narrator' sanad.id %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-1"></i>
+                        إضافة أول راوٍ
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Edit Narrator Modal -->
+<div class="modal fade" id="editNarratorModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تعديل بيانات الراوي في السند</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editNarratorForm">
+                    {% csrf_token %}
+                    <input type="hidden" id="edit-narrator-id">
+                    <div class="mb-3">
+                        <label for="edit-order" class="form-label">الترتيب في السند</label>
+                        <input type="number" class="form-control" id="edit-order" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-narration-method" class="form-label">طريقة الرواية</label>
+                        <input type="text" class="form-control" id="edit-narration-method" 
+                               placeholder="مثال: حدثنا، أخبرنا، أنبأنا">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                <button type="button" class="btn btn-primary" id="save-narrator-btn">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .order-number {
+        font-size: 1.2em;
+        min-width: 40px;
+        text-align: center;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Edit narrator functionality
+    const editNarratorModal = new bootstrap.Modal(document.getElementById('editNarratorModal'));
+    const editNarratorBtns = document.querySelectorAll('.edit-narrator-btn');
+    const saveNarratorBtn = document.getElementById('save-narrator-btn');
+    
+    editNarratorBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const narratorId = this.dataset.narratorId;
+            const order = this.dataset.order;
+            const narrationMethod = this.dataset.narrationMethod;
+            
+            document.getElementById('edit-narrator-id').value = narratorId;
+            document.getElementById('edit-order').value = order;
+            document.getElementById('edit-narration-method').value = narrationMethod;
+            
+            editNarratorModal.show();
+        });
+    });
+    
+    saveNarratorBtn.addEventListener('click', function() {
+        const form = document.getElementById('editNarratorForm');
+        const formData = new FormData(form);
+        
+        const narratorId = document.getElementById('edit-narrator-id').value;
+        const url = `/sanad/{{ sanad.id }}/narrators/${narratorId}/update/`;
+        
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                editNarratorModal.hide();
+                location.reload();
+            } else {
+                alert('حدث خطأ: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('حدث خطأ في الاتصال بالخادم');
+        });
+    });
+});
+</script>
+{% endblock %}

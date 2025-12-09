@@ -66,7 +66,7 @@
 .legend-prophet { background: #28a745; color: white; }
 .legend-companion { background: #17a2b8; color: white; }
 .legend-narrator { background: #007bff; color: white; }
-.legend-hadith { background: #6f42c1; color: white; }
+.legend-hadith { background: #ff6b35; color: white; }
 
 .hadith-info {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -269,8 +269,11 @@ function loadTree(treeDataJson) {
             level: node.level,
             color: getNodeColor(node.type),
             font: {
-                color: 'white',
-                bold: node.type === 'hadith'
+                color: '#000000',
+                bold: true,
+                size: 16,
+                strokeWidth: 3,
+                strokeColor: '#ffffff'
             },
             shape: node.type === 'hadith' ? 'box' : 'dot',
             size: node.type === 'hadith' ? 25 : 20,
@@ -389,7 +392,7 @@ function getNodeColor(type) {
     switch(type) {
         case 'prophet_companion': return '#28a745';
         case 'final_narrator': return '#17a2b8';
-        case 'hadith': return '#6f42c1';
+        case 'hadith': return '#ff6b35';
         default: return '#007bff';
     }
 }

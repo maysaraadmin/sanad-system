@@ -48,8 +48,8 @@ class SanadForm(forms.ModelForm):
         if 'narrators' in self.cleaned_data:
             # Clear existing relations
             sanad.narrators.clear()
-            # Add new relations
-            for narrator in self.cleaned_data['narrators']:
-                SanadNarrator.objects.create(sanad=sanad, narrator=narrator)
+            # Add new relations with order
+            for index, narrator in enumerate(self.cleaned_data['narrators']):
+                SanadNarrator.objects.create(sanad=sanad, narrator=narrator, order=index + 1)
                 
         return sanad

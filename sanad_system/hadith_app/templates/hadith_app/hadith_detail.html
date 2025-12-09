@@ -6,7 +6,62 @@
 <div class="card mb-4">
     <div class="card-body">
         <h2 class="card-title">نص الحديث</h2>
-        <p class="card-text">{{ hadith.text }}</p>
+        {% if hadith.asanid.exists %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                هذا الحديث له {{ hadith.asanid.count }} سند/أسانيد. كل سند يمكن أن يكون له نص مختلف.
+                <a href="{% url 'hadith_app:hadith_sanad_texts' hadith.id %}" class="btn btn-sm btn-outline-primary ms-2">
+                    <i class="fas fa-list me-1"></i>
+                    عرض جميع النصوص
+                </a>
+            </div>
+        {% endif %}
+        {% if hadith.asanid.count == 1 %}
+            {% with first_sanad=hadith.asanid.first %}
+                {% if first_sanad.sanad_text %}
+                    <p class="card-text">{{ first_sanad.sanad_text.text }}</p>
+                    {% if first_sanad.sanad_text.source_reference %}
+                        <small class="text-muted">المصدر: {{ first_sanad.sanad_text.source_reference }}</small>
+                    {% endif %}
+                {% else %}
+                    <p class="card-text">{{ hadith.text }}</p>
+                    <a href="{% url 'hadith_app:sanad_text_detail' first_sanad.id %}" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-edit me-1"></i>
+                        إضافة نص للسند
+                    </a>
+                {% endif %}
+            {% endwith %}
+        {% else %}
+            <p class="card-text">{{ hadith.text }}</p>
+            <div class="mt-3">
+                <h6>النصوص حسب السند:</h6>
+                {% for sanad in hadith.asanid.all %}
+                    <div class="card mb-2">
+                        <div class="card-body py-2">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <strong>سند {{ forloop.counter }}:</strong>
+                                    {% if sanad.sanad_text %}
+                                        <span class="text-primary">{{ sanad.sanad_text.get_short_text }}</span>
+                                        {% if sanad.sanad_text.is_primary %}
+                                            <span class="badge bg-success ms-2">أساسي</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="text-muted">لا يوجد نص</span>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <a href="{% url 'hadith_app:sanad_text_detail' sanad.id %}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye me-1"></i>
+                                        عرض
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         
         <div class="row mt-4">
             <div class="col-md-6">
@@ -29,10 +84,22 @@
                         <span class="badge bg-secondary">{{ category.name }}</span>
                         {% endfor %}
                     </li>
+                    <li class="list-group-item">
+                        <strong>عدد النصوص:</strong> 
+                        <span class="badge bg-info">{{ hadith.get_text_count }}</span>
+                        <a href="{% url 'hadith_app:hadith_texts' hadith.id %}" class="btn btn-sm btn-outline-primary ms-2">
+                            <i class="fas fa-file-alt me-1"></i>
+                            إدارة النصوص
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-6">
                 <div class="d-flex justify-content-end">
+                    <a href="{% url 'hadith_app:add_hadith_text' hadith.id %}" class="btn btn-sm btn-success me-2">
+                        <i class="fas fa-plus me-1"></i>
+                        إضافة نص
+                    </a>
                     <a href="{% url 'hadith_app:hadith_update' hadith.id %}" class="btn btn-sm btn-outline-primary me-2">تعديل</a>
                     <a href="{% url 'hadith_app:hadith_delete' hadith.id %}" class="btn btn-sm btn-outline-danger">حذف</a>
                 </div>
@@ -43,33 +110,119 @@
 
 {% for sanad in hadith.asanid.all %}
 <div class="card mb-4">
-    <div class="card-header">
-        <h3 class="card-title">سند الحديث {% if sanad.is_mutawatir %}<span class="badge bg-success">متواتر</span>{% endif %}</h3>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title mb-0">
+            سند الحديث {% if sanad.is_mutawatir %}<span class="badge bg-success">متواتر</span>{% endif %}
+        </h3>
+        <div class="btn-group" role="group">
+            <a href="{% url 'hadith_app:sanad_edit' sanad.id %}" class="btn btn-sm btn-outline-warning" title="تعديل السند">
+                <i class="fas fa-edit me-1"></i>
+                تعديل
+            </a>
+            <a href="{% url 'hadith_app:sanad_delete' sanad.id %}" class="btn btn-sm btn-outline-danger" 
+               onclick="return confirm('هل أنت متأكد من حذف هذا السند؟')" title="حذف السند">
+                <i class="fas fa-trash me-1"></i>
+                حذف
+            </a>
+            <a href="{% url 'hadith_app:sanad_narrators' sanad.id %}" class="btn btn-sm btn-outline-primary" title="إدارة الرواة">
+                <i class="fas fa-users me-1"></i>
+                الرواة
+            </a>
+            <a href="{% url 'hadith_app:add_sanad_narrator' sanad.id %}" class="btn btn-sm btn-success" title="إضافة راوٍ">
+                <i class="fas fa-plus me-1"></i>
+                إضافة راوٍ
+            </a>
+        </div>
     </div>
     <div class="card-body">
-        <div class="timeline">
-            {% for narrator in sanad.sanadnarrator_set.all|dictsort:"order" %}
-            <div class="timeline-item">
-                <div class="timeline-item-marker">
-                    <div class="timeline-item-marker-indicator bg-primary"></div>
+        <div class="mb-4">
+            <h5 class="card-title">
+                <i class="fas fa-file-alt me-2"></i>
+                نص السند
+                <div class="btn-group btn-group-sm float-end">
+                    <a href="{% url 'hadith_app:sanad_text_detail' sanad.id %}" class="btn btn-outline-primary" title="عرض تفاصيل النص">
+                        <i class="fas fa-eye me-1"></i>
+                        تفاصيل
+                    </a>
+                    <a href="{% url 'hadith_app:sanad_text_create' sanad.id %}" class="btn btn-outline-success" title="إضافة/تعديل نص">
+                        <i class="fas fa-edit me-1"></i>
+                        تعديل
+                    </a>
                 </div>
-                <div class="timeline-item-content">
-                    <h4 class="mb-1">
-                        <a href="{% url 'hadith_app:narrator_detail' narrator.narrator.id %}">{{ narrator.narrator.name }}</a>
-                        <span class="badge bg-{% if narrator.narrator.reliability == 'thiqa' %}success{% elif narrator.narrator.reliability == 'saduq' %}info{% elif narrator.narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
-                            {{ narrator.narrator.get_reliability_display }}
-                        </span>
-                    </h4>
-                    <p class="text-muted mb-1">
-                        {{ narrator.narration_method|default:"روى" }} 
-                        ({{ narrator.narrator.birth_year|default:"؟" }} - {{ narrator.narrator.death_year|default:"؟" }})
-                    </p>
-                    {% if narrator.narrator.biography %}
-                    <p class="mb-0">{{ narrator.narrator.biography|truncatechars:150 }}</p>
+            </h5>
+            {% if sanad.sanad_text %}
+                <div class="alert alert-light border-primary">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="mb-0">
+                            {% if sanad.sanad_text.is_primary %}
+                                <span class="badge bg-success me-2">النص الأساسي</span>
+                            {% endif %}
+                            نص الحديث لهذا السند
+                        </h6>
+                        <small class="text-muted">
+                            {% if sanad.sanad_text.updated_at %}
+                                آخر تحديث: {{ sanad.sanad_text.updated_at|date:"Y/m/d H:i" }}
+                            {% endif %}
+                        </small>
+                    </div>
+                    <div class="narration-text mb-3">
+                        {{ sanad.sanad_text.text|linebreaks }}
+                    </div>
+                    {% if sanad.sanad_text.source_reference %}
+                        <div class="mb-2">
+                            <strong>المصدر المحدد:</strong> 
+                            <span class="text-primary">{{ sanad.sanad_text.source_reference }}</span>
+                        </div>
+                    {% endif %}
+                    {% if sanad.sanad_text.variation_notes %}
+                        <div class="mb-2">
+                            <strong>ملاحظات الاختلاف:</strong>
+                            <p class="mb-0 text-muted">{{ sanad.sanad_text.variation_notes }}</p>
+                        </div>
                     {% endif %}
                 </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>لا يوجد نص خاص لهذا السند</strong>
+                    <p class="mb-2 mt-2">يمكنك إضافة نص خاص لهذا السند لتوثيق الرواية المحددة.</p>
+                    <a href="{% url 'hadith_app:sanad_text_create' sanad.id %}" class="btn btn-sm btn-success">
+                        <i class="fas fa-plus me-1"></i>
+                        إضافة نص للسند
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <h5 class="card-title">
+                <i class="fas fa-users me-2"></i>
+                سلسلة الرواة
+            </h5>
+            <div class="timeline">
+                {% for narrator in sanad.sanadnarrator_set.all|dictsort:"order" %}
+                <div class="timeline-item">
+                    <div class="timeline-item-marker">
+                        <div class="timeline-item-marker-indicator bg-primary"></div>
+                    </div>
+                    <div class="timeline-item-content">
+                        <h4 class="mb-1">
+                            <a href="{% url 'hadith_app:narrator_detail' narrator.narrator.id %}">{{ narrator.narrator.name }}</a>
+                            <span class="badge bg-{% if narrator.narrator.reliability == 'thiqa' %}success{% elif narrator.narrator.reliability == 'saduq' %}info{% elif narrator.narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
+                                {{ narrator.narrator.get_reliability_display }}
+                            </span>
+                        </h4>
+                        <p class="text-muted mb-1">
+                            {{ narrator.narration_method|default:"روى" }} 
+                            ({{ narrator.narrator.birth_year|default:"؟" }} - {{ narrator.narrator.death_year|default:"؟" }})
+                        </p>
+                        {% if narrator.narrator.biography %}
+                        <p class="mb-0">{{ narrator.narrator.biography|truncatechars:150 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         
         {% if sanad.notes %}

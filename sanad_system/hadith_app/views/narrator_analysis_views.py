@@ -4,15 +4,16 @@ Narrator Analysis Views
 This module provides comprehensive analysis tools for hadith narrators,
 including relationship networks, timelines, geographical maps, and comparisons.
 """
-from django.shortcuts import render, get_object_or_404
-from django.shortcuts import render, get_object_or_404
-from django.views.decorators.http import require_GET, require_http_methods
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.http import require_GET, require_http_methods, require_POST
 from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
 from django.utils.translation import gettext as _
+from django.contrib import messages
 import json
-from hadith_app.models import Narrator, Hadith, SanadNarrator, Sanad
+from hadith_app.models import Narrator, Hadith, SanadNarrator, Sanad, TeacherStudentRelationship
+from hadith_app.forms import AddTeacherForm
 import json
 from collections import defaultdict
 from datetime import datetime
@@ -90,9 +91,24 @@ def narrator_analysis_view(request, narrator_id):
     # Get all hadiths where this narrator appears
     hadiths = Hadith.objects.filter(asanid__narrators=narrator).distinct()
     
-    # Get teacher-student relationships
+    # Get teacher-student relationships (from both ManyToMany and TeacherStudentRelationship)
     teachers = narrator.teachers.all()
-    students = narrator.students.all()
+    
+    # Get students from both sources
+    student_ids = set()
+    
+    # From ManyToMany field
+    many_to_many_students = narrator.students.all()
+    student_ids.update(many_to_many_students.values_list('id', flat=True))
+    
+    # From TeacherStudentRelationship where narrator is teacher
+    relationship_students = Narrator.objects.filter(
+        teacher_relationships__teacher=narrator
+    ).distinct()
+    student_ids.update(relationship_students.values_list('id', flat=True))
+    
+    # Get combined student queryset
+    students = Narrator.objects.filter(id__in=student_ids).distinct()
     
     # Get contemporaries
     contemporaries = narrator.get_contemporaries()
@@ -136,27 +152,19 @@ def narrator_relationship_network_api(request, narrator_id):
     """
     narrator = get_object_or_404(Narrator, id=narrator_id)
     
-    # Build network data
-    nodes = []
+    # Build network data with proper ordering: teachers -> narrator -> students
+    teacher_nodes = []
+    student_nodes = []
     edges = []
     node_ids = set()
     
-    # Add the main narrator
-    nodes.append({
-        'id': narrator.id,
-        'name': narrator.name,
-        'type': 'target',
-        'reliability': narrator.get_reliability_display(),
-        'birth_year': narrator.birth_year,
-        'death_year': narrator.death_year,
-        'madhhab': narrator.get_madhhab_display()
-    })
-    node_ids.add(narrator.id)
+    # Collect teachers first (from both ManyToMany and TeacherStudentRelationship)
+    teacher_ids = set()
     
-    # Add teachers
+    # From ManyToMany field (existing relationships)
     for teacher in narrator.teachers.all():
         if teacher.id not in node_ids:
-            nodes.append({
+            teacher_nodes.append({
                 'id': teacher.id,
                 'name': teacher.name,
                 'type': 'teacher',
@@ -172,11 +180,40 @@ def narrator_relationship_network_api(request, narrator_id):
             'to': narrator.id,
             'type': 'teacher_student'
         })
+        teacher_ids.add(teacher.id)
     
-    # Add students
+    # From TeacherStudentRelationship where narrator is student
+    for relationship in TeacherStudentRelationship.objects.filter(student=narrator):
+        teacher = relationship.teacher
+        if teacher.id not in node_ids:
+            teacher_nodes.append({
+                'id': teacher.id,
+                'name': teacher.name,
+                'type': 'teacher',
+                'reliability': teacher.get_reliability_display(),
+                'birth_year': teacher.birth_year,
+                'death_year': teacher.death_year,
+                'madhhab': teacher.get_madhhab_display(),
+                'notes': relationship.notes
+            })
+            node_ids.add(teacher.id)
+        
+        if teacher.id not in teacher_ids:  # Avoid duplicate edges
+            edges.append({
+                'from': teacher.id,
+                'to': narrator.id,
+                'type': 'teacher_student',
+                'notes': relationship.notes
+            })
+        teacher_ids.add(teacher.id)
+    
+    # Collect students (from both ManyToMany and TeacherStudentRelationship)
+    student_ids = set()
+    
+    # From ManyToMany field (existing relationships)
     for student in narrator.students.all():
         if student.id not in node_ids:
-            nodes.append({
+            student_nodes.append({
                 'id': student.id,
                 'name': student.name,
                 'type': 'student',
@@ -192,6 +229,52 @@ def narrator_relationship_network_api(request, narrator_id):
             'to': student.id,
             'type': 'teacher_student'
         })
+        student_ids.add(student.id)
+    
+    # From TeacherStudentRelationship where narrator is teacher
+    for relationship in TeacherStudentRelationship.objects.filter(teacher=narrator):
+        student = relationship.student
+        if student.id not in node_ids:
+            student_nodes.append({
+                'id': student.id,
+                'name': student.name,
+                'type': 'student',
+                'reliability': student.get_reliability_display(),
+                'birth_year': student.birth_year,
+                'death_year': student.death_year,
+                'madhhab': student.get_madhhab_display(),
+                'notes': relationship.notes
+            })
+            node_ids.add(student.id)
+        
+        if student.id not in student_ids:  # Avoid duplicate edges
+            edges.append({
+                'from': narrator.id,
+                'to': student.id,
+                'type': 'teacher_student',
+                'notes': relationship.notes
+            })
+        student_ids.add(student.id)
+    
+    # Build final nodes array in proper order: teachers -> narrator -> students
+    nodes = []
+    
+    # Add teachers first
+    nodes.extend(teacher_nodes)
+    
+    # Add narrator in the middle
+    nodes.append({
+        'id': narrator.id,
+        'name': narrator.name,
+        'type': 'target',
+        'reliability': narrator.get_reliability_display(),
+        'birth_year': narrator.birth_year,
+        'death_year': narrator.death_year,
+        'madhhab': narrator.get_madhhab_display()
+    })
+    
+    # Add students last
+    nodes.extend(student_nodes)
     
     # Add contemporaries with connections
     for contemporary in narrator.get_contemporaries()[:20]:
@@ -333,9 +416,12 @@ def narrator_geographical_api(request, narrator_id):
             'importance': 10
         })
     
-    # Teachers' locations
+    # Teachers' locations (from both ManyToMany and TeacherStudentRelationship)
+    processed_teacher_locations = set()
+    
+    # From ManyToMany field
     for teacher in narrator.teachers.all():
-        if teacher.birth_place:
+        if teacher.birth_place and teacher.id not in processed_teacher_locations:
             locations.append({
                 'name': teacher.birth_place,
                 'type': 'teacher_location',
@@ -343,10 +429,28 @@ def narrator_geographical_api(request, narrator_id):
                 'description': f'شيخه {teacher.name}',
                 'importance': 5
             })
+            processed_teacher_locations.add(teacher.id)
     
-    # Students' locations
+    # From TeacherStudentRelationship where narrator is student
+    for relationship in TeacherStudentRelationship.objects.filter(student=narrator):
+        teacher = relationship.teacher
+        if teacher.birth_place and teacher.id not in processed_teacher_locations:
+            locations.append({
+                'name': teacher.birth_place,
+                'type': 'teacher_location',
+                'year': teacher.birth_year,
+                'description': f'شيخه {teacher.name}',
+                'importance': 5,
+                'notes': relationship.notes
+            })
+            processed_teacher_locations.add(teacher.id)
+    
+    # Students' locations (from both ManyToMany and TeacherStudentRelationship)
+    processed_student_locations = set()
+    
+    # From ManyToMany field
     for student in narrator.students.all():
-        if student.birth_place:
+        if student.birth_place and student.id not in processed_student_locations:
             locations.append({
                 'name': student.birth_place,
                 'type': 'student_location',
@@ -354,6 +458,21 @@ def narrator_geographical_api(request, narrator_id):
                 'description': f'تلميذه {student.name}',
                 'importance': 5
             })
+            processed_student_locations.add(student.id)
+    
+    # From TeacherStudentRelationship where narrator is teacher
+    for relationship in TeacherStudentRelationship.objects.filter(teacher=narrator):
+        student = relationship.student
+        if student.birth_place and student.id not in processed_student_locations:
+            locations.append({
+                'name': student.birth_place,
+                'type': 'student_location',
+                'year': student.birth_year,
+                'description': f'تلميذه {student.name}',
+                'importance': 5,
+                'notes': relationship.notes
+            })
+            processed_student_locations.add(student.id)
     
     # Remove duplicates and sort by importance
     unique_locations = {}
@@ -380,35 +499,81 @@ def narrator_comparison_api(request, narrator_id):
     """
     narrator = get_object_or_404(Narrator, id=narrator_id)
     
-    # Get statistics for teachers
+    # Get statistics for teachers (from both ManyToMany and TeacherStudentRelationship)
     teachers_stats = []
-    for teacher in narrator.teachers.all():
-        teacher_hadiths = Hadith.objects.filter(asanid__narrators=teacher).distinct()
-        teachers_stats.append({
-            'id': teacher.id,
-            'name': teacher.name,
-            'reliability': teacher.get_reliability_display(),
-            'madhhab': teacher.get_madhhab_display(),
-            'hadith_count': teacher_hadiths.count(),
-            'birth_year': teacher.birth_year,
-            'death_year': teacher.death_year,
-            'age': teacher.get_age()
-        })
+    processed_teacher_ids = set()
     
-    # Get statistics for students
+    # From ManyToMany field
+    for teacher in narrator.teachers.all():
+        if teacher.id not in processed_teacher_ids:
+            teacher_hadiths = Hadith.objects.filter(asanid__narrators=teacher).distinct()
+            teachers_stats.append({
+                'id': teacher.id,
+                'name': teacher.name,
+                'reliability': teacher.get_reliability_display(),
+                'madhhab': teacher.get_madhhab_display(),
+                'hadith_count': teacher_hadiths.count(),
+                'birth_year': teacher.birth_year,
+                'death_year': teacher.death_year,
+                'age': teacher.get_age()
+            })
+            processed_teacher_ids.add(teacher.id)
+    
+    # From TeacherStudentRelationship where narrator is student
+    for relationship in TeacherStudentRelationship.objects.filter(student=narrator):
+        teacher = relationship.teacher
+        if teacher.id not in processed_teacher_ids:
+            teacher_hadiths = Hadith.objects.filter(asanid__narrators=teacher).distinct()
+            teachers_stats.append({
+                'id': teacher.id,
+                'name': teacher.name,
+                'reliability': teacher.get_reliability_display(),
+                'madhhab': teacher.get_madhhab_display(),
+                'hadith_count': teacher_hadiths.count(),
+                'birth_year': teacher.birth_year,
+                'death_year': teacher.death_year,
+                'age': teacher.get_age(),
+                'notes': relationship.notes
+            })
+            processed_teacher_ids.add(teacher.id)
+    
+    # Get statistics for students (from both ManyToMany and TeacherStudentRelationship)
     students_stats = []
+    processed_student_ids = set()
+    
+    # From ManyToMany field
     for student in narrator.students.all():
-        student_hadiths = Hadith.objects.filter(asanid__narrators=student).distinct()
-        students_stats.append({
-            'id': student.id,
-            'name': student.name,
-            'reliability': student.get_reliability_display(),
-            'madhhab': student.get_madhhab_display(),
-            'hadith_count': student_hadiths.count(),
-            'birth_year': student.birth_year,
-            'death_year': student.death_year,
-            'age': student.get_age()
-        })
+        if student.id not in processed_student_ids:
+            student_hadiths = Hadith.objects.filter(asanid__narrators=student).distinct()
+            students_stats.append({
+                'id': student.id,
+                'name': student.name,
+                'reliability': student.get_reliability_display(),
+                'madhhab': student.get_madhhab_display(),
+                'hadith_count': student_hadiths.count(),
+                'birth_year': student.birth_year,
+                'death_year': student.death_year,
+                'age': student.get_age()
+            })
+            processed_student_ids.add(student.id)
+    
+    # From TeacherStudentRelationship where narrator is teacher
+    for relationship in TeacherStudentRelationship.objects.filter(teacher=narrator):
+        student = relationship.student
+        if student.id not in processed_student_ids:
+            student_hadiths = Hadith.objects.filter(asanid__narrators=student).distinct()
+            students_stats.append({
+                'id': student.id,
+                'name': student.name,
+                'reliability': student.get_reliability_display(),
+                'madhhab': student.get_madhhab_display(),
+                'hadith_count': student_hadiths.count(),
+                'birth_year': student.birth_year,
+                'death_year': student.death_year,
+                'age': student.get_age(),
+                'notes': relationship.notes
+            })
+            processed_student_ids.add(student.id)
     
     # Calculate averages for comparison
     all_hadiths = Hadith.objects.filter(asanid__narrators=narrator).distinct()
@@ -425,7 +590,8 @@ def narrator_comparison_api(request, narrator_id):
     
     # Calculate teacher averages
     if teachers_stats:
-        avg_teacher_age = sum(t['age'] or 0 for t in teachers_stats) / len([t for t in teachers_stats if t['age']])
+        teachers_with_age = [t for t in teachers_stats if t['age']]
+        avg_teacher_age = sum(t['age'] for t in teachers_with_age) / len(teachers_with_age) if teachers_with_age else 0
         avg_teacher_hadiths = sum(t['hadith_count'] for t in teachers_stats) / len(teachers_stats)
     else:
         avg_teacher_age = 0
@@ -433,7 +599,8 @@ def narrator_comparison_api(request, narrator_id):
     
     # Calculate student averages
     if students_stats:
-        avg_student_age = sum(s['age'] or 0 for s in students_stats) / len([s for s in students_stats if s['age']])
+        students_with_age = [s for s in students_stats if s['age']]
+        avg_student_age = sum(s['age'] for s in students_with_age) / len(students_with_age) if students_with_age else 0
         avg_student_hadiths = sum(s['hadith_count'] for s in students_stats) / len(students_stats)
     else:
         avg_student_age = 0
@@ -505,3 +672,76 @@ def narrator_hadith_paths_api(request, narrator_id):
         'total_paths': len(paths),
         'paths': paths[:50]  # Limit to 50 paths for performance
     })
+
+
+@require_GET
+def add_teacher_view(request, narrator_id):
+    """
+    Display form to add teachers to a narrator
+    """
+    narrator = get_object_or_404(Narrator, id=narrator_id)
+    form = AddTeacherForm(narrator_id, initial={'existing_teachers': narrator.teachers.all()})
+    
+    context = {
+        'narrator': narrator,
+        'form': form,
+        'current_teachers': narrator.teachers.all().order_by('name'),
+    }
+    
+    return render(request, 'hadith_app/add_teacher.html', context)
+
+
+@require_POST
+def add_teacher_submit(request, narrator_id):
+    """
+    Process form submission to add teachers to a narrator
+    """
+    narrator = get_object_or_404(Narrator, id=narrator_id)
+    form = AddTeacherForm(narrator_id, request.POST)
+    
+        
+    if form.is_valid():
+        existing_teachers = form.cleaned_data.get('existing_teachers', [])
+        new_teacher_name = form.cleaned_data.get('new_teacher_name')
+        
+        teachers_added = []
+        
+        # Add existing teachers
+        for teacher in existing_teachers:
+            narrator.teachers.add(teacher)
+            teachers_added.append(teacher.name)
+        
+        # Create and add new teacher if provided
+        if new_teacher_name and new_teacher_name.strip():
+            new_teacher = Narrator.objects.create(
+                name=new_teacher_name.strip(),
+                birth_year=form.cleaned_data.get('new_teacher_birth_year'),
+                death_year=form.cleaned_data.get('new_teacher_death_year'),
+                reliability=form.cleaned_data.get('new_teacher_reliability', 'unknown')
+            )
+            narrator.teachers.add(new_teacher)
+            teachers_added.append(f"{new_teacher.name} (جديد)")
+        
+        messages.success(request, f'تم إضافة {len(teachers_added)} شيخ بنجاح للراوي {narrator.name}: {", ".join(teachers_added)}')
+        return redirect('hadith_app:narrator_analysis', narrator_id=narrator.id)
+    else:
+        context = {
+            'narrator': narrator,
+            'form': form,
+            'current_teachers': narrator.teachers.all().order_by('name'),
+        }
+        return render(request, 'hadith_app/add_teacher.html', context)
+
+
+@require_POST
+def remove_teacher(request, narrator_id, teacher_id):
+    """
+    Remove a teacher from a narrator
+    """
+    narrator = get_object_or_404(Narrator, id=narrator_id)
+    teacher = get_object_or_404(Narrator, id=teacher_id)
+    
+    narrator.teachers.remove(teacher)
+    messages.success(request, f'تم إزالة الشيخ {teacher.name} من قائمة شيوخ الراوي {narrator.name}')
+    
+    return redirect('hadith_app:add_teacher', narrator_id=narrator.id)

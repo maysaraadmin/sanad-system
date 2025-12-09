@@ -1,0 +1,230 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}إضافة نص جديد - {{ hadith.text|truncatewords:10 }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_detail' hadith.pk %}">{{ hadith.text|truncatewords:10 }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_texts' hadith.id %}">نصوص الحديث</a></li>
+            <li class="breadcrumb-item active">إضافة نص جديد</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-plus-circle me-2"></i>
+                        إضافة نص جديد للحديث
+                    </h2>
+                    <p class="text-muted mb-0">
+                        {{ hadith.text|truncatewords:20 }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:hadith_texts' hadith.id %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة للنصوص
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <!-- Current Texts -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-list me-2"></i>
+                        النصوص الحالية ({{ current_texts.count }})
+                    </h6>
+                </div>
+                <div class="card-body">
+                    {% if current_texts %}
+                        <div class="list-group list-group-flush">
+                            {% for text in current_texts %}
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div class="flex-grow-1">
+                                            {% if text.is_primary %}
+                                                <span class="badge bg-primary mb-1">
+                                                    <i class="fas fa-star me-1"></i>
+                                                    أساسي
+                                                </span>
+                                            {% endif %}
+                                            <p class="mb-1 text-truncate">{{ text.text|truncatewords:10 }}</p>
+                                            <small class="text-muted">
+                                                {% if text.source_reference %}{{ text.source_reference }}{% endif %}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center mb-0">
+                            <i class="fas fa-info-circle me-1"></i>
+                            لا توجد نصوص حالياً
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Text Form -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-edit me-2"></i>
+                        تفاصيل النص الجديد
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'hadith_app:add_hadith_text_submit' hadith.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.text.id_for_label }}" class="form-label">
+                                {{ form.text.label }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {{ form.text }}
+                            {% if form.text.help_text %}
+                                <small class="form-text text-muted">{{ form.text.help_text }}</small>
+                            {% endif %}
+                            {% if form.text.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.text.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.source_reference.id_for_label }}" class="form-label">
+                                {{ form.source_reference.label }}
+                            </label>
+                            {{ form.source_reference }}
+                            {% if form.source_reference.help_text %}
+                                <small class="form-text text-muted">{{ form.source_reference.help_text }}</small>
+                            {% endif %}
+                            {% if form.source_reference.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.source_reference.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.narrator_chain.id_for_label }}" class="form-label">
+                                {{ form.narrator_chain.label }}
+                            </label>
+                            {{ form.narrator_chain }}
+                            {% if form.narrator_chain.help_text %}
+                                <small class="form-text text-muted">{{ form.narrator_chain.help_text }}</small>
+                            {% endif %}
+                            {% if form.narrator_chain.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.narrator_chain.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.variation_notes.id_for_label }}" class="form-label">
+                                {{ form.variation_notes.label }}
+                            </label>
+                            {{ form.variation_notes }}
+                            {% if form.variation_notes.help_text %}
+                                <small class="form-text text-muted">{{ form.variation_notes.help_text }}</small>
+                            {% endif %}
+                            {% if form.variation_notes.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.variation_notes.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check">
+                                {{ form.make_primary }}
+                                <label class="form-check-label" for="{{ form.make_primary.id_for_label }}">
+                                    {{ form.make_primary.label }}
+                                </label>
+                                {% if form.make_primary.help_text %}
+                                    <small class="form-text text-muted">{{ form.make_primary.help_text }}</small>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Form Errors -->
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>
+                                حفظ النص الجديد
+                            </button>
+                            <a href="{% url 'hadith_app:hadith_texts' hadith.id %}" class="btn btn-secondary">
+                                <i class="fas fa-times me-1"></i>
+                                إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        تعليمات
+                    </h6>
+                    <ul class="mb-0">
+                        <li>أدخل النص الجديد للحديث كما ورد في المصدر المحدد</li>
+                        <li>يمكنك تحديد مصدر محدد لهذه الرواية (مثال: صحيح مسلم، كتاب الإيمان)</li>
+                        <li>سلسلة الرواة وملاحظات الاختلاف اختيارية ولكن مفيدة</li>
+                        <li>يمكنك جعل هذا النص هو النص الأساسي الذي يظهر في صفحة الحديث الرئيسية</li>
+                        <li>النص الأساسي الحالي سيتم استبداله إذا اخترت "جعل هذا النص هو النص الأساسي"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

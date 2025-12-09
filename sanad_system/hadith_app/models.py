@@ -128,7 +128,8 @@ class Narrator(models.Model):
         }
 
 class Hadith(models.Model):
-    text = models.TextField(verbose_name="نص الحديث")
+    # Keep the main text for backward compatibility and as primary text
+    text = models.TextField(verbose_name="النص الأساسي للحديث")
     source = models.CharField(max_length=200, verbose_name="المصدر")
     source_page = models.CharField(max_length=50, null=True, blank=True, verbose_name="الصفحة")
     source_hadith_number = models.CharField(max_length=50, null=True, blank=True, verbose_name="رقم الحديث في المصدر")
@@ -165,8 +166,33 @@ class Hadith(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
+        primary_text = self.get_primary_text()
+        if primary_text:
+            return primary_text.text[:50] + "..." if len(primary_text.text) > 50 else primary_text.text
         return self.text[:50] + "..." if len(self.text) > 50 else self.text
 
+    def get_primary_text(self):
+        """Get the primary text version"""
+        try:
+            return self.texts.filter(is_primary=True).first()
+        except:
+            # Fallback to creating a primary text from the main text field
+            if self.text:
+                return HadithText.objects.create(
+                    hadith=self,
+                    text=self.text,
+                    is_primary=True
+                )
+            return None
+    
+    def get_all_texts(self):
+        """Get all text versions"""
+        return self.texts.all()
+    
+    def get_text_count(self):
+        """Get count of all text versions"""
+        return self.texts.count()
+    
     def get_grade_display(self):
         grade_choices = {
             'sahih': 'صحيح',
@@ -175,6 +201,32 @@ class Hadith(models.Model):
             'mawdu': 'موضوع'
         }
         return grade_choices.get(self.grade, self.grade)
+
+
+class HadithText(models.Model):
+    """Multiple text versions for a single hadith"""
+    hadith = models.ForeignKey(Hadith, on_delete=models.CASCADE, related_name='texts', verbose_name="الحديث")
+    text = models.TextField(verbose_name="نص الحديث")
+    source_reference = models.CharField(max_length=200, null=True, blank=True, verbose_name="المصدر المحدد")
+    narrator_chain = models.TextField(null=True, blank=True, verbose_name="سلسلة الرواة")
+    variation_notes = models.TextField(null=True, blank=True, verbose_name="ملاحظات الاختلاف")
+    is_primary = models.BooleanField(default=False, verbose_name="النص الأساسي")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = "نص الحديث"
+        verbose_name_plural = "نصوص الحديث"
+        ordering = ['-is_primary', 'created_at']
+    
+    def __str__(self):
+        return f"{self.hadith.text[:30]}... - {self.text[:30]}..."
+    
+    def save(self, *args, **kwargs):
+        # If this is the first text, make it primary
+        if not self.pk and not self.hadith.texts.exists():
+            self.is_primary = True
+        super().save(*args, **kwargs)
 
 
 class Sanad(models.Model):
@@ -362,6 +414,109 @@ class UserProfile(models.Model):
         if self.avatar and hasattr(self.avatar, 'url'):
             return self.avatar.url
         return '/static/images/default-avatar.png'
+
+
+class TeacherStudentRelationship(models.Model):
+    """
+    Model to store the teacher-student relationship between narrators
+    """
+    teacher = models.ForeignKey(
+        'hadith_app.Narrator', 
+        on_delete=models.CASCADE, 
+        related_name='student_relationships',
+        verbose_name="الشيخ"
+    )
+    student = models.ForeignKey(
+        'hadith_app.Narrator', 
+        on_delete=models.CASCADE, 
+        related_name='teacher_relationships',
+        verbose_name="الطالب"
+    )
+    notes = models.TextField(
+        null=True, 
+        blank=True, 
+        verbose_name="ملاحظات",
+        help_text="ملاحظات حول علاقة التلمذة أو المصادر"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإنشاء")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث")
+    
+    class Meta:
+        verbose_name = "علاقة تلمذة"
+        verbose_name_plural = "علاقات التلامذة"
+        unique_together = ['teacher', 'student']
+        ordering = ['teacher__name', 'student__name']
+    
+    def __str__(self):
+        return f"{self.student.name} طالب عن {self.teacher.name}"
+
+
+class SanadText(models.Model):
+    """
+    Model to store the specific text narrated through a particular sanad.
+    Each sanad can have its own text version of the hadith.
+    """
+    sanad = models.OneToOneField(
+        'hadith_app.Sanad', 
+        on_delete=models.CASCADE, 
+        related_name='sanad_text',
+        verbose_name="السند"
+    )
+    text = models.TextField(verbose_name="نص الحديث")
+    source_reference = models.CharField(
+        max_length=200, 
+        null=True, 
+        blank=True, 
+        verbose_name="المصدر المحدد"
+    )
+    variation_notes = models.TextField(
+        null=True, 
+        blank=True, 
+        verbose_name="ملاحظات الاختلاف",
+        help_text="أي اختلافات في النص مقارنة بالنسخة الأساسية"
+    )
+    is_primary = models.BooleanField(
+        default=False, 
+        verbose_name="النص الأساسي",
+        help_text="هل هذا هو النص الأساسي للحديث؟"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإنشاء")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث")
+    
+    class Meta:
+        verbose_name = "نص السند"
+        verbose_name_plural = "نصوص الأسانيد"
+        ordering = ['-is_primary', 'created_at']
+    
+    def __str__(self):
+        return f"نص سند {self.sanad.id}: {self.text[:50]}..."
+    
+    def get_short_text(self):
+        """Get a shortened version of the text for display"""
+        return self.text[:100] + "..." if len(self.text) > 100 else self.text
+    
+    @classmethod
+    def get_primary_for_hadith(cls, hadith):
+        """Get the primary sanad text for a hadith"""
+        return cls.objects.filter(
+            sanad__hadith=hadith, 
+            is_primary=True
+        ).first()
+    
+    def save(self, *args, **kwargs):
+        # If this is the first sanad text for this hadith, make it primary
+        if not self.pk and not SanadText.objects.filter(
+            sanad__hadith=self.sanad.hadith
+        ).exists():
+            self.is_primary = True
+        
+        # If setting this as primary, unset others
+        if self.is_primary:
+            SanadText.objects.filter(
+                sanad__hadith=self.sanad.hadith
+            ).exclude(pk=self.pk).update(is_primary=False)
+        
+        super().save(*args, **kwargs)
 
 
 @receiver(post_save, sender=User)

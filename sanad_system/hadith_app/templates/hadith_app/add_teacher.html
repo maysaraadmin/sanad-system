@@ -1,0 +1,255 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}إضافة شيوخ للراوي - {{ narrator.name }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:narrator_list' %}">الرواة</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:narrator_detail' narrator.pk %}">{{ narrator.name }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:narrator_analysis' narrator.id %}">تحليل الراوي</a></li>
+            <li class="breadcrumb-item active">إضافة شيوخ</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-user-plus me-2"></i>
+                        إضافة شيوخ للراوي: {{ narrator.name }}
+                    </h2>
+                    <p class="text-muted mb-0">
+                        اختر الشيوخ الذين روى عنهم هذا الراوي من القائمة أدناه
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:narrator_analysis' narrator.id %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة للتحليل
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <!-- Current Teachers -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-users me-2"></i>
+                        الشيوخ الحاليون ({{ current_teachers.count }})
+                    </h6>
+                </div>
+                <div class="card-body">
+                    {% if current_teachers %}
+                        <div class="list-group list-group-flush">
+                            {% for teacher in current_teachers %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>{{ teacher.name }}</strong>
+                                        <br>
+                                        <small class="text-muted">
+                                            {% if teacher.birth_year %}{{ teacher.birth_year }} هـ{% endif %}
+                                            {% if teacher.death_year %} - {{ teacher.death_year }} هـ{% endif %}
+                                        </small>
+                                    </div>
+                                    <form method="post" action="{% url 'hadith_app:remove_teacher' narrator.id teacher.id %}" 
+                                          onsubmit="return confirm('هل أنت متأكد من إزالة هذا الشيخ؟')">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center mb-0">
+                            <i class="fas fa-info-circle me-1"></i>
+                            لا يوجد شيوخ مضافون حالياً
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Teachers Form -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-plus-circle me-2"></i>
+                        إضافة شيوخ جدد
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'hadith_app:add_teacher_submit' narrator.id %}">
+                        {% csrf_token %}
+                        
+                        <!-- Existing Teachers Section -->
+                        <div class="mb-4">
+                            <h6 class="text-primary">
+                                <i class="fas fa-users me-2"></i>
+                                اختيار شيوخ موجودين
+                            </h6>
+                            <div class="mb-3">
+                                <label for="{{ form.existing_teachers.id_for_label }}" class="form-label">
+                                    {{ form.existing_teachers.label }}
+                                </label>
+                                {{ form.existing_teachers }}
+                                {% if form.existing_teachers.help_text %}
+                                    <small class="form-text text-muted">{{ form.existing_teachers.help_text }}</small>
+                                {% endif %}
+                                {% if form.existing_teachers.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.existing_teachers.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- New Teacher Section -->
+                        <div class="mb-4">
+                            <h6 class="text-success">
+                                <i class="fas fa-user-plus me-2"></i>
+                                إضافة شيخ جديد
+                            </h6>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="{{ form.new_teacher_name.id_for_label }}" class="form-label">
+                                        {{ form.new_teacher_name.label }}
+                                    </label>
+                                    {{ form.new_teacher_name }}
+                                    {% if form.new_teacher_name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.new_teacher_name.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.new_teacher_birth_year.id_for_label }}" class="form-label">
+                                        {{ form.new_teacher_birth_year.label }}
+                                    </label>
+                                    {{ form.new_teacher_birth_year }}
+                                    {% if form.new_teacher_birth_year.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.new_teacher_birth_year.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.new_teacher_death_year.id_for_label }}" class="form-label">
+                                        {{ form.new_teacher_death_year.label }}
+                                    </label>
+                                    {{ form.new_teacher_death_year }}
+                                    {% if form.new_teacher_death_year.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.new_teacher_death_year.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.new_teacher_reliability.id_for_label }}" class="form-label">
+                                        {{ form.new_teacher_reliability.label }}
+                                    </label>
+                                    {{ form.new_teacher_reliability }}
+                                    {% if form.new_teacher_reliability.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.new_teacher_reliability.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Errors -->
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>
+                                حفظ الشيوخ
+                            </button>
+                            <a href="{% url 'hadith_app:narrator_analysis' narrator.id %}" class="btn btn-secondary">
+                                <i class="fas fa-times me-1"></i>
+                                إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        تعليمات
+                    </h6>
+                    <ul class="mb-0">
+                        <li>اختر الشيوخ الذين روى عنهم الراوي من القائمة المنسدلة</li>
+                        <li>يمكنك اختيار عدة شيوخ في نفس الوقت باستخدام Ctrl + Click</li>
+                        <li>الراوي لا يمكن أن يكون شيخاً لنفسه</li>
+                        <li>يمكنك إزالة الشيوخ الحاليين باستخدام زر الحذف بجانب كل اسم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize select2 for existing teachers dropdown
+    $('#id_existing_teachers').select2({
+        theme: 'bootstrap-5',
+        dir: 'rtl',
+        placeholder: 'ابحث عن شيخ أو اختر من القائمة...',
+        allowClear: true,
+        width: '100%'
+    });
+});
+</script>
+
+<!-- Include Select2 CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% endblock %}

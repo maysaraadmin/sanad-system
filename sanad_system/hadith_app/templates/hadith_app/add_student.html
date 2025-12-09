@@ -1,0 +1,268 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}إضافة طالب - {{ narrator.name }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:narrator_list' %}">الرواة</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:narrator_detail' narrator.id %}">{{ narrator.name }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:narrator_analysis' narrator.id %}">تحليل الراوي</a></li>
+            <li class="breadcrumb-item active">إضافة طالب</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-user-plus me-2"></i>
+                        إضافة طالب للراوي
+                    </h2>
+                    <p class="text-muted mb-0">
+                        {{ narrator.name }}
+                        {% if narrator.birth_year or narrator.death_year %}
+                        ({{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }})
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:narrator_analysis' narrator.id %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة لتحليل الراوي
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <!-- Current Students -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-users me-2"></i>
+                        الطلاب الحاليون ({{ current_students.count }})
+                    </h6>
+                </div>
+                <div class="card-body">
+                    {% if current_students %}
+                        <div class="list-group list-group-flush">
+                            {% for student in current_students %}
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div class="flex-grow-1">
+                                            <strong>{{ student.name }}</strong>
+                                            <span class="badge bg-{% if student.reliability == 'thiqa' %}success{% elif student.reliability == 'saduq' %}info{% elif student.reliability == 'weak' %}warning{% else %}secondary{% endif %} ms-2">
+                                                {{ student.get_reliability_display }}
+                                            </span>
+                                            {% if student.birth_year or student.death_year %}
+                                                <div class="small text-muted">
+                                                    ({{ student.birth_year|default:"؟" }} - {{ student.death_year|default:"؟" }})
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <form method="post" action="{% url 'hadith_app:remove_student' narrator.id student.id %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                    onclick="return confirm('هل أنت متأكد من إزالة هذا الطالب؟')"
+                                                    title="إزالة الطالب">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center mb-0">
+                            <i class="fas fa-info-circle me-1"></i>
+                            لا يوجد طلاب حالياً
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Student Form -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-user-plus me-2"></i>
+                        إضافة طالب جديد
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'hadith_app:add_student_submit' narrator.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="student_id" class="form-label">اختر الطالب</label>
+                            <select name="student_id" id="student_id" class="form-select" required>
+                                <option value="">-- اختر طالب --</option>
+                                {% for student in available_students %}
+                                    <option value="{{ student.id }}">
+                                        {{ student.name }}
+                                        {% if student.birth_year or student.death_year %}
+                                        ({{ student.birth_year|default:"؟" }} - {{ student.death_year|default:"؟" }})
+                                        {% endif %}
+                                        - {{ student.get_reliability_display }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <div class="form-text">اختر الراوي الذي كان طالباً لهذا الراوي</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">ملاحظات</label>
+                            <textarea name="notes" id="notes" class="form-control" rows="3" 
+                                      placeholder="أي ملاحظات حول علاقة التلمذة هذه..."></textarea>
+                            <div class="form-text">ملاحظات اختيارية حول علاقة التلمذة أو المصادر</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i>
+                                إضافة الطالب
+                            </button>
+                            <a href="{% url 'hadith_app:narrator_analysis' narrator.id %}" class="btn btn-secondary">
+                                <i class="fas fa-times me-1"></i>
+                                إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Available Students Table -->
+            {% if available_students %}
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="fas fa-list me-2"></i>
+                            جميع الرواة المتاحين
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>اسم الراوي</th>
+                                        <th>سنة الميلاد</th>
+                                        <th>سنة الوفاة</th>
+                                        <th>الثقة</th>
+                                        <th>الإجراء</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in available_students %}
+                                        <tr>
+                                            <td>
+                                                <a href="{% url 'hadith_app:narrator_detail' student.id %}" 
+                                                   class="text-decoration-none">
+                                                    {{ student.name }}
+                                                </a>
+                                            </td>
+                                            <td>{{ student.birth_year|default:"؟" }}</td>
+                                            <td>{{ student.death_year|default:"؟" }}</td>
+                                            <td>
+                                                <span class="badge bg-{% if student.reliability == 'thiqa' %}success{% elif student.reliability == 'saduq' %}info{% elif student.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
+                                                    {{ student.get_reliability_display }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button type="button" 
+                                                        class="btn btn-sm btn-outline-primary"
+                                                        data-student-id="{{ student.id }}"
+                                                        data-student-name="{{ student.name|escapejs }}"
+                                                        onclick="selectStudentFromData(this)">
+                                                    <i class="fas fa-plus me-1"></i>
+                                                    اختيار
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-info-circle me-2"></i>
+                    جميع الرواة الموجودين هم بالفعل طلاب لهذا الراوي.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function selectStudentFromData(button) {
+    const studentId = button.dataset.studentId;
+    const studentName = button.dataset.studentName;
+    
+    document.getElementById('student_id').value = studentId;
+    
+    // Visual feedback
+    const select = document.getElementById('student_id');
+    select.classList.add('is-valid');
+    setTimeout(() => {
+        select.classList.remove('is-valid');
+    }, 2000);
+    
+    // Scroll to form
+    document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Keep original function for backward compatibility
+function selectStudent(studentId, studentName) {
+    document.getElementById('student_id').value = studentId;
+    
+    // Visual feedback
+    const select = document.getElementById('student_id');
+    select.classList.add('is-valid');
+    setTimeout(() => {
+        select.classList.remove('is-valid');
+    }, 2000);
+    
+    // Scroll to form
+    document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+<style>
+.table th {
+    border-top: none;
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.list-group-item {
+    border-left: 3px solid #007bff;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+</style>
+{% endblock %}

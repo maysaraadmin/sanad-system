@@ -1,0 +1,159 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}نصوص الحديث - {{ hadith.text|truncatewords:10 }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_detail' hadith.pk %}">{{ hadith.text|truncatewords:10 }}</a></li>
+            <li class="breadcrumb-item active">نصوص الحديث</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-file-alt me-2"></i>
+                        نصوص الحديث: {{ hadith.text|truncatewords:10 }}
+                    </h2>
+                    <p class="text-muted mb-0">
+                        {{ text_count }} نص متاح • النص الأساسي محدد بالنجمة
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:add_hadith_text' hadith.id %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-1"></i>
+                        إضافة نص جديد
+                    </a>
+                    <a href="{% url 'hadith_app:hadith_text_comparison' hadith.id %}" class="btn btn-outline-secondary ms-2">
+                        <i class="fas fa-columns me-1"></i>
+                        مقارنة النصوص
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Text Versions -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <i class="fas fa-list me-2"></i>
+                جميع النصوص ({{ text_count }})
+            </h5>
+        </div>
+        <div class="card-body">
+            {% if texts %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>النوع</th>
+                                <th>النص</th>
+                                <th>المصدر المحدد</th>
+                                <th>ملاحظات الاختلاف</th>
+                                <th>تاريخ الإضافة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for text in texts %}
+                                <tr class="{% if text.is_primary %}table-primary{% endif %}">
+                                    <td>
+                                        {% if text.is_primary %}
+                                            <span class="badge bg-primary">
+                                                <i class="fas fa-star me-1"></i>
+                                                أساسي
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">
+                                                <i class="fas fa-file-alt me-1"></i>
+                                                بديل
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="text-truncate" style="max-width: 300px;">
+                                            {{ text.text|truncatewords:15 }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {% if text.source_reference %}
+                                            <small class="text-muted">{{ text.source_reference }}</small>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if text.variation_notes %}
+                                            <small class="text-muted">{{ text.variation_notes|truncatewords:10 }}</small>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <small>{{ text.created_at|date:"Y-m-d" }}</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            {% if not text.is_primary %}
+                                                <form method="post" action="{% url 'hadith_app:set_primary_text' hadith.id text.id %}" class="d-inline">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-sm btn-outline-primary" 
+                                                            title="جعل هذا النص أساسي">
+                                                        <i class="fas fa-star"></i>
+                                                    </button>
+                                                </form>
+                                            {% endif %}
+                                            
+                                            {% if texts.count > 1 %}
+                                                <form method="post" action="{% url 'hadith_app:delete_hadith_text' hadith.id text.id %}" class="d-inline"
+                                                      onsubmit="return confirm('هل أنت متأكد من حذف هذا النص؟')">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                            title="حذف النص">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center py-4">
+                    <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+                    <p class="text-muted mb-0">
+                        لا توجد نصوص إضافية لهذا الحديث
+                    </p>
+                    <a href="{% url 'hadith_app:add_hadith_text' hadith.id %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-1"></i>
+                        إضافة أول نص
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

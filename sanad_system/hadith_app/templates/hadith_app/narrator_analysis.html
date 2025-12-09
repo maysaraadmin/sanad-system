@@ -303,6 +303,81 @@
         </div>
     </div>
 
+    <!-- Teacher Management -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h5 class="mb-0">
+                        <i class="fas fa-users me-2"></i>
+                        إدارة الشيوخ
+                    </h5>
+                    <p class="text-muted mb-0 mt-1">
+                        إضافة أو إزالة شيوخ الراوي {{ narrator.name }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:add_teacher' narrator.id %}" class="btn btn-primary">
+                        <i class="fas fa-plus-circle me-1"></i>
+                        إضافة شيوخ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Management -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h5 class="mb-0">
+                        <i class="fas fa-graduation-cap me-2"></i>
+                        إدارة الطلاب
+                    </h5>
+                    <p class="text-muted mb-0 mt-1">
+                        إضافة أو إزالة طلاب الراوي {{ narrator.name }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:add_student' narrator.id %}" class="btn btn-success">
+                        <i class="fas fa-user-plus me-1"></i>
+                        إضافة طلاب
+                    </a>
+                </div>
+            </div>
+            {% if narrator.student_relationships.exists %}
+                <div class="mt-3">
+                    <h6>الطلاب الحاليون:</h6>
+                    <div class="row">
+                        {% for relationship in narrator.student_relationships.all|dictsort:"student__name" %}
+                            <div class="col-md-6 mb-2">
+                                <div class="d-flex justify-content-between align-items-center p-2 bg-light rounded">
+                                    <div>
+                                        <a href="{% url 'hadith_app:narrator_detail' relationship.student.id %}" class="text-decoration-none">
+                                            {{ relationship.student.name }}
+                                        </a>
+                                        <span class="badge bg-{% if relationship.student.reliability == 'thiqa' %}success{% elif relationship.student.reliability == 'saduq' %}info{% elif relationship.student.reliability == 'weak' %}warning{% else %}secondary{% endif %} ms-2">
+                                            {{ relationship.student.get_reliability_display }}
+                                        </span>
+                                    </div>
+                                    <form method="post" action="{% url 'hadith_app:remove_student' narrator.id relationship.student.id %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                onclick="return confirm('هل أنت متأكد من إزالة هذا الطالب؟')"
+                                                title="إزالة الطالب">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
     <!-- Analysis Tabs -->
     <div class="tabs">
         <button class="tab active" onclick="showTab('network')">شبكة العلاقات</button>
@@ -442,8 +517,10 @@
     </div>
 </div>
 
+<div id="narrator-data" data-narrator-id="{{ narrator.id }}"></div>
+
 <script>
-const narratorId = {{ narrator.id }};
+const narratorId = document.getElementById('narrator-data').dataset.narratorId;
 
 // Tab switching
 function showTab(tabName) {

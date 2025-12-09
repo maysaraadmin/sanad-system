@@ -1,0 +1,267 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}مقارنة نصوص الحديث - {{ hadith.text|truncatewords:10 }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_detail' hadith.pk %}">{{ hadith.text|truncatewords:10 }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_texts' hadith.id %}">نصوص الحديث</a></li>
+            <li class="breadcrumb-item active">مقارنة النصوص</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-columns me-2"></i>
+                        مقارنة نصوص الحديث
+                    </h2>
+                    <p class="text-muted mb-0">
+                        {{ hadith.text|truncatewords:20 }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:hadith_texts' hadith.id %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة للنصوص
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison View -->
+    {% if texts %}
+        <div class="row">
+            {% for text in texts %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 {% if text.is_primary %}border-primary{% endif %}">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">
+                                {% if text.is_primary %}
+                                    <span class="badge bg-primary">
+                                        <i class="fas fa-star me-1"></i>
+                                        النص الأساسي
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-secondary">
+                                        <i class="fas fa-file-alt me-1"></i>
+                                        نص بديل
+                                    </span>
+                                {% endif %}
+                            </h6>
+                            <small class="text-muted">
+                                {{ text.created_at|date:"Y-m-d H:i" }}
+                            </small>
+                        </div>
+                        <div class="card-body">
+                            <!-- Text Content -->
+                            <div class="mb-3">
+                                <h6 class="text-primary">النص:</h6>
+                                <div class="p-3 bg-light rounded">
+                                    <p class="mb-0" style="white-space: pre-wrap; direction: rtl;">{{ text.text }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Source Reference -->
+                            {% if text.source_reference %}
+                                <div class="mb-3">
+                                    <h6 class="text-info">المصدر المحدد:</h6>
+                                    <p class="text-muted mb-0">{{ text.source_reference }}</p>
+                                </div>
+                            {% endif %}
+
+                            <!-- Narrator Chain -->
+                            {% if text.narrator_chain %}
+                                <div class="mb-3">
+                                    <h6 class="text-success">سلسلة الرواة:</h6>
+                                    <div class="p-2 bg-light rounded">
+                                        <p class="mb-0" style="white-space: pre-wrap; direction: rtl;">{{ text.narrator_chain }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Variation Notes -->
+                            {% if text.variation_notes %}
+                                <div class="mb-3">
+                                    <h6 class="text-warning">ملاحظات الاختلاف:</h6>
+                                    <div class="p-2 bg-warning bg-opacity-10 rounded">
+                                        <p class="mb-0" style="white-space: pre-wrap; direction: rtl;">{{ text.variation_notes }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Actions -->
+                            <div class="mt-3">
+                                {% if not text.is_primary %}
+                                    <form method="post" action="{% url 'hadith_app:set_primary_text' hadith.id text.id %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-star me-1"></i>
+                                            جعل أساسي
+                                        </button>
+                                    </form>
+                                {% endif %}
+                                
+                                {% if texts.count > 1 %}
+                                    <form method="post" action="{% url 'hadith_app:delete_hadith_text' hadith.id text.id %}" class="d-inline"
+                                          onsubmit="return confirm('هل أنت متأكد من حذف هذا النص؟')">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash me-1"></i>
+                                            حذف
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    إحصائيات المقارنة
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h4 class="text-primary">{{ texts.count }}</h4>
+                            <p class="text-muted mb-0">إجمالي النصوص</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h4 class="text-success">
+                                {{ texts|length|add:"0" }}
+                            </h4>
+                            <p class="text-muted mb-0">نصوص بمصادر محددة</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h4 class="text-info">
+                                {% with narrator_count=0 %}
+                                    {% for text in texts %}
+                                        {% if text.narrator_chain %}
+                                            {% with narrator_count=narrator_count|add:"1" %}
+                                            {% endwith %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ narrator_count }}
+                                {% endwith %}
+                            </h4>
+                            <p class="text-muted mb-0">نصوص بسلاسل رواة</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h4 class="text-warning">
+                                {% with variation_count=0 %}
+                                    {% for text in texts %}
+                                        {% if text.variation_notes %}
+                                            {% with variation_count=variation_count|add:"1" %}
+                                            {% endwith %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ variation_count }}
+                                {% endwith %}
+                            </h4>
+                            <p class="text-muted mb-0">نصوص بملاحظات اختلاف</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Length Comparison -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i class="fas fa-ruler-horizontal me-2"></i>
+                    مقارنة أطوال النصوص
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>النوع</th>
+                                <th>عدد الأحرف</th>
+                                <th>عدد الكلمات</th>
+                                <th>عدد الأسطر</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for text in texts %}
+                                <tr {% if text.is_primary %}class="table-primary"{% endif %}>
+                                    <td>
+                                        {% if text.is_primary %}
+                                            <span class="badge bg-primary">أساسي</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">بديل</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ text.text|length }}</td>
+                                    <td>{{ text.text|wordcount }}</td>
+                                    <td>{{ text.text|linebreaks|length }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <!-- No Texts Available -->
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">لا توجد نصوص للمقارنة</h5>
+                <p class="text-muted mb-4">
+                    لم يتم إضافة أي نصوص لهذا الحديث بعد
+                </p>
+                <a href="{% url 'hadith_app:add_hadith_text' hadith.id %}" class="btn btn-primary">
+                    <i class="fas fa-plus me-1"></i>
+                    إضافة أول نص
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    .card {
+        transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .badge {
+        font-size: 0.8em;
+    }
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+    .bg-opacity-10 {
+        opacity: 0.1;
+    }
+</style>
+{% endblock %}

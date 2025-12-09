@@ -1,0 +1,246 @@
+{% extends 'hadith_app/base.html' %}
+{% load static %}
+
+{% block title %}إضافة راوٍ للسند - {{ hadith.text|truncatewords:10 }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:home' %}">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_list' %}">الأحاديث</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:hadith_detail' hadith.pk %}">{{ hadith.text|truncatewords:10 }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'hadith_app:sanad_narrators' sanad.id %}">رواة السند</a></li>
+            <li class="breadcrumb-item active">إضافة راوٍ</li>
+        </ol>
+    </nav>
+
+    <!-- Header -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>
+                        <i class="fas fa-user-plus me-2"></i>
+                        إضافة راوٍ للسند
+                    </h2>
+                    <p class="text-muted mb-0">
+                        {{ hadith.text|truncatewords:20 }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'hadith_app:sanad_narrators' sanad.id %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة للرواة
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <!-- Current Narrators -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-list me-2"></i>
+                        الرواة الحاليون ({{ current_narrators.count }})
+                    </h6>
+                </div>
+                <div class="card-body">
+                    {% if current_narrators %}
+                        <div class="list-group list-group-flush">
+                            {% for sanad_narrator in current_narrators %}
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div class="flex-grow-1">
+                                            <span class="badge bg-primary me-2">{{ sanad_narrator.order }}</span>
+                                            <strong>{{ sanad_narrator.narrator.name }}</strong>
+                                            {% if sanad_narrator.narration_method %}
+                                                <span class="text-muted ms-2">{{ sanad_narrator.narration_method }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center mb-0">
+                            <i class="fas fa-info-circle me-1"></i>
+                            لا يوجد رواة حالياً
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Narrator Form -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-edit me-2"></i>
+                        تفاصيل الراوي الجديد
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'hadith_app:add_sanad_narrator_submit' sanad.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.narrator.id_for_label }}" class="form-label">
+                                {{ form.narrator.label }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {{ form.narrator }}
+                            {% if form.narrator.help_text %}
+                                <small class="form-text text-muted">{{ form.narrator.help_text }}</small>
+                            {% endif %}
+                            {% if form.narrator.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.narrator.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.order.id_for_label }}" class="form-label">
+                                {{ form.order.label }}
+                            </label>
+                            {{ form.order }}
+                            {% if form.order.help_text %}
+                                <small class="form-text text-muted">{{ form.order.help_text }}</small>
+                            {% endif %}
+                            {% if form.order.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.order.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="text-info">
+                                <i class="fas fa-info-circle me-1"></i>
+                                اترك فارغاً للإضافة في نهاية السند
+                            </small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.narration_method.id_for_label }}" class="form-label">
+                                {{ form.narration_method.label }}
+                            </label>
+                            {{ form.narration_method }}
+                            {% if form.narration_method.help_text %}
+                                <small class="form-text text-muted">{{ form.narration_method.help_text }}</small>
+                            {% endif %}
+                            {% if form.narration_method.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.narration_method.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Form Errors -->
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>
+                                حفظ الراوي
+                            </button>
+                            <a href="{% url 'hadith_app:sanad_narrators' sanad.id %}" class="btn btn-secondary">
+                                <i class="fas fa-times me-1"></i>
+                                إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        تعليمات
+                    </h6>
+                    <ul class="mb-0">
+                        <li>اختر الراوي من القائمة - سيتم استبعاد الرواة الموجودين بالفعل في هذا السند</li>
+                        <li>حدد الترتيب في السند (1 للأول، 2 للثاني، وهكذا)</li>
+                        <li>يمكنك ترك حقل الترتيب فارغاً لإضافة الراوي في نهاية السند</li>
+                        <li>طريقة الرواية اختيارية (مثال: حدثنا، أخبرنا، أنبأنا)</li>
+                        <li>سيتم إعادة ترتيب الرواة تلقائياً عند إضافة راوٍ في منتصف السند</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Available Narrators -->
+            {% if available_narrators %}
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="fas fa-users me-2"></i>
+                            الرواة المتاحون للإضافة
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>اسم الراوي</th>
+                                        <th>التوثيق</th>
+                                        <th>الفترة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for narrator in available_narrators %}
+                                        <tr>
+                                            <td>
+                                                <a href="{% url 'hadith_app:narrator_detail' narrator.id %}" class="text-decoration-none">
+                                                    {{ narrator.name }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-{% if narrator.reliability == 'thiqa' %}success{% elif narrator.reliability == 'saduq' %}info{% elif narrator.reliability == 'weak' %}warning{% else %}secondary{% endif %}">
+                                                    {{ narrator.get_reliability_display }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <small class="text-muted">
+                                                    {{ narrator.birth_year|default:"؟" }} - {{ narrator.death_year|default:"؟" }}
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

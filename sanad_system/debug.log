@@ -9881,3 +9881,1056 @@ INFO 2025-12-08 01:10:59,291 basehttp "POST /api/document-analysis/analyses/ HTT
 INFO 2025-12-08 01:11:03,096 basehttp - Broken pipe from ('127.0.0.1', 56734)
 INFO 2025-12-08 01:11:03,462 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 113366
 INFO 2025-12-08 01:11:07,091 basehttp "GET /api/document-analysis/analyses/36/ HTTP/1.1" 200 1250
+INFO 2025-12-08 01:13:32,820 basehttp "GET /hadith/ HTTP/1.1" 200 61829
+INFO 2025-12-08 01:13:35,542 basehttp "GET /hadith/217/ HTTP/1.1" 200 26959
+INFO 2025-12-08 01:13:38,431 basehttp "GET /hadith/217/update/ HTTP/1.1" 200 30854
+INFO 2025-12-08 01:13:59,504 basehttp "POST /hadith/217/update/ HTTP/1.1" 302 0
+INFO 2025-12-08 01:13:59,638 basehttp "GET /hadith/ HTTP/1.1" 200 62056
+INFO 2025-12-08 01:14:07,827 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 113366
+INFO 2025-12-08 01:14:31,573 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 369
+INFO 2025-12-08 01:14:35,847 basehttp - Broken pipe from ('127.0.0.1', 57099)
+INFO 2025-12-08 01:14:36,213 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 115419
+INFO 2025-12-08 01:14:39,452 basehttp "GET /api/document-analysis/analyses/37/ HTTP/1.1" 200 1263
+INFO 2025-12-08 01:15:55,670 basehttp "GET /hadith/ HTTP/1.1" 200 61842
+INFO 2025-12-08 01:15:59,034 basehttp "GET /hadith/217/ HTTP/1.1" 200 26972
+INFO 2025-12-08 01:16:01,554 basehttp "GET /hadith/217/update/ HTTP/1.1" 200 30867
+INFO 2025-12-08 01:16:17,493 basehttp "POST /hadith/217/update/ HTTP/1.1" 302 0
+INFO 2025-12-08 01:16:17,585 basehttp "GET /hadith/ HTTP/1.1" 200 62056
+INFO 2025-12-08 01:17:06,037 basehttp "GET /hadith/217/ HTTP/1.1" 200 26972
+INFO 2025-12-08 01:17:08,845 basehttp "GET /hadith/217/update/ HTTP/1.1" 200 30867
+INFO 2025-12-08 01:18:40,324 basehttp "GET /hadith/ HTTP/1.1" 200 61842
+INFO 2025-12-08 01:20:55,359 basehttp "GET /hadith/217/ HTTP/1.1" 200 26972
+INFO 2025-12-08 01:20:57,930 basehttp "GET /hadith/217/update/ HTTP/1.1" 200 30867
+INFO 2025-12-08 01:21:08,272 basehttp "POST /hadith/217/update/ HTTP/1.1" 302 0
+INFO 2025-12-08 01:21:08,378 basehttp "GET /hadith/ HTTP/1.1" 200 62137
+INFO 2025-12-08 01:21:17,139 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 115419
+INFO 2025-12-08 01:22:15,484 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 345
+INFO 2025-12-08 01:22:20,096 basehttp - Broken pipe from ('127.0.0.1', 57715)
+INFO 2025-12-08 01:22:20,272 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 117456
+INFO 2025-12-08 01:22:23,591 basehttp "GET /api/document-analysis/analyses/38/ HTTP/1.1" 200 1979
+INFO 2025-12-09 09:34:04,847 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 09:38:36,497 basehttp "GET / HTTP/1.1" 200 24364
+INFO 2025-12-09 09:38:36,722 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-12-09 09:38:37,024 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 5147
+INFO 2025-12-09 09:38:37,028 basehttp "GET /static/css/style.css HTTP/1.1" 200 3761
+WARNING 2025-12-09 09:38:37,596 log Not Found: /favicon.ico
+WARNING 2025-12-09 09:38:37,640 basehttp "GET /favicon.ico HTTP/1.1" 404 13325
+INFO 2025-12-09 09:39:48,231 basehttp "GET /accounts/login/ HTTP/1.1" 200 28654
+INFO 2025-12-09 09:39:56,284 basehttp "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-09 09:39:56,475 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 09:39:59,125 basehttp "GET /hadith/217/ HTTP/1.1" 200 27049
+INFO 2025-12-09 09:40:10,946 basehttp "GET /hadith/14 HTTP/1.1" 301 0
+WARNING 2025-12-09 09:40:10,992 log Not Found: /hadith/14/
+WARNING 2025-12-09 09:40:10,992 basehttp "GET /hadith/14/ HTTP/1.1" 404 5182
+INFO 2025-12-09 09:40:16,312 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 09:40:20,240 basehttp "GET /hadith/?page=3 HTTP/1.1" 200 41499
+INFO 2025-12-09 09:40:24,482 basehttp "GET /hadith/?page=5 HTTP/1.1" 200 54995
+INFO 2025-12-09 09:40:28,900 basehttp "GET /hadith/?page=7 HTTP/1.1" 200 38231
+INFO 2025-12-09 09:40:34,624 basehttp "GET /hadith/1/ HTTP/1.1" 200 34823
+INFO 2025-12-09 09:40:40,815 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 44216
+INFO 2025-12-09 09:41:16,724 basehttp "GET /narrators/6/ HTTP/1.1" 200 28162
+INFO 2025-12-09 09:41:19,008 basehttp "GET /narrator/6/analysis/ HTTP/1.1" 200 43142
+INFO 2025-12-09 09:41:19,143 basehttp "GET /narrator/6/network/ HTTP/1.1" 200 273
+INFO 2025-12-09 09:41:25,638 basehttp "GET /narrator/6/timeline/ HTTP/1.1" 200 572
+INFO 2025-12-09 09:41:27,631 basehttp "GET /narrator/6/geographical/ HTTP/1.1" 200 206
+INFO 2025-12-09 09:41:29,515 basehttp "GET /narrator/6/comparison/ HTTP/1.1" 200 407
+INFO 2025-12-09 09:41:35,902 basehttp "GET /narrator/6/geographical/ HTTP/1.1" 200 206
+INFO 2025-12-09 09:41:48,263 basehttp "GET /narrators/ HTTP/1.1" 200 34009
+INFO 2025-12-09 09:41:53,508 basehttp "GET /narrators/6/ HTTP/1.1" 200 28162
+INFO 2025-12-09 09:41:56,824 basehttp "GET /narrators/6/update/ HTTP/1.1" 200 29759
+INFO 2025-12-09 09:45:54,208 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 09:45:57,502 basehttp "GET /hadith/217/ HTTP/1.1" 200 27049
+INFO 2025-12-09 09:46:03,058 basehttp "GET /hadith/1/ HTTP/1.1" 200 34823
+INFO 2025-12-09 09:47:05,259 basehttp "GET /narrators/3/ HTTP/1.1" 200 27591
+INFO 2025-12-09 09:47:09,883 basehttp "GET /narrator/3/analysis/ HTTP/1.1" 200 43040
+INFO 2025-12-09 09:47:11,122 basehttp "GET /narrator/3/network/ HTTP/1.1" 200 323
+INFO 2025-12-09 09:47:41,629 basehttp "GET /narrator/3/comparison/ HTTP/1.1" 200 457
+INFO 2025-12-09 09:50:01,353 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 09:50:07,468 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 09:52:56,295 autoreload D:\sanad-system\sanad_system\hadith_app\forms\narrator_forms.py changed, reloading.
+INFO 2025-12-09 09:53:01,677 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 09:54:29,382 basehttp "GET /narrator/3/analysis/ HTTP/1.1" 200 44064
+INFO 2025-12-09 09:54:30,331 basehttp "GET /narrator/3/network/ HTTP/1.1" 200 323
+INFO 2025-12-09 09:54:55,554 basehttp "GET /narrator/3/teachers/add/ HTTP/1.1" 200 31917
+INFO 2025-12-09 09:55:53,124 basehttp "GET /narrator/3/comparison/ HTTP/1.1" 200 457
+INFO 2025-12-09 09:56:08,304 basehttp "GET /narrator/3/teachers/add/ HTTP/1.1" 200 31917
+INFO 2025-12-09 09:57:00,929 autoreload D:\sanad-system\sanad_system\hadith_app\forms\narrator_forms.py changed, reloading.
+INFO 2025-12-09 09:57:05,277 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 09:57:45,454 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 09:57:49,713 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 09:58:22,974 basehttp "GET /narrator/3/teachers/add/ HTTP/1.1" 200 33343
+INFO 2025-12-09 09:59:17,127 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 09:59:24,046 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 09:59:51,842 basehttp "GET /narrator/3/teachers/add/ HTTP/1.1" 200 35191
+INFO 2025-12-09 10:02:34,016 basehttp "POST /narrator/3/teachers/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:02:34,165 basehttp "GET /narrator/3/analysis/ HTTP/1.1" 200 44414
+INFO 2025-12-09 10:02:34,398 basehttp "GET /narrator/3/network/ HTTP/1.1" 200 700
+INFO 2025-12-09 10:03:05,742 basehttp "GET /narrator/3/teachers/add/ HTTP/1.1" 200 36398
+INFO 2025-12-09 10:06:27,638 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 10:06:34,176 basehttp "GET /hadith/1/ HTTP/1.1" 200 34823
+INFO 2025-12-09 10:08:35,376 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-09 10:08:39,053 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:09:05,409 autoreload D:\sanad-system\sanad_system\hadith_app\forms\hadith_forms.py changed, reloading.
+INFO 2025-12-09 10:09:08,792 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:09:30,575 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-09 10:09:33,581 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-09 10:13:29,272 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: hadith_app_hadithtext
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1075, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 722, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 854, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 925, in _resolve_lookup
+    current = current()
+  File "D:\sanad-system\sanad_system\hadith_app\models.py", line 194, in get_text_count
+    return self.texts.count()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: hadith_app_hadithtext
+ERROR 2025-12-09 10:13:29,340 basehttp "GET /hadith/1/ HTTP/1.1" 500 239871
+INFO 2025-12-09 10:15:17,904 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:15:38,958 basehttp "GET /hadith/1/ HTTP/1.1" 200 35474
+INFO 2025-12-09 10:15:42,682 basehttp "GET /hadith/1/texts/ HTTP/1.1" 200 28163
+INFO 2025-12-09 10:17:50,840 basehttp "GET /hadith/1/texts/add/ HTTP/1.1" 200 34203
+WARNING 2025-12-09 10:17:51,090 log Not Found: /favicon.ico
+INFO 2025-12-09 10:17:51,096 basehttp - Broken pipe from ('127.0.0.1', 57759)
+INFO 2025-12-09 10:17:59,832 basehttp "POST /hadith/1/texts/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:18:00,000 basehttp "GET /hadith/1/texts/ HTTP/1.1" 200 30895
+INFO 2025-12-09 10:18:08,155 basehttp "GET /hadith/1/ HTTP/1.1" 200 35482
+INFO 2025-12-09 10:18:17,858 basehttp "GET /sanad/1/add/ HTTP/1.1" 200 29265
+INFO 2025-12-09 10:18:45,330 basehttp "GET /narrators/ HTTP/1.1" 200 34009
+INFO 2025-12-09 10:18:47,592 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:23:00,024 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:23:00,126 basehttp "GET /narrators/ HTTP/1.1" 200 34859
+INFO 2025-12-09 10:23:10,574 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:28:01,408 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:28:01,498 basehttp "GET /narrators/ HTTP/1.1" 200 35547
+INFO 2025-12-09 10:28:13,882 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:28:31,058 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:28:31,158 basehttp "GET /narrators/ HTTP/1.1" 200 36208
+INFO 2025-12-09 10:28:43,908 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:29:01,115 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:29:01,227 basehttp "GET /narrators/ HTTP/1.1" 200 36883
+INFO 2025-12-09 10:29:12,458 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:29:26,658 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:29:26,774 basehttp "GET /narrators/ HTTP/1.1" 200 37541
+INFO 2025-12-09 10:29:40,715 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:29:52,922 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:29:52,981 basehttp "GET /narrators/ HTTP/1.1" 200 38244
+INFO 2025-12-09 10:30:06,315 basehttp "GET /narrators/create/ HTTP/1.1" 200 28858
+INFO 2025-12-09 10:30:17,159 basehttp "POST /narrators/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:30:17,874 basehttp "GET /narrators/ HTTP/1.1" 200 38900
+INFO 2025-12-09 10:31:38,742 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 10:31:42,496 basehttp "GET /hadith/1/ HTTP/1.1" 200 35482
+INFO 2025-12-09 10:31:44,839 basehttp "GET /hadith/1/texts/ HTTP/1.1" 200 30372
+ERROR 2025-12-09 10:31:54,638 log Internal Server Error: /hadith/1/texts/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\hadith_text_views.py", line 161, in hadith_text_comparison_view
+    return render(request, 'hadith_app/hadith_text_comparison.html', context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: hadith_app/hadith_text_comparison.html
+ERROR 2025-12-09 10:31:54,642 basehttp "GET /hadith/1/texts/comparison/ HTTP/1.1" 500 92604
+INFO 2025-12-09 10:34:39,953 basehttp "GET /hadith/1/texts/add/ HTTP/1.1" 200 35237
+INFO 2025-12-09 10:35:40,006 basehttp "POST /hadith/1/texts/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:35:40,104 basehttp "GET /hadith/1/texts/ HTTP/1.1" 200 35451
+ERROR 2025-12-09 10:36:18,572 log Internal Server Error: /hadith/1/texts/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\hadith_text_views.py", line 161, in hadith_text_comparison_view
+    return render(request, 'hadith_app/hadith_text_comparison.html', context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: hadith_app/hadith_text_comparison.html
+ERROR 2025-12-09 10:36:18,574 basehttp "GET /hadith/1/texts/comparison/ HTTP/1.1" 500 93184
+INFO 2025-12-09 10:37:07,959 basehttp "GET /hadith/1/texts/comparison/ HTTP/1.1" 200 38443
+INFO 2025-12-09 10:37:26,210 basehttp "GET /hadith/1/ HTTP/1.1" 200 35482
+INFO 2025-12-09 10:37:31,954 basehttp "GET /sanad/1/add/ HTTP/1.1" 200 30321
+ERROR 2025-12-09 10:37:40,265 log Internal Server Error: /sanad/1/add/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: hadith_app_sanadnarrator.order
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_views.py", line 28, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\messages\views.py", line 12, in form_valid
+    response = super().form_valid(form)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\edit.py", line 133, in form_valid
+    self.object = form.save()
+  File "D:\sanad-system\sanad_system\hadith_app\forms\sanad_forms.py", line 53, in save
+    SanadNarrator.objects.create(sanad=sanad, narrator=narrator)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1854, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1881, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: hadith_app_sanadnarrator.order
+ERROR 2025-12-09 10:37:40,313 basehttp "POST /sanad/1/add/ HTTP/1.1" 500 195444
+INFO 2025-12-09 10:37:58,365 autoreload D:\sanad-system\sanad_system\hadith_app\forms\sanad_forms.py changed, reloading.
+INFO 2025-12-09 10:38:08,015 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:38:38,282 basehttp "POST /sanad/1/add/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:38:38,408 basehttp "GET /hadith/1/ HTTP/1.1" 200 37088
+INFO 2025-12-09 10:39:25,584 basehttp - Broken pipe from ('127.0.0.1', 59884)
+ERROR 2025-12-09 10:39:25,804 log Internal Server Error: /narrators/8/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\detail.py", line 112, in get
+    self.object = self.get_object()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\detail.py", line 53, in get_object
+    obj = queryset.get()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: database is locked
+ERROR 2025-12-09 10:39:25,844 basehttp "GET /narrators/8/ HTTP/1.1" 500 153301
+INFO 2025-12-09 10:41:08,502 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:41:23,496 basehttp "GET /hadith/1/ HTTP/1.1" 200 36874
+INFO 2025-12-09 10:41:25,139 basehttp "GET /hadith/1/ HTTP/1.1" 200 36874
+INFO 2025-12-09 10:41:35,531 basehttp "GET /narrators/8/ HTTP/1.1" 200 27172
+INFO 2025-12-09 10:41:45,283 basehttp "GET /sanad/1/add/ HTTP/1.1" 200 30321
+INFO 2025-12-09 10:42:07,065 basehttp "GET /narrators/6/ HTTP/1.1" 200 28162
+INFO 2025-12-09 10:43:19,482 autoreload D:\sanad-system\sanad_system\hadith_app\forms\hadith_forms.py changed, reloading.
+INFO 2025-12-09 10:43:24,083 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-09 10:48:13,339 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_narrators' not found. 'sanad_narrators' is not a valid view function or pattern name.
+ERROR 2025-12-09 10:48:13,346 basehttp "GET /hadith/1/ HTTP/1.1" 500 187188
+INFO 2025-12-09 10:49:34,322 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:49:52,632 basehttp "GET /hadith/1/ HTTP/1.1" 200 38392
+INFO 2025-12-09 10:50:01,024 basehttp "GET /sanad/4/narrators/add/ HTTP/1.1" 200 34311
+INFO 2025-12-09 10:50:47,774 basehttp "POST /sanad/4/narrators/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:50:47,896 basehttp "GET /sanad/4/narrators/ HTTP/1.1" 200 38228
+INFO 2025-12-09 10:50:55,882 basehttp "GET /sanad/4/narrators/add/ HTTP/1.1" 200 34861
+INFO 2025-12-09 10:51:14,198 basehttp "POST /sanad/4/narrators/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:51:14,274 basehttp "GET /sanad/4/narrators/ HTTP/1.1" 200 40918
+INFO 2025-12-09 10:51:23,358 basehttp "GET /sanad/4/narrators/add/ HTTP/1.1" 200 35410
+INFO 2025-12-09 10:51:35,758 basehttp "POST /sanad/4/narrators/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:51:35,843 basehttp "GET /sanad/4/narrators/ HTTP/1.1" 200 43706
+INFO 2025-12-09 10:51:50,765 basehttp "GET /sanad/4/narrators/add/ HTTP/1.1" 200 35959
+INFO 2025-12-09 10:52:04,924 basehttp "POST /sanad/4/narrators/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:52:05,015 basehttp "GET /sanad/4/narrators/ HTTP/1.1" 200 46415
+INFO 2025-12-09 10:52:10,424 basehttp "GET /sanad/4/narrators/add/ HTTP/1.1" 200 36508
+INFO 2025-12-09 10:52:24,048 basehttp "POST /sanad/4/narrators/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:52:24,147 basehttp "GET /sanad/4/narrators/ HTTP/1.1" 200 49293
+INFO 2025-12-09 10:52:30,139 basehttp "GET /sanad/4/narrators/add/ HTTP/1.1" 200 37057
+INFO 2025-12-09 10:52:45,132 basehttp "POST /sanad/4/narrators/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:52:45,215 basehttp "GET /sanad/4/narrators/ HTTP/1.1" 200 51940
+INFO 2025-12-09 10:52:59,783 basehttp "GET /hadith/1/ HTTP/1.1" 200 43021
+INFO 2025-12-09 10:53:14,433 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 61612
+INFO 2025-12-09 10:53:35,447 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 50552
+WARNING 2025-12-09 10:53:57,501 log Not Found: /sanad/1/
+WARNING 2025-12-09 10:53:57,502 basehttp "GET /sanad/1/ HTTP/1.1" 404 17978
+INFO 2025-12-09 10:54:08,074 basehttp "GET /hadith/1/ HTTP/1.1" 200 43021
+INFO 2025-12-09 10:55:17,854 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-09 10:55:20,474 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-09 10:58:04,192 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sanad_edit' not found. 'sanad_edit' is not a valid view function or pattern name.
+ERROR 2025-12-09 10:58:04,207 basehttp "GET /hadith/1/ HTTP/1.1" 500 187601
+INFO 2025-12-09 10:59:00,859 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 10:59:23,017 basehttp "GET /hadith/1/ HTTP/1.1" 200 44647
+INFO 2025-12-09 10:59:32,538 basehttp "GET /sanad/3/delete/ HTTP/1.1" 200 29094
+INFO 2025-12-09 10:59:36,246 basehttp "POST /sanad/3/delete/ HTTP/1.1" 302 0
+INFO 2025-12-09 10:59:36,332 basehttp "GET /hadith/1/ HTTP/1.1" 200 43353
+INFO 2025-12-09 10:59:50,046 basehttp "GET /narrators/8/ HTTP/1.1" 200 27172
+INFO 2025-12-09 10:59:54,546 basehttp "GET /narrator/8/analysis/ HTTP/1.1" 200 43684
+INFO 2025-12-09 10:59:54,668 basehttp "GET /narrator/8/network/ HTTP/1.1" 200 237
+INFO 2025-12-09 10:59:59,155 basehttp "GET /narrator/8/teachers/add/ HTTP/1.1" 200 35783
+INFO 2025-12-09 11:00:33,488 basehttp "GET /narrators/ HTTP/1.1" 200 38684
+INFO 2025-12-09 11:00:36,793 basehttp "GET /narrators/9/ HTTP/1.1" 200 27227
+INFO 2025-12-09 11:00:38,839 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 43847
+INFO 2025-12-09 11:00:39,202 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 388
+INFO 2025-12-09 11:00:40,574 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 35891
+INFO 2025-12-09 11:00:50,102 basehttp "POST /narrator/9/teachers/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:00:50,176 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 44183
+INFO 2025-12-09 11:00:50,319 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 649
+INFO 2025-12-09 11:00:59,139 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 37058
+INFO 2025-12-09 11:01:18,608 basehttp "POST /narrator/9/teachers/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:01:18,689 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 44225
+INFO 2025-12-09 11:01:18,841 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 917
+INFO 2025-12-09 11:01:26,815 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 38390
+INFO 2025-12-09 11:01:36,824 basehttp "POST /narrator/9/teachers/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:01:36,908 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 44242
+INFO 2025-12-09 11:01:37,070 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1147
+INFO 2025-12-09 11:01:44,815 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 39694
+INFO 2025-12-09 11:02:00,266 basehttp "POST /narrator/9/teachers/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:02:00,354 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 44261
+INFO 2025-12-09 11:02:00,482 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1383
+INFO 2025-12-09 11:02:12,432 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 41002
+INFO 2025-12-09 11:02:23,059 basehttp "POST /narrator/9/teachers/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:02:23,141 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 44283
+INFO 2025-12-09 11:02:23,267 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:02:31,274 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 43847
+INFO 2025-12-09 11:02:31,387 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:02:38,451 basehttp "GET /narrator/9/timeline/ HTTP/1.1" 200 802
+INFO 2025-12-09 11:02:41,119 basehttp "GET /narrator/9/geographical/ HTTP/1.1" 200 320
+ERROR 2025-12-09 11:02:42,700 log Internal Server Error: /narrator/9/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py", line 429, in narrator_comparison_api
+    avg_teacher_age = sum(t['age'] or 0 for t in teachers_stats) / len([t for t in teachers_stats if t['age']])
+ZeroDivisionError: division by zero
+ERROR 2025-12-09 11:02:42,704 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 500 77078
+INFO 2025-12-09 11:04:20,322 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 11:04:24,108 basehttp "GET /hadith/1/ HTTP/1.1" 200 43353
+INFO 2025-12-09 11:04:48,483 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 49649
+INFO 2025-12-09 11:04:55,804 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 60711
+INFO 2025-12-09 11:05:55,472 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 11:05:59,863 basehttp "GET /hadith/1/ HTTP/1.1" 200 43353
+INFO 2025-12-09 11:06:19,053 basehttp "GET /sanad/4/edit/ HTTP/1.1" 200 36749
+INFO 2025-12-09 11:08:07,028 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-09 11:08:11,991 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-09 11:08:55,576 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'hadith_sanad_texts' not found. 'hadith_sanad_texts' is not a valid view function or pattern name.
+ERROR 2025-12-09 11:08:55,609 basehttp "GET /hadith/1/ HTTP/1.1" 500 194381
+INFO 2025-12-09 11:09:17,775 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-09 11:09:20,904 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-09 11:09:37,383 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'hadith_sanad_texts' not found. 'hadith_sanad_texts' is not a valid view function or pattern name.
+ERROR 2025-12-09 11:09:37,406 basehttp "GET /hadith/1/ HTTP/1.1" 500 194381
+INFO 2025-12-09 11:10:36,746 autoreload Watching for file changes with StatReloader
+ERROR 2025-12-09 11:10:53,657 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\related_descriptors.py", line 513, in __get__
+    rel_obj = self.related.get_cached_value(instance)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+KeyError: 'sanad_text'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: hadith_app_sanadtext
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 320, in render
+    match = condition.eval(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 886, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 722, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 854, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\related_descriptors.py", line 520, in __get__
+    rel_obj = self.get_queryset(instance=instance).get(**filter_args)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: hadith_app_sanadtext
+ERROR 2025-12-09 11:10:53,729 basehttp "GET /hadith/1/ HTTP/1.1" 500 297973
+ERROR 2025-12-09 11:10:55,363 log Internal Server Error: /hadith/1/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\related_descriptors.py", line 513, in __get__
+    rel_obj = self.related.get_cached_value(instance)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+KeyError: 'sanad_text'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: hadith_app_sanadtext
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 320, in render
+    match = condition.eval(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 886, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 722, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 854, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 901, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\related_descriptors.py", line 520, in __get__
+    rel_obj = self.get_queryset(instance=instance).get(**filter_args)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: hadith_app_sanadtext
+ERROR 2025-12-09 11:10:55,400 basehttp "GET /hadith/1/ HTTP/1.1" 500 297973
+INFO 2025-12-09 11:12:02,897 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:12:17,545 basehttp "GET /hadith/1/ HTTP/1.1" 200 45889
+INFO 2025-12-09 11:12:28,005 basehttp "GET /hadith/1/texts/ HTTP/1.1" 200 34928
+ERROR 2025-12-09 11:12:53,920 log Internal Server Error: /sanad/2/text/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\sanad_text_views.py", line 45, in sanad_text_detail_view
+    return render(request, 'hadith_app/sanad_text_detail.html', context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: hadith_app/sanad_text_detail.html
+ERROR 2025-12-09 11:12:53,930 basehttp "GET /sanad/2/text/ HTTP/1.1" 500 93829
+INFO 2025-12-09 11:13:39,659 basehttp "GET /hadith/1/texts/ HTTP/1.1" 200 34928
+INFO 2025-12-09 11:13:48,482 basehttp "GET /hadith/1/texts/comparison/ HTTP/1.1" 200 38443
+INFO 2025-12-09 11:14:19,189 basehttp "GET /hadith/1/ HTTP/1.1" 200 46238
+INFO 2025-12-09 11:14:42,033 basehttp "GET /hadith/1/ HTTP/1.1" 200 46238
+INFO 2025-12-09 11:14:46,110 basehttp "GET /sanad/4/text/ HTTP/1.1" 200 37935
+ERROR 2025-12-09 11:14:56,324 log Internal Server Error: /sanad/4/text/edit/2/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: hadith_app/sanad_text_edit.html
+ERROR 2025-12-09 11:14:56,336 basehttp "GET /sanad/4/text/edit/2/ HTTP/1.1" 500 86287
+INFO 2025-12-09 11:15:41,132 basehttp "GET /sanad/4/text/edit/2/ HTTP/1.1" 200 37645
+INFO 2025-12-09 11:16:10,999 basehttp "POST /sanad/4/text/edit/2/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:16:11,646 basehttp "GET /sanad/4/text/ HTTP/1.1" 200 38662
+INFO 2025-12-09 11:16:26,738 basehttp "GET /hadith/1/ HTTP/1.1" 200 46454
+INFO 2025-12-09 11:16:45,622 basehttp "GET /narrators/9/ HTTP/1.1" 200 27227
+INFO 2025-12-09 11:16:49,054 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 43847
+INFO 2025-12-09 11:16:49,367 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:16:56,889 basehttp "GET /narrator/9/timeline/ HTTP/1.1" 200 802
+INFO 2025-12-09 11:16:58,808 basehttp "GET /narrator/9/geographical/ HTTP/1.1" 200 320
+ERROR 2025-12-09 11:17:01,065 log Internal Server Error: /narrator/9/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py", line 429, in narrator_comparison_api
+    avg_teacher_age = sum(t['age'] or 0 for t in teachers_stats) / len([t for t in teachers_stats if t['age']])
+ZeroDivisionError: division by zero
+ERROR 2025-12-09 11:17:01,072 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 500 77078
+INFO 2025-12-09 11:17:13,545 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 43847
+INFO 2025-12-09 11:17:13,717 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:18:16,531 autoreload D:\sanad-system\sanad_system\hadith_app\urls.py changed, reloading.
+INFO 2025-12-09 11:18:20,704 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:21:07,453 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-09 11:21:10,158 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:23:49,208 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:24:10,109 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 42316
+INFO 2025-12-09 11:24:24,048 basehttp "GET /narrators/9/ HTTP/1.1" 200 27227
+INFO 2025-12-09 11:24:28,239 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 44805
+INFO 2025-12-09 11:24:29,204 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:24:40,493 basehttp "GET /narrator/9/students/add/ HTTP/1.1" 200 68219
+INFO 2025-12-09 11:25:44,424 basehttp "POST /narrator/9/students/submit/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:25:44,602 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45240
+INFO 2025-12-09 11:25:44,733 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:25:53,346 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 200 1578
+INFO 2025-12-09 11:25:56,865 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:26:04,790 basehttp "GET /narrator/9/students/add/ HTTP/1.1" 200 67754
+INFO 2025-12-09 11:26:25,913 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:26:26,082 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1626
+INFO 2025-12-09 11:27:32,393 basehttp "GET /narrator/9/timeline/ HTTP/1.1" 200 802
+INFO 2025-12-09 11:27:37,090 basehttp "GET /narrator/9/geographical/ HTTP/1.1" 200 320
+INFO 2025-12-09 11:27:38,921 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 200 1578
+INFO 2025-12-09 11:27:43,602 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 11:27:46,665 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:28:07,104 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 11:28:09,724 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:28:26,338 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:28:26,535 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1992
+INFO 2025-12-09 11:28:40,952 basehttp "GET /narrator/9/timeline/ HTTP/1.1" 200 802
+INFO 2025-12-09 11:28:45,487 basehttp "GET /narrator/9/geographical/ HTTP/1.1" 200 320
+ERROR 2025-12-09 11:28:50,892 log Internal Server Error: /narrator/9/comparison/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py", line 464, in narrator_comparison_api
+    'name': narrator.name,
+NameError: name 'TeacherStudentRelationship' is not defined
+ERROR 2025-12-09 11:28:50,898 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 500 76671
+INFO 2025-12-09 11:29:49,647 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 11:29:53,041 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:30:09,832 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:30:10,004 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1992
+INFO 2025-12-09 11:30:19,609 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:30:19,708 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1992
+INFO 2025-12-09 11:30:24,665 basehttp "GET /narrator/9/timeline/ HTTP/1.1" 200 802
+INFO 2025-12-09 11:30:25,804 basehttp "GET /narrator/9/geographical/ HTTP/1.1" 200 320
+INFO 2025-12-09 11:30:26,939 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 200 1894
+INFO 2025-12-09 11:30:36,192 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:30:36,372 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1992
+INFO 2025-12-09 11:31:30,274 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 11:31:33,109 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:31:47,874 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:31:48,039 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1992
+INFO 2025-12-09 11:31:58,974 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 42316
+INFO 2025-12-09 11:32:06,208 basehttp "POST /narrator/9/teachers/17/remove/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:32:06,312 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 41804
+INFO 2025-12-09 11:32:10,320 basehttp "POST /narrator/9/teachers/18/remove/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:32:10,489 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 40548
+INFO 2025-12-09 11:32:14,022 basehttp "POST /narrator/9/teachers/16/remove/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:32:14,102 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 39281
+INFO 2025-12-09 11:32:21,224 basehttp "POST /narrator/9/teachers/15/remove/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:32:21,282 basehttp "GET /narrator/9/teachers/add/ HTTP/1.1" 200 38038
+INFO 2025-12-09 11:32:24,940 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:32:25,111 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1015
+INFO 2025-12-09 11:33:34,406 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
+INFO 2025-12-09 11:33:37,214 autoreload Watching for file changes with StatReloader

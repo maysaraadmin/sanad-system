@@ -490,3 +490,5 @@ class SearchForm(forms.Form):
             'class': 'form-check-input'
         })
     )
+
+
