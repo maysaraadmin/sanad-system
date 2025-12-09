@@ -10934,3 +10934,26 @@ INFO 2025-12-09 11:32:24,940 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 4
 INFO 2025-12-09 11:32:25,111 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1015
 INFO 2025-12-09 11:33:34,406 autoreload D:\sanad-system\sanad_system\hadith_app\views\narrator_analysis_views.py changed, reloading.
 INFO 2025-12-09 11:33:37,214 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 11:33:55,415 basehttp "GET /narrator/9/analysis/ HTTP/1.1" 200 45026
+INFO 2025-12-09 11:33:55,877 basehttp "GET /narrator/9/network/ HTTP/1.1" 200 1015
+INFO 2025-12-09 11:34:07,574 basehttp "GET /narrator/9/timeline/ HTTP/1.1" 200 802
+INFO 2025-12-09 11:34:10,315 basehttp "GET /narrator/9/geographical/ HTTP/1.1" 200 320
+INFO 2025-12-09 11:34:12,698 basehttp "GET /narrator/9/comparison/ HTTP/1.1" 200 1065
+INFO 2025-12-09 11:34:23,609 basehttp "GET /hadith/ HTTP/1.1" 200 61919
+INFO 2025-12-09 11:34:29,342 basehttp "GET /hadith/1/ HTTP/1.1" 200 46454
+INFO 2025-12-09 11:36:32,639 basehttp "GET /hadith/1/ HTTP/1.1" 200 51758
+INFO 2025-12-09 11:36:34,142 basehttp "GET /hadith/1/ HTTP/1.1" 200 51758
+INFO 2025-12-09 11:37:13,315 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 49649
+INFO 2025-12-09 11:39:12,282 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 49677
+INFO 2025-12-09 11:40:19,808 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 49731
+INFO 2025-12-09 11:41:37,458 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 49731
+INFO 2025-12-09 11:42:29,525 basehttp "GET /sanad/1/tree/ HTTP/1.1" 200 49731
+INFO 2025-12-09 11:42:55,965 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 60711
+INFO 2025-12-09 11:45:31,892 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 61948
+INFO 2025-12-09 11:47:24,401 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 60893
+INFO 2025-12-09 11:49:15,608 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 63293
+INFO 2025-12-09 11:52:36,930 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 65671
+INFO 2025-12-09 11:54:47,475 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 65617
+INFO 2025-12-09 11:56:33,364 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 69105
+INFO 2025-12-09 11:59:07,301 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 69447
+INFO 2025-12-09 12:00:27,533 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 68181
