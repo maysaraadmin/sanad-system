@@ -40,6 +40,9 @@ urlpatterns = [
     # Library App URLs
     path('library/', include(('library_app.urls', 'library_app'), namespace='library_app')),
     
+    # RAG App URLs
+    path('rag/', include(('rag_app.urls', 'rag_app'), namespace='rag_app')),
+    
     # Document Analysis Dashboard
     path('document-analysis/', include(('document_analysis.urls', 'document_analysis'), namespace='document_analysis')),
     

@@ -1,0 +1,174 @@
+{% extends "rag_app/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block rag_content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card result-card">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0">
+                    <i class="fas fa-database"></i>
+                    {% trans "فهرسة الأحاديث" %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    {% trans "هذه العملية تقوم بفهرسة الأحاديث في قاعدة بيانات RAG لتتمكن من البحث الدلالي فيها." %}
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="hadith_ids" class="form-label">
+                                {% trans "معرفات الأحاديث (اختياري)" %}
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="hadith_ids" 
+                                name="hadith_ids" 
+                                rows="3" 
+                                placeholder="1, 2, 3, 4, 5"></textarea>
+                            <small class="form-text text-muted">
+                                {% trans "اترك فارغاً لفهرسة جميع الأحاديث، أو أدخل معرفات مفصولة بفواصل" %}
+                            </small>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    {% trans "خيارات الفهرسة" %}
+                                </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="reindex" id="reindex">
+                                    <label class="form-check-label" for="reindex">
+                                        {% trans "مسح البيانات الحالية وإعادة الفهرسة" %}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    {% trans "حجم الدفعة" %}
+                                </label>
+                                <input type="number" class="form-control" name="batch_size" value="100" min="10" max="1000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-warning btn-lg">
+                            <i class="fas fa-database"></i>
+                            {% trans "بدء الفهرسة" %}
+                        </button>
+                        <a href="{% url 'rag_app:rag-admin-dashboard' %}" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-right"></i>
+                            {% trans "رجوع" %}
+                        </a>
+                    </div>
+                </form>
+
+                <!-- Current Status -->
+                <div class="mt-4">
+                    <h5>
+                        <i class="fas fa-chart-bar"></i>
+                        {% trans "الحالة الحالية" %}
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-primary" id="totalHadiths">—</h3>
+                                    <p class="mb-0">{% trans "إجمالي الأحاديث" %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-success" id="indexedDocuments">—</h3>
+                                    <p class="mb-0">{% trans "المستندات المفهرسة" %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-info" id="totalQueries">—</h3>
+                                    <p class="mb-0">{% trans "إجمالي الاستفسارات" %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Indexing Activity -->
+                <div class="mt-4">
+                    <h5>
+                        <i class="fas fa-history"></i>
+                        {% trans "نشاط الفهرسة الأخير" %}
+                    </h5>
+                    <div id="indexingActivity">
+                        <p class="text-muted">{% trans "جاري تحميل البيانات..." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Load current statistics
+function loadStats() {
+    fetch('/rag/api/stats/')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('totalHadiths').textContent = data.total_documents || '0';
+            document.getElementById('indexedDocuments').textContent = data.total_documents || '0';
+            document.getElementById('totalQueries').textContent = data.total_queries || '0';
+        })
+        .catch(error => {
+            console.error('Error loading stats:', error);
+        });
+}
+
+// Load recent indexing activity
+function loadIndexingActivity() {
+    // This would typically load from a log or recent activity table
+    // For now, show a placeholder
+    document.getElementById('indexingActivity').innerHTML = `
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            {% trans "لا يوجد سجل نشاط متاح حالياً. سيتم عرض نشاط الفهرسة هنا بعد بدء العملية." %}
+        </div>
+    `;
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    loadStats();
+    loadIndexingActivity();
+    
+    // Refresh stats every 30 seconds
+    setInterval(loadStats, 30000);
+});
+
+// Handle form submission with loading state
+document.querySelector('form').addEventListener('submit', function() {
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        {% trans "جاري الفهرسة..." %}
+    `;
+    
+    // Note: The actual indexing happens server-side, this is just UI feedback
+    setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+    }, 3000);
+});
+</script>
+{% endblock %}

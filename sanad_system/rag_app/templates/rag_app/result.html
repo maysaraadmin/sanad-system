@@ -1,0 +1,258 @@
+{% extends "rag_app/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block rag_content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card result-card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-search"></i>
+                    {% trans "نتائج البحث" %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <h6>{% trans "سؤالك:" %}</h6>
+                    <p class="arabic-text bg-light p-2 rounded">{{ query }}</p>
+                </div>
+
+                <div class="mb-3">
+                    <h6>{% trans "الإجابة:" %}</h6>
+                    <div class="arabic-text bg-success bg-opacity-10 p-3 rounded">
+                        {{ answer|linebreaks }}
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a href="{% url 'rag_app:rag-home' %}" class="btn btn-arabic">
+                        <i class="fas fa-arrow-right"></i>
+                        {% trans "سؤال جديد" %}
+                    </a>
+                    <button onclick="copyToClipboard('{{ answer|escapejs }}')" class="btn btn-outline-secondary">
+                        <i class="fas fa-copy"></i>
+                        {% trans "نسخ الإجابة" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ask Follow-up Question -->
+        <div class="card result-card mt-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-comments"></i>
+                    {% trans "اطرح سؤالاً متابعاً" %}
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'rag_app:rag-ask-question' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="followup-query" class="form-label">
+                            {% trans "سؤال متابع:" %}
+                        </label>
+                        <textarea 
+                            class="form-control query-input arabic-text" 
+                            id="followup-query" 
+                            name="query" 
+                            rows="3" 
+                            placeholder="مثال: هل هناك أحاديث أخرى توضح هذا الموضوع؟"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-arabic">
+                        <i class="fas fa-search"></i>
+                        {% trans "ابحث" %}
+                    </button>
+                </form>
+                
+                <div class="loading-spinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">{% trans "جاري البحث..." %}</span>
+                    </div>
+                    <p class="mt-2">{% trans "جاري البحث عن الأحاديث ذات الصلة..." %}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Context -->
+        {% for result in context %}
+        <div class="border-bottom pb-3 mb-3">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                    <span class="source-badge">
+                        <i class="fas fa-book"></i>
+                        {{ result.metadata.source|default:"غير معروف" }}
+                    </span>
+                    {% if result.metadata.grade %}
+                    <span class="source-badge grade-{{ result.metadata.grade }}">
+                        {{ result.metadata.get_grade_display|default:result.metadata.grade }}
+                    </span>
+                    {% endif %}
+                </div>
+                <div>
+                    <span class="similarity-score">
+                        {% trans "التشابه:" %} {{ result.similarity|floatformat:2 }}
+                    </span>
+                </div>
+            </div>
+            
+            <div class="arabic-text">
+                {{ result.text|linebreaks }}
+            </div>
+            
+            {% if result.metadata.categories %}
+            <div class="mt-2">
+                <small class="text-muted">
+                    {% trans "التصنيفات:" %}
+                    {% for category in result.metadata.categories %}
+                    <span class="badge bg-secondary">{{ category }}</span>
+                    {% endfor %}
+                </small>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <!-- Sources Summary -->
+        <div class="sidebar">
+            <h5>
+                <i class="fas fa-list"></i>
+                {% trans "ملخص المصادر" %}
+            </h5>
+            {% if sources %}
+                {% for source in sources %}
+                <div class="mb-2">
+                    <div class="d-flex justify-content-between">
+                        <span class="source-badge">
+                            {{ source.source|default:"غير معروف" }}
+                        </span>
+                        <small class="text-muted">
+                            {% trans "التشابه:" %} {{ source.similarity|floatformat:2 }}
+                        </small>
+                    </div>
+                    {% if source.grade %}
+                    <small class="text-muted">
+                        {% trans "الدرجة:" %} 
+                        <span class="grade-{{ source.grade }} source-badge">
+                            {{ source.grade }}
+                        </span>
+                    </small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">{% trans "لا توجد مصادر متاحة" %}</p>
+            {% endif %}
+        </div>
+
+        <!-- Actions -->
+        <div class="sidebar">
+            <h5>
+                <i class="fas fa-tools"></i>
+                {% trans "إجراءات" %}
+            </h5>
+            <button onclick="window.print()" class="btn btn-outline-primary btn-sm mb-2 w-100">
+                <i class="fas fa-print"></i>
+                {% trans "طباعة النتائج" %}
+            </button>
+            <button onclick="shareResults()" class="btn btn-outline-secondary btn-sm mb-2 w-100">
+                <i class="fas fa-share"></i>
+                {% trans "مشاركة النتائج" %}
+            </button>
+            <a href="{% url 'rag_app:rag-home' %}" class="btn btn-arabic w-100">
+                <i class="fas fa-search"></i>
+                {% trans "بحث جديد" %}
+            </a>
+        </div>
+
+        <!-- Related Topics -->
+        <div class="sidebar">
+            <h5>
+                <i class="fas fa-lightbulb"></i>
+                {% trans "أسئلة مقترحة" %}
+            </h5>
+            <div class="suggested-questions">
+                <button onclick="askQuestion('ما هي أحاديث الصدقة؟')" class="btn btn-outline-info btn-sm mb-1 w-100 text-start">
+                    ما هي أحاديث الصدقة؟
+                </button>
+                <button onclick="askQuestion('أحاديث عن بر الوالدين')" class="btn btn-outline-info btn-sm mb-1 w-100 text-start">
+                    أحاديث عن بر الوالدين
+                </button>
+                <button onclick="askQuestion('ماذا قال النبي عن الصلاة؟')" class="btn btn-outline-info btn-sm mb-1 w-100 text-start">
+                    ماذا قال النبي عن الصلاة؟
+                </button>
+                <button onclick="askQuestion('أحاديث عن الأخلاق الحميدة')" class="btn btn-outline-info btn-sm mb-1 w-100 text-start">
+                    أحاديث عن الأخلاق الحميدة
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Add form handling for follow-up questions
+document.addEventListener('DOMContentLoaded', function() {
+    const followupForm = document.querySelector('#followup-query')?.closest('form');
+    if (followupForm) {
+        followupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showLoading();
+            
+            const formData = new FormData(this);
+            const query = formData.get('query');
+            
+            fetch('/rag/api/ask/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.location.href = `/rag/result/?query=${encodeURIComponent(query)}&answer=${encodeURIComponent(data.answer || data.error)}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                hideLoading();
+                alert('حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.');
+            });
+        });
+    }
+});
+
+function askQuestion(question) {
+    window.location.href = `{% url 'rag_app:rag-home' %}?query=${encodeURIComponent(question)}`;
+}
+
+function shareResults() {
+    const text = `السؤال: {{ query|escapejs }}\n\nالإجابة: {{ answer|escapejs }}`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'نتائج بحث الأحاديث',
+            text: text,
+            url: window.location.href
+        });
+    } else {
+        // Fallback: copy to clipboard
+        copyToClipboard(text);
+    }
+}
+
+// Auto-focus on new question if query parameter exists
+window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('query');
+    if (query) {
+        // If coming from suggested questions, redirect to home with the query
+        window.location.href = `{% url 'rag_app:rag-home' %}?query=${encodeURIComponent(query)}`;
+    }
+});
+</script>
+{% endblock %}

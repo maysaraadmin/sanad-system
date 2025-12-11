@@ -1,0 +1,175 @@
+{% extends "rag_app/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block rag_content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card result-card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-search"></i>
+                    {% trans "محرك البحث الدلالي للأحاديث" %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'rag_app:rag-ask-question' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="query" class="form-label">
+                            {% trans "اطرح سؤالك عن الأحاديث النبوية" %}
+                        </label>
+                        <textarea 
+                            class="form-control query-input arabic-text" 
+                            id="query" 
+                            name="query" 
+                            rows="3" 
+                            placeholder="مثال: ما هي الأحاديث عن الصلاة؟"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-arabic btn-lg">
+                        <i class="fas fa-search"></i>
+                        {% trans "ابحث" %}
+                    </button>
+                </form>
+                
+                <div class="loading-spinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">{% trans "جاري البحث..." %}</span>
+                    </div>
+                    <p class="mt-2">{% trans "جاري البحث عن الأحاديث ذات الصلة..." %}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card result-card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle"></i>
+                    {% trans "كيف يعمل البحث الدلالي؟" %}
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>{% trans "المميزات" %}:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> {% trans "فهم معنى السؤال" %}</li>
+                            <li><i class="fas fa-check text-success"></i> {% trans "بحث دلالي في النصوص" %}</li>
+                            <li><i class="fas fa-check text-success"></i> {% trans "ترتيب النتائج حسب الصلة" %}</li>
+                            <li><i class="fas fa-check text-success"></i> {% trans "عرض مصادر الأحاديث" %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>{% trans "نصائح للبحث" %}:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-lightbulb text-warning"></i> {% trans "استخدم صياغة واضحة" %}</li>
+                            <li><i class="fas fa-lightbulb text-warning"></i> {% trans "حدد الموضوع بدقة" %}</li>
+                            <li><i class="fas fa-lightbulb text-warning"></i> {% trans "استخدم كلمات مفتاحية" %}</li>
+                            <li><i class="fas fa-lightbulb text-warning"></i> {% trans "جرب صياغات مختلفة" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="sidebar">
+            <h5>
+                <i class="fas fa-history"></i>
+                {% trans "استفسارات سابقة" %}
+            </h5>
+            {% if recent_queries %}
+                {% for query in recent_queries %}
+                <div class="recent-query" onclick="setQuery('{{ query.query|escapejs }}')">
+                    <small class="text-muted">{{ query.created_at|date:"H:i" }}</small><br>
+                    <span class="arabic-text">{{ query.query|truncatechars:50 }}</span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">{% trans "لا توجد استفسارات سابقة" %}</p>
+            {% endif %}
+        </div>
+
+        <div class="sidebar">
+            <h5>
+                <i class="fas fa-chart-bar"></i>
+                {% trans "إحصائيات سريعة" %}
+            </h5>
+            <div class="row text-center">
+                <div class="col-6">
+                    <div class="stats-card">
+                        <h3>{{ recent_queries|length }}</h3>
+                        <small>{% trans "استفساراتك" %}</small>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="stats-card">
+                        <h3 id="total-hadiths">-</h3>
+                        <small>{% trans "الأحاديث" %}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if user.is_staff %}
+        <div class="sidebar">
+            <h5>
+                <i class="fas fa-cog"></i>
+                {% trans "إدارة النظام" %}
+            </h5>
+            <a href="{% url 'rag_app:rag-admin-dashboard' %}" class="btn btn-outline-primary btn-sm mb-2 w-100">
+                <i class="fas fa-tachometer-alt"></i>
+                {% trans "لوحة التحكم" %}
+            </a>
+            <a href="{% url 'rag_app:rag-query-history' %}" class="btn btn-outline-secondary btn-sm w-100">
+                <i class="fas fa-list"></i>
+                {% trans "سجل الاستفسارات" %}
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showLoading();
+    
+    const formData = new FormData(this);
+    const query = formData.get('query');
+    
+    fetch('/rag/api/ask/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify({ query: query })
+    })
+    .then(response => response.json())
+    .then(data => {
+        window.location.href = `/rag/result/?query=${encodeURIComponent(query)}&answer=${encodeURIComponent(data.answer || data.error)}`;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        hideLoading();
+        alert('حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.');
+    });
+});
+
+function setQuery(query) {
+    document.getElementById('query').value = query;
+    document.getElementById('query').focus();
+}
+
+// Load quick stats
+fetch('/rag/api/stats/')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('total-hadiths').textContent = data.total_documents || '-';
+    })
+    .catch(error => console.log('Error loading stats:', error));
+</script>
+{% endblock %}

@@ -10957,3 +10957,244 @@ INFO 2025-12-09 11:54:47,475 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 65
 INFO 2025-12-09 11:56:33,364 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 69105
 INFO 2025-12-09 11:59:07,301 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 69447
 INFO 2025-12-09 12:00:27,533 basehttp "GET /sanad/1/comparison/ HTTP/1.1" 200 68181
+INFO 2025-12-11 20:33:51,425 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 20:38:03,324 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 20:39:10,524 basehttp "GET /rag/ HTTP/1.1" 302 0
+ERROR 2025-12-11 20:39:11,362 log Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'document_analysis'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'document_analysis' is not a registered namespace
+ERROR 2025-12-11 20:39:11,390 basehttp "GET /accounts/login/?next=/rag/ HTTP/1.1" 500 154601
+WARNING 2025-12-11 20:39:11,757 log Not Found: /favicon.ico
+WARNING 2025-12-11 20:39:11,770 basehttp "GET /favicon.ico HTTP/1.1" 404 16580
+INFO 2025-12-11 20:41:28,235 basehttp "GET /accounts/login/?next=/rag/ HTTP/1.1" 200 28629
+INFO 2025-12-11 20:41:36,590 basehttp "GET /static/css/style.css HTTP/1.1" 200 3761
+INFO 2025-12-11 20:41:36,700 basehttp "GET /static/js/main.js HTTP/1.1" 200 4678
+INFO 2025-12-11 20:41:36,702 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 5147
+WARNING 2025-12-11 20:41:37,478 log Not Found: /favicon.ico
+INFO 2025-12-11 20:41:37,535 basehttp - Broken pipe from ('127.0.0.1', 53940)
+INFO 2025-12-11 20:42:13,395 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 302 0
+ERROR 2025-12-11 20:42:13,673 log Internal Server Error: /rag/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\engine.py", line 161, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+ERROR 2025-12-11 20:42:13,704 basehttp "GET /rag/ HTTP/1.1" 500 158978
+INFO 2025-12-11 20:43:36,987 basehttp "GET /rag/ HTTP/1.1" 302 0
+ERROR 2025-12-11 20:44:50,361 log Internal Server Error: /rag/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'rag-ask-question' not found. 'rag-ask-question' is not a valid view function or pattern name.
+ERROR 2025-12-11 20:44:50,423 basehttp "GET /rag/ HTTP/1.1" 500 214333
+INFO 2025-12-11 20:46:55,915 basehttp "GET /rag/ HTTP/1.1" 200 31258
+WARNING 2025-12-11 20:46:56,296 log Not Found: /api/rag/stats/
+WARNING 2025-12-11 20:46:56,380 basehttp "GET /api/rag/stats/ HTTP/1.1" 404 16589
+INFO 2025-12-11 20:47:19,304 basehttp "GET /rag/admin/ HTTP/1.1" 200 33296
+INFO 2025-12-11 20:50:30,752 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 20:51:05,214 basehttp "GET /rag/ HTTP/1.1" 200 31258
+WARNING 2025-12-11 20:51:05,631 log Not Found: /api/rag/stats/
+WARNING 2025-12-11 20:51:05,635 basehttp "GET /api/rag/stats/ HTTP/1.1" 404 16589
+INFO 2025-12-11 20:51:24,071 basehttp "GET /rag/ HTTP/1.1" 200 31258
+WARNING 2025-12-11 20:51:25,553 log Not Found: /api/rag/stats/
+WARNING 2025-12-11 20:51:25,554 basehttp "GET /api/rag/stats/ HTTP/1.1" 404 16589
+INFO 2025-12-11 20:51:27,586 basehttp "GET /rag/ HTTP/1.1" 200 31258
+WARNING 2025-12-11 20:51:30,081 log Not Found: /api/rag/stats/
+WARNING 2025-12-11 20:51:30,085 basehttp "GET /api/rag/stats/ HTTP/1.1" 404 16589
+INFO 2025-12-11 20:54:04,695 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 20:54:20,909 basehttp "GET /rag/ HTTP/1.1" 200 31258
+WARNING 2025-12-11 20:54:21,259 log Not Found: /api/rag/stats/
+WARNING 2025-12-11 20:54:21,261 basehttp "GET /api/rag/stats/ HTTP/1.1" 404 16589
+INFO 2025-12-11 20:56:26,682 autoreload D:\sanad-system\sanad_system\rag_app\api.py changed, reloading.
+INFO 2025-12-11 20:56:34,549 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 20:57:11,570 basehttp "GET /rag/ HTTP/1.1" 200 31258
+INFO 2025-12-11 20:57:13,837 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 378
+INFO 2025-12-11 21:00:12,587 autoreload D:\sanad-system\sanad_system\rag_app\views.py changed, reloading.
+INFO 2025-12-11 21:00:25,569 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 21:01:50,120 basehttp "GET /rag/ HTTP/1.1" 200 32041
+INFO 2025-12-11 21:01:52,753 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 378
+INFO 2025-12-11 21:02:29,225 basehttp "GET /rag/admin/ HTTP/1.1" 200 33296
+INFO 2025-12-11 21:02:35,777 basehttp "GET /rag/admin/index/ HTTP/1.1" 200 32990
+INFO 2025-12-11 21:02:37,543 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 378
+INFO 2025-12-11 21:02:47,558 basehttp "GET /admin/rag_app/ HTTP/1.1" 200 21506
+INFO 2025-12-11 21:02:48,509 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-11 21:02:48,515 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-12-11 21:02:48,518 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-12-11 21:02:48,520 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-12-11 21:02:48,522 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2025-12-11 21:02:48,523 basehttp "GET /static/admin/css/admin-rtl.css HTTP/1.1" 200 2890
+INFO 2025-12-11 21:02:48,536 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-11 21:02:48,606 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2025-12-11 21:02:48,611 basehttp "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 200 1864
+INFO 2025-12-11 21:02:48,614 basehttp "GET /static/admin/css/rtl.css HTTP/1.1" 200 4918
+INFO 2025-12-11 21:02:48,723 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-11 21:02:48,723 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-11 21:03:01,917 basehttp "GET /rag/history/ HTTP/1.1" 200 29208
+INFO 2025-12-11 21:03:14,672 basehttp "GET /rag/history/ HTTP/1.1" 200 29208
+INFO 2025-12-11 21:07:05,559 basehttp "GET /rag/ HTTP/1.1" 200 32041
+INFO 2025-12-11 21:07:06,108 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 378
+INFO 2025-12-11 21:07:07,426 basehttp "GET /rag/ HTTP/1.1" 200 32041
+INFO 2025-12-11 21:07:07,940 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 378
+INFO 2025-12-11 21:07:46,447 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 21:09:48,165 basehttp "GET /rag/ HTTP/1.1" 200 32041
+INFO 2025-12-11 21:09:50,174 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 378
+INFO 2025-12-11 21:11:43,777 basehttp "POST /rag/ask/ HTTP/1.1" 200 52209
+INFO 2025-12-11 21:42:33,165 basehttp "POST /rag/ask/ HTTP/1.1" 200 53492
+INFO 2025-12-11 21:43:17,090 basehttp "GET / HTTP/1.1" 200 26955
+INFO 2025-12-11 21:43:25,340 basehttp "GET /rag/ HTTP/1.1" 200 32628
+INFO 2025-12-11 21:43:26,925 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 745
+INFO 2025-12-11 21:44:21,577 basehttp "POST /rag/ask/ HTTP/1.1" 200 33659
+INFO 2025-12-11 22:44:43,669 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 22:46:19,670 basehttp "GET /rag/ HTTP/1.1" 200 32628
+INFO 2025-12-11 22:46:21,832 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-11 22:46:40,817 basehttp "POST /rag/ask/ HTTP/1.1" 200 33659
+INFO 2025-12-11 22:47:09,171 basehttp "GET /rag/ HTTP/1.1" 200 32628
+INFO 2025-12-11 22:47:09,823 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-11 22:47:44,096 basehttp "POST /rag/ask/ HTTP/1.1" 200 33655
+INFO 2025-12-11 22:48:24,484 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-11 22:48:32,764 autoreload Watching for file changes with StatReloader

@@ -1,0 +1,222 @@
+{% extends "rag_app/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block rag_content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card result-card">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0">
+                    <i class="fas fa-cog"></i>
+                    {% trans "لوحة تحكم نظام RAG" %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <!-- Statistics Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <h3>{{ total_documents }}</h3>
+                            <p>{% trans "المستندات المفهرسة" %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <h3>{{ total_queries }}</h3>
+                            <p>{% trans "إجمالي الاستفسارات" %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <h3>{{ recent_queries|length }}</h3>
+                            <p>{% trans "الاستفسارات الحديثة" %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <h3>{% if active_config %}{{ active_config.name }}{% else %}—{% endif %}</h3>
+                            <p>{% trans "الإعدادات النشطة" %}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="admin-actions">
+                    <h5>
+                        <i class="fas fa-tools"></i>
+                        {% trans "إجراءات النظام" %}
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{% url 'rag_app:rag-index-hadiths' %}" class="btn btn-primary mb-2 w-100">
+                                <i class="fas fa-database"></i>
+                                {% trans "فهرسة الأحاديث" %}
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'rag_app:rag-reindex-all' %}" class="btn btn-warning mb-2 w-100">
+                                <i class="fas fa-sync"></i>
+                                {% trans "إعادة الفهرسة الكاملة" %}
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/admin/rag_app/" class="btn btn-info mb-2 w-100">
+                                <i class="fas fa-cogs"></i>
+                                {% trans "إدارة النماذج" %}
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'rag_app:rag-query-history' %}" class="btn btn-secondary mb-2 w-100">
+                                <i class="fas fa-list"></i>
+                                {% trans "سجل الاستفسارات" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Configuration -->
+                {% if active_config %}
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="fas fa-cog"></i>
+                            {% trans "الإعدادات الحالية" %}
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>{% trans "اسم الإعدادات:" %}</strong> {{ active_config.name }}<br>
+                                <strong>{% trans "نموذج التضمين:" %}</strong> {{ active_config.embedding_model }}<br>
+                                <strong>{% trans "نموذج اللغة:" %}</strong> {{ active_config.llm_model }}
+                            </div>
+                            <div class="col-md-6">
+                                <strong>{% trans "حجم الجزء:" %}</strong> {{ active_config.chunk_size }}<br>
+                                <strong>{% trans "تداخل الأجزاء:" %}</strong> {{ active_config.chunk_overlap }}<br>
+                                <strong>{% trans "الحد الأقصى للسياق:" %}</strong> {{ active_config.max_context }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Recent Queries -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            <i class="fas fa-history"></i>
+                            {% trans "آخر الاستفسارات" %}
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        {% if recent_queries %}
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>{% trans "المستخدم" %}</th>
+                                            <th>{% trans "السؤال" %}</th>
+                                            <th>{% trans "التاريخ" %}</th>
+                                            <th>{% trans "الإجراءات" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for query in recent_queries %}
+                                        <tr>
+                                            <td>{{ query.user.username|default:"مجهول" }}</td>
+                                            <td>
+                                                <span class="arabic-text">{{ query.query|truncatechars:50 }}</span>
+                                            </td>
+                                            <td>{{ query.created_at|date:"H:i" }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-primary" 
+                                                        onclick="viewQueryDetails('{{ query.id }}')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p class="text-muted">{% trans "لا توجد استفسارات حديثة" %}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Query Details Modal -->
+<div class="modal fade" id="queryDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans "تفاصيل الاستفسار" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="queryDetailsContent">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function viewQueryDetails(queryId) {
+    // Load query details via AJAX
+    fetch(`/rag/api/queries/${queryId}/`)
+        .then(response => response.json())
+        .then(data => {
+            const content = `
+                <div class="mb-3">
+                    <h6>{% trans "المستخدم:" %}</h6>
+                    <p>${data.user_name || '{% trans "مجهول" %}'}</p>
+                </div>
+                <div class="mb-3">
+                    <h6>{% trans "السؤال:" %}</h6>
+                    <p class="arabic-text bg-light p-2 rounded">${data.query}</p>
+                </div>
+                <div class="mb-3">
+                    <h6>{% trans "الإجابة:" %}</h6>
+                    <div class="arabic-text bg-success bg-opacity-10 p-2 rounded">
+                        ${data.response}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <small class="text-muted">
+                            {% trans "نموذج التضمين:" %} ${data.embedding_model}
+                        </small>
+                    </div>
+                    <div class="col-md-6">
+                        <small class="text-muted">
+                            {% trans "نموذج اللغة:" %} ${data.llm_model}
+                        </small>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <small class="text-muted">
+                        {% trans "التاريخ:" %} ${new Date(data.created_at).toLocaleString('ar-SA')}
+                    </small>
+                </div>
+            `;
+            
+            document.getElementById('queryDetailsContent').innerHTML = content;
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('queryDetailsModal'));
+            modal.show();
+        })
+        .catch(error => {
+            console.error('Error loading query details:', error);
+            showToast('{% trans "حدث خطأ أثناء تحميل التفاصيل" %}');
+        });
+}
+</script>
+{% endblock %}

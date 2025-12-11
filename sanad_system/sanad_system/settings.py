@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_celery_results',
     'document_analysis',
+    'rag_app',
 ]
 
 # Crispy Forms Settings
