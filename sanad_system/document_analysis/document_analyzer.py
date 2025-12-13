@@ -2,10 +2,10 @@ import os
 import logging
 import time
 from typing import Dict, List, Optional, Tuple
+from pathlib import Path
 from django.conf import settings
 from PIL import Image
 import pytesseract
-from paddleocr import PaddleOCR
 import PyPDF2
 import arabic_reshaper
 from bidi.algorithm import get_display
@@ -19,7 +19,19 @@ from collections import Counter
 logger = logging.getLogger(__name__)
 
 class DocumentAnalyzer:
+    _instance = None
+    _initialized = False
+    
+    def __new__(cls, device: str = None):
+        if cls._instance is None:
+            cls._instance = super(DocumentAnalyzer, cls).__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+    
     def __init__(self, device: str = None):
+        if self._initialized:
+            return
+        
         print("=== DocumentAnalyzer Initializing ===")
         try:
             import torch
@@ -27,7 +39,9 @@ class DocumentAnalyzer:
         except ImportError:
             self.device = "cpu"
             logger.warning("PyTorch not available, using CPU")
+        
         self._initialize_models()
+        self._initialized = True
         print("=== DocumentAnalyzer Initialized ===")
     
     def _initialize_models(self):
@@ -38,14 +52,41 @@ class DocumentAnalyzer:
         try:
             from paddleocr import PaddleOCR
             logger.info("Importing PaddleOCR...")
+            # Disable PaddleOCR initialization messages and prevent reinitialization
+            import os
+            os.environ['FLAGS_allocator_strategy'] = 'auto_growth'
+            os.environ['FLAGS_memory_fraction_of_eager_deletion'] = '1.0'
+            os.environ['FLAGS_max_inference_batch_size'] = '1'
+            os.environ['FLAGS_use_mkldnn'] = 'false'
+            os.environ['FLAGS_enable_pir_api'] = 'false'
+            os.environ['FLAGS_cudnn_deterministic'] = 'true'
+            os.environ['FLAGS_check_nan_inf'] = 'false'
+            os.environ['FLAGS_eager_delete_tensor_gb'] = '0.0'
+            os.environ['FLAGS_fast_eager_deletion_mode'] = 'true'
+            
             # Try different initialization approaches
             try:
-                self.paddle_ocr = PaddleOCR(use_angle_cls=True, lang='ar')
+                self.paddle_ocr = PaddleOCR(
+                    use_angle_cls=True, 
+                    lang='ar',
+                    show_log=False,
+                    use_gpu=False,  # Force CPU to avoid GPU issues
+                    det_db_thresh=0.3,  # Lower threshold for better detection
+                    det_db_box_thresh=0.5,
+                    rec_batch_num=1  # Process one by one to avoid memory issues
+                )
                 logger.info("PaddleOCR initialized successfully for Arabic (with angle classification)")
             except Exception as e1:
                 logger.warning(f"First PaddleOCR init failed: {str(e1)}")
                 try:
-                    self.paddle_ocr = PaddleOCR(lang='ar')
+                    self.paddle_ocr = PaddleOCR(
+                        lang='ar',
+                        show_log=False,
+                        use_gpu=False,
+                        det_db_thresh=0.3,
+                        det_db_box_thresh=0.5,
+                        rec_batch_num=1
+                    )
                     logger.info("PaddleOCR initialized successfully for Arabic (basic)")
                 except Exception as e2:
                     logger.error(f"Second PaddleOCR init failed: {str(e2)}")
@@ -233,19 +274,27 @@ class DocumentAnalyzer:
             if self.paddle_ocr:
                 logger.info("Using PaddleOCR for text extraction")
                 result = self._extract_with_paddleocr(file_path)
-                # If PaddleOCR fails, try fallback
-                if not result or "Error" in result or "No text detected" in result:
-                    logger.warning("PaddleOCR failed, trying fallback extraction")
-                    return self._fallback_pdf_extraction(file_path)
-                return result
+                # Check if PaddleOCR actually extracted meaningful text
+                if result and len(result.strip()) > 10 and not any(keyword in result for keyword in ["Error", "No text detected", "could not extract", "Error:"]):
+                    logger.info(f"PaddleOCR successfully extracted {len(result)} characters")
+                    return result
+                else:
+                    logger.warning("PaddleOCR failed to extract meaningful text, trying Tesseract")
+            
             # Fall back to Tesseract OCR
-            elif self.ocr:
+            if self.ocr:
                 logger.info("Using Tesseract for text extraction")
-                return self._extract_with_tesseract(file_path)
-            else:
-                logger.info("Using basic text extraction")
-                # Fallback to basic text extraction
-                return self._basic_text_extraction(file_path)
+                result = self._extract_with_tesseract(file_path)
+                if result and len(result.strip()) > 10 and not any(keyword in result for keyword in ["Error", "No text detected", "could not extract", "Error:"]):
+                    logger.info(f"Tesseract successfully extracted {len(result)} characters")
+                    return result
+                else:
+                    logger.warning("Tesseract failed, trying basic extraction")
+            
+            # Fallback to basic text extraction
+            logger.info("Using basic text extraction")
+            return self._basic_text_extraction(file_path)
+            
         except Exception as e:
             logger.error(f"Error in text extraction: {str(e)}")
             return self._basic_text_extraction(file_path)
@@ -426,9 +475,9 @@ class DocumentAnalyzer:
                         
                         if not text.strip():
                             if num_pages > max_pages:
-                                text = f"This is a large image-based PDF with {num_pages} pages. Only the first {max_pages} pages were checked for text. The PDF appears to be image-based and requires OCR for full text extraction."
+                                text = f"هذا ملف PDF كبير يحتوي على {num_pages} صفحة. تم فحص أول {max_pages} صفحات فقط. يبدو أن الملف يعتمد على الصور ويتطلب OCR لاستخراج النص الكامل."
                             else:
-                                text = f"This PDF appears to be image-based or contains no extractable text. It has {num_pages} pages and requires OCR for text extraction."
+                                text = f"هذا ملف PDF يعتمد على الصور أو لا يحتوي على نص قابل للاستخراج. يحتوي على {num_pages} صفحة ويتطلب معالجة OCR لاستخراج النص."
                         
                         return text.strip()
                 except Exception as e:

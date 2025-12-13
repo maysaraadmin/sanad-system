@@ -11198,3 +11198,194 @@ INFO 2025-12-11 22:47:09,823 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
 INFO 2025-12-11 22:47:44,096 basehttp "POST /rag/ask/ HTTP/1.1" 200 33655
 INFO 2025-12-11 22:48:24,484 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
 INFO 2025-12-11 22:48:32,764 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:08:38,395 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:10:42,970 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:13:55,414 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:16:59,768 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:21:33,475 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:22:05,655 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 17:35:32,937 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:07:58,019 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:08:26,910 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:12:50,200 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:13:45,579 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:16:22,362 basehttp "GET / HTTP/1.1" 200 24334
+INFO 2025-12-13 18:16:23,352 basehttp "GET /static/css/style.css HTTP/1.1" 200 3761
+INFO 2025-12-13 18:16:23,362 basehttp "GET /static/js/main.js HTTP/1.1" 200 4678
+INFO 2025-12-13 18:16:23,363 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 5147
+WARNING 2025-12-13 18:16:24,289 log Not Found: /favicon.ico
+WARNING 2025-12-13 18:16:24,292 basehttp "GET /favicon.ico HTTP/1.1" 404 16820
+INFO 2025-12-13 18:16:33,326 basehttp "GET /rag/ HTTP/1.1" 302 0
+INFO 2025-12-13 18:16:33,425 basehttp "GET /accounts/login/?next=/rag/ HTTP/1.1" 200 28629
+INFO 2025-12-13 18:16:41,209 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 200 29156
+INFO 2025-12-13 18:16:47,496 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 200 29156
+INFO 2025-12-13 18:17:06,725 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 302 0
+INFO 2025-12-13 18:17:06,934 basehttp "GET /rag/ HTTP/1.1" 200 32628
+INFO 2025-12-13 18:17:10,075 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:17:10,987 basehttp "GET /library/ HTTP/1.1" 200 31952
+INFO 2025-12-13 18:17:14,734 basehttp "GET /rag/ HTTP/1.1" 200 32628
+INFO 2025-12-13 18:17:15,197 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:19:44,944 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-13 18:19:56,091 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 117792
+INFO 2025-12-13 18:19:57,311 basehttp - Broken pipe from ('127.0.0.1', 64452)
+INFO 2025-12-13 18:20:24,470 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 369
+INFO 2025-12-13 18:20:33,531 basehttp - Broken pipe from ('127.0.0.1', 64461)
+INFO 2025-12-13 18:20:33,960 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 119843
+INFO 2025-12-13 18:20:41,411 basehttp "GET /api/document-analysis/analyses/39/ HTTP/1.1" 200 696
+INFO 2025-12-13 18:21:55,859 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-13 18:21:57,601 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-13 18:22:12,070 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:23:07,536 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 119843
+INFO 2025-12-13 18:25:12,282 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 127267
+INFO 2025-12-13 18:25:38,941 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 369
+INFO 2025-12-13 18:25:41,534 basehttp - Broken pipe from ('127.0.0.1', 52001)
+INFO 2025-12-13 18:25:41,985 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 129318
+INFO 2025-12-13 18:25:45,937 basehttp "GET /api/document-analysis/analyses/40/ HTTP/1.1" 200 1984
+INFO 2025-12-13 18:27:45,497 basehttp "GET /api/document-analysis/analyses/40/ HTTP/1.1" 200 1984
+INFO 2025-12-13 18:27:50,457 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 144210
+ERROR 2025-12-13 18:28:02,668 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\generics.py", line 242, in post
+    return self.create(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 37, in perform_create
+    process_document_analysis(instance.id)
+  File "D:\sanad-system\sanad_system\document_analysis\tasks.py", line 21, in process_document_analysis
+    analyzer = DocumentAnalyzer()
+  File "D:\sanad-system\sanad_system\document_analysis\document_analyzer.py", line 30, in __init__
+    self._initialize_models()
+  File "D:\sanad-system\sanad_system\document_analysis\document_analyzer.py", line 39, in _initialize_models
+    from paddleocr import PaddleOCR
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\__init__.py", line 17, in <module>
+    from ._models import (
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\__init__.py", line 15, in <module>
+    from .chart_parsing import ChartParsing
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\chart_parsing.py", line 16, in <module>
+    from ._doc_vlm import (
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\_doc_vlm.py", line 21, in <module>
+    from .base import PaddleXPredictorWrapper, PredictorCLISubcommandExecutor
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\base.py", line 17, in <module>
+    from paddlex import create_predictor
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\__init__.py", line 41, in <module>
+    _initialize()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\__init__.py", line 38, in _initialize
+    repo_manager.initialize()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\repo_manager\core.py", line 214, in initialize
+    raise RuntimeError(
+RuntimeError: PDX has already been initialized. Reinitialization is not supported.
+ERROR 2025-12-13 18:28:02,915 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 203411
+ERROR 2025-12-13 18:28:17,663 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\generics.py", line 242, in post
+    return self.create(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 37, in perform_create
+    process_document_analysis(instance.id)
+  File "D:\sanad-system\sanad_system\document_analysis\tasks.py", line 21, in process_document_analysis
+    analyzer = DocumentAnalyzer()
+  File "D:\sanad-system\sanad_system\document_analysis\document_analyzer.py", line 30, in __init__
+    self._initialize_models()
+  File "D:\sanad-system\sanad_system\document_analysis\document_analyzer.py", line 39, in _initialize_models
+    from paddleocr import PaddleOCR
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\__init__.py", line 17, in <module>
+    from ._models import (
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\__init__.py", line 15, in <module>
+    from .chart_parsing import ChartParsing
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\chart_parsing.py", line 16, in <module>
+    from ._doc_vlm import (
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\_doc_vlm.py", line 21, in <module>
+    from .base import PaddleXPredictorWrapper, PredictorCLISubcommandExecutor
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\base.py", line 17, in <module>
+    from paddlex import create_predictor
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\__init__.py", line 41, in <module>
+    _initialize()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\__init__.py", line 38, in _initialize
+    repo_manager.initialize()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\repo_manager\core.py", line 214, in initialize
+    raise RuntimeError(
+RuntimeError: PDX has already been initialized. Reinitialization is not supported.
+ERROR 2025-12-13 18:28:17,906 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 202779
+ERROR 2025-12-13 18:28:31,587 log Internal Server Error: /api/document-analysis/analyses/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\generics.py", line 242, in post
+    return self.create(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "D:\sanad-system\sanad_system\document_analysis\views.py", line 37, in perform_create
+    process_document_analysis(instance.id)
+  File "D:\sanad-system\sanad_system\document_analysis\tasks.py", line 21, in process_document_analysis
+    analyzer = DocumentAnalyzer()
+  File "D:\sanad-system\sanad_system\document_analysis\document_analyzer.py", line 30, in __init__
+    self._initialize_models()
+  File "D:\sanad-system\sanad_system\document_analysis\document_analyzer.py", line 39, in _initialize_models
+    from paddleocr import PaddleOCR
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\__init__.py", line 17, in <module>
+    from ._models import (
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\__init__.py", line 15, in <module>
+    from .chart_parsing import ChartParsing
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\chart_parsing.py", line 16, in <module>
+    from ._doc_vlm import (
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\_doc_vlm.py", line 21, in <module>
+    from .base import PaddleXPredictorWrapper, PredictorCLISubcommandExecutor
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddleocr\_models\base.py", line 17, in <module>
+    from paddlex import create_predictor
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\__init__.py", line 41, in <module>
+    _initialize()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\__init__.py", line 38, in _initialize
+    repo_manager.initialize()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\paddlex\repo_manager\core.py", line 214, in initialize
+    raise RuntimeError(
+RuntimeError: PDX has already been initialized. Reinitialization is not supported.
+ERROR 2025-12-13 18:28:31,654 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 202779
+INFO 2025-12-13 18:28:55,426 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
+INFO 2025-12-13 18:29:09,958 autoreload Watching for file changes with StatReloader

@@ -1,5 +1,7 @@
 # Core Django
 Django==4.2.27
+django-jalali>=4.0.0
+django-sslserver>=0.22
 
 # Image processing
 Pillow==10.0.1
@@ -31,6 +33,7 @@ django-cors-headers==4.3.1
 # Background Tasks
 celery==5.3.4
 redis==5.0.1
+django-celery-results>=2.5.0
 
 # Date & Time
 python-dateutil==2.8.2
@@ -56,6 +59,8 @@ pdf2image>=1.17.0
 shapely>=2.0.0
 arabic-reshaper>=3.0.0
 python-bidi>=0.4.2
+PyPDF2>=3.0.0
+python-docx>=0.8.11
 
 # Machine Learning & Text Analysis
 scikit-learn>=1.3.0
@@ -79,13 +84,18 @@ farasapy>=0.0.14
 camel-tools>=1.0.0
 langchain>=0.0.340
 langchain-community>=0.0.10
+langchain-core>=0.1.0
 faiss-cpu>=1.7.4
 datasets>=2.14.0
 accelerate>=0.24.0
 
-# Jais Model Dependencies
+# Model Quantization & Optimization
 bitsandbytes>=0.41.0
 auto-gptq>=0.6.0
 optimum>=1.13.0
 tokenizers>=0.15.0
+
+# Additional ML Libraries
+scipy>=1.10.0
+pandas>=2.0.0
 

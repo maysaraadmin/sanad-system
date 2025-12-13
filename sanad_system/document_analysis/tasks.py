@@ -8,6 +8,19 @@ from .document_analyzer import DocumentAnalyzer
 
 logger = logging.getLogger(__name__)
 
+# Global analyzer instance to prevent reinitialization
+_analyzer_instance = None
+
+def get_analyzer():
+    """Get or create the global analyzer instance"""
+    global _analyzer_instance
+    if _analyzer_instance is None:
+        _analyzer_instance = DocumentAnalyzer()
+        logger.info("Created new DocumentAnalyzer instance")
+    else:
+        logger.info("Reusing existing DocumentAnalyzer instance")
+    return _analyzer_instance
+
 def process_document_analysis(analysis_id):
     """
     Process document analysis with progress tracking
@@ -17,8 +30,8 @@ def process_document_analysis(analysis_id):
         analysis.status = 'processing'
         analysis.save()
         
-        # Initialize analyzer
-        analyzer = DocumentAnalyzer()
+        # Get analyzer instance (singleton)
+        analyzer = get_analyzer()
         
         # Get the file path
         if analysis.library_document:
