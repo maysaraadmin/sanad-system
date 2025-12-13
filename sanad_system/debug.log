@@ -11389,3 +11389,8 @@ RuntimeError: PDX has already been initialized. Reinitialization is not supporte
 ERROR 2025-12-13 18:28:31,654 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 500 202779
 INFO 2025-12-13 18:28:55,426 autoreload D:\sanad-system\sanad_system\document_analysis\document_analyzer.py changed, reloading.
 INFO 2025-12-13 18:29:09,958 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:30:14,879 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 149238
+INFO 2025-12-13 18:30:45,255 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 369
+INFO 2025-12-13 18:30:48,079 basehttp - Broken pipe from ('127.0.0.1', 52636)
+INFO 2025-12-13 18:30:48,489 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 151289
+INFO 2025-12-13 18:30:51,756 basehttp "GET /api/document-analysis/analyses/44/ HTTP/1.1" 200 1984
