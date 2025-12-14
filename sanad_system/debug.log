@@ -11817,3 +11817,30 @@ INFO 2025-12-14 23:02:18,993 basehttp - Broken pipe from ('127.0.0.1', 59679)
 INFO 2025-12-14 23:02:20,951 basehttp "GET /hadith/create/ HTTP/1.1" 200 30826
 INFO 2025-12-14 23:02:50,004 basehttp "GET /rag/ HTTP/1.1" 200 32586
 INFO 2025-12-14 23:02:50,794 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 23:04:57,993 basehttp "GET /rag/ HTTP/1.1" 200 32822
+INFO 2025-12-14 23:04:59,045 basehttp "GET /rag/api/stats/?t=1765739098022 HTTP/1.1" 200 710
+INFO 2025-12-14 23:05:00,277 basehttp "GET /rag/ HTTP/1.1" 200 32822
+INFO 2025-12-14 23:05:01,734 basehttp "GET /rag/api/stats/?t=1765739100324 HTTP/1.1" 200 710
+INFO 2025-12-14 23:05:23,605 basehttp "GET /rag/ HTTP/1.1" 200 32822
+INFO 2025-12-14 23:05:24,477 basehttp "GET /rag/api/stats/?t=1765739123637 HTTP/1.1" 200 710
+INFO 2025-12-14 23:05:39,635 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 63900
+WARNING 2025-12-14 23:05:39,944 log Not Found: /favicon.ico
+INFO 2025-12-14 23:05:39,947 basehttp - Broken pipe from ('127.0.0.1', 59966)
+INFO 2025-12-14 23:06:02,206 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 368
+INFO 2025-12-14 23:06:05,067 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 66643
+INFO 2025-12-14 23:06:05,347 basehttp - Broken pipe from ('127.0.0.1', 60057)
+WARNING 2025-12-14 23:06:05,907 log Not Found: /favicon.ico
+INFO 2025-12-14 23:06:05,910 basehttp - Broken pipe from ('127.0.0.1', 60078)
+INFO 2025-12-14 23:06:09,457 basehttp "GET /api/document-analysis/analyses/1/ HTTP/1.1" 200 1164
+INFO 2025-12-14 23:06:27,966 basehttp "GET /hadith/ HTTP/1.1" 200 63569
+WARNING 2025-12-14 23:06:28,366 log Not Found: /favicon.ico
+INFO 2025-12-14 23:06:28,369 basehttp - Broken pipe from ('127.0.0.1', 60089)
+INFO 2025-12-14 23:06:36,414 basehttp "GET /hadith/1240/ HTTP/1.1" 200 28602
+INFO 2025-12-14 23:13:38,763 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 66643
+WARNING 2025-12-14 23:13:39,168 log Not Found: /favicon.ico
+INFO 2025-12-14 23:13:39,169 basehttp - Broken pipe from ('127.0.0.1', 60731)
+INFO 2025-12-14 23:13:51,479 basehttp "POST /api/document-analysis/analyses/ HTTP/1.1" 201 368
+INFO 2025-12-14 23:13:54,390 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 68690
+WARNING 2025-12-14 23:13:54,685 log Not Found: /favicon.ico
+INFO 2025-12-14 23:13:54,687 basehttp - Broken pipe from ('127.0.0.1', 60750)
+INFO 2025-12-14 23:14:00,990 basehttp "GET /api/document-analysis/analyses/2/ HTTP/1.1" 200 1464
