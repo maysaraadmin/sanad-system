@@ -11594,3 +11594,226 @@ INFO 2025-12-14 10:03:50,464 autoreload Watching for file changes with StatReloa
 INFO 2025-12-14 10:04:17,843 basehttp "GET /rag/ HTTP/1.1" 200 33842
 INFO 2025-12-14 10:04:19,164 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 1760
 INFO 2025-12-14 10:04:51,453 basehttp "POST /rag/ask/ HTTP/1.1" 200 50598
+INFO 2025-12-14 17:25:06,519 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 17:25:29,051 basehttp "GET /rag/ HTTP/1.1" 302 0
+INFO 2025-12-14 17:25:29,222 basehttp "GET /accounts/login/?next=/rag/ HTTP/1.1" 200 28999
+INFO 2025-12-14 17:25:29,343 basehttp "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2025-12-14 17:25:29,359 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-12-14 17:25:38,109 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 200 29516
+INFO 2025-12-14 17:25:57,694 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 200 29526
+INFO 2025-12-14 17:26:13,755 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 200 29514
+ERROR 2025-12-14 18:19:41,715 log Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\related_descriptors.py", line 473, in __get__
+    rel_obj = self.related.get_cached_value(instance)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\mixins.py", line 15, in get_cached_value
+    return instance._state.fields_cache[cache_name]
+KeyError: 'profile'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedTable: relation "hadith_app_userprofile" does not exist
+LINE 1: ...d_at", "hadith_app_userprofile"."updated_at" FROM "hadith_ap...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\views.py", line 109, in form_valid
+    auth_login(self.request, form.get_user())
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\__init__.py", line 144, in login
+    user_logged_in.send(sender=user.__class__, request=request, user=user)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\models.py", line 23, in update_last_login
+    user.save(update_fields=["last_login"])
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 892, in save_base
+    post_save.send(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "D:\sanad-system\sanad_system\hadith_app\models.py", line 546, in create_or_update_user_profile
+    instance.profile.save()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\fields\related_descriptors.py", line 481, in __get__
+    rel_obj = self.get_queryset(instance=instance).get(**filter_args)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 635, in get
+    num = len(clone)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1886, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "hadith_app_userprofile" does not exist
+LINE 1: ...d_at", "hadith_app_userprofile"."updated_at" FROM "hadith_ap...
+                                                             ^
+
+ERROR 2025-12-14 18:19:41,803 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 500 240235
+WARNING 2025-12-14 18:25:45,761 log Forbidden (CSRF token from POST incorrect.): /accounts/login/
+WARNING 2025-12-14 18:25:45,766 basehttp "POST /accounts/login/?next=/rag/ HTTP/1.1" 403 2544
+INFO 2025-12-14 18:25:51,113 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2025-12-14 18:25:55,406 basehttp "GET /accounts/login/ HTTP/1.1" 200 28994
+INFO 2025-12-14 18:26:00,157 basehttp "POST /accounts/login/ HTTP/1.1" 200 29509
+INFO 2025-12-14 18:26:15,355 basehttp "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-14 18:26:15,598 basehttp "GET /hadith/ HTTP/1.1" 200 43049
+INFO 2025-12-14 18:26:21,691 basehttp "GET /library/ HTTP/1.1" 200 27683
+INFO 2025-12-14 18:26:24,349 basehttp "GET /rag/ HTTP/1.1" 200 32411
+INFO 2025-12-14 18:26:31,432 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 85
+INFO 2025-12-14 18:27:35,064 basehttp "POST /rag/ask/ HTTP/1.1" 200 34004
+INFO 2025-12-14 18:27:46,434 basehttp - Broken pipe from ('127.0.0.1', 55319)
+INFO 2025-12-14 18:27:46,501 basehttp "GET /rag/ HTTP/1.1" 200 32411
+INFO 2025-12-14 18:27:47,734 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 85
+INFO 2025-12-14 18:29:00,079 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 18:29:31,821 basehttp "GET /rag/ HTTP/1.1" 200 32411
+INFO 2025-12-14 18:29:34,160 basehttp - Broken pipe from ('127.0.0.1', 55740)
+INFO 2025-12-14 18:29:34,336 basehttp "GET /hadith/ HTTP/1.1" 200 43049
+INFO 2025-12-14 18:30:05,239 basehttp "GET /rag/ HTTP/1.1" 200 32411
+INFO 2025-12-14 18:30:06,813 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 85
+INFO 2025-12-14 18:30:37,665 basehttp "POST /rag/ask/ HTTP/1.1" 200 33948
+INFO 2025-12-14 18:33:19,501 autoreload D:\sanad-system\sanad_system\rag_app\simple_ocr.py changed, reloading.
+INFO 2025-12-14 18:33:25,767 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 18:36:57,769 basehttp "GET /rag/ HTTP/1.1" 200 32411
+INFO 2025-12-14 18:37:03,001 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 579
+INFO 2025-12-14 18:37:32,712 basehttp "POST /rag/ask/ HTTP/1.1" 200 53757
+INFO 2025-12-14 18:44:33,894 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 18:44:42,319 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 18:45:31,103 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 18:45:34,490 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 18:49:51,096 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 18:49:57,576 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 19:44:31,366 basehttp "GET /rag/ HTTP/1.1" 200 32586
+WARNING 2025-12-14 19:44:31,980 log Not Found: /favicon.ico
+INFO 2025-12-14 19:44:31,997 basehttp - Broken pipe from ('127.0.0.1', 58375)
+INFO 2025-12-14 19:44:55,005 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 19:45:17,170 basehttp - Broken pipe from ('127.0.0.1', 58369)
+INFO 2025-12-14 19:45:17,173 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 22:37:56,860 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 22:39:10,767 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 22:39:13,137 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 22:39:15,419 basehttp "GET /hadith/ HTTP/1.1" 200 43049
+INFO 2025-12-14 22:39:21,154 basehttp "GET /hadith/10/ HTTP/1.1" 200 28841
+ERROR 2025-12-14 22:39:24,564 log Internal Server Error: /hadith/10/delete/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: hadith_app/hadith_confirm_delete.html
+ERROR 2025-12-14 22:39:24,610 basehttp "GET /hadith/10/delete/ HTTP/1.1" 500 86874
+INFO 2025-12-14 22:40:27,915 basehttp "GET /hadith/10/delete/ HTTP/1.1" 200 28010
+INFO 2025-12-14 22:40:30,655 basehttp "POST /hadith/10/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:40:30,990 basehttp "GET /hadith/ HTTP/1.1" 200 41645
+INFO 2025-12-14 22:40:34,771 basehttp "GET /hadith/9/ HTTP/1.1" 200 29267
+INFO 2025-12-14 22:40:37,008 basehttp "GET /hadith/9/delete/ HTTP/1.1" 200 27977
+INFO 2025-12-14 22:40:39,760 basehttp "POST /hadith/9/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:40:40,202 basehttp "GET /hadith/ HTTP/1.1" 200 39810
+INFO 2025-12-14 22:40:42,084 basehttp "GET /hadith/8/ HTTP/1.1" 200 29097
+INFO 2025-12-14 22:40:44,327 basehttp "GET /hadith/8/delete/ HTTP/1.1" 200 28033
+INFO 2025-12-14 22:40:46,611 basehttp "POST /hadith/8/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:40:46,862 basehttp "GET /hadith/ HTTP/1.1" 200 38145
+INFO 2025-12-14 22:40:48,892 basehttp "GET /hadith/7/ HTTP/1.1" 200 29215
+INFO 2025-12-14 22:40:50,923 basehttp "GET /hadith/7/delete/ HTTP/1.1" 200 28025
+INFO 2025-12-14 22:40:52,761 basehttp "POST /hadith/7/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:40:53,008 basehttp "GET /hadith/ HTTP/1.1" 200 36362
+INFO 2025-12-14 22:40:55,053 basehttp "GET /hadith/6/ HTTP/1.1" 200 29856
+INFO 2025-12-14 22:40:56,967 basehttp "GET /hadith/6/delete/ HTTP/1.1" 200 28033
+INFO 2025-12-14 22:40:59,284 basehttp "POST /hadith/6/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:40:59,789 basehttp "GET /hadith/ HTTP/1.1" 200 33938
+INFO 2025-12-14 22:41:01,824 basehttp "GET /hadith/5/ HTTP/1.1" 200 28740
+INFO 2025-12-14 22:41:03,694 basehttp "GET /hadith/5/delete/ HTTP/1.1" 200 27937
+INFO 2025-12-14 22:41:05,890 basehttp "POST /hadith/5/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:41:06,327 basehttp "GET /hadith/ HTTP/1.1" 200 32630
+INFO 2025-12-14 22:41:08,883 basehttp "GET /hadith/4/ HTTP/1.1" 200 28989
+INFO 2025-12-14 22:41:10,871 basehttp "GET /hadith/4/delete/ HTTP/1.1" 200 27973
+INFO 2025-12-14 22:41:13,374 basehttp "POST /hadith/4/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:41:13,619 basehttp "GET /hadith/ HTTP/1.1" 200 31073
+INFO 2025-12-14 22:41:15,299 basehttp "GET /hadith/3/ HTTP/1.1" 200 28637
+INFO 2025-12-14 22:41:17,317 basehttp "GET /hadith/3/delete/ HTTP/1.1" 200 27834
+INFO 2025-12-14 22:41:19,321 basehttp "POST /hadith/3/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:41:19,595 basehttp "GET /hadith/ HTTP/1.1" 200 29868
+INFO 2025-12-14 22:41:21,467 basehttp "GET /hadith/2/ HTTP/1.1" 200 28751
+INFO 2025-12-14 22:41:23,267 basehttp "GET /hadith/2/delete/ HTTP/1.1" 200 27948
+INFO 2025-12-14 22:41:25,031 basehttp "POST /hadith/2/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:41:25,386 basehttp "GET /hadith/ HTTP/1.1" 200 28549
+INFO 2025-12-14 22:41:27,422 basehttp "GET /hadith/1/ HTTP/1.1" 200 28412
+INFO 2025-12-14 22:41:29,601 basehttp "GET /hadith/1/delete/ HTTP/1.1" 200 27609
+INFO 2025-12-14 22:41:31,648 basehttp "POST /hadith/1/delete/ HTTP/1.1" 302 0
+INFO 2025-12-14 22:41:31,901 basehttp "GET /hadith/ HTTP/1.1" 200 27652
+INFO 2025-12-14 22:56:05,256 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 22:57:27,875 basehttp "GET /hadith/ HTTP/1.1" 200 63569
+WARNING 2025-12-14 22:57:28,407 log Not Found: /favicon.ico
+INFO 2025-12-14 22:57:28,408 basehttp - Broken pipe from ('127.0.0.1', 59274)
+INFO 2025-12-14 22:57:35,510 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 22:57:38,165 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 22:57:39,921 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 22:57:40,464 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 22:57:41,896 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 22:57:43,118 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 22:58:37,666 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 22:58:39,533 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710
+INFO 2025-12-14 23:02:16,520 basehttp "GET /library/ HTTP/1.1" 200 27683
+WARNING 2025-12-14 23:02:17,207 log Not Found: /favicon.ico
+INFO 2025-12-14 23:02:17,210 basehttp - Broken pipe from ('127.0.0.1', 59672)
+INFO 2025-12-14 23:02:18,411 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 63900
+WARNING 2025-12-14 23:02:18,986 log Not Found: /favicon.ico
+INFO 2025-12-14 23:02:18,993 basehttp - Broken pipe from ('127.0.0.1', 59679)
+INFO 2025-12-14 23:02:20,951 basehttp "GET /hadith/create/ HTTP/1.1" 200 30826
+INFO 2025-12-14 23:02:50,004 basehttp "GET /rag/ HTTP/1.1" 200 32586
+INFO 2025-12-14 23:02:50,794 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 710

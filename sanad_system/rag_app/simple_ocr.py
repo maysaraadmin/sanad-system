@@ -14,16 +14,33 @@ logger = logging.getLogger(__name__)
 class SimpleOCRService:
     """Simple OCR service for extracting text from scanned PDFs"""
     
+    _instance = None
+    _paddle_ocr = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(SimpleOCRService, cls).__new__(cls)
+        return cls._instance
+    
     def __init__(self):
-        self.paddle_ocr = None
-        self._init_paddle_ocr()
+        if not hasattr(self, 'initialized'):
+            self.paddle_ocr = None
+            self._init_paddle_ocr()
+            self.initialized = True
     
     def _init_paddle_ocr(self):
         """Initialize PaddleOCR directly"""
         try:
+            # Check if already initialized at class level
+            if SimpleOCRService._paddle_ocr is not None:
+                self.paddle_ocr = SimpleOCRService._paddle_ocr
+                logger.info("Using existing PaddleOCR instance")
+                return
+            
             # Direct import without complex dependencies
             from paddleocr import PaddleOCR
             self.paddle_ocr = PaddleOCR(use_angle_cls=True, lang='ar')
+            SimpleOCRService._paddle_ocr = self.paddle_ocr
             logger.info("Simple PaddleOCR initialized for Arabic")
         except ImportError:
             logger.warning("PaddleOCR not available")

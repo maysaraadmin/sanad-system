@@ -165,11 +165,20 @@ function setQuery(query) {
 }
 
 // Load quick stats
-fetch('/rag/api/stats/')
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('total-hadiths').textContent = data.total_documents || '-';
-    })
-    .catch(error => console.log('Error loading stats:', error));
+function loadStats() {
+    fetch('/rag/api/stats/?t=' + Date.now())
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('total-hadiths').textContent = data.total_documents || '-';
+            console.log('RAG Stats loaded:', data); // Debug log
+        })
+        .catch(error => console.log('Error loading stats:', error));
+}
+
+// Load stats immediately
+loadStats();
+
+// Refresh stats every 30 seconds
+setInterval(loadStats, 30000);
 </script>
 {% endblock %}

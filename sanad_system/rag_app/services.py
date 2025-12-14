@@ -135,6 +135,19 @@ class ChromaDBService:
         except Exception as e:
             logger.error(f"Error getting document count: {e}")
             return 0
+    
+    def clear_collection(self):
+        """Clear all documents from the collection"""
+        try:
+            if self.collection:
+                # Get all document IDs and delete them
+                all_docs = self.collection.get()
+                if all_docs['ids']:
+                    self.collection.delete(ids=all_docs['ids'])
+                logger.info("ChromaDB collection cleared successfully")
+        except Exception as e:
+            logger.error(f"Error clearing ChromaDB collection: {e}")
+            raise
 
 
 class HadithTextProcessor:
@@ -425,7 +438,7 @@ class RAGService:
                     content_type=doc['content_type'],
                     content_id=doc['content_id'],
                     text_content=doc['text'],
-                    embedding=doc['embedding'],
+                    embedding_vector=doc['embedding'],
                     metadata=doc['metadata']
                 )
             
