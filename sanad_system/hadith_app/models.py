@@ -130,6 +130,13 @@ class Narrator(models.Model):
 class Hadith(models.Model):
     # Keep the main text for backward compatibility and as primary text
     text = models.TextField(verbose_name="النص الأساسي للحديث")
+    system_hadith_number = models.PositiveIntegerField(
+        unique=True, 
+        null=True,
+        blank=True,
+        verbose_name="الرقم التسلسلي للحديث",
+        help_text="رقم فريد لكل حديث في النظام"
+    )
     source = models.CharField(max_length=200, verbose_name="المصدر")
     source_page = models.CharField(max_length=50, null=True, blank=True, verbose_name="الصفحة")
     source_hadith_number = models.CharField(max_length=50, null=True, blank=True, verbose_name="رقم الحديث في المصدر")
@@ -170,6 +177,18 @@ class Hadith(models.Model):
         if primary_text:
             return primary_text.text[:50] + "..." if len(primary_text.text) > 50 else primary_text.text
         return self.text[:50] + "..." if len(self.text) > 50 else self.text
+
+    def save(self, *args, **kwargs):
+        # Auto-generate system hadith number if not set
+        if not self.system_hadith_number:
+            # Get the highest existing system_hadith_number and add 1
+            last_hadith = Hadith.objects.order_by('-system_hadith_number').first()
+            if last_hadith:
+                self.system_hadith_number = last_hadith.system_hadith_number + 1
+            else:
+                self.system_hadith_number = 1
+        
+        super().save(*args, **kwargs)
 
     def get_primary_text(self):
         """Get the primary text version"""
@@ -525,3 +544,24 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
     instance.profile.save()
+
+
+@receiver(post_save, sender=Hadith)
+def index_hadith_for_rag(sender, instance, created, **kwargs):
+    """Automatically index hadith for RAG system when created or updated"""
+    try:
+        # Import here to avoid circular imports
+        from rag_app.services import RAGService
+        
+        # Only index if the hadith has text content
+        if instance.text or instance.texts.exists():
+            rag_service = RAGService()
+            rag_service.index_hadiths([instance.id])
+            
+            action = "created" if created else "updated"
+            print(f"Automatically indexed hadith #{instance.system_hadith_number} for RAG after {action}")
+            
+    except Exception as e:
+        # Log error but don't raise to avoid breaking hadith creation
+        print(f"Error auto-indexing hadith #{instance.system_hadith_number}: {e}")
+        pass

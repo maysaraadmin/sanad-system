@@ -12,6 +12,22 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+@login_required
+@permission_required('rag_app.add_ragquery')
+def reindex_hadiths_view(request):
+    """Trigger re-indexing of hadiths in ChromaDB"""
+    try:
+        rag_service = RAGService()
+        rag_service.reindex_all_hadiths()
+        messages.success(request, 'Hadiths re-indexed successfully in ChromaDB!')
+        logger.info('Hadiths re-indexed successfully via web interface')
+    except Exception as e:
+        messages.error(request, f'Error re-indexing hadiths: {str(e)}')
+        logger.error(f'Error re-indexing hadiths via web interface: {e}')
+    
+    return redirect('rag-home')
+
+
 class RAGHomeView(LoginRequiredMixin, TemplateView):
     """Main RAG interface"""
     template_name = 'rag_app/home.html'
@@ -45,7 +61,7 @@ def ask_question_view(request):
         
         if not query:
             messages.error(request, _('الرجاء إدخال سؤال'))
-            return redirect('rag-home')
+            return redirect('rag_app:rag-home')
         
         try:
             rag_service = RAGService()
@@ -63,9 +79,9 @@ def ask_question_view(request):
         except Exception as e:
             logger.error(f"Error in ask_question_view: {e}")
             messages.error(request, _('حدث خطأ أثناء معالجة سؤالك'))
-            return redirect('rag-home')
+            return redirect('rag_app:rag-home')
     
-    return redirect('rag-home')
+    return redirect('rag_app:rag-home')
 
 
 @login_required
@@ -160,7 +176,7 @@ def index_hadiths_view(request):
                 rag_service.index_hadiths()
                 messages.success(request, _('تم فهرسة جميع الأحاديث بنجاح'))
             
-            return redirect('rag-admin-dashboard')
+            return redirect('rag_app:rag-admin-dashboard')
             
         except Exception as e:
             logger.error(f"Error in index_hadiths_view: {e}")
@@ -195,4 +211,4 @@ def reindex_all_view(request):
             logger.error(f"Error in reindex_all_view: {e}")
             messages.error(request, _('حدث خطأ أثناء إعادة الفهرسة'))
     
-    return redirect('rag-admin-dashboard')
+    return redirect('rag_app:rag-admin-dashboard')

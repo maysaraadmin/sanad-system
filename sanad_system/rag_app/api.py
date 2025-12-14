@@ -206,25 +206,20 @@ def rag_stats(request):
 @api_view(['POST'])
 @permission_classes([permissions.IsAdminUser])
 def reindex_all(request):
-    """Re-index all hadiths"""
+    """Re-index all hadiths with new complete text structure"""
     try:
-        from .services import ChromaDBService
-        
-        # Clear existing data
-        chroma_service = ChromaDBService()
-        chroma_service.collection.delete()
-        chroma_service._initialize_client()
-        
-        # Clear Django embeddings
-        DocumentEmbedding.objects.all().delete()
-        
-        # Re-index all hadiths
+        # Re-index all hadiths using the new method
         rag_service = RAGService()
-        rag_service.index_hadiths()
+        rag_service.reindex_all_hadiths()
+        
+        # Get document count
+        from .services import ChromaDBService
+        chroma_service = ChromaDBService()
+        doc_count = chroma_service.get_document_count()
         
         return Response({
-            'message': 'تمت إعادة الفهرسة بنجاح',
-            'total_documents': chroma_service.get_document_count()
+            'message': 'تمت إعادة الفهرسة بنجاح مع النصوص الكاملة للأحاديث',
+            'total_documents': doc_count
         })
         
     except Exception as e:

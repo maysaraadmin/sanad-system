@@ -46,19 +46,26 @@
     <a href="{% url 'hadith_app:hadith_detail' hadith.pk %}" class="text-decoration-none">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title">{{ hadith.text }}</h5>
-                {% if hadith.grade %}
-                    <span class="badge 
-                        {% if hadith.grade == 'sahih' %}bg-success
-                        {% elif hadith.grade == 'hasan' %}bg-primary
-                        {% elif hadith.grade == 'daif' %}bg-warning text-dark
-                        {% elif hadith.grade == 'mawdu' %}bg-danger
-                        {% else %}bg-secondary{% endif %}
-                        mb-2">
-                        {{ hadith.get_grade_display }}
-                    </span>
-                {% endif %}
-                <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h5 class="card-title">{{ hadith.text }}</h5>
+                        <div class="mb-2">
+                            <span class="badge bg-primary">رقم النظام: {{ hadith.system_hadith_number }}</span>
+                        </div>
+                        {% if hadith.grade %}
+                            <span class="badge 
+                                {% if hadith.grade == 'sahih' %}bg-success
+                                {% elif hadith.grade == 'hasan' %}bg-primary
+                                {% elif hadith.grade == 'daif' %}bg-warning text-dark
+                                {% elif hadith.grade == 'mawdu' %}bg-danger
+                                {% else %}bg-secondary{% endif %}
+                                mb-2">
+                                {{ hadith.get_grade_display }}
+                            </span>
+                        {% endif %}
+                        <p class="mb-1"><small>المصدر: {{ hadith.source }}</small></p>
+                    </div>
+                </div>
             </div>
         </div>
     </a>

@@ -11394,3 +11394,203 @@ INFO 2025-12-13 18:30:45,255 basehttp "POST /api/document-analysis/analyses/ HTT
 INFO 2025-12-13 18:30:48,079 basehttp - Broken pipe from ('127.0.0.1', 52636)
 INFO 2025-12-13 18:30:48,489 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 151289
 INFO 2025-12-13 18:30:51,756 basehttp "GET /api/document-analysis/analyses/44/ HTTP/1.1" 200 1984
+INFO 2025-12-13 18:33:04,963 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-13 18:33:07,723 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:42:36,450 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-13 18:42:44,475 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:42:56,593 basehttp "GET /hadith/ HTTP/1.1" 200 56810
+INFO 2025-12-13 18:43:19,379 basehttp "GET /hadith/7494/ HTTP/1.1" 200 28555
+INFO 2025-12-13 18:45:12,967 basehttp "GET /hadith/ HTTP/1.1" 200 68447
+INFO 2025-12-13 18:45:38,690 basehttp "GET /hadith/14953/ HTTP/1.1" 200 29239
+INFO 2025-12-13 18:45:46,447 basehttp "GET /hadith/ HTTP/1.1" 200 68447
+INFO 2025-12-13 18:52:28,157 basehttp "GET /hadith/ HTTP/1.1" 200 99592
+INFO 2025-12-13 18:53:07,401 basehttp "GET /narrators/ HTTP/1.1" 200 41549
+INFO 2025-12-13 18:53:21,128 basehttp "GET /library/ HTTP/1.1" 200 32322
+INFO 2025-12-13 18:53:24,021 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-13 18:53:25,292 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:53:28,745 basehttp "GET /rag/admin/ HTTP/1.1" 200 36307
+ERROR 2025-12-13 18:53:33,841 log Internal Server Error: /rag/admin/reindex/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "D:\sanad-system\sanad_system\rag_app\views.py", line 198, in reindex_all_view
+    return redirect('rag-admin-dashboard')
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'rag-admin-dashboard' not found. 'rag-admin-dashboard' is not a valid view function or pattern name.
+ERROR 2025-12-13 18:53:33,876 basehttp "GET /rag/admin/reindex/ HTTP/1.1" 500 92054
+INFO 2025-12-13 18:55:56,430 autoreload D:\sanad-system\sanad_system\rag_app\views.py changed, reloading.
+INFO 2025-12-13 18:55:56,430 autoreload D:\sanad-system\sanad_system\rag_app\views.py changed, reloading.
+INFO 2025-12-13 18:56:16,650 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 18:57:24,398 basehttp "GET /rag/admin/reindex/ HTTP/1.1" 302 0
+INFO 2025-12-13 18:57:26,414 basehttp "GET /rag/admin/ HTTP/1.1" 200 36307
+INFO 2025-12-13 18:57:32,136 basehttp "GET /rag/admin/reindex/ HTTP/1.1" 302 0
+INFO 2025-12-13 18:57:32,490 basehttp "GET /rag/admin/ HTTP/1.1" 200 36307
+INFO 2025-12-13 18:57:38,491 basehttp "GET /rag/admin/index/ HTTP/1.1" 200 33360
+INFO 2025-12-13 18:57:39,504 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:58:12,364 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:58:40,446 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:59:10,158 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 18:59:40,491 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:00:10,093 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:00:40,349 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:01:10,543 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:01:40,662 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:02:32,640 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:02:40,857 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:03:10,879 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:03:40,659 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:04:10,699 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:04:40,623 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:05:13,361 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:05:43,507 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:06:13,276 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:06:43,269 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:07:13,332 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:07:43,429 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:08:13,388 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:08:43,724 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:09:13,608 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:09:44,071 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:10:13,737 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:10:43,512 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:11:13,508 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:11:43,546 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:12:13,640 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:12:43,773 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 19:13:13,542 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 20:11:27,884 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 20:11:48,928 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 20:11:49,020 basehttp "GET /hadith/ HTTP/1.1" 200 102480
+INFO 2025-12-13 20:13:14,519 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-13 20:13:54,226 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 20:14:18,193 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-13 20:14:21,379 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 20:17:02,826 basehttp "GET /hadith/ HTTP/1.1" 200 102480
+WARNING 2025-12-13 20:17:50,747 log The request's session was deleted before the request completed. The user may have logged out in a concurrent request, for example.: /hadith/
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\sessions\backends\db.py", line 86, in save
+    obj.save(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 990, in _save_table
+    updated = self._do_update(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 1054, in _do_update
+    return filtered._update(values) > 0
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\query.py", line 1233, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1984, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: database is locked
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\sessions\middleware.py", line 59, in process_response
+    request.session.save()
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\sessions\backends\db.py", line 95, in save
+    raise UpdateError
+django.contrib.sessions.backends.base.UpdateError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\T\AppData\Local\Programs\Python\Python310\lib\site-packages\django\contrib\sessions\middleware.py", line 61, in process_response
+    raise SessionInterrupted(
+django.contrib.sessions.exceptions.SessionInterrupted: The request's session was deleted before the request completed. The user may have logged out in a concurrent request, for example.
+WARNING 2025-12-13 20:17:50,762 basehttp "GET /hadith/?grade=&category=6 HTTP/1.1" 400 169540
+INFO 2025-12-13 20:28:48,273 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 20:33:40,052 autoreload Watching for file changes with StatReloader
+INFO 2025-12-13 20:34:00,289 basehttp "GET /hadith HTTP/1.1" 301 0
+INFO 2025-12-13 20:34:01,287 basehttp "GET /hadith/ HTTP/1.1" 200 110540
+INFO 2025-12-13 20:34:32,502 basehttp "GET /hadith/?grade=&category=3 HTTP/1.1" 200 66048
+INFO 2025-12-13 20:34:48,126 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-13 20:34:49,476 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 780
+INFO 2025-12-13 20:36:02,670 autoreload D:\sanad-system\sanad_system\hadith_app\models.py changed, reloading.
+INFO 2025-12-14 06:45:52,342 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 07:01:54,254 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-14 07:01:58,579 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 782
+INFO 2025-12-14 07:02:02,485 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-14 07:02:02,861 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 782
+INFO 2025-12-14 07:02:07,341 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 200 151289
+INFO 2025-12-14 07:02:11,448 basehttp "GET /rag/ HTTP/1.1" 200 32998
+INFO 2025-12-14 07:02:11,803 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 782
+INFO 2025-12-14 07:50:53,153 basehttp "POST /rag/ask/ HTTP/1.1" 200 51662
+INFO 2025-12-14 09:05:41,906 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:07:08,776 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 09:07:20,385 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:08:58,701 basehttp "GET /rag/ HTTP/1.1" 200 33298
+INFO 2025-12-14 09:08:58,884 basehttp "GET /static/css/interactive.css HTTP/1.1" 304 0
+INFO 2025-12-14 09:09:04,908 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 945
+INFO 2025-12-14 09:10:40,515 basehttp "GET /rag/ HTTP/1.1" 302 0
+INFO 2025-12-14 09:12:02,265 basehttp "POST /rag/ask/ HTTP/1.1" 200 54261
+INFO 2025-12-14 09:49:34,329 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 09:49:45,414 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:50:47,220 basehttp "GET /rag HTTP/1.1" 301 0
+INFO 2025-12-14 09:50:47,511 basehttp "GET /rag/ HTTP/1.1" 200 33598
+INFO 2025-12-14 09:50:51,020 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 1108
+INFO 2025-12-14 09:51:13,379 basehttp "GET /hadith/ HTTP/1.1" 200 110540
+INFO 2025-12-14 09:51:23,904 basehttp "POST /rag/ask/ HTTP/1.1" 200 54261
+INFO 2025-12-14 09:52:25,146 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 09:52:31,212 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:53:04,761 basehttp "GET /hadith/50978/ HTTP/1.1" 200 28620
+INFO 2025-12-14 09:53:11,280 basehttp "POST /rag/ask/ HTTP/1.1" 200 54261
+INFO 2025-12-14 09:54:02,938 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 09:54:06,571 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:54:36,878 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:54:55,844 basehttp "GET /rag/ HTTP/1.1" 200 33870
+INFO 2025-12-14 09:54:57,796 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 1434
+INFO 2025-12-14 09:55:25,594 basehttp "POST /rag/ask/ HTTP/1.1" 200 54275
+INFO 2025-12-14 09:56:44,805 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 09:56:54,182 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 09:58:16,061 basehttp "GET /rag/ HTTP/1.1" 200 33842
+INFO 2025-12-14 09:58:19,793 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 1597
+INFO 2025-12-14 09:58:49,262 basehttp "POST /rag/ask/ HTTP/1.1" 200 53729
+INFO 2025-12-14 10:03:18,776 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 10:03:22,388 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 10:03:47,445 autoreload D:\sanad-system\sanad_system\rag_app\services.py changed, reloading.
+INFO 2025-12-14 10:03:50,464 autoreload Watching for file changes with StatReloader
+INFO 2025-12-14 10:04:17,843 basehttp "GET /rag/ HTTP/1.1" 200 33842
+INFO 2025-12-14 10:04:19,164 basehttp "GET /rag/api/stats/ HTTP/1.1" 200 1760
+INFO 2025-12-14 10:04:51,453 basehttp "POST /rag/ask/ HTTP/1.1" 200 50598

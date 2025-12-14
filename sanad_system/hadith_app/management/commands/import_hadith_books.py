@@ -1,8 +1,15 @@
+import sys
+import io
 from django.core.management.base import BaseCommand
 from django.db import transaction
 import json
 import os
 from hadith_app.models import Hadith, HadithBook, HadithCategory
+
+# Set UTF-8 encoding for stdout
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
 class Command(BaseCommand):
     help = 'Import hadith books from JSON files'
@@ -29,12 +36,23 @@ class Command(BaseCommand):
             type=int,
             help='Limit number of hadiths to import (for testing)'
         )
+        parser.add_argument(
+            '--check',
+            action='store_true',
+            help='Check what books are already imported'
+        )
 
     def handle(self, *args, **options):
         base_path = options['path']
         specific_book = options['book']
         force = options['force']
         limit = options['limit']
+        check = options['check']
+        
+        # If check flag is used, show current import status
+        if check:
+            self.check_import_status()
+            return
         
         # Get the project base directory
         from django.conf import settings
@@ -93,8 +111,24 @@ class Command(BaseCommand):
         )
 
     def import_book(self, json_file, force=False, limit=None):
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        # Try different encodings to handle Arabic text properly
+        encodings = ['utf-8', 'utf-8-sig', 'cp1256', 'iso-8859-6']
+        data = None
+        
+        for encoding in encodings:
+            try:
+                with open(json_file, 'r', encoding=encoding) as f:
+                    data = json.load(f)
+                self.stdout.write(f'Successfully opened file with {encoding} encoding')
+                break
+            except UnicodeDecodeError:
+                continue
+            except Exception as e:
+                self.stdout.write(f'Error with {encoding}: {e}')
+                continue
+        
+        if data is None:
+            raise Exception(f'Could not read file {json_file} with any supported encoding')
         
         # Extract book information
         metadata = data['metadata']
