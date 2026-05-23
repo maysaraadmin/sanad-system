@@ -9,6 +9,7 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
@@ -45,7 +46,7 @@ def sanad_text_detail_view(request, sanad_id):
     return render(request, 'hadith_app/sanad_text_detail.html', context)
 
 
-class SanadTextCreateView(CreateView):
+class SanadTextCreateView(LoginRequiredMixin, CreateView):
     """
     Create a new sanad text
     """
@@ -70,7 +71,7 @@ class SanadTextCreateView(CreateView):
         return super().form_valid(form)
 
 
-class SanadTextUpdateView(UpdateView):
+class SanadTextUpdateView(LoginRequiredMixin, UpdateView):
     """
     Update an existing sanad text
     """
@@ -92,6 +93,7 @@ class SanadTextUpdateView(UpdateView):
         return super().form_valid(form)
 
 
+@login_required
 @require_POST
 def set_primary_sanad_text_view(request, sanad_text_id):
     """
@@ -143,6 +145,7 @@ def hadith_sanad_texts_view(request, hadith_id):
     return render(request, 'hadith_app/hadith_sanad_texts.html', context)
 
 
+@login_required
 @require_POST
 def auto_create_sanad_texts_view(request, hadith_id):
     """

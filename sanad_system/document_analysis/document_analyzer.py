@@ -326,8 +326,10 @@ class DocumentAnalyzer:
                     logger.warning("No images extracted from PDF, trying fallback method")
                     return self._fallback_pdf_extraction(file_path)
                 
-                # Process first few pages for performance
-                max_pages = min(len(images), 3)  # Reduce to 3 pages for faster testing
+                # Process up to the configurable page limit (default: all pages)
+                from django.conf import settings
+                page_limit = getattr(settings, 'OCR_MAX_PAGES', len(images))
+                max_pages = min(len(images), page_limit)
                 logger.info(f"Processing {max_pages} pages with enhanced PaddleOCR")
                 
                 text = ""
@@ -361,8 +363,9 @@ class DocumentAnalyzer:
                 # Process image file directly
                 logger.info("Processing image file with enhanced PaddleOCR")
                 from PIL import Image
-                image = Image.open(file_path)
-                result = self.paddle_ocr.ocr(np.array(image), cls=True)
+                with Image.open(file_path) as image:
+                    img_array = np.array(image)
+                result = self.paddle_ocr.ocr(img_array, cls=True)
                 text = ""
                 for line in result:
                     if line:
@@ -386,9 +389,11 @@ class DocumentAnalyzer:
                 num_pages = len(reader.pages)
                 logger.info(f"PDF has {num_pages} pages")
                 
-                # For very large PDFs, only process first few pages
-                max_pages = min(num_pages, 3)
-                
+                # Configurable page limit (default: all pages)
+                from django.conf import settings
+                page_limit = getattr(settings, 'OCR_MAX_PAGES', num_pages)
+                max_pages = min(num_pages, page_limit)
+
                 text = ""
                 for page_num in range(max_pages):
                     try:
@@ -435,9 +440,9 @@ class DocumentAnalyzer:
                     return self._basic_text_extraction(file_path)
             else:
                 # Process image file directly
-                image = Image.open(file_path)
-                text = pytesseract.image_to_string(image, lang='ara+eng')
-            
+                with Image.open(file_path) as image:
+                    text = pytesseract.image_to_string(image, lang='ara+eng')
+
             return text.strip()
             
         except Exception as e:

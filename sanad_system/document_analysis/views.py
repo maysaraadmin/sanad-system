@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 
+import threading
 from .models import DocumentAnalysis
 from .serializers import DocumentAnalysisSerializer
 from .tasks import process_document_analysis
@@ -20,10 +21,10 @@ class DocumentAnalysisListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         # Staff can see all analyses, regular users see only their own
+        qs = DocumentAnalysis.objects.select_related('user', 'library_document').order_by('-created_at')
         if self.request.user.is_staff:
-            return DocumentAnalysis.objects.all().order_by('-created_at')
-        else:
-            return DocumentAnalysis.objects.filter(user=self.request.user).order_by('-created_at')
+            return qs
+        return qs.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         # Ensure a file is provided
@@ -32,9 +33,14 @@ class DocumentAnalysisListCreateView(generics.ListCreateAPIView):
             raise ValidationError({"document": "لم يتم إرسال أي ملف."})
         
         instance = serializer.save(user=self.request.user, document=self.request.FILES['document'])
-        
-        # Process document immediately (synchronous)
-        process_document_analysis(instance.id)
+
+        # Run OCR in a background thread so the HTTP response returns immediately.
+        thread = threading.Thread(
+            target=process_document_analysis,
+            args=(instance.id,),
+            daemon=True,
+        )
+        thread.start()
 
 class DocumentAnalysisDetailView(generics.RetrieveAPIView):
     queryset = DocumentAnalysis.objects.all()

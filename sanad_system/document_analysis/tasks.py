@@ -21,7 +21,8 @@ def get_analyzer():
         logger.info("Reusing existing DocumentAnalyzer instance")
     return _analyzer_instance
 
-def process_document_analysis(analysis_id):
+@shared_task(bind=True, max_retries=2)
+def process_document_analysis(self, analysis_id):
     """
     Process document analysis with progress tracking
     """

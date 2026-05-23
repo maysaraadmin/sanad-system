@@ -9,13 +9,14 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from hadith_app.models import Hadith, Sanad, SanadNarrator
 from hadith_app.forms import SanadForm
 
 
-class SanadUpdateView(UpdateView):
+class SanadUpdateView(LoginRequiredMixin, UpdateView):
     """Update view for editing an existing sanad"""
     model = Sanad
     form_class = SanadForm
@@ -35,7 +36,7 @@ class SanadUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class SanadDeleteView(DeleteView):
+class SanadDeleteView(LoginRequiredMixin, DeleteView):
     """Delete view for removing a sanad"""
     model = Sanad
     template_name = 'hadith_app/sanad_confirm_delete.html'
@@ -69,6 +70,7 @@ def sanad_list_view(request, hadith_id):
     return render(request, 'hadith_app/sanad_list.html', context)
 
 
+@login_required
 @require_POST
 def sanad_duplicate_view(request, sanad_id):
     """
@@ -96,6 +98,7 @@ def sanad_duplicate_view(request, sanad_id):
     return redirect('hadith_app:hadith_detail', pk=sanad.hadith.id)
 
 
+@login_required
 @require_POST
 def sanad_clear_narrators_view(request, sanad_id):
     """

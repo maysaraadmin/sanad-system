@@ -40,6 +40,7 @@ def add_student_view(request, narrator_id):
     return render(request, 'hadith_app/add_student.html', context)
 
 
+@login_required
 @require_POST
 def add_student_submit(request, narrator_id):
     """
@@ -77,6 +78,7 @@ def add_student_submit(request, narrator_id):
     return redirect('hadith_app:narrator_analysis', narrator_id=narrator_id)
 
 
+@login_required
 @require_POST
 def remove_student(request, narrator_id, student_id):
     """
@@ -135,6 +137,7 @@ def student_list_view(request, narrator_id):
     return render(request, 'hadith_app/student_list.html', context)
 
 
+@login_required
 @require_POST
 def update_student_notes(request, narrator_id, student_id):
     """

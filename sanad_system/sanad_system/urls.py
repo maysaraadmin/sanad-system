@@ -43,11 +43,8 @@ urlpatterns = [
     # RAG App URLs
     path('rag/', include(('rag_app.urls', 'rag_app'), namespace='rag_app')),
     
-    # Document Analysis Dashboard
+    # Document Analysis Dashboard + API (single inclusion avoids duplicate namespace conflict)
     path('document-analysis/', include(('document_analysis.urls', 'document_analysis'), namespace='document_analysis')),
-    
-    # Document Analysis API
-    path('api/document-analysis/', include(('document_analysis.urls', 'document_analysis'), namespace='document_analysis_api')),
     
     # API endpoints are now included within each app's URL configuration
     # This provides better organization and versioning control

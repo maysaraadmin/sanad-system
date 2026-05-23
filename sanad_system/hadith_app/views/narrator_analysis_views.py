@@ -6,6 +6,7 @@ including relationship networks, timelines, geographical maps, and comparisons.
 """
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
@@ -675,6 +676,7 @@ def narrator_hadith_paths_api(request, narrator_id):
 
 
 @require_GET
+@login_required
 def add_teacher_view(request, narrator_id):
     """
     Display form to add teachers to a narrator
@@ -691,6 +693,7 @@ def add_teacher_view(request, narrator_id):
     return render(request, 'hadith_app/add_teacher.html', context)
 
 
+@login_required
 @require_POST
 def add_teacher_submit(request, narrator_id):
     """
@@ -733,6 +736,7 @@ def add_teacher_submit(request, narrator_id):
         return render(request, 'hadith_app/add_teacher.html', context)
 
 
+@login_required
 @require_POST
 def remove_teacher(request, narrator_id, teacher_id):
     """

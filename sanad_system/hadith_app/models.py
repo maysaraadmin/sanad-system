@@ -87,6 +87,17 @@ class Narrator(models.Model):
         if self.birth_year and self.death_year:
             return self.death_year - self.birth_year
         return None
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        if (
+            self.birth_year is not None
+            and self.death_year is not None
+            and self.death_year < self.birth_year
+        ):
+            raise ValidationError(
+                {'death_year': _('سنة الوفاة يجب أن تكون أكبر من أو تساوي سنة الميلاد.')}
+            )
     
     def get_contemporaries(self):
         """Get narrators who lived during the same time period"""
@@ -179,15 +190,20 @@ class Hadith(models.Model):
         return self.text[:50] + "..." if len(self.text) > 50 else self.text
 
     def save(self, *args, **kwargs):
-        # Auto-generate system hadith number if not set
+        # Auto-generate system hadith number if not set — use SELECT FOR UPDATE to
+        # prevent race conditions when two requests arrive simultaneously.
         if not self.system_hadith_number:
-            # Get the highest existing system_hadith_number and add 1
-            last_hadith = Hadith.objects.order_by('-system_hadith_number').first()
-            if last_hadith:
-                self.system_hadith_number = last_hadith.system_hadith_number + 1
-            else:
-                self.system_hadith_number = 1
-        
+            from django.db import transaction
+            with transaction.atomic():
+                last_hadith = (
+                    Hadith.objects.select_for_update()
+                    .order_by('-system_hadith_number')
+                    .first()
+                )
+                if last_hadith and last_hadith.system_hadith_number:
+                    self.system_hadith_number = last_hadith.system_hadith_number + 1
+                else:
+                    self.system_hadith_number = 1
         super().save(*args, **kwargs)
 
     def get_primary_text(self):
@@ -433,6 +449,19 @@ class UserProfile(models.Model):
         if self.avatar and hasattr(self.avatar, 'url'):
             return self.avatar.url
         return '/static/images/default-avatar.png'
+
+    def save(self, *args, **kwargs):
+        # Delete old avatar file from disk when it is replaced, to prevent orphaned files.
+        if self.pk:
+            try:
+                old_instance = UserProfile.objects.get(pk=self.pk)
+                old_avatar = old_instance.avatar
+                if old_avatar and old_avatar != self.avatar:
+                    if os.path.isfile(old_avatar.path):
+                        os.remove(old_avatar.path)
+            except UserProfile.DoesNotExist:
+                pass
+        super().save(*args, **kwargs)
 
 
 class TeacherStudentRelationship(models.Model):

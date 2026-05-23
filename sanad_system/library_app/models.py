@@ -6,13 +6,17 @@ import os
 from django.utils.text import slugify
 
 def upload_to(instance, filename):
-    # File will be uploaded to MEDIA_ROOT/library/<document_type>/<year>/<filename>
-    # Use current year if instance is not saved yet
+    # File will be uploaded to MEDIA_ROOT/library/<document_type>/<year>/<uuid>_<filename>
+    # UUID prefix guarantees no two uploads overwrite each other even with identical titles.
+    import uuid
     from datetime import datetime
     year = datetime.now().year if instance.uploaded_at is None else instance.uploaded_at.year
     document_type = instance.document_type
-    filename = f"{slugify(instance.title)}_{os.path.splitext(filename)[0]}{os.path.splitext(filename)[1]}"
-    return f'library/{document_type}/{year}/{filename}'
+    ext = os.path.splitext(filename)[1]
+    safe_title = slugify(instance.title) or 'document'
+    unique_prefix = uuid.uuid4().hex[:8]
+    safe_filename = f"{safe_title}_{unique_prefix}{ext}"
+    return f'library/{document_type}/{year}/{safe_filename}'
 
 class DocumentType(models.Model):
     """Document types for categorization"""

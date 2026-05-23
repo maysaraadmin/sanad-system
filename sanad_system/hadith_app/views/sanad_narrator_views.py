@@ -54,6 +54,7 @@ def add_sanad_narrator_view(request, sanad_id):
     return render(request, 'hadith_app/add_sanad_narrator.html', context)
 
 
+@login_required
 @require_POST
 def add_sanad_narrator_submit(request, sanad_id):
     """
@@ -97,6 +98,7 @@ def add_sanad_narrator_submit(request, sanad_id):
         return render(request, 'hadith_app/add_sanad_narrator.html', context)
 
 
+@login_required
 @require_POST
 def remove_sanad_narrator(request, sanad_id, narrator_id):
     """
@@ -118,6 +120,7 @@ def remove_sanad_narrator(request, sanad_id, narrator_id):
     return redirect('hadith_app:sanad_narrators', sanad_id=sanad.id)
 
 
+@login_required
 @require_POST
 def reorder_sanad_narrators(request, sanad_id):
     """
@@ -143,6 +146,7 @@ def reorder_sanad_narrators(request, sanad_id):
     return JsonResponse({'success': False, 'error': 'طلب غير صالح'})
 
 
+@login_required
 @require_POST
 def update_sanad_narrator(request, sanad_id, narrator_id):
     """

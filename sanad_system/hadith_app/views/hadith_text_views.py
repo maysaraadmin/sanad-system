@@ -32,6 +32,7 @@ def hadith_texts_view(request, hadith_id):
     return render(request, 'hadith_app/hadith_texts.html', context)
 
 
+@login_required
 @require_GET
 def add_hadith_text_view(request, hadith_id):
     """
@@ -49,6 +50,7 @@ def add_hadith_text_view(request, hadith_id):
     return render(request, 'hadith_app/add_hadith_text.html', context)
 
 
+@login_required
 @require_POST
 def add_hadith_text_submit(request, hadith_id):
     """
@@ -93,6 +95,7 @@ def add_hadith_text_submit(request, hadith_id):
         return render(request, 'hadith_app/add_hadith_text.html', context)
 
 
+@login_required
 @require_POST
 def set_primary_text(request, hadith_id, text_id):
     """
@@ -116,6 +119,7 @@ def set_primary_text(request, hadith_id, text_id):
     return redirect('hadith_app:hadith_texts', hadith_id=hadith.id)
 
 
+@login_required
 @require_POST
 def delete_hadith_text(request, hadith_id, text_id):
     """

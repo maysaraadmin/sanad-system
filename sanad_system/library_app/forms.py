@@ -8,29 +8,51 @@ MAX_FILE_SIZE = 52428800  # 50MB in bytes
 ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx', '.txt', '.jpg', '.jpeg', '.png', '.gif']
 ALLOWED_EXTENSIONS_DISPLAY = ', '.join(ALLOWED_EXTENSIONS)
 
+# Map extension → list of valid leading magic-byte sequences
+_MAGIC_BYTES = {
+    '.pdf':  [b'%PDF'],
+    '.docx': [b'PK\x03\x04'],
+    '.doc':  [b'\xd0\xcf\x11\xe0'],
+    '.txt':  None,           # Plain text — any bytes allowed
+    '.jpg':  [b'\xff\xd8\xff'],
+    '.jpeg': [b'\xff\xd8\xff'],
+    '.png':  [b'\x89PNG'],
+    '.gif':  [b'GIF87a', b'GIF89a'],
+}
+
 
 class DocumentForm(forms.ModelForm):
     def clean_file(self):
         file = self.cleaned_data.get('file', False)
         if file:
+            # Check file is not empty
+            if file.size == 0:
+                raise forms.ValidationError(_('لا يمكن رفع ملف فارغ'))
+
             # Check file size
             if file.size > MAX_FILE_SIZE:
                 raise forms.ValidationError(
                     _('حجم الملف كبير جداً. الحد الأقصى هو 50 ميجابايت.')
                 )
-            
-            # Check file extension
+
+            # Check declared file extension
             ext = os.path.splitext(file.name)[1].lower()
             if ext not in ALLOWED_EXTENSIONS:
                 raise forms.ValidationError(
-                    _('نوع الملف غير مسموح به. أنواع الملفات المسموح بها: %s') % 
+                    _('نوع الملف غير مسموح به. أنواع الملفات المسموح بها: %s') %
                     ALLOWED_EXTENSIONS_DISPLAY
                 )
-            
-            # Check if file is empty
-            if file.size == 0:
-                raise forms.ValidationError(_('لا يمكن رفع ملف فارغ'))
-            
+
+            # Verify actual file content against magic bytes (prevents extension spoofing)
+            allowed_signatures = _MAGIC_BYTES.get(ext)
+            if allowed_signatures is not None:
+                header = file.read(8)
+                file.seek(0)
+                if not any(header.startswith(sig) for sig in allowed_signatures):
+                    raise forms.ValidationError(
+                        _('محتوى الملف لا يتطابق مع امتداده. يرجى رفع ملف صحيح.')
+                    )
+
         return file
 
     class Meta:

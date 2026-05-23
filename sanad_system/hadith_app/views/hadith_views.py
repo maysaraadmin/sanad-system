@@ -99,6 +99,12 @@ class HadithUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'hadith_app/hadith_form.html'
     success_url = reverse_lazy('hadith_app:hadith_list')
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if not self.request.user.is_staff:
+            qs = qs.filter(created_by=self.request.user)
+        return qs
+
     def form_valid(self, form):
         messages.success(self.request, _('تم تحديث الحديث بنجاح'))
         return super().form_valid(form)
@@ -114,6 +120,12 @@ class HadithDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'hadith_app/hadith_confirm_delete.html'
     success_url = reverse_lazy('hadith_app:hadith_list')
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if not self.request.user.is_staff:
+            qs = qs.filter(created_by=self.request.user)
+        return qs
+
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, _('Hadith deleted successfully'))
+        messages.success(self.request, _('تم حذف الحديث بنجاح'))
         return super().delete(request, *args, **kwargs)

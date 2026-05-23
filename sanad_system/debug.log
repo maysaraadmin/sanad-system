@@ -11856,3 +11856,34 @@ INFO 2026-05-23 15:42:59,420 basehttp "GET /static/css/interactive.css HTTP/1.1"
 INFO 2026-05-23 15:42:59,420 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
 WARNING 2026-05-23 15:43:00,015 log Not Found: /favicon.ico
 WARNING 2026-05-23 15:43:00,016 basehttp "GET /favicon.ico HTTP/1.1" 404 16820
+INFO 2026-05-23 16:32:55,188 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:02:10,049 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:02:59,156 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:03:02,685 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2026-05-23 17:03:02,774 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 4894
+INFO 2026-05-23 17:03:02,916 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2026-05-23 17:05:40,345 autoreload /home/runner/workspace/sanad_system/hadith_app/templatetags/highlight_filters.py changed, reloading.
+INFO 2026-05-23 17:05:44,286 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:05:51,442 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:05:52,254 autoreload /home/runner/workspace/sanad_system/hadith_app/views/sanad_management_views.py changed, reloading.
+INFO 2026-05-23 17:05:53,832 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:06:00,312 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:06:01,649 autoreload /home/runner/workspace/sanad_system/hadith_app/views/sanad_narrator_views.py changed, reloading.
+INFO 2026-05-23 17:06:03,177 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:06:09,746 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:06:22,623 autoreload /home/runner/workspace/sanad_system/hadith_app/views/sanad_text_views.py changed, reloading.
+INFO 2026-05-23 17:06:24,206 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:06:30,825 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:06:35,265 autoreload /home/runner/workspace/sanad_system/hadith_app/views/hadith_views.py changed, reloading.
+INFO 2026-05-23 17:06:36,842 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:06:51,808 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:07:02,790 autoreload /home/runner/workspace/sanad_system/sanad_system/settings.py changed, reloading.
+INFO 2026-05-23 17:09:25,761 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 17:09:32,634 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:09:34,247 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 17:09:34,293 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2026-05-23 17:09:34,294 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2026-05-23 17:09:34,294 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 4894
+WARNING 2026-05-23 17:09:34,916 log Not Found: /favicon.ico
+WARNING 2026-05-23 17:09:34,918 basehttp "GET /favicon.ico HTTP/1.1" 404 16698
+INFO 2026-05-23 17:10:16,444 basehttp "GET / HTTP/1.1" 200 24704

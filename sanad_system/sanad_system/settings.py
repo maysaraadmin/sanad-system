@@ -26,15 +26,22 @@ from decouple import config, Csv
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-development-key-123')
+import secrets as _secrets
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-' + _secrets.token_hex(40))
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Default True for development; set DEBUG=False via env var in production.
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
+# Raise loudly if running in production with the insecure default key
+from django.core.exceptions import ImproperlyConfigured as _ImproperlyConfigured
+if not DEBUG and SECRET_KEY.startswith('django-insecure-'):
+    raise _ImproperlyConfigured(
+        "SECRET_KEY must be explicitly set via the SECRET_KEY environment variable in production."
+    )
 
-# Trust all hosts (Replit proxy)
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS — '*' is safe here because Replit proxies requests; restrict in production via env var
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
 
 
 # Application definition
@@ -319,7 +326,7 @@ REST_FRAMEWORK = {
 }
 
 # Celery Configuration
-CELERY_BROKER_URL = 'memory://'
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='memory://')
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
