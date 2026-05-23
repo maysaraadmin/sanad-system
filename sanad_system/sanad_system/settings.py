@@ -31,7 +31,10 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-development-key-123')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,testserver', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
+
+# Trust all hosts (Replit proxy)
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -105,11 +108,11 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'sanad'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'NAME': os.environ.get('PGDATABASE', os.environ.get('DB_NAME', 'sanad')),
+        'USER': os.environ.get('PGUSER', os.environ.get('DB_USER', 'postgres')),
+        'PASSWORD': os.environ.get('PGPASSWORD', os.environ.get('DB_PASSWORD', 'postgres')),
+        'HOST': os.environ.get('PGHOST', os.environ.get('DB_HOST', 'localhost')),
+        'PORT': os.environ.get('PGPORT', os.environ.get('DB_PORT', '5432')),
     }
 }
 
@@ -202,6 +205,15 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# CSRF trusted origins for Replit proxy
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.replit.dev',
+    'https://*.repl.co',
+    'https://*.replit.app',
+    'http://localhost:5000',
+    'http://0.0.0.0:5000',
+]
 
 # Message tags for Bootstrap
 MESSAGE_TAGS = {

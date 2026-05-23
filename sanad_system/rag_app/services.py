@@ -3,10 +3,23 @@ import logging
 import numpy as np
 import re
 from typing import List, Dict, Any, Optional, Tuple
-from sentence_transformers import SentenceTransformer
+try:
+    from sentence_transformers import SentenceTransformer
+    SENTENCE_TRANSFORMERS_AVAILABLE = True
+except ImportError:
+    SENTENCE_TRANSFORMERS_AVAILABLE = False
+    SentenceTransformer = None
+
 from sklearn.metrics.pairwise import cosine_similarity
-import chromadb
-from chromadb.config import Settings
+try:
+    import chromadb
+    from chromadb.config import Settings
+    CHROMADB_AVAILABLE = True
+except ImportError:
+    CHROMADB_AVAILABLE = False
+    chromadb = None
+    Settings = None
+
 from django.conf import settings
 from django.db.models import Q
 from django.contrib.auth.models import User

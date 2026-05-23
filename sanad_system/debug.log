@@ -11844,3 +11844,15 @@ INFO 2025-12-14 23:13:54,390 basehttp "GET /document-analysis/dashboard/ HTTP/1.
 WARNING 2025-12-14 23:13:54,685 log Not Found: /favicon.ico
 INFO 2025-12-14 23:13:54,687 basehttp - Broken pipe from ('127.0.0.1', 60750)
 INFO 2025-12-14 23:14:00,990 basehttp "GET /api/document-analysis/analyses/2/ HTTP/1.1" 200 1464
+INFO 2026-05-23 15:42:26,050 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 15:42:38,578 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 15:42:43,339 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2026-05-23 15:42:43,955 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 4894
+INFO 2026-05-23 15:42:48,705 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2026-05-23 15:42:56,917 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 15:42:59,388 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 15:42:59,415 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2026-05-23 15:42:59,420 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 4894
+INFO 2026-05-23 15:42:59,420 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+WARNING 2026-05-23 15:43:00,015 log Not Found: /favicon.ico
+WARNING 2026-05-23 15:43:00,016 basehttp "GET /favicon.ico HTTP/1.1" 404 16820
