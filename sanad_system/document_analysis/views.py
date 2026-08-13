@@ -9,7 +9,6 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 
-import threading
 from .models import DocumentAnalysis
 from .serializers import DocumentAnalysisSerializer
 from .tasks import process_document_analysis
@@ -34,13 +33,8 @@ class DocumentAnalysisListCreateView(generics.ListCreateAPIView):
         
         instance = serializer.save(user=self.request.user, document=self.request.FILES['document'])
 
-        # Run OCR in a background thread so the HTTP response returns immediately.
-        thread = threading.Thread(
-            target=process_document_analysis,
-            args=(instance.id,),
-            daemon=True,
-        )
-        thread.start()
+        # Enqueue OCR task via Celery so the HTTP response returns immediately.
+        process_document_analysis.delay(instance.id)
 
 class DocumentAnalysisDetailView(generics.RetrieveAPIView):
     queryset = DocumentAnalysis.objects.all()
