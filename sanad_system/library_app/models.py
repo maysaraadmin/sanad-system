@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 import os
 from django.utils.text import slugify
+from django.core.validators import FileExtensionValidator
 
 def upload_to(instance, filename):
     # File will be uploaded to MEDIA_ROOT/library/<document_type>/<year>/<uuid>_<filename>
@@ -41,7 +42,13 @@ class Document(models.Model):
     )
     file = models.FileField(
         upload_to=upload_to,
-        verbose_name="الملف"
+        verbose_name="الملف",
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=['pdf', 'doc', 'docx', 'txt', 'jpg', 'jpeg', 'png'],
+                message=_('الصيغ المدعومة: PDF, DOC, DOCX, TXT, JPG, PNG')
+            )
+        ]
     )
     description = models.TextField(null=True, blank=True, verbose_name="الوصف")
     uploaded_by = models.ForeignKey(
