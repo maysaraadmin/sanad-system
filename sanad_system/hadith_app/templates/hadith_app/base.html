@@ -54,31 +54,7 @@
             display: flex;
             flex-direction: column;
         }
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --dark-color: #2c3e50;
-            --light-color: #ecf0f1;
-            --danger-color: #e74c3c;
-            --warning-color: #f39c12;
-            --success-color: #27ae60;
-            --info-color: #3498db;
-            --search-suggestion-bg: #fff;
-            --search-suggestion-hover: #f8f9fa;
-            --search-border-color: #ced4da;
-            --search-text-color: #212529;
-            --search-muted-color: #6c757d;
-        }
-        
-        /* Dark mode variables */
-        [data-bs-theme="dark"] {
-            --search-suggestion-bg: #2c3034;
-            --search-suggestion-hover: #343a40;
-            --search-border-color: #495057;
-            --search-text-color: #f8f9fa;
-            --search-muted-color: #adb5bd;
-        }
-        
+
         /* Search form styles */
         .search-container {
             position: relative;
@@ -530,71 +506,6 @@
                     searchForm.submit();
                 }
             });
-            
-            // Initialize suggestions
-            let debounceTimer;
-            searchInput.addEventListener('input', function() {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(() => {
-                    updateSearchSuggestions(this.value.trim());
-                }, 300);
-            });
-        }
-        
-        function updateSearchSuggestions(query) {
-            const suggestionsContainer = document.getElementById('searchSuggestions');
-            if (!suggestionsContainer) return;
-            
-            if (!query) {
-                suggestionsContainer.style.display = 'none';
-                return;
-            }
-            
-            // Show loading state
-            suggestionsContainer.innerHTML = `
-                <div class="list-group-item">
-                    <div class="d-flex align-items-center justify-content-center py-2">
-                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                        <span>{% trans "Loading suggestions..." %}</span>
-                    </div>
-                </div>`;
-            suggestionsContainer.style.display = 'block';
-            
-            // Fetch hadith suggestions
-            const url = `/api/hadith/suggestions/?q=${encodeURIComponent(query)}`;
-                
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.suggestions && data.suggestions.length > 0) {
-                        let html = '';
-                        data.suggestions.forEach(item => {
-                            html += `
-                                <a href="${item.url}" class="list-group-item list-group-item-action">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-book-hadith me-2"></i>
-                                        <div>
-                                            <div class="fw-bold">${item.title}</div>
-                                            ${item.description ? `<div class="text-muted small">${item.description}</div>` : ''}
-                                        </div>
-                                    </div>
-                                </a>`;
-                        });
-                        suggestionsContainer.innerHTML = html;
-                    } else {
-                        suggestionsContainer.innerHTML = `
-                            <div class="list-group-item">
-                                <div class="text-muted text-center py-2">
-                                    <i class="fas fa-search me-2"></i>
-                                    <span>{% trans "No suggestions found" %}</span>
-                                </div>
-                            </div>`;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching suggestions:', error);
-                    suggestionsContainer.style.display = 'none';
-                });
         }
     });
     </script>
