@@ -1,0 +1,32 @@
+# Optional: Advanced RAG / LLM features
+# Install only if you need the disabled Arabic LLM, quantization, or extra vector stores.
+# Note: These packages are large and may require CUDA for reasonable performance.
+# Install with: pip install -r requirements-rag-optional.txt
+
+# LLM / Transformers
+transformers==4.35.0
+datasets==2.14.0
+accelerate==0.24.0
+
+# Vector stores (alternative to ChromaDB)
+faiss-cpu==1.7.4
+
+# Model quantization (GPU only)
+bitsandbytes==0.41.0
+optimum==1.13.0
+
+# Tokenizers
+tokenizers==0.15.0
+
+# Arabic NLP (not currently wired into the active pipeline)
+farasapy==0.0.14
+camel-tools==1.0.0
+
+# Additional ML utilities
+pandas==2.0.3
+scipy==1.10.1
+
+# Heavy OCR backend (alternative to pytesseract)
+paddlepaddle==2.5.2
+paddleocr==2.7.3
+shapely==2.0.0
