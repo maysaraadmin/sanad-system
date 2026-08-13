@@ -1,8 +1,8 @@
 from django.core.checks import Error, register
 from django.conf import settings
 
-@registry.register
-@registry.tags('hadith_app')
+@register()
+@register.tags('hadith_app')
 def hadith_app_checks(app_configs, **kwargs):
     errors = []
     
