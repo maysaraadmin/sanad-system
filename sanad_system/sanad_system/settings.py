@@ -30,8 +30,8 @@ import secrets as _secrets
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-' + _secrets.token_hex(40))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Default True for development; set DEBUG=False via env var in production.
-DEBUG = config('DEBUG', default=True, cast=bool)
+# Default False; set DEBUG=True via env var only in development.
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Raise loudly if running in production with the insecure default key
 from django.core.exceptions import ImproperlyConfigured as _ImproperlyConfigured
@@ -40,8 +40,8 @@ if not DEBUG and SECRET_KEY.startswith('django-insecure-'):
         "SECRET_KEY must be explicitly set via the SECRET_KEY environment variable in production."
     )
 
-# ALLOWED_HOSTS — '*' is safe here because Replit proxies requests; restrict in production via env var
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
+# ALLOWED_HOSTS — restrict in production; safe defaults for local dev
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
 
 
 # Application definition
@@ -66,6 +66,13 @@ INSTALLED_APPS = [
     'rag_app',
 ]
 
+# Optional security app
+try:
+    import axes  # noqa: F401
+    INSTALLED_APPS.append('axes')
+except ImportError:
+    pass
+
 # Crispy Forms Settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -82,6 +89,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
+
+# Optional security middleware
+try:
+    import axes  # noqa: F401
+    MIDDLEWARE.insert(8, 'axes.middleware.AxesMiddleware')
+except ImportError:
+    pass
 
 ROOT_URLCONF = 'sanad_system.urls'
 
@@ -211,7 +225,22 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=False, cast=bool)
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000, cast=int)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+# Axes brute-force protection (optional)
+try:
+    import axes  # noqa: F401
+    AXES_FAILURE_LIMIT = 5
+    AXES_COOLOFF_TIME = 1  # hours
+    AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
+    AXES_RESET_ON_SUCCESS = True
+except ImportError:
+    pass
 
 # CSRF trusted origins for Replit proxy
 CSRF_TRUSTED_ORIGINS = [
