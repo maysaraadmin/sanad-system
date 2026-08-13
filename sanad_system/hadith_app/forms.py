@@ -372,7 +372,7 @@ class HadithForm(forms.ModelForm):
     def save(self, commit=True):
         hadith = super().save(commit=False)
         if self.user:
-            hadith.added_by = self.user
+            hadith.created_by = self.user
         if commit:
             hadith.save()
         return hadith

@@ -5,6 +5,9 @@ from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 def user_avatar_path(instance, filename):
     # File will be uploaded to MEDIA_ROOT/avatars/user_<id>/<filename>
@@ -610,11 +613,10 @@ def index_hadith_for_rag(sender, instance, created, **kwargs):
             rag_service.index_hadiths([instance.id])
             
             action = "created" if created else "updated"
-            print(f"Automatically indexed hadith #{instance.system_hadith_number} for RAG after {action}")
+            logger.info(f"Automatically indexed hadith #{instance.system_hadith_number} for RAG after {action}")
             
-    except Exception as e:
-        print(f"Error auto-indexing hadith #{instance.system_hadith_number}: {e}")
-        pass
+    except Exception:
+        logger.exception(f"Error auto-indexing hadith #{instance.system_hadith_number}")
 
 
 @receiver(post_save, sender=Hadith)
@@ -642,11 +644,10 @@ def update_hadith_metadata(sender, instance, created, **kwargs):
         
         if update_fields:
             instance.save(update_fields=update_fields)
-            print(f"Updated hadith #{instance.system_hadith_number} metadata: {update_fields}")
+            logger.info(f"Updated hadith #{instance.system_hadith_number} metadata: {update_fields}")
             
-    except Exception as e:
-        print(f"Error updating hadith #{instance.system_hadith_number} metadata: {e}")
-        pass
+    except Exception:
+        logger.exception(f"Error updating hadith #{instance.system_hadith_number} metadata")
 
 
 @receiver(post_save, sender=SanadNarrator)
@@ -657,9 +658,7 @@ def update_sanad_narrator_flags(sender, instance, created, **kwargs):
         
         validation = validate_chronological_overlap(instance.sanad)
         if validation['issues']:
-            # Log issues but don't raise - just note them
-            print(f"Sanad {instance.sanad.id} chronological issues: {validation['issues']}")
+            logger.info(f"Sanad {instance.sanad.id} chronological issues: {validation['issues']}")
             
-    except Exception as e:
-        print(f"Error validating sanad narrator {instance.id}: {e}")
-        pass
+    except Exception:
+        logger.exception(f"Error validating sanad narrator {instance.id}")
