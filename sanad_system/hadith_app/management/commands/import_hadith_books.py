@@ -211,6 +211,12 @@ class Command(BaseCommand):
         # Determine grade based on book type
         grade = self.determine_grade(book.title, hadith_data)
         
+        # Validate sanad text for tadlis indicators
+        sanad_validation = self.validate_sanad_for_tadlis(arabic_text)
+        if sanad_validation['warnings']:
+            for warning in sanad_validation['warnings']:
+                self.stdout.write(self.style.WARNING(f"  Tadlis warning: {warning}"))
+        
         # Create hadith
         hadith = Hadith.objects.create(
             text=hadith_text,
@@ -224,6 +230,35 @@ class Command(BaseCommand):
         hadith.categories.add(category)
         
         return hadith
+    
+    def validate_sanad_for_tadlis(self, arabic_text: str) -> dict:
+        """
+        Basic tadlis detection from Arabic sanad text.
+        Returns warnings about potential tadlis.
+        """
+        warnings = []
+        
+        # Check for common tadlis patterns: narrator says "حدثنا" or "أخبرنا"
+        # but the chain is broken or the source is ambiguous
+        direct_indicators = ['حَدَّثَنَا', 'أَخْبَرَنَا', 'سَمِعْتُ', 'أَنْبَأَنَا']
+        
+        # Check if text mentions "عن" without a clear chain
+        # This is a basic heuristic - real tadlis detection requires structured data
+        has_chain = any(ind in arabic_text for ind in direct_indicators)
+        
+        if not has_chain:
+            warnings.append("No clear sanad indicators found in text")
+        
+        # Check for ambiguous narrators (e.g., "عن رجل" or "عن بعض")
+        ambiguous_patterns = ['عَنِ الرَّجُلِ', 'عَنِ بَعْضٍ', 'عَنِ رَجُلٍ']
+        for pattern in ambiguous_patterns:
+            if pattern in arabic_text:
+                warnings.append(f"Ambiguous narrator detected: '{pattern}' - possible tadlis")
+        
+        return {
+            'warnings': warnings,
+            'has_clear_chain': has_chain
+        }
 
     def determine_grade(self, book_title, hadith_data):
         """Determine hadith grade based on book type"""

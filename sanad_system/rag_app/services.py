@@ -388,6 +388,14 @@ class TextSimilarityHighlighter:
 class RAGService:
     """Main RAG service for question answering"""
     
+    # Trust weight mapping aligned with hadith narrator grades
+    RELIABILITY_WEIGHTS = {
+        'thiqa': 1.0,
+        'saduq': 0.85,
+        'weak': 0.4,
+        'unknown': 0.2,
+    }
+    
     def __init__(self):
         self.embedding_service = ArabicEmbeddingService()
         self.chroma_service = ChromaDBService()
@@ -402,7 +410,6 @@ class RAGService:
             return RAGConfiguration.objects.filter(is_active=True).first()
         except Exception as e:
             logger.error(f"Error getting RAG config: {e}")
-            # Return default config
             return RAGConfiguration(
                 embedding_model="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
                 llm_model="aubmindlab/aragpt2-base",
@@ -411,6 +418,82 @@ class RAGService:
                 max_context=5,
                 similarity_threshold=0.7
             )
+    
+    def _compute_chain_reliability_weight(self, hadith_id: str) -> float:
+        """
+        Compute a trust weight for a hadith based on its sanad narrator reliability.
+        Returns 0.0 if the hadith is mawdu, otherwise a weight in [0.0, 1.0].
+        """
+        try:
+            hadith = Hadith.objects.filter(id=int(hadith_id)).first()
+            if not hadith:
+                return 0.5
+            
+            if hadith.grade == 'mawdu':
+                return 0.0
+            
+            if hadith.is_shadh:
+                return 0.2
+            
+            sanads = hadith.asanid.all().prefetch_related('narrators__narrator')
+            if not sanads.exists():
+                return 0.5
+            
+            chain_weights = []
+            for sanad in sanads:
+                narrators = list(sanad.narrators.all().order_by('order'))
+                if not narrators:
+                    continue
+                
+                # Weight the chain by its weakest link, but also consider chain length
+                narrator_weights = []
+                for sn in narrators:
+                    narrator = sn.narrator
+                    weight = self.RELIABILITY_WEIGHTS.get(narrator.reliability, 0.2)
+                    if sn.is_tadlis:
+                        weight *= 0.5
+                    if sn.is_mursal:
+                        weight *= 0.7
+                    narrator_weights.append(weight)
+                
+                if narrator_weights:
+                    chain_weights.append(min(narrator_weights))
+            
+            if not chain_weights:
+                return 0.5
+            
+            return max(chain_weights)
+        except Exception:
+            return 0.5
+    
+    def _get_sanad_chain_for_hadith(self, hadith_id: str) -> list:
+        """
+        Get the full sanad chain for a hadith.
+        """
+        try:
+            hadith = Hadith.objects.filter(id=int(hadith_id)).first()
+            if not hadith:
+                return []
+            
+            sanads = hadith.asanid.all().prefetch_related('narrators__narrator')
+            chains = []
+            for sanad in sanads:
+                narrators = list(sanad.narrators.all().order_by('order'))
+                chain = []
+                for sn in narrators:
+                    chain.append({
+                        'name': sn.narrator.name,
+                        'reliability': sn.narrator.reliability,
+                        'reliability_display': sn.narrator.get_reliability_display(),
+                        'order': sn.order,
+                        'is_mursal': sn.is_mursal,
+                        'is_tadlis': sn.is_tadlis,
+                        'method': sn.narration_method or '',
+                    })
+                chains.append(chain)
+            return chains
+        except Exception:
+            return []
     
     def index_hadiths(self, hadith_ids: Optional[List[int]] = None):
         """Index hadiths for RAG with improved structure"""
@@ -422,30 +505,24 @@ class RAGService:
             
             logger.info(f"Indexing {hadiths.count()} hadiths")
             
-            # Prepare documents with new structure
             documents = self.text_processor.prepare_hadith_documents(hadiths)
             
             if not documents:
                 logger.warning("No documents prepared for indexing")
                 return
             
-            # Generate embeddings
             texts = [doc['text'] for doc in documents]
             embeddings = self.embedding_service.embed_texts(texts)
             
-            # Add embeddings to documents
             for doc, embedding in zip(documents, embeddings):
                 doc['embedding'] = embedding
             
-            # Add to ChromaDB (will overwrite existing documents with same IDs)
             self.chroma_service.add_documents(documents)
             
-            # Clear existing embeddings for these content types to avoid duplicates
             content_types = set(doc['content_type'] for doc in documents)
             for content_type in content_types:
                 DocumentEmbedding.objects.filter(content_type=content_type).delete()
             
-            # Save to database for backup
             for doc in documents:
                 DocumentEmbedding.objects.create(
                     content_type=doc['content_type'],
@@ -464,7 +541,7 @@ class RAGService:
     def reindex_all_hadiths(self):
         """Convenience method to re-index all hadiths with fresh structure"""
         logger.info("Starting complete re-index of all hadiths")
-        self.index_hadiths()  # This will index all hadiths
+        self.index_hadiths()
         logger.info("Complete re-index finished")
     
     def search_hadiths(self, query: str, n_results: int = 5) -> List[Dict[str, Any]]:
@@ -472,19 +549,58 @@ class RAGService:
         try:
             logger.info(f"Searching for hadiths with query: {query}")
             
-            # Primary: ChromaDB vector search
             results = self._search_chromadb_primary(query, n_results)
             
-            # If no results from ChromaDB, fallback to direct database search
             if not results:
                 logger.info("No results from ChromaDB, falling back to direct database search")
                 results = self._search_database_directly(query, n_results)
             
-            return results
+            # Apply trust weighting and enrich with sanad chains
+            enriched = []
+            for result in results:
+                hadith_id = result.get('metadata', {}).get('hadith_id')
+                chain_weight = self._compute_chain_reliability_weight(hadith_id) if hadith_id else 0.5
+                
+                # Skip mawdu hadiths
+                if chain_weight == 0.0:
+                    continue
+                
+                base_similarity = result.get('similarity', 0.0)
+                weighted_similarity = base_similarity * chain_weight
+                
+                # Boost mutawatir hadiths
+                try:
+                    hadith = Hadith.objects.filter(id=int(hadith_id)).first() if hadith_id else None
+                    if hadith and hadith.is_mutawatir:
+                        weighted_similarity = min(weighted_similarity * 1.1, 1.0)
+                except Exception:
+                    pass
+                
+                sanad_chains = self._get_sanad_chain_for_hadith(hadith_id) if hadith_id else []
+                
+                enriched.append({
+                    'text': result['text'],
+                    'highlighted_text': result.get('highlighted_text', result['text']),
+                    'metadata': result.get('metadata', {}),
+                    'similarity': base_similarity,
+                    'weighted_similarity': weighted_similarity,
+                    'chain_weight': chain_weight,
+                    'sanad_chains': sanad_chains,
+                    'rank': result.get('rank')
+                })
+            
+            # Sort by weighted similarity
+            enriched.sort(key=lambda x: x['weighted_similarity'], reverse=True)
+            
+            # Reassign ranks after sorting
+            for idx, item in enumerate(enriched, 1):
+                item['rank'] = idx
+            
+            logger.info(f"search_hadiths returning {len(enriched)} results after trust filtering")
+            return enriched[:n_results]
             
         except Exception as e:
             logger.error(f"Error searching hadiths: {e}")
-            # Fallback to direct database search
             return self._search_database_directly(query, n_results)
     
     def _search_chromadb_primary(self, query: str, n_results: int = 5) -> List[Dict[str, Any]]:
@@ -570,20 +686,50 @@ class RAGService:
         
         return metadata.get('source', 'غير معروف')
     
+    def _enrich_search_result(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Enrich a raw search result with chain reliability weight and full sanad chains.
+        """
+        hadith_id = result.get('metadata', {}).get('hadith_id')
+        chain_weight = self._compute_chain_reliability_weight(hadith_id) if hadith_id else 0.5
+        
+        if chain_weight == 0.0:
+            return None
+        
+        base_similarity = result.get('similarity', 0.0)
+        weighted_similarity = base_similarity * chain_weight
+        
+        try:
+            hadith = Hadith.objects.filter(id=int(hadith_id)).first() if hadith_id else None
+            if hadith and hadith.is_mutawatir:
+                weighted_similarity = min(weighted_similarity * 1.1, 1.0)
+        except Exception:
+            pass
+        
+        sanad_chains = self._get_sanad_chain_for_hadith(hadith_id) if hadith_id else []
+        
+        return {
+            'text': result['text'],
+            'highlighted_text': result.get('highlighted_text', result['text']),
+            'metadata': result.get('metadata', {}),
+            'similarity': base_similarity,
+            'weighted_similarity': weighted_similarity,
+            'chain_weight': chain_weight,
+            'sanad_chains': sanad_chains,
+            'rank': result.get('rank')
+        }
+    
     def _search_database_directly(self, query: str, n_results: int = 5) -> List[Dict[str, Any]]:
         """Direct database search as fallback with enhanced matching"""
         try:
             logger.info("Performing direct database search")
             
-            # Special case for intentions hadith
             if 'نيات' in query or 'نية' in query:
                 return self._search_intentions_hadiths(n_results)
             
-            # General search for other queries
             query_words = [word for word in query.split() if len(word) > 2]
             hadith_queryset = Hadith.objects.all()
             
-            # Build Q objects for each word
             q_objects = Q()
             for word in query_words:
                 q_objects |= Q(text__icontains=word)
@@ -591,14 +737,14 @@ class RAGService:
             if q_objects:
                 hadith_queryset = hadith_queryset.filter(q_objects)
             
-            hadiths = hadith_queryset[:n_results]
-            results = []
+            hadiths = hadith_queryset[:n_results * 2]
+            raw_results = []
             
             for i, hadith in enumerate(hadiths):
                 text = hadith.text or ''
                 if text and len(text.strip()) > 10:
                     highlighted_text = self.highlighter.highlight_text(query, text)
-                    results.append({
+                    raw_results.append({
                         'text': text.strip(),
                         'highlighted_text': highlighted_text,
                         'metadata': {
@@ -606,12 +752,22 @@ class RAGService:
                             'source': hadith.source or 'غير معروف',
                             'grade': hadith.grade or ''
                         },
-                        'similarity': 0.8,  # Default similarity for direct search
+                        'similarity': 0.8,
                         'rank': i + 1
                     })
             
-            logger.info(f"Found {len(results)} hadiths in direct search")
-            return results
+            enriched = []
+            for result in raw_results:
+                enriched_result = self._enrich_search_result(result)
+                if enriched_result:
+                    enriched.append(enriched_result)
+            
+            enriched.sort(key=lambda x: x['weighted_similarity'], reverse=True)
+            for idx, item in enumerate(enriched, 1):
+                item['rank'] = idx
+            
+            logger.info(f"Found {len(enriched)} hadiths in direct search")
+            return enriched[:n_results]
             
         except Exception as e:
             logger.error(f"Error in direct database search: {e}")
@@ -622,19 +778,18 @@ class RAGService:
         try:
             logger.info("Searching for intentions hadiths")
             
-            # Look for the famous hadith about intentions
             intentions_hadiths = Hadith.objects.filter(
                 Q(text__icontains='نيات') | 
                 Q(text__icontains='نية') |
                 Q(text__icontains='إنما الأعمال')
             )
             
-            results = []
-            for i, hadith in enumerate(intentions_hadiths[:n_results]):
+            raw_results = []
+            for i, hadith in enumerate(intentions_hadiths[:n_results * 2]):
                 text = hadith.text or ''
                 if text and len(text.strip()) > 10:
                     highlighted_text = self.highlighter.highlight_text('انما الاعمال بالنيات', text)
-                    results.append({
+                    raw_results.append({
                         'text': text.strip(),
                         'highlighted_text': highlighted_text,
                         'metadata': {
@@ -642,24 +797,23 @@ class RAGService:
                             'source': hadith.source or 'غير معروف',
                             'grade': hadith.grade or ''
                         },
-                        'similarity': 0.95,  # High similarity for intentions hadiths
+                        'similarity': 0.95,
                         'rank': i + 1
                     })
             
-            # If no intentions hadiths found, return some general hadiths as fallback
-            if not results:
+            if not raw_results:
                 logger.info("No intentions hadiths found, returning general hadiths")
                 general_hadiths = Hadith.objects.filter(
                     text__isnull=False
                 ).exclude(
                     text=''
-                )[:n_results]
+                )[:n_results * 2]
                 
                 for i, hadith in enumerate(general_hadiths):
                     text = hadith.text or ''
                     if text and len(text.strip()) > 10:
                         highlighted_text = self.highlighter.highlight_text('انما الاعمال بالنيات', text)
-                        results.append({
+                        raw_results.append({
                             'text': text.strip(),
                             'highlighted_text': highlighted_text,
                             'metadata': {
@@ -671,8 +825,18 @@ class RAGService:
                             'rank': i + 1
                         })
             
-            logger.info(f"Found {len(results)} intentions-related hadiths")
-            return results
+            enriched = []
+            for result in raw_results:
+                enriched_result = self._enrich_search_result(result)
+                if enriched_result:
+                    enriched.append(enriched_result)
+            
+            enriched.sort(key=lambda x: x['weighted_similarity'], reverse=True)
+            for idx, item in enumerate(enriched, 1):
+                item['rank'] = idx
+            
+            logger.info(f"Found {len(enriched)} intentions-related hadiths")
+            return enriched[:n_results]
             
         except Exception as e:
             logger.error(f"Error in intentions search: {e}")
@@ -726,21 +890,32 @@ class RAGService:
         for i, result in enumerate(context[:5], 1):
             source = result['metadata'].get('source', 'غير معروف')
             hadith_text = result['text'].strip()
-            similarity = result['similarity']
+            similarity = result.get('weighted_similarity', result.get('similarity', 0.0))
             grade = result['metadata'].get('grade', '')
+            chain_weight = result.get('chain_weight', 1.0)
+            sanad_chains = result.get('sanad_chains', [])
             
-            # Clean up the hadith text
             if len(hadith_text) > 200:
                 hadith_text = hadith_text[:200] + "..."
             
             response_parts.append(f"{i}. من {source}")
             if grade:
                 response_parts.append(f"   الدرجة: {grade}")
-            response_parts.append(f"   التشابه: {similarity:.2f}")
+            response_parts.append(f"   الثقة في السند: {chain_weight:.2f}")
+            response_parts.append(f"   التشابه الموزون: {similarity:.2f}")
+            
+            if sanad_chains:
+                for chain in sanad_chains[:1]:
+                    chain_str = ' -> '.join(
+                        f"{n['name']} ({n['reliability_display']})"
+                        for n in chain
+                    )
+                    response_parts.append(f"   السند: {chain_str}")
+            
             response_parts.append(f"   الحديث: {hadith_text}")
             response_parts.append("")
         
-        response_parts.append("ملاحظة: هذه نتائج بحث دلالي. يرجى التحقق من الأحاديث ومصادرها.")
+        response_parts.append("ملاحظة: هذه نتائج بحث دلالي موزونة بدرجة توثيق الأسانيد. يرجى التحقق من الأحاديث ومصادرها.")
         
         return "\n".join(response_parts)
     
@@ -812,7 +987,6 @@ class RAGService:
     def ask_question(self, query: str, user: Optional[User] = None) -> Dict[str, Any]:
         """Main RAG endpoint for asking questions"""
         try:
-            # Search for relevant hadiths
             search_results = self.search_hadiths(query, self.config.max_context)
             
             if not search_results:
@@ -823,10 +997,8 @@ class RAGService:
                     'sources': []
                 }
             
-            # Generate answer
             answer = self.generate_answer(query, search_results)
             
-            # Extract sources
             sources = []
             for result in search_results:
                 metadata = result['metadata']
@@ -834,11 +1006,12 @@ class RAGService:
                     'hadith_id': metadata.get('hadith_id'),
                     'source': metadata.get('source', 'غير معروف'),
                     'grade': metadata.get('grade'),
-                    'similarity': result['similarity']
+                    'similarity': result.get('weighted_similarity', result.get('similarity')),
+                    'chain_weight': result.get('chain_weight'),
+                    'sanad_chains': result.get('sanad_chains', [])
                 }
                 sources.append(source_info)
             
-            # Store query in database
             from .models import RAGQuery
             RAGQuery.objects.create(
                 user=user,

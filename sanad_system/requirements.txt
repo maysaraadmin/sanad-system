@@ -4,7 +4,7 @@ django-jalali>=4.0.0
 django-sslserver>=0.22
 
 # Image processing
-Pillow==10.0.1
+#Pillow==10.0.1
 
 # Core dependencies
 python-decouple==3.8
@@ -91,7 +91,7 @@ accelerate>=0.24.0
 
 # Model Quantization & Optimization
 bitsandbytes>=0.41.0
-auto-gptq>=0.6.0
+#auto-gptq>=0.6.0
 optimum>=1.13.0
 tokenizers>=0.15.0
 

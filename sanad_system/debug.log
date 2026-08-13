@@ -11887,3 +11887,127 @@ INFO 2026-05-23 17:09:34,294 basehttp "GET /static/css/interactive.css HTTP/1.1"
 WARNING 2026-05-23 17:09:34,916 log Not Found: /favicon.ico
 WARNING 2026-05-23 17:09:34,918 basehttp "GET /favicon.ico HTTP/1.1" 404 16698
 INFO 2026-05-23 17:10:16,444 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-05-23 21:32:36,723 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:37:50,443 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:39:09,051 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:40:54,799 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:42:17,244 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:43:01,276 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:44:11,699 autoreload Watching for file changes with StatReloader
+INFO 2026-05-23 21:47:12,865 autoreload Watching for file changes with StatReloader
+INFO 2026-08-13 23:53:16,097 autoreload Watching for file changes with StatReloader
+INFO 2026-08-13 23:57:40,246 autoreload Watching for file changes with StatReloader
+INFO 2026-08-14 00:02:15,439 autoreload D:\python-3.10\Lib\site-packages\yaml\representer.py changed, reloading.
+INFO 2026-08-14 00:02:23,458 autoreload Watching for file changes with StatReloader
+INFO 2026-08-14 00:06:13,020 autoreload Watching for file changes with StatReloader
+INFO 2026-08-14 00:08:33,553 autoreload Watching for file changes with StatReloader
+ERROR 2026-08-14 00:08:53,332 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\python-3.10\lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'rag_app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python-3.10\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python-3.10\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\python-3.10\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "D:\python-3.10\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "D:\python-3.10\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "D:\python-3.10\lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'rag_app' is not a registered namespace
+ERROR 2026-08-14 00:08:53,332 basehttp "GET / HTTP/1.1" 500 152765
+WARNING 2026-08-14 00:08:53,799 log Not Found: /favicon.ico
+WARNING 2026-08-14 00:08:53,799 basehttp "GET /favicon.ico HTTP/1.1" 404 16368
+ERROR 2026-08-14 00:09:09,080 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\python-3.10\lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'rag_app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python-3.10\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\python-3.10\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\python-3.10\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "D:\python-3.10\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "D:\python-3.10\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\python-3.10\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "D:\python-3.10\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "D:\python-3.10\lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'rag_app' is not a registered namespace
+ERROR 2026-08-14 00:09:09,080 basehttp "GET / HTTP/1.1" 500 152765
+INFO 2026-08-14 00:11:12,221 autoreload D:\sanad-system-main\sanad_system\sanad_system\urls.py changed, reloading.
+INFO 2026-08-14 00:11:13,820 autoreload Watching for file changes with StatReloader
+INFO 2026-08-14 00:11:35,965 autoreload Watching for file changes with StatReloader
+INFO 2026-08-14 00:11:57,460 basehttp "GET / HTTP/1.1" 200 24704
+INFO 2026-08-14 00:11:57,880 basehttp "GET /static/css/style.css HTTP/1.1" 200 3543
+INFO 2026-08-14 00:11:57,910 basehttp "GET /static/css/interactive.css HTTP/1.1" 200 4894
+INFO 2026-08-14 00:11:57,945 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2026-08-14 00:11:58,281 basehttp "GET /static/js/main.js HTTP/1.1" 200 4545
+INFO 2026-08-14 00:12:43,646 basehttp "GET /hadith/ HTTP/1.1" 200 60589
+INFO 2026-08-14 00:12:48,456 basehttp "GET /narrators/ HTTP/1.1" 200 24267
+INFO 2026-08-14 00:13:01,155 basehttp "GET /narrators/?reliability=thiqa HTTP/1.1" 200 24275
+INFO 2026-08-14 00:13:05,444 basehttp "GET /rag/ HTTP/1.1" 302 0
+INFO 2026-08-14 00:13:05,748 basehttp "GET /accounts/login/?next=/rag/ HTTP/1.1" 200 28999
+INFO 2026-08-14 00:13:12,117 basehttp "GET /library/ HTTP/1.1" 200 23852
+INFO 2026-08-14 00:13:16,405 basehttp "GET /document-analysis/dashboard/ HTTP/1.1" 302 0
+INFO 2026-08-14 00:13:16,422 basehttp "GET /accounts/login/?next=/document-analysis/dashboard/ HTTP/1.1" 200 29023
+INFO 2026-08-14 00:13:21,434 basehttp "GET /hadith/create/ HTTP/1.1" 302 0
+INFO 2026-08-14 00:13:21,484 basehttp "GET /accounts/login/?next=/hadith/create/ HTTP/1.1" 200 29009

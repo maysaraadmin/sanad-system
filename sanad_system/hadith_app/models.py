@@ -30,6 +30,7 @@ class Narrator(models.Model):
         ],
         verbose_name="درجة التوثيق"
     )
+    reliability_history = models.JSONField(default=list, blank=True, verbose_name="سجل التوثيق")
     madhhab = models.CharField(
         max_length=50,
         choices=[
@@ -63,6 +64,7 @@ class Narrator(models.Model):
         return self.name
 
     def get_reliability_display(self):
+        """Get Arabic display text for narrator reliability grade"""
         reliability_choices = {
             'thiqa': 'ثقة',
             'saduq': 'صدوق',
@@ -71,7 +73,24 @@ class Narrator(models.Model):
         }
         return reliability_choices.get(self.reliability, self.reliability)
     
+    def add_reliability_entry(self, grade, source, note=''):
+        """Append a new reliability assessment entry to the narrator's history"""
+        entry = {
+            'grade': grade,
+            'source': source,
+            'note': note,
+        }
+        history = self.reliability_history or []
+        history.append(entry)
+        self.reliability_history = history
+        self.save(update_fields=['reliability_history'])
+    
+    def get_reliability_history_display(self):
+        """Return the full reliability history as a list"""
+        return self.reliability_history or []
+    
     def get_madhhab_display(self):
+        """Get Arabic display text for the narrator's madhhab"""
         madhhab_choices = {
             'hanafi': 'حنفي',
             'maliki': 'مالكي',
@@ -167,6 +186,9 @@ class Hadith(models.Model):
     context = models.TextField(null=True, blank=True, verbose_name="سياق الحديث")
     reference_page = models.CharField(max_length=50, null=True, blank=True, verbose_name="صفحة المرجع")
     reference_edition = models.CharField(max_length=100, null=True, blank=True, verbose_name="طبعة المرجع")
+    is_mutawatir = models.BooleanField(default=False, verbose_name="متواتر")
+    anomaly_score = models.FloatField(default=0.0, verbose_name="درجة الشذوذ")
+    is_shadh = models.BooleanField(default=False, verbose_name="شاذ")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(
@@ -292,6 +314,8 @@ class SanadNarrator(models.Model):
         verbose_name="طريقة الرواية",
         help_text="مثل: حدثنا، أخبرنا، عن، أنبأنا"
     )
+    is_mursal = models.BooleanField(default=False, verbose_name="مرسل")
+    is_tadlis = models.BooleanField(default=False, verbose_name="تدليس")
 
     class Meta:
         verbose_name = "راوي السند"
@@ -579,10 +603,8 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 def index_hadith_for_rag(sender, instance, created, **kwargs):
     """Automatically index hadith for RAG system when created or updated"""
     try:
-        # Import here to avoid circular imports
         from rag_app.services import RAGService
         
-        # Only index if the hadith has text content
         if instance.text or instance.texts.exists():
             rag_service = RAGService()
             rag_service.index_hadiths([instance.id])
@@ -591,6 +613,53 @@ def index_hadith_for_rag(sender, instance, created, **kwargs):
             print(f"Automatically indexed hadith #{instance.system_hadith_number} for RAG after {action}")
             
     except Exception as e:
-        # Log error but don't raise to avoid breaking hadith creation
         print(f"Error auto-indexing hadith #{instance.system_hadith_number}: {e}")
+        pass
+
+
+@receiver(post_save, sender=Hadith)
+def update_hadith_metadata(sender, instance, created, **kwargs):
+    """Automatically update hadith metadata: anomaly_score, is_shadh, is_mutawatir"""
+    try:
+        from hadith_app.utils.sanad_utils import detect_shadh, detect_mutawatir
+        
+        shadh_analysis = detect_shadh(instance)
+        mutawatir_analysis = detect_mutawatir(instance)
+        
+        update_fields = []
+        
+        if instance.anomaly_score != shadh_analysis['score']:
+            instance.anomaly_score = shadh_analysis['score']
+            update_fields.append('anomaly_score')
+        
+        if instance.is_shadh != shadh_analysis['is_shadh']:
+            instance.is_shadh = shadh_analysis['is_shadh']
+            update_fields.append('is_shadh')
+        
+        if not instance.is_mutawatir and mutawatir_analysis['is_mutawatir']:
+            instance.is_mutawatir = True
+            update_fields.append('is_mutawatir')
+        
+        if update_fields:
+            instance.save(update_fields=update_fields)
+            print(f"Updated hadith #{instance.system_hadith_number} metadata: {update_fields}")
+            
+    except Exception as e:
+        print(f"Error updating hadith #{instance.system_hadith_number} metadata: {e}")
+        pass
+
+
+@receiver(post_save, sender=SanadNarrator)
+def update_sanad_narrator_flags(sender, instance, created, **kwargs):
+    """Validate and update sanad narrator flags on save"""
+    try:
+        from hadith_app.utils.sanad_utils import validate_chronological_overlap
+        
+        validation = validate_chronological_overlap(instance.sanad)
+        if validation['issues']:
+            # Log issues but don't raise - just note them
+            print(f"Sanad {instance.sanad.id} chronological issues: {validation['issues']}")
+            
+    except Exception as e:
+        print(f"Error validating sanad narrator {instance.id}: {e}")
         pass
