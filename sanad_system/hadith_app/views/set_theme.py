@@ -1,11 +1,9 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
 @require_POST
-@csrf_exempt
 def set_theme(request):
     try:
         data = json.loads(request.body)
@@ -29,5 +27,5 @@ def set_theme(request):
         
     except json.JSONDecodeError:
         return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
-    except Exception as e:
-        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    except Exception:
+        return JsonResponse({'status': 'error', 'message': 'An error occurred while setting theme.'}, status=500)

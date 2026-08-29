@@ -92,4 +92,15 @@ class SearchView(TemplateView):
                 'paginator': paginator if 'paginator' in locals() else None,
             })
         
+        else:
+            context.update({
+                'query': query,
+                'hadith_results': [],
+                'narrator_results': [],
+                'show_sanad': show_sanad,
+                'grade_filter': grade_filter,
+                'search_in': search_in,
+                'paginator': None,
+            })
+        
         return context

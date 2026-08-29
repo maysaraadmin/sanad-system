@@ -219,15 +219,14 @@ PDF_UPLOAD_DIR = os.path.join(MEDIA_ROOT, 'pdf_uploads')
 os.makedirs(PDF_UPLOAD_DIR, exist_ok=True)
 
 # Security settings
-if not DEBUG:
-    SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=False, cast=bool)
-    SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=False, cast=bool)
-    CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=False, cast=bool)
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000, cast=int)
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=not DEBUG, cast=bool)
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=not DEBUG, cast=bool)
+CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000 if not DEBUG else 0, cast=int)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
@@ -355,9 +354,14 @@ REST_FRAMEWORK = {
 }
 
 # Celery Configuration
-CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='memory://')
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='filesystem://')
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Riyadh'
+
+if not DEBUG and CELERY_BROKER_URL in ('memory://', 'filesystem://'):
+    raise ImproperlyConfigured(
+        "CELERY_BROKER_URL must be explicitly set via environment variable in production."
+    )

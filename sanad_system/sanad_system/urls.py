@@ -26,10 +26,6 @@ from django.conf.urls import handler404, handler500
 # Import the custom admin site instance from admin_site.py
 from hadith_app.admin_site import admin_site
 
-# Ensure the default admin site is using our custom admin site
-admin.site = admin_site
-admin.sites.site = admin_site
-
 urlpatterns = [
     # Admin URLs - Using custom admin site
     path('admin/', admin_site.urls),

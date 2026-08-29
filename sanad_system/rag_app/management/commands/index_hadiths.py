@@ -46,9 +46,10 @@ class Command(BaseCommand):
                 from rag_app.services import ChromaDBService
                 from rag_app.models import DocumentEmbedding
                 
-                # Clear ChromaDB
+                # Clear ChromaDB safely
                 chroma_service = ChromaDBService()
-                chroma_service.collection.delete()
+                if chroma_service.collection:
+                    chroma_service.clear_collection()
                 chroma_service._initialize_client()
                 
                 # Clear Django embeddings

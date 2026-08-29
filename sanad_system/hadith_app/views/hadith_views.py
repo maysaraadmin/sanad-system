@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 from ..models import Hadith, Sanad, SanadNarrator
 from ..forms import HadithForm
-from .utils import parse_sanad_chain
+from ..utils.sanad_utils import parse_sanad_chain
 
 class HadithListView(ListView):
     model = Hadith

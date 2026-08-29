@@ -58,11 +58,10 @@ def hadith_comparison_api(request, hadith_ids):
             hadith_data = {
                 'id': hadith.id,
                 'text': hadith.text,
-                'book': hadith.book.title if hadith.book else None,
                 'source': hadith.source,
                 'grade': hadith.grade,
                 'narrators': narrators,
-                'sanad': hadith.sanad.text if hadith.sanad else None,
+                'sanad': ' -> '.join([sn.narrator.name for sn in hadith.asanid.first().sanadnarrator_set.all().order_by('order')]) if hadith.asanid.exists() else None,
                 'created_at': hadith.created_at.strftime('%Y-%m-%d %H:%M:%S'),
                 'updated_at': hadith.updated_at.strftime('%Y-%m-%d %H:%M:%S') if hadith.updated_at else None
             }
@@ -77,7 +76,7 @@ def hadith_comparison_api(request, hadith_ids):
     except Exception as e:
         return JsonResponse({
             'status': 'error',
-            'message': str(e)
+            'message': 'An error occurred while processing your request.'
         }, status=400)
 
 

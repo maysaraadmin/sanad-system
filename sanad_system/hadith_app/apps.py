@@ -13,6 +13,3 @@ class HadithAppConfig(AppConfig):
         from django.core.checks import register
         from .checks import hadith_app_checks
         register(hadith_app_checks)
-    
-    def ready(self):
-        import hadith_app.signals

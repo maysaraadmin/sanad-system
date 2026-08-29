@@ -8,6 +8,7 @@ from django.views.decorators.http import require_GET
 import os
 import re
 from library_app.models import Document, DocumentType
+from django.conf import settings
 
 # Import document processing libraries
 def check_pypdf2():
@@ -23,6 +24,12 @@ def check_docx():
         return True
     except ImportError:
         return False
+
+def _is_safe_path(file_path):
+    """Ensure file path is within MEDIA_ROOT to prevent path traversal."""
+    media_root = os.path.realpath(settings.MEDIA_ROOT)
+    real_path = os.path.realpath(file_path)
+    return real_path.startswith(media_root + os.sep) or real_path == media_root
 
 class DocumentSearchView(TemplateView):
     template_name = 'library_app/document_search.html'
@@ -89,13 +96,15 @@ class DocumentSearchView(TemplateView):
             elif file_ext == '.txt':
                 matches = self.search_text(file_path, query)
         except Exception as e:
-            print(f"Error searching {file_path}: {e}")
+            logger.error(f"Error searching {file_path}: {e}")
         
         return matches
 
     def search_pdf(self, file_path, query):
         """Search inside PDF file"""
         matches = []
+        if not _is_safe_path(file_path):
+            return matches
         try:
             import PyPDF2
             with open(file_path, 'rb') as file:
@@ -110,13 +119,15 @@ class DocumentSearchView(TemplateView):
                             'context': self.get_context(text, match)
                         } for match in page_matches])
         except Exception as e:
-            print(f"PDF search error: {e}")
+            logger.error(f"PDF search error: {e}")
         
         return matches
 
     def search_docx(self, file_path, query):
         """Search inside Word document"""
         matches = []
+        if not _is_safe_path(file_path):
+            return matches
         try:
             import docx
             doc = docx.Document(file_path)
@@ -130,13 +141,15 @@ class DocumentSearchView(TemplateView):
                             'context': self.get_context(paragraph.text, match)
                         } for match in para_matches])
         except Exception as e:
-            print(f"DOCX search error: {e}")
+            logger.error(f"DOCX search error: {e}")
         
         return matches
 
     def search_text(self, file_path, query):
         """Search inside text file"""
         matches = []
+        if not _is_safe_path(file_path):
+            return matches
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
                 content = file.read()
@@ -148,7 +161,7 @@ class DocumentSearchView(TemplateView):
                         'context': self.get_context(content, match)
                     } for i, match in enumerate(line_matches)]
         except Exception as e:
-            print(f"Text search error: {e}")
+            logger.error(f"Text search error: {e}")
         
         return matches
 

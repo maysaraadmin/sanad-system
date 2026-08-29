@@ -1,9 +1,12 @@
 import re
+import logging
 import PyPDF2
 import docx
 from pathlib import Path
 from django.conf import settings
 from hadith_app.models import Hadith, Narrator
+
+logger = logging.getLogger(__name__)
 
 def extract_text_from_pdf(file_path):
     """Extract text from PDF file"""
@@ -15,7 +18,7 @@ def extract_text_from_pdf(file_path):
                 text.append(page.extract_text())
         return '\n\n'.join(text)
     except Exception as e:
-        print(f"Error extracting text from PDF: {e}")
+        logger.error(f"Error extracting text from PDF: {e}")
         return ""
 
 def extract_text_from_docx(file_path):
@@ -24,7 +27,7 @@ def extract_text_from_docx(file_path):
         doc = docx.Document(file_path)
         return '\n'.join([paragraph.text for paragraph in doc.paragraphs])
     except Exception as e:
-        print(f"Error extracting text from DOCX: {e}")
+        logger.error(f"Error extracting text from DOCX: {e}")
         return ""
 
 def extract_hadiths(text):
@@ -90,7 +93,7 @@ def compare_with_existing(hadiths, narrators):
     
     # Check narrators
     for narrator in narrators:
-        matches = Narrator.objects.filter(name__icontains(narrator['name']))
+        matches = Narrator.objects.filter(name__icontains=narrator['name'])
         if matches.exists():
             results['narrator_matches'].extend(list(matches))
         else:

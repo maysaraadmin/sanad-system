@@ -622,6 +622,8 @@ def index_hadith_for_rag(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Hadith)
 def update_hadith_metadata(sender, instance, created, **kwargs):
     """Automatically update hadith metadata: anomaly_score, is_shadh, is_mutawatir"""
+    if getattr(instance, '_updating_metadata', False):
+        return
     try:
         from hadith_app.utils.sanad_utils import detect_shadh, detect_mutawatir
         
@@ -643,7 +645,9 @@ def update_hadith_metadata(sender, instance, created, **kwargs):
             update_fields.append('is_mutawatir')
         
         if update_fields:
+            instance._updating_metadata = True
             instance.save(update_fields=update_fields)
+            instance._updating_metadata = False
             logger.info(f"Updated hadith #{instance.system_hadith_number} metadata: {update_fields}")
             
     except Exception:

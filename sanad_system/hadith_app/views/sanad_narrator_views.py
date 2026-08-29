@@ -141,7 +141,7 @@ def reorder_sanad_narrators(request, sanad_id):
             
             return JsonResponse({'success': True, 'message': 'تم إعادة ترتيب الرواة بنجاح'})
         except Exception as e:
-            return JsonResponse({'success': False, 'error': str(e)})
+            return JsonResponse({'success': False, 'error': 'An error occurred while processing your request.'})
     
     return JsonResponse({'success': False, 'error': 'طلب غير صالح'})
 

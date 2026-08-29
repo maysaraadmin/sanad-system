@@ -32,7 +32,7 @@ class DocumentAnalyzer:
         if self._initialized:
             return
         
-        print("=== DocumentAnalyzer Initializing ===")
+        logger.info("=== DocumentAnalyzer Initializing ===")
         try:
             import torch
             self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
@@ -42,7 +42,7 @@ class DocumentAnalyzer:
         
         self._initialize_models()
         self._initialized = True
-        print("=== DocumentAnalyzer Initialized ===")
+        logger.info("=== DocumentAnalyzer Initialized ===")
     
     def _initialize_models(self):
         """Initialize all required models for Arabic document analysis"""

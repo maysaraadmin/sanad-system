@@ -19,7 +19,7 @@ def parse_sanad_chain(sanad_text: str, sanad: Sanad) -> None:
         SanadNarrator.objects.create(
             sanad=sanad,
             narrator=narrator,
-            position=position
+            order=position
         )
 
 def validate_sanad_chain(sanad_text: str) -> None:
